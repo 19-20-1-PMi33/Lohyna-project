@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WpfApp1.Widgets
+namespace View
 {
 	/// <summary>
-	/// Interaction logic for Page1.xaml
+	/// Interaction logic for MainWindow.xaml
 	/// </summary>
-	public partial class Page1 : Page
+	public partial class MainWindow : Window
 	{
-		public Page1()
+		public MainWindow()
 		{
 			InitializeComponent();
 		}
