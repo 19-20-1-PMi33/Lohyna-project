@@ -9,8 +9,9 @@ namespace Model
 		public string Name { get; set; }
 		public DateTime Created { get; set; }
 		public DateTime Deadline { get; set; }
-		public string Subject_Name { get; set; }
+		public string SubjectName { get; set; }
 		public string Materials { get; set; }
+		public bool Finished { get; set; }
 	}
 	public class NoteConfiguration : IEntityTypeConfiguration<Note>
 	{
@@ -18,7 +19,8 @@ namespace Model
 		{
 			builder.HasKey(x => x.Name);
 			builder.Property(x => x.Created).IsRequired();
-			builder.Property(x => x.Subject_Name).HasMaxLength(40);
+			builder.Property(x => x.SubjectName).HasMaxLength(40);
+			builder.Property(x => x.Finished).IsRequired();
 		}
 	}
 }
