@@ -1,15 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Model
+namespace Model.EntitiesConfiguration
 {
-	public class Student
-	{
-		public long TicketNumber { get; set; }
-		public Person Person { get; set; }
-		public long ReportCard { get; set; }
-		public Group Group { get; set; }
-	}
 	public class StudentConfiguration : IEntityTypeConfiguration<Student>
 	{
 		public void Configure(EntityTypeBuilder<Student> builder)

@@ -1,14 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Model
+namespace Model.EntitiesConfiguration
 {
-	public class Group
-	{
-		public string Name { get; set; }
-		public int Size { get; set; }
-		public int Course { get; set; }
-	}
 	public class GroupConfiguration : IEntityTypeConfiguration<Group>
 	{
 		public void Configure(EntityTypeBuilder<Group> builder)
@@ -19,5 +13,4 @@ namespace Model
 			builder.Property(x => x.Name).HasMaxLength(10);
 		}
 	}
-
 }

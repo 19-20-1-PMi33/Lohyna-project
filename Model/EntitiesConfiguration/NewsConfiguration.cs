@@ -1,16 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
 
-namespace Model
+namespace Model.EntitiesConfiguration
 {
-	public class News
-	{
-		public string Name { get; set; }
-		public string Photo { get; set; }
-		public string Text { get; set; }
-		public DateTime Time { get; set; }
-	}
 	public class NewsConfiguration : IEntityTypeConfiguration<News>
 	{
 		public void Configure(EntityTypeBuilder<News> builder)

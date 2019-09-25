@@ -1,13 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Model
+namespace Model.EntitiesConfiguration
 {
-	public class Cabinet
-	{
-		public string Name { get; set; }
-		public int Size { get; set; }
-	}
 	public class CabinetConfiguration : IEntityTypeConfiguration<Cabinet>
 	{
 		public void Configure(EntityTypeBuilder<Cabinet> builder)
@@ -17,5 +12,4 @@ namespace Model
 			builder.Property(x => x.Name).HasMaxLength(6);
 		}
 	}
-
 }
