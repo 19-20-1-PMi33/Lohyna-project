@@ -4,6 +4,6 @@
 	{
 		public string Name { get; set; }
 		public string ExamType { get; set; }
-		public Lecturer Lecturer { get; set; }
+		public int Lecturer { get; set; }
 	}
 }

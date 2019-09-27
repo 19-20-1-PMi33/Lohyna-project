@@ -7,5 +7,8 @@
 		public string Photo { get; set; }
 		public string Username { get; set; }
 		public string Password { get; set; }
+
+		public virtual Student Student { get; set; }
+		public virtual Lecturer Lecturer { get; set; }
 	}
 }
