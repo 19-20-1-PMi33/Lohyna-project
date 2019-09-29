@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Model
 {
@@ -7,5 +8,7 @@ namespace Model
 		public int Number { get; set; }
 		public DateTime Start { get; set; }
 		public DateTime Finish { get; set; }
+
+		public ICollection<Timetable> Lessons { get; set; }
 	}
 }

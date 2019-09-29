@@ -18,6 +18,9 @@ namespace Model.EntitiesConfiguration
 
 			builder.HasOne(x => x.Group)
 				.WithMany(y => y.Students);
+
+			builder.HasMany(x => x.Marks)
+				.WithOne(y => y.Student);
 		}
 	}
 }

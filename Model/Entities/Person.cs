@@ -1,4 +1,6 @@
-﻿namespace Model
+﻿using System.Collections.Generic;
+
+namespace Model
 {
 	public class Person
 	{
@@ -10,5 +12,6 @@
 
 		public virtual Student Student { get; set; }
 		public virtual Lecturer Lecturer { get; set; }
+		public ICollection<Note> Notes { get; set; }
 	}
 }

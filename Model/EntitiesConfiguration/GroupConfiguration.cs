@@ -11,6 +11,9 @@ namespace Model.EntitiesConfiguration
 			builder.Property(x => x.Size).IsRequired();
 			builder.Property(x => x.Course).IsRequired();
 			builder.Property(x => x.Name).HasMaxLength(10);
+
+			builder.HasMany(x => x.Students).WithOne(x => x.Group);
+			builder.HasMany(x => x.Lessons).WithOne(x => x.Group);
 		}
 	}
 }

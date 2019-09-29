@@ -9,7 +9,8 @@ namespace Model.EntitiesConfiguration
 		{
 			builder.HasKey(x => x.Name);
 			builder.Property(x => x.ExamType).IsRequired();
-			builder.Property(x => x.Lecturer).IsRequired();
+			
+			//builder.HasMany(x => x.Lecturers).WithMany(y => y.)
 		}
 	}
 }

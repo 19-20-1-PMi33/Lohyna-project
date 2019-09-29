@@ -9,5 +9,6 @@ namespace Model
 		public int Course { get; set; }
 		
 		public ICollection<Student> Students { get; set; }
+		public ICollection<Timetable> Lessons { get; set; }
 	}
 }

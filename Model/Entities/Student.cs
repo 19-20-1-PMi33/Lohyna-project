@@ -1,4 +1,6 @@
-﻿namespace Model
+﻿using System.Collections.Generic;
+
+namespace Model
 {
 	public class Student
 	{
@@ -7,5 +9,6 @@
 
 		public Person Person { get; set; }
 		public Group Group { get; set; }
+		public ICollection<Rating> Marks { get; set; }
 	}
 }
