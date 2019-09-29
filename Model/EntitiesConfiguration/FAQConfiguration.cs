@@ -8,7 +8,9 @@ namespace Model.EntitiesConfiguration
 		public void Configure(EntityTypeBuilder<FAQ> builder)
 		{
 			builder.HasKey(x => x.Question);
-			builder.Property(x => x.Answer).IsRequired();
+
+			builder.Property(x => x.Answer)
+				.IsRequired();
 		}
 	}
 }

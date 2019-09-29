@@ -17,7 +17,8 @@ namespace Model.EntitiesConfiguration
 				.HasForeignKey<Person>(y => y.Username);
 
 			builder.HasOne(x => x.Group)
-				.WithMany(y => y.Students);
+				.WithMany(y => y.Students)
+				.HasForeignKey(x => x.GroupID);
 
 			builder.HasMany(x => x.Marks)
 				.WithOne(y => y.Student);

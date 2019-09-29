@@ -8,8 +8,13 @@ namespace Model.EntitiesConfiguration
 		public void Configure(EntityTypeBuilder<Lecturer> builder)
 		{
 			builder.HasKey(x => x.ID);
-			builder.HasOne(x => x.Person).WithOne(y => y.Lecturer).HasForeignKey<Person>(y => y.Username);
-			builder.Property(x => x.Department).IsRequired();
+
+			builder.Property(x => x.Department)
+				.IsRequired();
+
+			builder.HasOne(x => x.Person)
+				.WithOne(y => y.Lecturer)
+				.HasForeignKey<Person>(y => y.Username);
 		}
 	}
 }

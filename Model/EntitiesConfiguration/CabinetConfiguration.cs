@@ -8,8 +8,12 @@ namespace Model.EntitiesConfiguration
 		public void Configure(EntityTypeBuilder<Cabinet> builder)
 		{
 			builder.HasKey(x => x.Name);
-			builder.Property(x => x.Size).IsRequired();
-			builder.Property(x => x.Name).HasMaxLength(6);
+
+			builder.Property(x => x.Size)
+				.IsRequired();
+
+			builder.Property(x => x.Name)
+				.HasMaxLength(6);
 		}
 	}
 }
