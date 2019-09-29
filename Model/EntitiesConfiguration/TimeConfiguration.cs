@@ -14,6 +14,10 @@ namespace Model.EntitiesConfiguration
 
 			builder.Property(x => x.Finish)
 				.IsRequired();
+
+			builder.HasMany(x => x.Lessons)
+				.WithOne(y => y.Time)
+				.HasForeignKey(y => y.TimeID);
 		}
 	}
 }

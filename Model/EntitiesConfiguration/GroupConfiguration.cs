@@ -19,10 +19,12 @@ namespace Model.EntitiesConfiguration
 				.IsRequired();
 
 			builder.HasMany(x => x.Students)
-				.WithOne(x => x.Group);
+				.WithOne(y => y.Group)
+				.HasForeignKey(y => y.GroupID);
 
 			builder.HasMany(x => x.Lessons)
-				.WithOne(x => x.Group);
+				.WithOne(y => y.Group)
+				.HasForeignKey(y => y.GroupID);
 		}
 	}
 }

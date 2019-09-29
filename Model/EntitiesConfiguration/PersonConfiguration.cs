@@ -20,6 +20,10 @@ namespace Model.EntitiesConfiguration
 			builder.Property(x => x.Password)
 				.IsRequired()
 				.HasMaxLength(16);
+
+			builder.HasMany(x => x.Notes)
+				.WithOne(y => y.Person)
+				.HasForeignKey(y => y.PersonID);
 		}
 	}
 }

@@ -15,6 +15,14 @@ namespace Model.EntitiesConfiguration
 			builder.HasOne(x => x.Person)
 				.WithOne(y => y.Lecturer)
 				.HasForeignKey<Person>(y => y.Username);
+
+			builder.HasMany(x => x.Lessons)
+				.WithOne(y => y.Lecturer)
+				.HasForeignKey(y => y.LecturerID);
+
+			builder.HasMany(x => x.Specializations)
+				.WithOne(y => y.Lecturer)
+				.HasForeignKey(y => y.LecturerID);
 		}
 	}
 }
