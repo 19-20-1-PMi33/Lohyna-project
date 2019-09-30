@@ -4,9 +4,19 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
+        xmlns:local1="clr-namespace:View.Widget"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="MainWindow" Height="720" Width="1280">
+    <Grid Background="#f9f9f9">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="980"/>
+        </Grid.ColumnDefinitions>
+        <local:Navbar Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"></local:Navbar>
+        <local1:SearchBar Grid.Column="1" Grid.Row="0"/>
     </Grid>
 </Window>

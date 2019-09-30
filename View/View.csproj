@@ -55,6 +55,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Widget\Images\faq_icon.xaml.cs">
+      <DependentUpon>faq_icon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widget\Images\notes_icon.xaml.cs">
+      <DependentUpon>notes_icon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widget\Images\profile_icon.xaml.cs">
+      <DependentUpon>profile_icon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widget\Images\search_icon.xaml.cs">
+      <DependentUpon>search_icon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widget\Images\timeTable_icon.xaml.cs">
+      <DependentUpon>timeTable_icon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widget\SearchBar.xaml.cs">
+      <DependentUpon>SearchBar.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -67,8 +85,39 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Widget\Images\faq_icon.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Widget\Images\notes_icon.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Widget\Images\profile_icon.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Widget\Images\search_icon.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Widget\Images\timeTable_icon.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Widget\Navbar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Widget\SearchBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Widget\Navbar.xaml.cs">
+      <DependentUpon>Navbar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -97,6 +146,9 @@
   <ItemGroup>
     <Folder Include="Pages\" />
     <Folder Include="Widgets\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Widget\Images\logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
