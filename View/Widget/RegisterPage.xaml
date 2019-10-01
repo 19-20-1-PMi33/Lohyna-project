@@ -42,10 +42,10 @@
         <TextBlock Text="Email : " Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2" VerticalAlignment="Center" FontSize="18"></TextBlock>
         <TextBox x:Name="edit_Email" Grid.Row="6" Grid.Column="4" Grid.ColumnSpan="2" Height="25" FontSize="18"/>
         <TextBlock Text="Password : " Grid.Row="7"  Grid.Column="2" Grid.ColumnSpan="2" VerticalAlignment="Center" FontSize="18"></TextBlock>
-        <TextBox x:Name="edit_Password" Grid.Row="7" Grid.Column="4" Grid.ColumnSpan="2" Height="25" FontSize="18"></TextBox>
+        <PasswordBox x:Name="edit_Password" Grid.Row="7" Grid.Column="4" Grid.ColumnSpan="2" Height="25" FontSize="18"></PasswordBox>
         <TextBlock Text="Repeat : " Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="2" VerticalAlignment="Center" FontSize="18"></TextBlock>
-        <TextBox x:Name="edit_RepPassword" Grid.Row="8" Grid.Column="4" Grid.ColumnSpan="2" Height="25" FontSize="18"></TextBox>
-        <Button x:Name="button_cancel" BorderBrush="Red" BorderThickness="3" Background="#FF1985DA" Grid.Row="10" Grid.Column="1" Content="Cancel" Height="40" FontSize="18"></Button>
+        <PasswordBox x:Name="edit_RepPassword" Grid.Row="8" Grid.Column="4" Grid.ColumnSpan="2" Height="25" FontSize="18"></PasswordBox>
+        <Button x:Name="button_cancel" Background="#FF1985DA" Grid.Row="10" Grid.Column="1" Content="Cancel" Height="40" FontSize="18" IsCancel="True"></Button>
         <Button x:Name="button_Register" Background="#FF1985DA" Content="Register!" Grid.Row="10" Grid.Column="6" Height="40" FontSize="20"></Button>
     </Grid>
 </UserControl>
