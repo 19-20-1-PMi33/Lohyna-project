@@ -16,8 +16,7 @@
             <ColumnDefinition Width="300"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <local:Navbar Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"></local:Navbar>
+        <local1:LogInNavbar Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"></local1:LogInNavbar>
         <local1:SearchBar Grid.Column="1" Grid.Row="0"/>
-        <local1:RegisterPage Grid.Column="1" Grid.Row="1"/>
     </Grid>
 </Window>

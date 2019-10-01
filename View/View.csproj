@@ -73,6 +73,9 @@
     <Compile Include="Widget\Images\timeTable_icon.xaml.cs">
       <DependentUpon>timeTable_icon.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Widget\LogInNavbar.xaml.cs">
+      <DependentUpon>LogInNavbar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Widget\RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
     </Compile>
@@ -114,6 +117,10 @@
     <Page Include="Widget\Images\timeTable_icon.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Widget\LogInNavbar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Widget\Navbar.xaml">
       <SubType>Designer</SubType>

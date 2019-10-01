@@ -1,0 +1,42 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:View.Widget"
+             xmlns:Images="clr-namespace:View.Widget.Images" x:Class="View.Widget.LogInNavbar"
+             mc:Ignorable="d" 
+             d:DesignHeight="690" d:DesignWidth="320">
+    <Grid>
+        <Image x:Name="logo" Source="Images/logo.png" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Margin="0,0,0,510"/>
+        <Button x:Name="button_Profile" Content="Profile" Background="#FF1985DA" HorizontalAlignment="Left" FontFamily="Roboto" FontSize="20" BorderBrush="{x:Null}" Margin="53,305,0,335"/>
+        <Images:profile_icon x:Name="img_Profile" Grid.Column="0" Margin="0,305,267,335"/>
+        <Button x:Name="button_TimeTable" Content="Time table"  Background="#FF1985DA" HorizontalAlignment="Left" FontSize="20" BorderBrush="{x:Null}" Margin="53,355,0,285"/>
+        <Images:timeTable_icon x:Name="img_TimeTable" Grid.Column="0" Margin="0,355,267,285"/>
+        <Button x:Name="button_Notes" Content="Notes"  Background="#FF1985DA" HorizontalAlignment="Left" FontSize="20" BorderBrush="{x:Null}" Margin="53,405,0,235"/>
+        <Images:notes_icon x:Name="img_Notes" Grid.Column="0" Margin="0,405,267,235"/>
+        <Button x:Name="button_FAQ" Content="F.A.Q." Background="#FF1985DA" HorizontalAlignment="Left" FontSize="16" BorderBrush="{x:Null}" Margin="53,640,0,0"/>
+        <Images:faq_icon x:Name="img_Faq" Grid.Column="0" Margin="0,640,267,0"/>
+        <Grid Background="#FF1985DA">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="180"/>
+                <RowDefinition Height="125"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.20*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Image x:Name="logo1" Source="Images/logo.png" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
+            <Button x:Name="button_FAQ1" Grid.Row="6" Grid.Column="1" Content="F.A.Q." Background="#FF1985DA" HorizontalAlignment="Left" FontSize="16" BorderBrush="{x:Null}"/>
+            <Images:faq_icon x:Name="img_Faq1" Grid.Row="6" Grid.Column="0"/>
+            <Button Content="Log in" Background ="#F9F9F9" FontSize="16"  Grid.Column="1" HorizontalAlignment="Left" Height="32" Margin="47,27,0,0" Grid.Row="3" Grid.RowSpan="2" VerticalAlignment="Top" Width="120" Click="Button_Click"/>
+            <TextBox HorizontalAlignment="Left" FontSize="16" Foreground="#959595" Height="30" Margin="31,95,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top" Width="249" Grid.ColumnSpan="2"/>
+            <TextBox HorizontalAlignment="Left" FontSize="16" Foreground="#959595" Height="30" Margin="31,20,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Width="249" Grid.ColumnSpan="2"/>
+        </Grid>
+    </Grid>
+</UserControl>
