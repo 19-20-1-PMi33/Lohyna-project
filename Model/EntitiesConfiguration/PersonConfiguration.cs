@@ -24,6 +24,14 @@ namespace Model.EntitiesConfiguration
 			builder.HasMany(x => x.Notes)
 				.WithOne(y => y.Person)
 				.HasForeignKey(y => y.PersonID);
+
+			builder.HasOne(x => x.Lecturer)
+				.WithOne(y => y.Person)
+				.HasForeignKey<Lecturer>(y => y.PersonID);
+
+			builder.HasOne(x => x.Student)
+				.WithOne(y => y.Person)
+				.HasForeignKey<Student>(y => y.PersonID);
 		}
 	}
 }

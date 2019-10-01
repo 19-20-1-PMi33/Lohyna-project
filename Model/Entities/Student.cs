@@ -8,6 +8,7 @@ namespace Model
 		public long ReportCard { get; set; }
 
 		public virtual Person Person { get; set; }
+		public string PersonID { get; set; }
 
 		public virtual Group Group { get; set; }
 		public string GroupID { get; set; }
