@@ -8,9 +8,20 @@ namespace Model.EntitiesConfiguration
 		public void Configure(EntityTypeBuilder<Note> builder)
 		{
 			builder.HasKey(x => x.Name);
-			builder.Property(x => x.Created).IsRequired();
-			builder.Property(x => x.Subject).IsRequired();
-			builder.Property(x => x.Finished).IsRequired();
+
+			builder.Property(x => x.Created)
+				.IsRequired();
+
+			builder.Property(x => x.Finished)
+				.IsRequired();
+
+			builder.HasOne(x => x.Subject)
+				.WithMany(y => y.Notes)
+				.HasForeignKey(x => x.SubjectID);
+
+			builder.HasOne(x => x.Person)
+				.WithMany(y => y.Notes)
+				.HasForeignKey(x => x.PersonID);
 		}
 	}
 }

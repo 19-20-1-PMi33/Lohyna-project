@@ -8,8 +8,12 @@ namespace Model.EntitiesConfiguration
 		public void Configure(EntityTypeBuilder<News> builder)
 		{
 			builder.HasKey(x => x.Name);
-			builder.Property(x => x.Text).IsRequired();
-			builder.Property(x => x.Time).IsRequired();
+
+			builder.Property(x => x.Text)
+				.IsRequired();
+
+			builder.Property(x => x.Time)
+				.IsRequired();
 		}
 	}
 }

@@ -8,8 +8,16 @@ namespace Model.EntitiesConfiguration
 		public void Configure(EntityTypeBuilder<Time> builder)
 		{
 			builder.HasKey(x => x.Number);
-			builder.Property(x => x.Start).IsRequired();
-			builder.Property(x => x.Finish).IsRequired();
+
+			builder.Property(x => x.Start)
+				.IsRequired();
+
+			builder.Property(x => x.Finish)
+				.IsRequired();
+
+			builder.HasMany(x => x.Lessons)
+				.WithOne(y => y.Time)
+				.HasForeignKey(y => y.TimeID);
 		}
 	}
 }
