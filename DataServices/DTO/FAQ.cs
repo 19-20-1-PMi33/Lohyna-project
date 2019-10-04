@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DataServices.DTO
 {
-    class FAQ
+    public class FAQ
     {
     }
 }
