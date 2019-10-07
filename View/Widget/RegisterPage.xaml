@@ -32,7 +32,11 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Image x:Name="profile_photo" Grid.Row="1" Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="2"  Source="Images/profile_placeholder.jpg"/>
-        <Button x:Name="button_upload_photo" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"  Content="Upload photo"  Width="100" Height="30"  Background="#FF1985DA" FontSize="15"></Button>
+        <Button x:Name="button_upload_photo" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"  Content="Upload photo"  Width="100" Height="30"  Background="#F9F9F9" FontSize="15">
+            <Button.Effect>
+                <DropShadowEffect Opacity="0.7" BlurRadius="8"/>
+            </Button.Effect>
+        </Button>
         <TextBlock Text="Name : " Grid.Row="1" Grid.Column="4" VerticalAlignment="Center" FontSize="18"></TextBlock>
         <TextBox x:Name="edit_Name" Grid.Row="1" Grid.Column="5" Height="25" FontSize="18"></TextBox>
         <TextBlock Text="Surname : " Grid.Row="2" Grid.Column="4" VerticalAlignment="Center" FontSize="18"></TextBlock>
@@ -45,7 +49,15 @@
         <PasswordBox x:Name="edit_Password" Grid.Row="7" Grid.Column="4" Grid.ColumnSpan="2" Height="25" FontSize="18"></PasswordBox>
         <TextBlock Text="Repeat : " Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="2" VerticalAlignment="Center" FontSize="18"></TextBlock>
         <PasswordBox x:Name="edit_RepPassword" Grid.Row="8" Grid.Column="4" Grid.ColumnSpan="2" Height="25" FontSize="18"></PasswordBox>
-        <Button x:Name="button_cancel" Background="#FF1985DA" Grid.Row="10" Grid.Column="1" Content="Cancel" Height="40" FontSize="18" IsCancel="True"></Button>
-        <Button x:Name="button_Register" Background="#FF1985DA" Content="Register!" Grid.Row="10" Grid.Column="6" Height="40" FontSize="20"></Button>
+        <Button x:Name="button_cancel" Background="#F9F9F9" Grid.Row="10" Grid.Column="1" Content="Cancel" Height="40" FontSize="18" IsCancel="True">
+            <Button.Effect>
+                <DropShadowEffect Opacity="0.7" BlurRadius="8"/>
+            </Button.Effect>
+        </Button>
+        <Button x:Name="button_Register" Background="#F9F9F9" Content="Register!" Grid.Row="10" Grid.Column="6" Height="40" FontSize="20">
+            <Button.Effect>
+                <DropShadowEffect Opacity="0.7" BlurRadius="8"/>
+            </Button.Effect>
+        </Button>
     </Grid>
 </UserControl>
