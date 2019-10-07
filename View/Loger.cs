@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Globalization;
 
+using Microsoft.Extensions.Logging;
+
 namespace View
 {
     class Loger
