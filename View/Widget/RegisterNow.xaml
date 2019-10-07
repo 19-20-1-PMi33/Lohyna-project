@@ -18,8 +18,8 @@
             <ColumnDefinition Width="200"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <TextBox Text="Not registered yet?" Grid.Row="1" Grid.Column="1" Background="{x:Null}" FontSize="23" BorderBrush="{x:Null}"/>
-        <Button Content="Register now!" Grid.Row="2" Grid.Column="1" Background="#FF1985DA" FontSize="25" Margin="10">
+        <TextBlock Text="Not registered yet?" Grid.Row="1" Grid.Column="1" Background="{x:Null}" FontSize="23"/>
+        <Button x:Name="but_reg" Content="Register now!" Grid.Row="2" Grid.Column="1" Background="#FF1985DA" FontSize="25" Margin="10">
             <Button.Effect>
                 <DropShadowEffect Opacity="0.7" BlurRadius="8"/>
             </Button.Effect>

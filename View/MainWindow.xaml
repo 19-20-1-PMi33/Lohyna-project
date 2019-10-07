@@ -7,7 +7,7 @@
         xmlns:local1="clr-namespace:View.Widget"
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="1280" MinHeight="600" MinWidth="1000">
-    <Grid Background="#f9f9f9">
+    <Grid Background="#f9f9f9" x:Name="grid">
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
             <RowDefinition/>
@@ -16,8 +16,8 @@
             <ColumnDefinition Width="300"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <local1:LogInNavbar Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"></local1:LogInNavbar>
-        <local1:SearchBar Grid.Column="1" Grid.Row="0"/>
-        <local1:RegisterNow Grid.Column="1" Grid.Row="1"/>
+        <local1:LogInNavbar x:Name="log" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"></local1:LogInNavbar>
+        <local1:SearchBar x:Name="search" Grid.Column="1" Grid.Row="0"/>
+        <local1:RegisterNow x:Name="reg" Grid.Column="1" Grid.Row="1"/>
     </Grid>
 </Window>

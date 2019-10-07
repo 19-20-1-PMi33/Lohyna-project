@@ -25,9 +25,18 @@ namespace View.Widget
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void username_focused(object sender, RoutedEventArgs e)
         {
-
+            if(text_user.Text=="Username")
+            {
+                text_user.Text = "";
+                text_user.Foreground = new SolidColorBrush(Colors.Black);
+            }
+        }
+        private void m_down(object sender, MouseButtonEventArgs e)
+        {
+            grid.Children.Remove(text_pass_block);
+            text_pass.Focus();
         }
     }
 }
