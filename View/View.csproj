@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Loger.cs" />
     <Compile Include="Widget\Images\cancel_icon.xaml.cs">
       <DependentUpon>cancel_icon.xaml</DependentUpon>
     </Compile>
