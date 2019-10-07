@@ -76,6 +76,9 @@
     <Compile Include="Widget\LogInNavbar.xaml.cs">
       <DependentUpon>LogInNavbar.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Widget\RegisterNow.xaml.cs">
+      <DependentUpon>RegisterNow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Widget\RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
     </Compile>
@@ -125,6 +128,10 @@
     <Page Include="Widget\Navbar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Widget\RegisterNow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Widget\RegisterPage.xaml">
       <SubType>Designer</SubType>
