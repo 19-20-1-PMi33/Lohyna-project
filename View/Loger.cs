@@ -10,108 +10,58 @@ using Microsoft.Extensions.Logging;
 
 namespace View
 {
-    class Loger
+    public class Logger : ILogger
     {
-        private string logpath = "console";
-        public string logInto
+        /// <summary>
+        /// Path to file with logs. May be used in derived classes.
+        /// </summary>
+        protected string FilePath { get; set; }
+
+        private List<string> scopes;
+
+        public static readonly string DefaultFilePath = @"Lohyna.log";
+
+        public Logger(string filePath)
         {
-            get
-            {
-                return logpath;
-            }
-            set
-            {
-                this.Writer?.Dispose();
-                logpath = value;
-                if (value == "console")
-                {
-                    this.Writer = new StreamWriter(Console.OpenStandardOutput());
-                }
-                else
-                {
-                    //try
-                    //{
-                    this.Writer = new StreamWriter(new FileStream(value, FileMode.OpenOrCreate));
-                    //}
-                    /*catch
-                    {
-                        LogError("Loger", $"cant open file for loging ({value})");
-                    }*/
-                }
-            }
-        }
-        protected StreamWriter Writer { get; set; }
-        private string errpath = "console";
-        public string errorInto
-        {
-            get
-            {
-                return errpath;
-            }
-            set
-            {
-                this.Error?.Dispose();
-                errpath = value;
-                if (value == "console")
-                {
-                    this.Error = new StreamWriter(Console.OpenStandardError());
-                }
-                else
-                {
-                    //try
-                    //{
-                        this.Error = new StreamWriter(new FileStream(value,FileMode.OpenOrCreate));
-                    //}
-                   // catch
-                    //{
-                       // LogError("Loger", $"cant open file for error ({value})");
-                    //}
-                }
-            }
-        }
-        protected StreamWriter Error { get; set; }
-        public string DateTimeFormat { get; set; } = "ru-Ru";
-        private int count = 0;
-        private int errCount = 0;
-        public Loger()
-        {
-            this.Writer = new StreamWriter(Console.OpenStandardOutput());
-            this.Error = new StreamWriter(Console.OpenStandardError());
-        }
-        ~Loger()
-        {
-            Writer.Close();
-            Error.Close();
-        }
-        public Loger(string log, string error)
-        {
-            this.logInto = log;
-            this.errorInto = error;
-        }
-        public Loger(string log)
-        {
-            this.logInto = log;
+            FilePath = filePath;
         }
 
-        public void Log(string text)
+        public IDisposable BeginScope<TState>(TState state)
         {
-            DateTime n = DateTime.Now;
-            Writer.WriteLine($"{++count}) [ {n.ToString(this.DateTimeFormat)} ] : {text}");
+            scopes.Add(state.ToString());
+
+            return new NoobDispose();
         }
-        public void LogError(string text)
+
+        public bool IsEnabled(LogLevel logLevel)
         {
-            DateTime n = DateTime.Now;
-            Error.WriteLine($"{++errCount}) [ {n.ToString(this.DateTimeFormat)} ] : {text}");
+            return true;
         }
-        public void Log(string where,string what)
+
+        public async void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)
         {
-            DateTime n = DateTime.Now;
-            Writer.WriteLine($"{++count}) [ {n.ToString(this.DateTimeFormat)} ] : [In -- {where} -- {what}]");
+            if (!IsEnabled(logLevel))
+            {
+                return;
+            }
+            var data = formatter(state, exception);
+            var completeScope = scopes.Aggregate((scope, acc) => acc += $"[{scope}]::");
+
+            var logMessage = $"{DateTime.Now} | {completeScope} {data}";
+
+            var encodedMessage = Encoding.Unicode.GetBytes(logMessage);
+
+            using (var sourceStream = new FileStream(FilePath, FileMode.Append, FileAccess.Write, FileShare.Read, 4096, true))
+            {
+                await sourceStream.WriteAsync(encodedMessage, 0, encodedMessage.Length);
+            }
         }
-        public void LogError(string where, string what)
+
+        private class NoobDispose : IDisposable
         {
-            DateTime n = DateTime.Now;
-            Error.WriteLine($"{++errCount}) [ {n.ToString(this.DateTimeFormat)} ] : [In -- {where} -- {what}]");
+            public void Dispose()
+            {
+            }
         }
     }
 }
