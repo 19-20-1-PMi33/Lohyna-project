@@ -17,11 +17,11 @@ namespace View
         /// </summary>
         protected string FilePath { get; set; }
 
-        private List<string> scopes;
+        private List<string> scopes = new List<string>();
 
-        public static readonly string DefaultFilePath = @"Lohyna.log";
+        public const string DefaultFilePath = @"Lohyna.log";
 
-        public Logger(string filePath)
+        public Logger(string filePath = DefaultFilePath)
         {
             FilePath = filePath;
         }
@@ -38,22 +38,26 @@ namespace View
             return true;
         }
 
-        public async void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)
+        public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)
         {
             if (!IsEnabled(logLevel))
             {
                 return;
             }
             var data = formatter(state, exception);
-            var completeScope = scopes.Aggregate((scope, acc) => acc += $"[{scope}]::");
+            string completeScope = "";
+           if (scopes.Count > 0)
+           {
+               completeScope = scopes.Aggregate("", (res, item) => res + $"[{item}]::");
+           }
 
-            var logMessage = $"{DateTime.Now} | {completeScope} {data}";
+            var logMessage = $"{DateTime.Now} | {completeScope} {data}{Environment.NewLine}";
 
             var encodedMessage = Encoding.Unicode.GetBytes(logMessage);
 
             using (var sourceStream = new FileStream(FilePath, FileMode.Append, FileAccess.Write, FileShare.Read, 4096, true))
             {
-                await sourceStream.WriteAsync(encodedMessage, 0, encodedMessage.Length);
+                sourceStream.WriteAsync(encodedMessage, 0, encodedMessage.Length);
             }
         }
 

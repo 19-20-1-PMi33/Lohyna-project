@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Extensions.Logging;
 
 namespace View
 {
@@ -20,8 +21,23 @@ namespace View
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+        private void one()
+        {
+            ILogger logger = new Logger();
+            using (logger.BeginScope("first level of logging"))
+            {
+                logger.LogInformation("info");
+                using (logger.BeginScope("second level of logging"))
+                {
+                    logger.LogDebug("debug");
+                }
+            }
+        }
 		public MainWindow()
 		{
+            ILogger logger = new Logger();
+            logger.LogInformation("Test info");
+            one();
 			InitializeComponent();
 		}
 	}
