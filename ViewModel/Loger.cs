@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.IO;
-using System.Globalization;
 
 using Microsoft.Extensions.Logging;
 
-namespace View
+namespace ViewModel
 {
     public class Logger : ILogger
     {
@@ -51,7 +49,7 @@ namespace View
                completeScope = scopes.Aggregate("", (res, item) => res + $"[{item}]::");
            }
 
-            var logMessage = $"{DateTime.Now} | {completeScope} {data}{Environment.NewLine}";
+            var logMessage = $"{DateTime.Now.ToString("HH:mm:ss dd-MM-yyyy")} | {completeScope} {data}{Environment.NewLine}";
 
             var encodedMessage = Encoding.Unicode.GetBytes(logMessage);
 
