@@ -46,5 +46,10 @@ namespace View
             NoteItem2 temp2 = new NoteItem2();
             temp2.Show();
 		}
-	}
+
+        private void ProfilePage_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+    }
 }
