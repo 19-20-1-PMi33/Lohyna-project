@@ -11,9 +11,12 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="30"/>
             <ColumnDefinition Width="950"/>
-
         </Grid.ColumnDefinitions>
-        <local1:search_icon Grid.Column="0"></local1:search_icon>
-        <TextBox Margin="0 8 15 8" Grid.Column="1" Background="#f9f9f9"> </TextBox>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <local1:search_icon Grid.Column="0" Grid.Row="0"></local1:search_icon>
+        <TextBox x:Name="text_search" Margin="0 8 15 8" Grid.Column="1" Grid.Row="0" Background="#f9f9f9" Height="24" VerticalAlignment="Center" FontSize="16" LostFocus="TextBox_LostFocus"> </TextBox>
+        <TextBlock x:Name="block_search" Margin="0 8 15 8" Grid.Column="1" Grid.Row="0" Background="#f9f9f9" Text="Type something to search" VerticalAlignment="Center"  FontSize="16" Foreground="#979797" MouseDown="TextBlock_MouseDown" Cursor="IBeam"></TextBlock>
     </Grid>
 </UserControl>

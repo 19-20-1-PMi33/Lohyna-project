@@ -20,9 +20,40 @@ namespace View
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+        List<String> test;
 		public MainWindow()
 		{
 			InitializeComponent();
+            search_bar.text_search.TextChanged += Text_search_TextChanged;
+            search_bar.text_search.LostFocus += Text_search_LostFocus;
+            test = new List<string>();
+            test.Add("Roman Levkovych");
 		}
-	}
+
+        private void Text_search_LostFocus(object sender, RoutedEventArgs e)
+        {
+            this.search.clear();
+            this.search.Visibility = Visibility.Hidden;
+        }
+
+        private void Text_search_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox text = (TextBox)sender;
+            if (text.Text.Length > 3 && !String.IsNullOrWhiteSpace(text.Text))
+            {
+                foreach(string i in test)
+                {
+                    if (i.StartsWith(text.Text))
+                    {
+                        if (this.search.Visibility == Visibility.Hidden)
+                        {
+                            this.search.Visibility = Visibility.Visible;
+                        }
+                        if (search.stack.Children.Count < 4)
+                            search.addSearchItem(new Widget.SearchItem());
+                    }
+                }
+            }
+        }
+    }
 }

@@ -16,27 +16,23 @@ using System.Windows.Shapes;
 namespace View.Widget
 {
     /// <summary>
-    /// Interaction logic for SearchBar.xaml
+    /// Interaction logic for Search.xaml
     /// </summary>
-    public partial class SearchBar : UserControl
+    public partial class Search : UserControl
     {
-        public SearchBar()
+        public Search()
         {
             InitializeComponent();
         }
-
-        private void TextBox_LostFocus(object sender, RoutedEventArgs e)
+        public void addSearchItem(SearchItem item)
         {
-            TextBox text = (TextBox)sender;
-            text.Clear();
-            this.block_search.Visibility = Visibility.Visible;
+            item.BorderBrush = new SolidColorBrush(Colors.Black);
+            item.BorderThickness = new Thickness(1,0,1,1);
+            this.stack.Children.Add(item);
         }
-
-        private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
+        public void clear()
         {
-            TextBlock text = (TextBlock)sender;
-            text.Visibility = Visibility.Hidden;
-            this.text_search.Focus();
+            this.stack.Children.Clear();
         }
     }
 }

@@ -70,8 +70,14 @@
     <Compile Include="Widget\Images\timeTable_icon.xaml.cs">
       <DependentUpon>timeTable_icon.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Widget\Search.xaml.cs">
+      <DependentUpon>Search.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Widget\SearchBar.xaml.cs">
       <DependentUpon>SearchBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widget\SearchItem.xaml.cs">
+      <DependentUpon>SearchItem.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -109,9 +115,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Widget\Search.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Widget\SearchBar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Widget\SearchItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -149,6 +163,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Widget\Images\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Widget\Images\profile_photo.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -9,7 +9,7 @@
         Title="MainWindow" Height="720" Width="1280">
     <Grid Background="#f9f9f9">
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -17,6 +17,7 @@
             <ColumnDefinition Width="980"/>
         </Grid.ColumnDefinitions>
         <local:Navbar Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"></local:Navbar>
-        <local1:SearchBar Grid.Column="1" Grid.Row="0"/>
+        <local1:SearchBar x:Name="search_bar" Grid.Column="1" Grid.Row="0"/>
+        <local1:Search x:Name="search" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Visibility="Hidden" Panel.ZIndex="10" Margin="50 30 50 0" Height="auto"/>
     </Grid>
 </Window>
