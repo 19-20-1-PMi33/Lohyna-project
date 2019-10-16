@@ -10,7 +10,7 @@
     <Grid Background="#FF1985DA">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="30"/>
-            <ColumnDefinition Width="950"/>
+            <ColumnDefinition/>
 
         </Grid.ColumnDefinitions>
         <local1:search_icon Grid.Column="0"></local1:search_icon>
