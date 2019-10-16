@@ -6,16 +6,16 @@
              xmlns:local="clr-namespace:View"
              xmlns:local1="clr-namespace:View.Widget.Images"
              mc:Ignorable="d" 
-             d:DesignHeight="690" d:DesignWidth="320"
+             d:DesignHeight="690" d:DesignWidth="300"
              x:Name="main">
     <Grid Background="#FF1985DA">
         <Grid.RowDefinitions>
             <RowDefinition Height="180"/>
-            <RowDefinition Height="75"/>
+            <RowDefinition Height="125"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="230"/>
+            <RowDefinition/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -23,13 +23,13 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Image x:Name="logo" Source="Images/logo.png" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left"></Image>
-        <Button x:Name="button_Profile" Grid.Row="2" Grid.Column="1" Content="Profile" Background="#FF1985DA" HorizontalAlignment="Left" FontFamily="Roboto" FontSize="20"></Button>
+        <Button x:Name="button_Profile" Grid.Row="2" Grid.Column="1" Content="Profile" Background="#FF1985DA" HorizontalAlignment="Left" FontFamily="Roboto" FontSize="20" BorderBrush="{x:Null}"></Button>
         <local1:profile_icon x:Name="img_Profile" Grid.Row="2" Grid.Column="0"/>
-        <Button x:Name="button_TimeTable" Grid.Row="3" Grid.Column="1" Content="Time table"  Background="#FF1985DA" HorizontalAlignment="Left" FontSize="20"></Button>
+        <Button x:Name="button_TimeTable" Grid.Row="3" Grid.Column="1" Content="Time table"  Background="#FF1985DA" HorizontalAlignment="Left" FontSize="20" BorderBrush="{x:Null}"></Button>
         <local1:timeTable_icon x:Name="img_TimeTable" Grid.Row="3" Grid.Column="0"/>
-        <Button x:Name="button_Notes" Grid.Row="4" Grid.Column="1" Content="Notes"  Background="#FF1985DA" HorizontalAlignment="Left" FontSize="20"></Button>
+        <Button x:Name="button_Notes" Grid.Row="4" Grid.Column="1" Content="Notes"  Background="#FF1985DA" HorizontalAlignment="Left" FontSize="20" BorderBrush="{x:Null}"></Button>
         <local1:notes_icon x:Name="img_Notes" Grid.Row="4" Grid.Column="0"/>
-        <Button x:Name="button_FAQ" Grid.Row="6" Grid.Column="1" Content="F.A.Q." Background="#FF1985DA" HorizontalAlignment="Left" FontSize="16"></Button>
+        <Button x:Name="button_FAQ" Grid.Row="6" Grid.Column="1" Content="F.A.Q." Background="#FF1985DA" HorizontalAlignment="Left" FontSize="16" BorderBrush="{x:Null}"></Button>
         <local1:faq_icon x:Name="img_Faq" Grid.Row="6" Grid.Column="0"/>
     </Grid>
 </UserControl>

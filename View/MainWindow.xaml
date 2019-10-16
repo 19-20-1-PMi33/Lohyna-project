@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:View"
         xmlns:local1="clr-namespace:View.Widget"
         mc:Ignorable="d"
-        Title="MainWindow" Height="720" Width="1280">
+        Title="MainWindow" Height="720" Width="1280" MinHeight="600" MinWidth="1000">
     <Grid Background="#f9f9f9">
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
@@ -14,10 +14,10 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="300"/>
-            <ColumnDefinition Width="980"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <local:Navbar Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"></local:Navbar>
         <local1:SearchBar Grid.Column="1" Grid.Row="0"/>
-        <local1:Note Grid.Column="1" Grid.Row="1"></local1:Note>
+        <local:NotesPage Grid.Row="1" Grid.Column="1"></local:NotesPage>
     </Grid>
 </Window>
