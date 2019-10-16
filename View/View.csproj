@@ -113,6 +113,8 @@
     </Compile>
     <Compile Include="Widget\icon_dot.xaml.cs">
       <DependentUpon>icon_dot.xaml</DependentUpon>
+    </Compile>
+
     <Compile Include="Widget\Images\cancel_icon.xaml.cs">
       <DependentUpon>cancel_icon.xaml</DependentUpon>
     </Compile>
@@ -131,8 +133,9 @@
     <Compile Include="Widget\Images\timeTable_icon.xaml.cs">
       <DependentUpon>timeTable_icon.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Widget\question.xaml.cs">
-      <DependentUpon>question.xaml</DependentUpon>
+      <Compile Include="Widget\question.xaml.cs">
+        <DependentUpon>question.xaml</DependentUpon>
+      </Compile>
     <Compile Include="Widget\LogInNavbar.xaml.cs">
       <DependentUpon>LogInNavbar.xaml</DependentUpon>
     </Compile>
@@ -175,6 +178,9 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Widget\icon_dot.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Widget\Images\cancel_icon.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -208,6 +214,9 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Widget\question.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Widget\RegisterPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
