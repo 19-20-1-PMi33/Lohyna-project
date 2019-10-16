@@ -37,6 +37,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -72,6 +74,9 @@
     </Compile>
     <Compile Include="Widget\Images\timeTable_icon.xaml.cs">
       <DependentUpon>timeTable_icon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widget\Note.xaml.cs">
+      <DependentUpon>Note.xaml</DependentUpon>
     </Compile>
     <Compile Include="Widget\SearchBar.xaml.cs">
       <DependentUpon>SearchBar.xaml</DependentUpon>
@@ -116,6 +121,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Widget\Navbar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Widget\Note.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
