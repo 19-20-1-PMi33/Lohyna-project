@@ -98,6 +98,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="NotesPage.xaml.cs">
+      <DependentUpon>NotesPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TimeTablePage.xaml.cs">
       <DependentUpon>TimeTablePage.xaml</DependentUpon>
     </Compile>
@@ -138,8 +141,11 @@
     <Compile Include="Widget\Images\timeTable_icon.xaml.cs">
       <DependentUpon>timeTable_icon.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Widget\Note.xaml.cs">
-      <DependentUpon>Note.xaml</DependentUpon>
+    <Compile Include="Widget\NoteItem.xaml.cs">
+      <DependentUpon>NoteItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widget\NoteShortItem.xaml.cs">
+      <DependentUpon>NoteShortItem.xaml</DependentUpon>
     </Compile>
       <Compile Include="Widget\question.xaml.cs">
         <DependentUpon>question.xaml</DependentUpon>
@@ -168,6 +174,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="NotesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="TimeTablePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -228,7 +238,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Widget\Note.xaml">
+    <Page Include="Widget\NoteItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Widget\NoteShortItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
