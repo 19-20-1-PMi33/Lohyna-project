@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:View"
              xmlns:local1="clr-namespace:View.Widget.Images"
              mc:Ignorable="d" 
-             d:DesignHeight="690" d:DesignWidth="320"
+             d:DesignHeight="690" d:DesignWidth="300"
              x:Name="main">
     <Grid Background="#FF1985DA">
         <Grid.RowDefinitions>
