@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace View.Widget
 {
     /// <summary>
-    /// Interaction logic for Note.xaml
+    /// Interaction logic for NoteItem.xaml
     /// </summary>
-    public partial class Note : Page
+    public partial class NoteItem : UserControl
     {
-        public Note()
+        public NoteItem()
         {
             InitializeComponent();
         }
