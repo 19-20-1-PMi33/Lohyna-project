@@ -12,6 +12,6 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <local:icon_collapse_down x:Name="col_down" Grid.Column="0"/>
-        <TextBlock x:Name="quest_string" Grid.Column="1" FontSize="30"/>
+        <TextBlock x:Name="quest_string" Grid.Column="1" FontSize="24" VerticalAlignment="Center"/>
     </Grid>
 </UserControl>
