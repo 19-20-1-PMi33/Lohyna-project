@@ -8,16 +8,13 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid x:Name="grid">
         <Grid.RowDefinitions>
-            <RowDefinition MinHeight="20" MaxHeight="50"/>
             <RowDefinition Height="*"/>
-            <RowDefinition MinHeight="20" MaxHeight="50"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="500"/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="0.2*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <ScrollViewer Grid.Row="1" Grid.Column="1" VerticalScrollBarVisibility="Hidden">
+        <ScrollViewer Grid.Row="1" Grid.Column="1" VerticalScrollBarVisibility="Auto" Padding="0 50 50 50">
             <StackPanel x:Name="stack">
                 
             </StackPanel>
