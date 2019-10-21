@@ -14,7 +14,7 @@
             <ColumnDefinition Width="0.2*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <ScrollViewer Grid.Row="1" Grid.Column="1" VerticalScrollBarVisibility="Auto" Padding="0 50 50 50">
+        <ScrollViewer Grid.Row="0" Grid.Column="1" VerticalScrollBarVisibility="Auto" Padding="0 50 50 50">
             <StackPanel x:Name="stack">
                 
             </StackPanel>
