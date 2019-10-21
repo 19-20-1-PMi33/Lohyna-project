@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="search_page.xaml.cs">
+      <DependentUpon>search_page.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Widget\Images\faq_icon.xaml.cs">
       <DependentUpon>faq_icon.xaml</DependentUpon>
     </Compile>
@@ -69,9 +72,6 @@
     </Compile>
     <Compile Include="Widget\Images\timeTable_icon.xaml.cs">
       <DependentUpon>timeTable_icon.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Widget\Search.xaml.cs">
-      <DependentUpon>Search.xaml</DependentUpon>
     </Compile>
     <Compile Include="Widget\SearchBar.xaml.cs">
       <DependentUpon>SearchBar.xaml</DependentUpon>
@@ -91,6 +91,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="search_page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Widget\Images\faq_icon.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -112,10 +116,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Widget\Navbar.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Widget\Search.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
