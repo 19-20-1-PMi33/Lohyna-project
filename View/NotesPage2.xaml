@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="View.NotesPage2"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Background="#f9f9f9">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+        <CheckBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Button Content="Time" Grid.Row="1" Grid.Column="2" FontSize="15" Background="{x:Null}" BorderBrush="{x:Null}"/>
+        <Button Content="Subject" Grid.Row="1" Grid.Column="3" FontSize="15" Background="{x:Null}" BorderBrush="{x:Null}"/>
+        <Button Content="Title" Grid.Row="1" Grid.Column="4" FontSize="15" Background="{x:Null}" BorderBrush="{x:Null}"/>
+        <Button Content="Text" Grid.Row="1" Grid.Column="5" FontSize="15" Background="{x:Null}" BorderBrush="{x:Null}"/>
+        <ScrollViewer Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="5" Margin="0 10 0 10">
+            <StackPanel x:Name="stack">
+
+            </StackPanel>
+        </ScrollViewer>
+        <Button Content="Mark checked as done" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" FontSize="15" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Left" Background="#f9f9f9" BorderBrush="{x:Null}">
+            <Button.Effect>
+                <DropShadowEffect BlurRadius="8" Opacity="0.8"/>
+            </Button.Effect>
+        </Button>
+        <Button Content="Add new" Grid.Column="5" Grid.Row="3" HorizontalAlignment="Right" Height="50"/>
+    </Grid>
+</UserControl>

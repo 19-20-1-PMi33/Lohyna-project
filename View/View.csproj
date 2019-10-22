@@ -60,6 +60,9 @@
     <Compile Include="NotesPage.xaml.cs">
       <DependentUpon>NotesPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NotesPage2.xaml.cs">
+      <DependentUpon>NotesPage2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TimeTablePage.xaml.cs">
       <DependentUpon>TimeTablePage.xaml</DependentUpon>
     </Compile>
@@ -87,11 +90,23 @@
     <Compile Include="Widget\NoteShortItem.xaml.cs">
       <DependentUpon>NoteShortItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Widget\NoteShortItem2.xaml.cs">
+      <DependentUpon>NoteShortItem2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widget\NoteVeryShortItem.xaml.cs">
+      <DependentUpon>NoteVeryShortItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Widget\SearchBar.xaml.cs">
       <DependentUpon>SearchBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Widget\TimeTableBlock.xaml.cs">
       <DependentUpon>TimeTableBlock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widget\TimeTableNote.xaml.cs">
+      <DependentUpon>TimeTableNote.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widget\TimeTableNote_tableNotes.xaml.cs">
+      <DependentUpon>TimeTableNote_tableNotes.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -106,6 +121,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="NotesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NotesPage2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -149,11 +168,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Widget\NoteShortItem2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Widget\NoteVeryShortItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Widget\SearchBar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Widget\TimeTableBlock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Widget\TimeTableNote.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Widget\TimeTableNote_tableNotes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -189,7 +224,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Pages\" />
-    <Folder Include="Widgets\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Widget\Images\logo.png" />
