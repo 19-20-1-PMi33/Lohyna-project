@@ -3,8 +3,8 @@
 	public class Timetable
 	{
 		public int Id { get; set; }
-		public string Day { get; set; } //Enum?
-		public string Period { get; set; } //Enum?
+		public string Day { get; set; } 
+		public string Period { get; set; }
 
 		public virtual Time Time { get; set; }
 		public int TimeID { get; set; }
