@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:View.Widget"
+             xmlns:local1="clr-namespace:View.Widget.Images"
              mc:Ignorable="d" 
              d:DesignHeight="720" d:DesignWidth="980">
     <Grid Background="#f9f9f9">
@@ -35,8 +36,26 @@
         <TextBlock x:Name="course_textblock" Text="3" Grid.Row="3" Grid.Column="3" FontSize="22" VerticalAlignment="Center"  Margin="10 0 0 0"/>
         <TextBlock x:Name="nom_zalik_textblock" Text="BC 81791218" Grid.Row="4" Grid.Column="3" FontSize="22" VerticalAlignment="Center" Margin="10 0 0 0"/>
         <local:tableMarks Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="3"/>
-        <TextBlock Text="1 of 3" Grid.Row="7" Grid.Column="2" TextAlignment="Center" FontSize="23"/>
-        <Button Content="Prev" Grid.Row="7" Grid.Column="1" Width="40" Height="40" Background="Transparent" HorizontalAlignment="Right"/>
-        <Button Content="Next" Grid.Row="7" Grid.Column="3" Width="40" Height="40" Background="Transparent" HorizontalAlignment="Left"/>
+        <TextBlock Text="1 of 3" Grid.Row="7" Grid.Column="2" TextAlignment="Center" VerticalAlignment="Center" FontSize="23"/>
+        <local1:icon_collapse_down Grid.Row="7" Grid.Column="1" Width="40" Height="40" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Cursor="Hand">
+            <local1:icon_collapse_down.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </local1:icon_collapse_down.RenderTransform>
+        </local1:icon_collapse_down>
+        <local1:icon_collapse_down Grid.Row="7" Grid.Column="3" Width="40" Height="40" HorizontalAlignment="Left" RenderTransformOrigin="0.5,0.5" Cursor="Hand">
+            <local1:icon_collapse_down.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="270"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </local1:icon_collapse_down.RenderTransform>
+        </local1:icon_collapse_down>
     </Grid>
 </UserControl>

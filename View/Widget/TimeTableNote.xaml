@@ -39,7 +39,7 @@
         </local1:cancel_icon>
         <CheckBox Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <Button Content="Time" Grid.Row="3" Grid.Column="2"  FontSize="15" Background="Transparent" BorderBrush="{x:Null}"/>
-        <Button Content="Title" Grid.Row="3" Grid.Column="3" FontSize="15" HorizontalAlignment="Center" Background="Transparent" BorderBrush="{x:Null}"/>
+        <Button Content="Title" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" FontSize="15" HorizontalAlignment="Center" Background="Transparent" BorderBrush="{x:Null}"/>
         <local:TimeTableNote_tableNotes Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="4"/>
         <Button Content="Mark checked as done" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Left" Background="#f9f9f9">
             <Button.Effect>
