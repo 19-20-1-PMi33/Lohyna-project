@@ -12,7 +12,7 @@
             <ColumnDefinition Width="50"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <local1:icon_dot Grid.Column="0" Width="50" Height="50"/>
+        <local1:icon_dot Grid.Column="0" Width="15" Height="15"/>
         <TextBlock x:Name="answer_string" Grid.Column="1" FontSize="20"/>
     </Grid>
 </UserControl>

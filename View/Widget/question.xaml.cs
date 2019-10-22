@@ -26,6 +26,8 @@ namespace View.Widget
         {
             InitializeComponent();
             col_up = new icon_collapse_up();
+            col_up.Height = 50;
+            col_up.Width = 50;
             Grid.SetColumn(col_up, 0);
         }
         public void setCollapsed(bool collapsed)

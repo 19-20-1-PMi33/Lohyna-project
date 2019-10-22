@@ -47,9 +47,5 @@ namespace View
             temp2.Show();
 		}
 
-        private void ProfilePage_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
