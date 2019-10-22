@@ -182,6 +182,15 @@
     <Compile Include="Widget\TimeTableNote_tableNotes.xaml.cs">
       <DependentUpon>TimeTableNote_tableNotes.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Widget\tableMarks.xaml.cs">
+      <DependentUpon>tableMarks.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widget\tableMarksHead.xaml.cs">
+      <DependentUpon>tableMarksHead.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widget\tableMarksItem.xaml.cs">
+      <DependentUpon>tableMarksItem.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -307,6 +316,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Widget\TimeTableNote_tableNotes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Widget\tableMarks.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Widget\tableMarksHead.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Widget\tableMarksItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
