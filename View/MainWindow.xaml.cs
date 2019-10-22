@@ -40,6 +40,10 @@ namespace View
             logger.LogInformation("Test info");
             one();
 			InitializeComponent();
+            TimeTableNote temp = new TimeTableNote();
+            temp.Show();
+            NoteItem2 temp2 = new NoteItem2();
+            temp2.Show();
 		}
 	}
 }
