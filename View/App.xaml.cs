@@ -22,7 +22,7 @@ namespace View
             {
                 File.WriteAllText(Logger.DefaultFilePath, string.Empty);
             }
-            this.ShutdownMode = ShutdownMode.OnMainWindowClose;
+            ShutdownMode = ShutdownMode.OnMainWindowClose;
         }
     }
 }

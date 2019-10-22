@@ -7,6 +7,13 @@ using System.Threading.Tasks;
 
 namespace View
 {
+    public interface IViewTransition<T> where T : UIElement
+    {
+        event EventHandler NavigationEventHandler;
+        void NavigateTo(T element);
+    }
+
+    [Obsolete]
     interface INavigation
     {
         UIElement curPage { get; set; }

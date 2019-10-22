@@ -108,6 +108,7 @@
     <Compile Include="TimeTablePage.xaml.cs">
       <DependentUpon>TimeTablePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TransitionEvent.cs" />
     <Compile Include="Widget\answer.xaml.cs">
       <DependentUpon>answer.xaml</DependentUpon>
     </Compile>

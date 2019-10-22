@@ -18,10 +18,10 @@ using View.Widget;
 
 namespace View
 {
-	/// <summary>
-	/// Interaction logic for MainWindow.xaml
-	/// </summary>
-	public partial class MainWindow : Window,INavigation
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window,INavigation
 	{
         public UIElement curPage { get; set; } = null;
 
@@ -31,8 +31,6 @@ namespace View
         public MainWindow()
 		{
             navbar = new Navbar();
-            ILogger logger = new Logger();
-            logger.LogInformation("Test info");
             one();
 			InitializeComponent();
             navbar.button_Profile.Click += Navbar_Button_Profile_Click;

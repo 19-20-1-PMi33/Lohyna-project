@@ -12,17 +12,25 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using View.Widget;
 
 namespace View
 {
     /// <summary>
     /// Interaction logic for Navbar.xaml
     /// </summary>
-    public partial class Navbar : UserControl
+    public partial class Navbar : UserControl, IViewTransition<faq_page>
     {
         public Navbar()
         {
             InitializeComponent();
+        }
+
+        public event EventHandler NavigationEventHandler;
+
+        public void NavigateTo(faq_page element)
+        {
+            
         }
     }
 }
