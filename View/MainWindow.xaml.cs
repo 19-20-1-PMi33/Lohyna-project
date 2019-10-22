@@ -24,6 +24,10 @@ namespace View
 		public MainWindow()
 		{
 			InitializeComponent();
+            TimeTableNote temp = new TimeTableNote();
+            temp.Show();
+            NoteItem2 temp2 = new NoteItem2();
+            temp2.Show();
 		}
 	}
 }
