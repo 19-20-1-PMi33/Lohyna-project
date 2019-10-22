@@ -81,6 +81,9 @@
     <Compile Include="Widget\NoteItem.xaml.cs">
       <DependentUpon>NoteItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Widget\NoteItem2.xaml.cs">
+      <DependentUpon>NoteItem2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Widget\NoteShortItem.xaml.cs">
       <DependentUpon>NoteShortItem.xaml</DependentUpon>
     </Compile>
@@ -135,6 +138,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Widget\NoteItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Widget\NoteItem2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
