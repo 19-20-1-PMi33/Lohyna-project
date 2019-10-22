@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace View.Widget
+namespace View.Widget.Images
 {
     /// <summary>
-    /// Interaction logic for icon_dot.xaml
+    /// Interaction logic for icon_collapse_up.xaml
     /// </summary>
-    public partial class icon_dot : UserControl
+    public partial class icon_collapse_up : UserControl
     {
-        public icon_dot()
+        public icon_collapse_up()
         {
             InitializeComponent();
         }

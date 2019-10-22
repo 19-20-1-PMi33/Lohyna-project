@@ -1,22 +1,21 @@
-﻿<UserControl x:Class="View.Widget.icon_dot"
+﻿<UserControl x:Class="View.Widget.Images.icon_collapse_up"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:View.Widget"
+             xmlns:local="clr-namespace:View.Widget.Images"
              mc:Ignorable="d" 
-             d:DesignHeight="20" d:DesignWidth="20">
+             d:DesignHeight="50" d:DesignWidth="50" Name="main">
     <Grid>
-        <Viewbox Width="20" Height="20" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-            <Rectangle Width="20" Height="20">
+        <Viewbox Width="{Binding ElementName=main, Path=Width}" Height="{Binding ElementName=main, Path=Height}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+            <Rectangle  Width="{Binding ElementName=main, Path=Width}"  Height="{Binding ElementName=main, Path=Height}">
                 <Rectangle.Fill>
                     <DrawingBrush>
                         <DrawingBrush.Drawing>
                             <DrawingGroup>
                                 <DrawingGroup.Children>
                                     <GeometryDrawing Brush="#00FFFFFF" Geometry="F1M16,16L0,16 0,0 16,0z" />
-                                    <GeometryDrawing Brush="#FF424242" Geometry="F1M8,15C4.14,15 1,11.859 1,8 1,4.14 4.14,1 8,1 11.861,1 15,4.14 15,8 15,11.859 11.861,15 8,15" />
-                                    <GeometryDrawing Brush="#FF1985DA" Geometry="F1M14,8C14,11.314 11.314,14 8,14 4.687,14 2,11.314 2,8 2,4.687 4.687,2 8,2 11.314,2 14,4.687 14,8" />
+                                    <GeometryDrawing Brush="#FF424242" Geometry="F1M12.2803,9.6094L11.2193,10.6704 8.0003,7.4504 4.7803,10.6704 3.7193,9.6094 8.0003,5.3294z" />
                                 </DrawingGroup.Children>
                             </DrawingGroup>
                         </DrawingBrush.Drawing>

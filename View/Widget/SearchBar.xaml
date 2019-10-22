@@ -13,7 +13,7 @@
             <ColumnDefinition/>
 
         </Grid.ColumnDefinitions>
-        <local1:search_icon Grid.Column="0"></local1:search_icon>
+        <local1:search_icon Grid.Column="0" Width="20" Height="20"></local1:search_icon>
         <TextBox Margin="0 8 15 8" Grid.Column="1" Background="#f9f9f9"> </TextBox>
     </Grid>
 </UserControl>

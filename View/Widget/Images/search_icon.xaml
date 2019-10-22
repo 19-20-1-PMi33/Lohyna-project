@@ -5,10 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:View.Widget.Images"
              mc:Ignorable="d" 
-             d:DesignHeight="20" d:DesignWidth="20">
+             d:DesignHeight="20" d:DesignWidth="20" Name="main">
     <Grid>
-        <Viewbox Width="20" Height="20" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-            <Rectangle Width="20" Height="20">
+        <Viewbox Width="{Binding ElementName=main, Path=Width}" Height="{Binding ElementName=main, Path=Height}" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+            <Rectangle  Width="{Binding ElementName=main, Path=Width}"  Height="{Binding ElementName=main, Path=Height}">
                 <Rectangle.Fill>
                     <DrawingBrush>
                         <DrawingBrush.Drawing>

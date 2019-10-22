@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace View.Widget
+namespace View.Widget.Images
 {
     /// <summary>
     /// Interaction logic for icon_collapse_down.xaml

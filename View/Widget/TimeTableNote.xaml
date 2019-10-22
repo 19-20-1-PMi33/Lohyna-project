@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View.Widget"
+        xmlns:local1="clr-namespace:View.Widget.Images"
         mc:Ignorable="d"
         Title="TimeTableNote" Height="300" Width="500" MinHeight="300" MinWidth="500">
     <Grid Background ="#f9f9f9">
@@ -26,7 +27,16 @@
         </Grid.RowDefinitions>
         <TextBlock Text="Subject" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" FontSize="30" TextAlignment="Center" VerticalAlignment="Center"/>
         <TextBlock Text="Teacher" Grid.Row="2"  Grid.Column="1" Grid.ColumnSpan="3" FontSize="20" TextAlignment="Center" VerticalAlignment="Center"/>
-        <Button Content="Add note" Grid.Column="4" Grid.Row="1" Grid.RowSpan="2" Width="50"/>
+        <local1:cancel_icon Grid.Column="4" Grid.Row="1" Grid.RowSpan="2" Height="50" Width="50" RenderTransformOrigin="0.5,0.5" Cursor="Hand">
+            <local1:cancel_icon.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="45"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </local1:cancel_icon.RenderTransform>
+        </local1:cancel_icon>
         <CheckBox Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <Button Content="Time" Grid.Row="3" Grid.Column="2"  FontSize="15" Background="Transparent" BorderBrush="{x:Null}"/>
         <Button Content="Title" Grid.Row="3" Grid.Column="3" FontSize="15" HorizontalAlignment="Center" Background="Transparent" BorderBrush="{x:Null}"/>

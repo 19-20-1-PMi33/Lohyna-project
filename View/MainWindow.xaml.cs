@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Extensions.Logging;
 using ViewModel;
+using View.Widget;
 
 namespace View
 {
