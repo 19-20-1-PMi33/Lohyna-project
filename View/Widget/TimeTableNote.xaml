@@ -27,7 +27,7 @@
         </Grid.RowDefinitions>
         <TextBlock Text="Subject" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" FontSize="30" TextAlignment="Center" VerticalAlignment="Center"/>
         <TextBlock Text="Teacher" Grid.Row="2"  Grid.Column="1" Grid.ColumnSpan="3" FontSize="20" TextAlignment="Center" VerticalAlignment="Center"/>
-        <local1:cancel_icon Grid.Column="4" Grid.Row="1" Grid.RowSpan="2" Height="50" Width="50" RenderTransformOrigin="0.5,0.5" Cursor="Hand">
+        <local1:cancel_icon x:Name="button_Add" Grid.Column="4" Grid.Row="1" Grid.RowSpan="2" Height="50" Width="50" RenderTransformOrigin="0.5,0.5" Cursor="Hand">
             <local1:cancel_icon.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -46,7 +46,7 @@
                 <DropShadowEffect BlurRadius="8" Opacity="0.8"/>
             </Button.Effect>
         </Button>
-        <Button Content="OK" Grid.Row="5" Grid.Column="4" Width="100" Background="#f9f9f9">
+        <Button Content="OK" IsCancel="True" Grid.Row="5" Grid.Column="4" Width="100" Background="#f9f9f9">
             <Button.Effect>
                 <DropShadowEffect BlurRadius="8" Opacity="0.8"/>
             </Button.Effect>

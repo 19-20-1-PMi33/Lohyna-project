@@ -98,6 +98,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="INavigation.cs" />
     <Compile Include="NotesPage.xaml.cs">
       <DependentUpon>NotesPage.xaml</DependentUpon>
     </Compile>

@@ -20,9 +20,22 @@ namespace View.Widget
     /// </summary>
     public partial class TimeTableBlock : UserControl
     {
+        TimeTableNote notes;
         public TimeTableBlock()
         {
+            notes = new TimeTableNote();
+            notes.button_Add.MouseDown += Notes_Button_Add_MouseDown;
             InitializeComponent();
+        }
+
+        private void Notes_Button_Add_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            new NoteItem2().Show();
+        }
+
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            notes.Show();
         }
     }
 }

@@ -39,7 +39,7 @@
                 <DropShadowEffect BlurRadius="8" Opacity="0.8"/>
             </Button.Effect>
         </Button>
-        <local1:cancel_icon Grid.Column="5" Grid.Row="3" Height="50" Width="50" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Cursor="Hand">
+        <local1:cancel_icon x:Name="button_Add" Grid.Column="5" Grid.Row="3" Height="50" Width="50" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Cursor="Hand">
             <local1:cancel_icon.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
