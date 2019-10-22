@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace View.Widget
 {
     /// <summary>
-    /// Interaction logic for icon_dot.xaml
+    /// Interaction logic for NoteItem.xaml
     /// </summary>
-    public partial class icon_dot : UserControl
+    public partial class NoteItem : UserControl
     {
-        public icon_dot()
+        public NoteItem()
         {
             InitializeComponent();
         }

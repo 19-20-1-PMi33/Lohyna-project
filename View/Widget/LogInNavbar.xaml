@@ -35,6 +35,6 @@
             </Button.Effect>
         </Button>
         <Button x:Name="button_FAQ" Grid.Row="6" Grid.Column="1" Content="F.A.Q." Background="#FF1985DA" HorizontalAlignment="Left" FontSize="16" BorderBrush="{x:Null}"/>
-        <Images:faq_icon x:Name="img_Faq" Grid.Row="6" Grid.Column="0"/>
+        <Images:faq_icon x:Name="img_Faq" Grid.Row="6" Grid.Column="0"  Width="50" Height="50"/>
     </Grid>
 </UserControl>

@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace View.Widget
 {
     /// <summary>
-    /// Interaction logic for icon_collapse_down.xaml
+    /// Interaction logic for NoteItem2.xaml
     /// </summary>
-    public partial class icon_collapse_down : UserControl
+    public partial class NoteItem2 : Window
     {
-        public icon_collapse_down()
+        public NoteItem2()
         {
             InitializeComponent();
         }

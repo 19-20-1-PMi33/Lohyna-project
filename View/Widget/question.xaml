@@ -4,14 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:View.Widget"
+             xmlns:local1="clr-namespace:View.Widget.Images"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid x:Name="grid">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="50"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <local:icon_collapse_down x:Name="col_down" Grid.Column="0"/>
+        <local1:icon_collapse_down x:Name="col_down" Grid.Column="0" Width="50" Height="50"/>
         <TextBlock x:Name="quest_string" Grid.Column="1" FontSize="24" VerticalAlignment="Center"/>
     </Grid>
 </UserControl>

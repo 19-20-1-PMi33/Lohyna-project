@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace View.Widget
 {
     /// <summary>
-    /// Interaction logic for icon_collapse_up.xaml
+    /// Interaction logic for TimeTableNote.xaml
     /// </summary>
-    public partial class icon_collapse_up : UserControl
+    public partial class TimeTableNote : Window
     {
-        public icon_collapse_up()
+        public TimeTableNote()
         {
             InitializeComponent();
         }

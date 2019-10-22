@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Extensions.Logging;
 using ViewModel;
+using View.Widget;
 
 namespace View
 {
@@ -40,6 +41,10 @@ namespace View
             logger.LogInformation("Test info");
             one();
 			InitializeComponent();
+            TimeTableNote temp = new TimeTableNote();
+            temp.Show();
+            NoteItem2 temp2 = new NoteItem2();
+            temp2.Show();
 		}
 	}
 }
