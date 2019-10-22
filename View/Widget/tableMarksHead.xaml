@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="View.Widget.tableMarksHead"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:View.Widget"
+             mc:Ignorable="d" 
+             d:DesignHeight="30" d:DesignWidth="600">
+    <Grid  Background="#DDD">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBox Grid.Column="0" Text="Subject" FontSize="20"  TextAlignment="Center" Background="Transparent" IsReadOnly="True" TextWrapping="NoWrap" BorderThickness="2 1 1 2" BorderBrush="Black" Cursor="Hand"/>
+        <TextBox Grid.Column="1" Text="Mark" FontSize="20" TextAlignment="Center" Background="Transparent" IsReadOnly="True" TextWrapping="NoWrap" BorderThickness="1 1 2 2" BorderBrush="Black" Cursor="Hand"/>
+        <TextBox Grid.Column="2" Text="Subject" FontSize="20" TextAlignment="Center" Background="Transparent" IsReadOnly="True" TextWrapping="NoWrap" BorderThickness="2 1 1 2" BorderBrush="Black" Cursor="Hand"/>
+        <TextBox Grid.Column="3" Text="Mark" FontSize="20" TextAlignment="Center" Background="Transparent" IsReadOnly="True" TextWrapping="NoWrap" BorderThickness="1 1 2 2" BorderBrush="Black" Cursor="Hand"/>
+    </Grid>
+</UserControl>

@@ -1,18 +1,19 @@
-﻿<UserControl x:Class="View.Widget.answer"
+﻿<UserControl x:Class="View.Widget.tableMarks"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:View.Widget"
-             xmlns:local1="clr-namespace:View.Widget.Images"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="50"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <local1:icon_dot Grid.Column="0" Width="15" Height="15"/>
-        <TextBlock x:Name="answer_string" Grid.Column="1" FontSize="20"/>
+    <Grid x:Name="grid" Background="#f9f9f9">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="0"/>
+        </Grid.RowDefinitions>
+        <local:tableMarksHead Grid.Row="0"/>
+        <StackPanel x:Name="stack" Grid.Row="1">
+            
+        </StackPanel>
     </Grid>
 </UserControl>

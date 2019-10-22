@@ -46,5 +46,6 @@ namespace View
             NoteItem2 temp2 = new NoteItem2();
             temp2.Show();
 		}
-	}
+
+    }
 }
