@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:View.Widget"
         mc:Ignorable="d"
         Title="TimeTableNote" Height="300" Width="500" MinHeight="300" MinWidth="500">
-    <Grid >
+    <Grid Background ="#f9f9f9">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
             <ColumnDefinition Width="20"/>

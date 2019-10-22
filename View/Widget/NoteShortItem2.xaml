@@ -6,8 +6,8 @@
              xmlns:local="clr-namespace:View.Widget"
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="560"
-             Height="50">
-    <Grid x:Name="grid" Background="#f9f9f9">
+             Height="56">
+    <Grid x:Name="grid" Background="#f9f9f9" Margin="0 3 0 3">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
             <ColumnDefinition Width="100"/>
