@@ -16,7 +16,7 @@
             <ColumnDefinition Width="300"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <local1:LogInNavbar x:Name="logInNavbar" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Loaded="logInNavbar_Loaded"></local1:LogInNavbar>
+        <local1:LogInNavbar x:Name="logInNavbar" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"></local1:LogInNavbar>
         <local1:SearchBar Grid.Column="1" Grid.Row="0"/>
     </Grid>
 </Window>
