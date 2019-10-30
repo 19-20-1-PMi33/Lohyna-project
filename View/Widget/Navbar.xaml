@@ -22,7 +22,7 @@
             <ColumnDefinition Width="0.20*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Image x:Name="logo" Source="Images/logo.png" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left"></Image>
+        <local1:logo Height="180" Width="180" x:Name="logo" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left"></local1:logo>
         <Button x:Name="button_Profile" Grid.Row="2" Grid.Column="1" Content="Profile" Background="#FF1985DA" HorizontalAlignment="Left" FontFamily="Roboto" FontSize="20" BorderBrush="{x:Null}"></Button>
         <local1:profile_icon x:Name="img_Profile" Grid.Row="2" Grid.Column="0" Width="50" Height="50"/>
         <Button x:Name="button_TimeTable" Grid.Row="3" Grid.Column="1" Content="Time table"  Background="#FF1985DA" HorizontalAlignment="Left" FontSize="20" BorderBrush="{x:Null}"></Button>
