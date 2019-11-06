@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using Model;
+using System.IO;
 using Model.EntitiesConfiguration;
 using Microsoft.Data.Sqlite;
 
@@ -11,10 +12,11 @@ namespace DataServices
     public class SqliteDbContext : DbContext, IDataSource
     {
         private string _connectionString = null;
-        public SqliteDbContext(string connectionString)
+        public SqliteDbContext(string connectionString = null)
         {
             var connectionStringBuilder = new SqliteConnectionStringBuilder();
-            connectionStringBuilder.DataSource = @"C:\Users\levkorom\Documents\univer\team-task\DataServices\univerity-db.db";
+            // TODO: create adequate location for DB.
+            connectionStringBuilder.DataSource = @"..\..\..\..\DataServices\univerity-db.db";
             _connectionString = connectionStringBuilder.ConnectionString;
         }
 
