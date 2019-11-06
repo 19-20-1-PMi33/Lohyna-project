@@ -1,3 +1,4 @@
+using Model;
 using DataServices;
 using System;
 using Xunit;
@@ -9,7 +10,10 @@ namespace UnitTests
 		[Fact]
 		public void Test1()
 		{
+            using (var sqliteContext = new SqliteDbContext(""))
+            {
 
+            }
         }
 	}
 }

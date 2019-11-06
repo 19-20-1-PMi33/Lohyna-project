@@ -6,7 +6,7 @@
 		public uint Mark { get; set; }
 
 		public virtual Student Student { get; set; }
-		public string StudentID { get; set; }
+		public long StudentID { get; set; }
 
 		public virtual Subject Subject { get; set; }
 		public string SubjectID { get; set; }

@@ -12,11 +12,11 @@ namespace Model.EntitiesConfiguration
 			builder.Property(x => x.ReportCard)
 				.IsRequired();
 
-			builder.HasOne(x => x.Person)
-				.WithOne(y => y.Student)
-				.HasForeignKey<Person>(y => y.Username);
+			//builder.HasOne(x => x.Person)
+			//	.WithOne(y => y.Student)
+   //             .HasForeignKey<Person>(y => y.Username);
 
-			builder.HasOne(x => x.Group)
+            builder.HasOne(x => x.Group)
 				.WithMany(y => y.Students)
 				.HasForeignKey(x => x.GroupID);
 

@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DataServices;
+//using Microsoft.Data.Sqlite;
+
 
 namespace View
 {
@@ -23,6 +26,9 @@ namespace View
 		public MainWindow()
 		{
 			InitializeComponent();
+            using (var t = new SqliteDbContext(""))
+            {
+            }
 		}
 	}
 }

@@ -12,9 +12,9 @@ namespace Model.EntitiesConfiguration
 			builder.Property(x => x.Department)
 				.IsRequired();
 
-			builder.HasOne(x => x.Person)
-				.WithOne(y => y.Lecturer)
-				.HasForeignKey<Person>(y => y.Username);
+			//builder.HasOne(x => x.Person)
+			//	.WithOne(y => y.Lecturer)
+			//	.HasForeignKey<Person>(y => y.Username);
 
 			builder.HasMany(x => x.Lessons)
 				.WithOne(y => y.Lecturer)
