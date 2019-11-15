@@ -98,244 +98,278 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="NotesPage.xaml.cs">
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\FaqPageLoged.xaml.cs">
+      <DependentUpon>FaqPageLoged.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\FaqPageUnloged.xaml.cs">
+      <DependentUpon>FaqPageUnloged.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\LogInPage.xaml.cs">
+      <DependentUpon>LogInPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\NotesPage.xaml.cs">
       <DependentUpon>NotesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NotesPage2.xaml.cs">
-      <DependentUpon>NotesPage2.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="TimeTablePage.xaml.cs">
-      <DependentUpon>TimeTablePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Widget\answer.xaml.cs">
-      <DependentUpon>answer.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Widget\faq_page.xaml.cs">
-      <DependentUpon>faq_page.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Widget\faq_question.xaml.cs">
-      <DependentUpon>faq_question.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Widget\Images\icon_collapse_down.xaml.cs">
-      <DependentUpon>icon_collapse_down.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Widget\Images\icon_collapse_up.xaml.cs">
-      <DependentUpon>icon_collapse_up.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Widget\Images\icon_dot.xaml.cs">
-      <DependentUpon>icon_dot.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Widget\Images\cancel_icon.xaml.cs">
-      <DependentUpon>cancel_icon.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Widget\Images\faq_icon.xaml.cs">
-      <DependentUpon>faq_icon.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Widget\Images\notes_icon.xaml.cs">
-      <DependentUpon>notes_icon.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Widget\Images\profile_icon.xaml.cs">
-      <DependentUpon>profile_icon.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Widget\Images\search_icon.xaml.cs">
-      <DependentUpon>search_icon.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Widget\Images\timeTable_icon.xaml.cs">
-      <DependentUpon>timeTable_icon.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Widget\NoteItem.xaml.cs">
-      <DependentUpon>NoteItem.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Widget\NoteItem2.xaml.cs">
-      <DependentUpon>NoteItem2.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Widget\NoteShortItem.xaml.cs">
-      <DependentUpon>NoteShortItem.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Widget\NoteShortItem2.xaml.cs">
-      <DependentUpon>NoteShortItem2.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Widget\NoteVeryShortItem.xaml.cs">
-      <DependentUpon>NoteVeryShortItem.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Widget\question.xaml.cs">
-      <DependentUpon>question.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Widget\LogInNavbar.xaml.cs">
-      <DependentUpon>LogInNavbar.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Widget\ProfilePage.xaml.cs">
+    <Compile Include="Pages\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Widget\RegisterPage.xaml.cs">
+    <Compile Include="Pages\RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Widget\SearchBar.xaml.cs">
+    <Compile Include="Pages\TimeTablePage.xaml.cs">
+      <DependentUpon>TimeTablePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\FaqPageContent.xaml.cs">
+      <DependentUpon>FaqPageContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\FaqPageQuesionBlock_question.xaml.cs">
+      <DependentUpon>FaqPageQuesionBlock_question.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\FaqPageQuestionBlock.xaml.cs">
+      <DependentUpon>FaqPageQuestionBlock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\FaqPageQuestionBlock_answer.xaml.cs">
+      <DependentUpon>FaqPageQuestionBlock_answer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\LogInNavbar.xaml.cs">
+      <DependentUpon>LogInNavbar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\logo.xaml.cs">
+      <DependentUpon>logo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\Navbar.xaml.cs">
+      <DependentUpon>Navbar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\NotesPageContent.xaml.cs">
+      <DependentUpon>NotesPageContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\NotesPageNoteBlock.xaml.cs">
+      <DependentUpon>NotesPageNoteBlock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\NotesPageNoteBlock_short.xaml.cs">
+      <DependentUpon>NotesPageNoteBlock_short.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\NotesPageNoteWindow.xaml.cs">
+      <DependentUpon>NotesPageNoteWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\ProfilePageContent.xaml.cs">
+      <DependentUpon>ProfilePageContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\ProfilePageTableMarks.xaml.cs">
+      <DependentUpon>ProfilePageTableMarks.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\ProfilePageTableMarksHead.xaml.cs">
+      <DependentUpon>ProfilePageTableMarksHead.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\ProfilePageTableMarksRow.xaml.cs">
+      <DependentUpon>ProfilePageTableMarksRow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\RegisterPageContent.xaml.cs">
+      <DependentUpon>RegisterPageContent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\SearchBar.xaml.cs">
       <DependentUpon>SearchBar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Widget\TimeTableBlock.xaml.cs">
-      <DependentUpon>TimeTableBlock.xaml</DependentUpon>
+    <Compile Include="Widgets\TimeTablePageContent.xaml.cs">
+      <DependentUpon>TimeTablePageContent.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Widget\TimeTableNote.xaml.cs">
-      <DependentUpon>TimeTableNote.xaml</DependentUpon>
+    <Compile Include="Widgets\TimeTablePageTimeTableBlock.xaml.cs">
+      <DependentUpon>TimeTablePageTimeTableBlock.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Widget\TimeTableNote_tableNotes.xaml.cs">
-      <DependentUpon>TimeTableNote_tableNotes.xaml</DependentUpon>
+    <Compile Include="Widgets\TimeTablePageTimeTableNote.xaml.cs">
+      <DependentUpon>TimeTablePageTimeTableNote.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Widget\tableMarks.xaml.cs">
-      <DependentUpon>tableMarks.xaml</DependentUpon>
+    <Compile Include="Widgets\TimeTablePageTimeTableNote_tableNotes.xaml.cs">
+      <DependentUpon>TimeTablePageTimeTableNote_tableNotes.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Widget\tableMarksHead.xaml.cs">
-      <DependentUpon>tableMarksHead.xaml</DependentUpon>
+    <Compile Include="Widgets\Images\collapse_down_icon.xaml.cs">
+      <DependentUpon>collapse_down_icon.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Widget\tableMarksItem.xaml.cs">
-      <DependentUpon>tableMarksItem.xaml</DependentUpon>
+    <Compile Include="Widgets\Images\collapse_up_icon.xaml.cs">
+      <DependentUpon>collapse_up_icon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\Images\dot_icon.xaml.cs">
+      <DependentUpon>dot_icon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\Images\cancel_icon.xaml.cs">
+      <DependentUpon>cancel_icon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\Images\faq_icon.xaml.cs">
+      <DependentUpon>faq_icon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\Images\notes_icon.xaml.cs">
+      <DependentUpon>notes_icon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\Images\profile_icon.xaml.cs">
+      <DependentUpon>profile_icon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\Images\search_icon.xaml.cs">
+      <DependentUpon>search_icon.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\Images\timeTable_icon.xaml.cs">
+      <DependentUpon>timeTable_icon.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\FaqPageLoged.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\FaqPageUnloged.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\LogInPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Page Include="NotesPage.xaml">
+    <Page Include="Pages\NotesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="NotesPage2.xaml">
+    <Page Include="Pages\ProfilePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TimeTablePage.xaml">
+    <Page Include="Pages\RegisterPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Widget\answer.xaml">
+    <Page Include="Pages\TimeTablePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Widget\faq_page.xaml">
+    <Page Include="Widgets\FaqPageContent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Widget\faq_question.xaml">
+    <Page Include="Widgets\FaqPageQuesionBlock_question.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Widget\Images\icon_collapse_down.xaml">
+    <Page Include="Widgets\FaqPageQuestionBlock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Widget\Images\icon_collapse_up.xaml">
+    <Page Include="Widgets\FaqPageQuestionBlock_answer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Widget\Images\icon_dot.xaml">
+    <Page Include="Widgets\LogInNavbar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Widget\Images\cancel_icon.xaml">
+    <Page Include="Widgets\logo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Widget\Images\faq_icon.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Widget\Images\notes_icon.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Widget\Images\profile_icon.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Widget\Images\search_icon.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Widget\Images\timeTable_icon.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Widget\LogInNavbar.xaml">
+    <Page Include="Widgets\Navbar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Widget\Navbar.xaml">
+    <Page Include="Widgets\NotesPageContent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Widget\ProfilePage.xaml">
+    <Page Include="Widgets\NotesPageNoteBlock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Widget\NoteItem.xaml">
+    <Page Include="Widgets\NotesPageNoteBlock_short.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Widget\NoteItem2.xaml">
+    <Page Include="Widgets\NotesPageNoteWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Widget\NoteShortItem.xaml">
+    <Page Include="Widgets\ProfilePageContent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Widget\NoteShortItem2.xaml">
+    <Page Include="Widgets\ProfilePageTableMarks.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Widget\NoteVeryShortItem.xaml">
+    <Page Include="Widgets\ProfilePageTableMarksHead.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Widget\question.xaml">
+    <Page Include="Widgets\ProfilePageTableMarksRow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Widget\RegisterPage.xaml">
+    <Page Include="Widgets\RegisterPageContent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Widget\SearchBar.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Widget\TimeTableBlock.xaml">
+    <Page Include="Widgets\SearchBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Widget\TimeTableNote.xaml">
+    <Page Include="Widgets\TimeTablePageContent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Widget\TimeTableNote_tableNotes.xaml">
+    <Page Include="Widgets\TimeTablePageTimeTableBlock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Widget\tableMarks.xaml">
+    <Page Include="Widgets\TimeTablePageTimeTableNote.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Widget\tableMarksHead.xaml">
+    <Page Include="Widgets\TimeTablePageTimeTableNote_tableNotes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Widget\tableMarksItem.xaml">
+    <Page Include="Widgets\Images\collapse_down_icon.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Widgets\Images\collapse_up_icon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Widgets\Images\dot_icon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Widgets\Images\cancel_icon.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Widgets\Images\faq_icon.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Widgets\Images\notes_icon.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Widgets\Images\profile_icon.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Widgets\Images\search_icon.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Widgets\Images\timeTable_icon.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Widget\Navbar.xaml.cs">
-      <DependentUpon>Navbar.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -362,14 +396,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Pages\" />
+    <Resource Include="Widgets\Images\logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Widget\Images\logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Widget\Images\profile_placeholder.jpg" />
+    <Resource Include="Widgets\Images\profile_placeholder.jpg" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ViewModel\ViewModel.csproj">

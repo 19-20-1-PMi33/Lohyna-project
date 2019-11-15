@@ -4,20 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:View"
-        xmlns:local1="clr-namespace:View.Widget"
+        xmlns:widgets="clr-namespace:View.Widgets"
+        xmlns:pages="clr-namespace:View.Pages"
         mc:Ignorable="d"
-       Title="MainWindow" Height="720" Width="1280" MinHeight="600" MinWidth="1000">
-    <Grid Background="#f9f9f9">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="300"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <local:Navbar Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"></local:Navbar>
-        <local1:SearchBar Grid.Column="1" Grid.Row="0"/>
-        <local:TimeTablePage Grid.Row="1" Grid.Column="1"></local:TimeTablePage>
-    </Grid>
+      Title="Lohyna"  x:Name="main"
+      Height="720" Width="1280" MinHeight="600" MinWidth="1000">
+    <Frame x:Name="mainFrame" NavigationUIVisibility="Hidden"/>
 </Window>

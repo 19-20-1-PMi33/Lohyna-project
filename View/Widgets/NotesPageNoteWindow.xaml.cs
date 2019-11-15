@@ -12,17 +12,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace View
+namespace View.Widgets
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for NotesPageNoteWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class NotesPageNoteWindow : Window
     {
-        public MainWindow()
+        public NotesPageNoteWindow()
         {
             InitializeComponent();
-            mainFrame.Navigate(new Uri("Pages/LogInPage.xaml", UriKind.Relative));
         }
     }
 }
