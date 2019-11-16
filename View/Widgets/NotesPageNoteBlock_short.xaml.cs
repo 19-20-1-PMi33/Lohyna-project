@@ -10,19 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace View
+namespace View.Widgets
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for NotesPageNoteBlock_short.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class NotesPageNoteBlock_short : UserControl
     {
-        public MainWindow()
+        public NotesPageNoteBlock_short()
         {
             InitializeComponent();
-            mainFrame.Navigate(new Uri("Pages/LogInPage.xaml", UriKind.Relative));
         }
     }
 }
