@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using DataServices.DTO;
+using Model;
 
 namespace DataServices.Services
 {
