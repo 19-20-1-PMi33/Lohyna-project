@@ -26,8 +26,8 @@ namespace View
 		public MainWindow()
 		{
 			InitializeComponent();
-            using (var t = new SqliteDbContext(""))
-            {
+            using (var db = new SQLiteDataService())
+            {           
             }
 		}
 	}

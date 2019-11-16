@@ -34,44 +34,65 @@ namespace DataServices
             return await _dataSource.FAQ.ToListAsync();
         }
 
-        public Task<Person> LoadLogInPersonAsync(string username)
+        public Person LoadLogInPersonAsync(string username)
         {
-            throw new NotImplementedException();
+            return _dataSource.Person.Find(username);
         }
 
         public async Task<List<Rating>> LoadMarksAsync(Student student)
         {
-            return await _dataSource.Rating.Where(row => row.Student.Equals(student)).ToListAsync();
+            return await _dataSource.Rating
+                .Where(row => row.Student.Equals(student))
+                .ToListAsync();
         }
 
-        public Task<IList<Note>> LoadNotesAsync(string person)
+        public async Task<IList<Note>> LoadNotesAsync(string person)
         {
-            throw new NotImplementedException();
+            return await _dataSource.Note
+                .Where(note => note.Person.Name.Equals(person))
+                .ToListAsync();
         }
 
-        public Task<IList<Note>> LoadNotesForSubject(string person, string subject)
+        public async Task<IList<Note>> LoadNotesForSubject(string person, string subject)
         {
-            throw new NotImplementedException();
+            return await _dataSource.Note
+                .Where(note => note.Subject.Name.Equals(subject) && note.Person.Name.Equals(person))
+                .ToListAsync();
         }
 
-        public Task<List<Person>> LoadPersonAsync(string name)
+        public async Task<List<Person>> LoadPersonAsync(string name)
         {
-            throw new NotImplementedException();
+            return await _dataSource.Person
+                .Where(person => person.Username.Equals(name))
+                .ToListAsync();
         }
 
         public async Task<List<string>> LoadQuestionsAsync()
         {
-            return await _dataSource.FAQ.Select(x => x.Question).ToListAsync();
+            return await _dataSource.FAQ
+                .Select(x => x.Question)
+                .ToListAsync();
         }
 
-        public Task<IList<Timetable>> LoadTimetableAsync(Person person)
+        public async Task<IList<Timetable>> LoadTimetableAsync(Person person)
         {
-            throw new NotImplementedException();
+            return await _dataSource.Timetable
+                .Where(item => item.Group.Equals(person.Student.Group))
+                .ToListAsync();
         }
 
-        public Task<int> UpdateNoteAsync(Note note)
+        public async Task<int> UpdateNoteAsync(Note note)
         {
-            throw new NotImplementedException();
+            _dataSource.Entry(note).State = EntityState.Modified;
+
+            return await _dataSource.SaveChangesAsync();
+        }
+
+        public async Task<int> UpdatePersonInfo(Person person)
+        {
+            _dataSource.Entry(person).State = EntityState.Modified;
+
+            return await _dataSource.SaveChangesAsync();
         }
 
         #region Disposable

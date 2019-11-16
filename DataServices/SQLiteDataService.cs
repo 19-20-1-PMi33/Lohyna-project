@@ -4,7 +4,11 @@ using System.Text;
 
 namespace DataServices
 {
-    public class SQLiteDataService
+    public class SQLiteDataService : DataServiceBase
     {
+        public SQLiteDataService() 
+            : base(new SqliteDbContext())
+        {
+        }
     }
 }
