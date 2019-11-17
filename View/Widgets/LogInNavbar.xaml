@@ -6,6 +6,28 @@
              xmlns:local="clr-namespace:View.Widgets"
              xmlns:images="clr-namespace:View.Widgets.Images"
              mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <Style x:Key="MenuButton" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" BorderThickness="0" BorderBrush="Black" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FF1E69C3" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
     <Grid Background="#FF1985DA">
         <Grid.RowDefinitions>
             <RowDefinition Height="180"/>
@@ -17,9 +39,9 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.20*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        
         <local:logo x:Name="logo" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"  Width="180" Height="180" HorizontalAlignment="Left"/>
         <TextBox HorizontalAlignment="Left" FontSize="16" Foreground="#959595" Height="30" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Text="Username" Width="250" Margin="25 0 25 0"/>
         <TextBox HorizontalAlignment="Left" FontSize="16" Foreground="#959595" Height="30" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="Password" Width="250" Margin="25 0 25 0"/>
@@ -33,7 +55,17 @@
                 <DropShadowEffect Opacity="0.7" BlurRadius="8"/>
             </Button.Effect>
         </Button>
-        <Button x:Name="button_FAQ" Grid.Row="6" Grid.Column="1" Content="F.A.Q." Background="#FF1985DA" HorizontalAlignment="Left" FontSize="16" BorderBrush="{x:Null}"/>
-        <images:faq_icon x:Name="img_Faq" Grid.Row="6" Grid.Column="0"  Width="50" Height="50"/>
+
+        <Button x:Name="button_FAQ" Style="{StaticResource MenuButton}" Grid.Column="0" Grid.Row="6" HorizontalContentAlignment="Left">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.20*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock x:Name="label_FAQ" Grid.Column="1" Text="F.A.Q." HorizontalAlignment="Left" FontSize="25" VerticalAlignment="Center" />
+                <images:faq_icon x:Name="img_profile" Grid.Column="0" Width="50" Height="50" HorizontalAlignment="Left"/>
+            </Grid>
+        </Button>
     </Grid>
 </UserControl>
