@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/User/Documents/GitHub/Lohyna-project/DataServices/univerity-db.db" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><current_tab id="0"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="2516"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="Time"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="Lecturer" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort/><column_widths/><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table><table schema="main" name="Time" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk=""><sort/><column_widths/><filter_values/><display_formats/><hidden_columns/><plot_y_axes/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1">CREATE TABLE &quot;Timetable&quot; (
+	&quot;Id&quot;	INTEGER NOT NULL,
+	&quot;Day&quot;	TEXT NOT NULL,
+	&quot;TimeID&quot;	INTEGER NOT NULL,
+	&quot;SubjectID&quot;	TEXT NOT NULL,
+	&quot;GroupID&quot;	TEXT NOT NULL,
+	&quot;LecturerID&quot;	INTEGER NOT NULL,
+	&quot;Period&quot;	TEXT NOT NULL,
+	PRIMARY KEY(&quot;Id&quot;),
+	FOREIGN KEY(&quot;SubjectID&quot;) REFERENCES &quot;Subject&quot;(&quot;Name&quot;),
+	FOREIGN KEY(&quot;LecturerID&quot;) REFERENCES &quot;Lecturer&quot;(&quot;ID&quot;),
+	FOREIGN KEY(&quot;GroupID&quot;) REFERENCES &quot;Group&quot;(&quot;Name&quot;),
+	FOREIGN KEY(&quot;TimeID&quot;) REFERENCES &quot;Time&quot;(&quot;Number&quot;)
+);</sql><current_tab id="0"/></tab_sql></sqlb_project>
