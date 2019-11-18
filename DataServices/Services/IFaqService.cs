@@ -8,5 +8,7 @@ namespace DataServices.Services
     {
         Task<List<string>> LoadQuestionsAsync();
         Task<List<FAQ>> LoadAllFaqAsync();
+
+        string LoadAnswerForQuestionAsync(string question);
     }
 }
