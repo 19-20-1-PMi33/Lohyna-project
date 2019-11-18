@@ -6,26 +6,22 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents; 
+using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using DataServices;
-//using Microsoft.Data.Sqlite;
 
-
-namespace View
+namespace View.Widgets
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for NotesPageNoteWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class NotesPageNoteWindow : Window
     {
-        public MainWindow()
+        public NotesPageNoteWindow()
         {
             InitializeComponent();
-            mainFrame.Navigate(new Uri("Pages/LogInPage.xaml", UriKind.Relative));
         }
     }
 }

@@ -8,12 +8,11 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "Model\Model.csproj", "{17206707-52D7-42FC-902F-CF0499A336CB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "View", "View\View.csproj", "{DF04A732-A910-4911-8269-5BAD5A3A5147}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E5BB2CF3-0771-4DC6-838D-8BC87EEC10DF} = {E5BB2CF3-0771-4DC6-838D-8BC87EEC10DF}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "UnitTests\UnitTests.csproj", "{C960012B-FAE5-4075-B2FC-1DAE205C8389}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataServices", "DataServices\DataServices.csproj", "{F4512420-06FD-4B35-B592-A8D2804DA66A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "TestProject\TestProject.csproj", "{65153179-6635-4A9C-B79B-21617EC0CFA0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
