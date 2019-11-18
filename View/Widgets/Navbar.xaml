@@ -7,26 +7,7 @@
              xmlns:images="clr-namespace:View.Widgets.Images"
              x:Name="main">
     
-    <UserControl.Resources>
-        <Style x:Key="MenuButton" TargetType="Button">
-            <Setter Property="OverridesDefaultStyle" Value="True" />
-            <Setter Property="Cursor" Value="Hand" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border Name="border" BorderThickness="0" BorderBrush="Black" Background="{TemplateBinding Background}">
-                            <ContentPresenter HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#FF1E69C3" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </UserControl.Resources>
+
     
     <Grid Background="#FF1985DA">
         <Grid.RowDefinitions>
@@ -44,51 +25,31 @@
         <local:logo Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Width="180" Height="180"></local:logo>
 
         <Button x:Name="button_Profile" Style="{StaticResource MenuButton}" Grid.Column="0" Grid.Row="2" HorizontalContentAlignment="Left">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.20*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <TextBlock x:Name="label_Profile" Grid.Column="1" Text="Profile" HorizontalAlignment="Left" FontSize="25" VerticalAlignment="Center" />
-                <images:profile_icon x:Name="img_profile" Grid.Column="0" Width="50" Height="50" HorizontalAlignment="Left"/>
-            </Grid>
+            <StackPanel Orientation="Horizontal">
+                <images:profile_icon Grid.Column="0" Width="50" Height="50" HorizontalAlignment="Left"/>
+                <TextBlock Grid.Column="1" Text="Profile" HorizontalAlignment="Left" FontSize="25" VerticalAlignment="Center" />
+            </StackPanel>
         </Button>
 
         <Button x:Name="button_TimeTable" Style="{StaticResource MenuButton}" Grid.Column="0" Grid.Row="3" HorizontalContentAlignment="Left">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.20*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <TextBlock x:Name="label_TimeTable" Grid.Column="1" Text="Time table" HorizontalAlignment="Left" FontSize="25" VerticalAlignment="Center" />
-                <images:timeTable_icon x:Name="img_timetable" Grid.Column="0" Width="50" Height="50" HorizontalAlignment="Left"/>
-            </Grid>
+            <StackPanel Orientation="Horizontal">
+                <images:timeTable_icon Grid.Column="0" Width="50" Height="50" HorizontalAlignment="Left"/>
+                <TextBlock Grid.Column="1" Text="Time table" HorizontalAlignment="Left" FontSize="25" VerticalAlignment="Center" />
+            </StackPanel>
         </Button>
 
         <Button x:Name="button_Notes" Style="{StaticResource MenuButton}" Grid.Column="0" Grid.Row="4" HorizontalContentAlignment="Left">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.20*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <TextBlock x:Name="label_Notes" Grid.Column="1" Text="Notes" HorizontalAlignment="Left" FontSize="25" VerticalAlignment="Center" />
-                <images:notes_icon x:Name="img_Notes" Grid.Column="0" Width="50" Height="50" HorizontalAlignment="Left"/>
-            </Grid>
+            <StackPanel Orientation="Horizontal">
+                <images:notes_icon Grid.Column="0" Width="50" Height="50" HorizontalAlignment="Left"/>
+                <TextBlock Grid.Column="1" Text="Notes" HorizontalAlignment="Left" FontSize="25" VerticalAlignment="Center" />
+            </StackPanel>
         </Button>
 
         <Button x:Name="button_FAQ" Style="{StaticResource MenuButton}" Grid.Column="0" Grid.Row="6" HorizontalContentAlignment="Left">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.20*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                
-                <TextBlock x:Name="label" Grid.Column="1" Text="F.A.Q." HorizontalAlignment="Left" FontSize="25" VerticalAlignment="Center" />
-                <images:faq_icon x:Name="img_Faq" Grid.Column="0" Width="50" Height="50" HorizontalAlignment="Left"/>
-            </Grid>
+            <StackPanel Orientation="Horizontal">
+                <images:faq_icon Grid.Column="0" Width="50" Height="50" HorizontalAlignment="Left"/>
+                <TextBlock Grid.Column="1" Text="F.A.Q." HorizontalAlignment="Left" FontSize="25" VerticalAlignment="Center" />
+            </StackPanel>
         </Button>
     </Grid>
 </UserControl>

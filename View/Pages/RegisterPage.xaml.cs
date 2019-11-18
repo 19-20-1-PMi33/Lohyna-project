@@ -24,7 +24,7 @@ namespace View.Pages
         {
             InitializeComponent();
             navbar.button_register.Click += LogInNavbar_Button_register_Click;
-            navbar.buttom_login.Click += LogInNavbar_Buttom_login_Click;
+            navbar.button_login.Click += LogInNavbar_Buttom_login_Click;
             navbar.button_FAQ.Click += LogInNavbar_Button_FAQ_Click;
         }
 
