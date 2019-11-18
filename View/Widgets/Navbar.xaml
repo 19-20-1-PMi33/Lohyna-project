@@ -6,6 +6,9 @@
              xmlns:local="clr-namespace:View.Widgets"
              xmlns:images="clr-namespace:View.Widgets.Images"
              x:Name="main">
+    
+
+    
     <Grid Background="#FF1985DA">
         <Grid.RowDefinitions>
             <RowDefinition Height="180"/>
@@ -17,17 +20,36 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.20*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <local:logo Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" Width="180" Height="180"></local:logo>
-        <Button x:Name="button_Profile" Grid.Row="2" Grid.Column="1" Content="Profile" Background="#FF1985DA" HorizontalAlignment="Left" FontFamily="Roboto" FontSize="20" BorderBrush="{x:Null}"></Button>
-        <images:profile_icon x:Name="img_Profile" Grid.Row="2" Grid.Column="0" Width="50" Height="50"/>
-        <Button x:Name="button_TimeTable" Grid.Row="3" Grid.Column="1" Content="Time table"  Background="#FF1985DA" HorizontalAlignment="Left" FontSize="20" BorderBrush="{x:Null}"></Button>
-        <images:timeTable_icon x:Name="img_TimeTable" Grid.Row="3" Grid.Column="0" Width="50" Height="50"/>
-        <Button x:Name="button_Notes" Grid.Row="4" Grid.Column="1" Content="Notes"  Background="#FF1985DA" HorizontalAlignment="Left" FontSize="20" BorderBrush="{x:Null}"></Button>
-        <images:notes_icon x:Name="img_Notes" Grid.Row="4" Grid.Column="0" Width="50" Height="50"/>
-        <Button x:Name="button_FAQ" Grid.Row="6" Grid.Column="1" Content="F.A.Q." Background="#FF1985DA" HorizontalAlignment="Left" FontSize="16" BorderBrush="{x:Null}"></Button>
-        <images:faq_icon x:Name="img_Faq" Grid.Row="6" Grid.Column="0" Width="50" Height="50"/>
+        <local:logo Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" Width="180" Height="180"></local:logo>
+
+        <Button x:Name="button_Profile" Style="{StaticResource MenuButton}" Grid.Column="0" Grid.Row="2" HorizontalContentAlignment="Left">
+            <StackPanel Orientation="Horizontal">
+                <images:profile_icon Grid.Column="0" Width="50" Height="50" HorizontalAlignment="Left"/>
+                <TextBlock Grid.Column="1" Text="Profile" HorizontalAlignment="Left" FontSize="25" VerticalAlignment="Center" />
+            </StackPanel>
+        </Button>
+
+        <Button x:Name="button_TimeTable" Style="{StaticResource MenuButton}" Grid.Column="0" Grid.Row="3" HorizontalContentAlignment="Left">
+            <StackPanel Orientation="Horizontal">
+                <images:timeTable_icon Grid.Column="0" Width="50" Height="50" HorizontalAlignment="Left"/>
+                <TextBlock Grid.Column="1" Text="Time table" HorizontalAlignment="Left" FontSize="25" VerticalAlignment="Center" />
+            </StackPanel>
+        </Button>
+
+        <Button x:Name="button_Notes" Style="{StaticResource MenuButton}" Grid.Column="0" Grid.Row="4" HorizontalContentAlignment="Left">
+            <StackPanel Orientation="Horizontal">
+                <images:notes_icon Grid.Column="0" Width="50" Height="50" HorizontalAlignment="Left"/>
+                <TextBlock Grid.Column="1" Text="Notes" HorizontalAlignment="Left" FontSize="25" VerticalAlignment="Center" />
+            </StackPanel>
+        </Button>
+
+        <Button x:Name="button_FAQ" Style="{StaticResource MenuButton}" Grid.Column="0" Grid.Row="6" HorizontalContentAlignment="Left">
+            <StackPanel Orientation="Horizontal">
+                <images:faq_icon Grid.Column="0" Width="50" Height="50" HorizontalAlignment="Left"/>
+                <TextBlock Grid.Column="1" Text="F.A.Q." HorizontalAlignment="Left" FontSize="25" VerticalAlignment="Center" />
+            </StackPanel>
+        </Button>
     </Grid>
 </UserControl>
