@@ -1,17 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Model;
+using ViewModel;
+using DataServices;
+using View.Widgets;
 
 namespace View.Pages
 {
@@ -20,14 +13,18 @@ namespace View.Pages
     /// </summary>
     public partial class ProfilePage : Page
     {
+        private ProfilePageVM logic; 
         public ProfilePage()
         {
+            this.logic = new ProfilePageVM(new SQLiteDataService(), "RomanLevkovych");
+            logic.GetPerson();
             InitializeComponent();
             navbar.button_Profile.Click += Navbar_Button_Profile_Click;
             navbar.button_FAQ.Click += Navbar_Button_FAQ_Click;
             navbar.button_Notes.Click += Navbar_Button_Notes_Click;
             navbar.button_TimeTable.Click += Navbar_Button_TimeTable_Click;
             navbar.button_Profile.Style = Application.Current.Resources["MenuButtonActive"] as Style;
+            content.name_surname_textblock.Text = logic.GetPerson().Name + " " + logic.GetPerson().Surname;
         }
 
         private void Navbar_Button_TimeTable_Click(object sender, RoutedEventArgs e)

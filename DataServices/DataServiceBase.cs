@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Model;
 using System.Linq;
-
+using DataServices.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataServices
@@ -98,6 +98,11 @@ namespace DataServices
         string LoadAnswerForQuestionAsync(string question)
         {
             return _dataSource.FAQ.Find(question).Answer;
+        }
+
+        string IFaqService.LoadAnswerForQuestionAsync(string question)
+        {
+            throw new NotImplementedException();
         }
 
         #region Disposable
