@@ -42,7 +42,7 @@ namespace View.Pages
             content.button_sortCreated.Click += Content_Button_sortCreated_Click;
             content.button_sortDeadline.Click += Content_Button_sortDeadline_Click;
             content.button_sortSubject.Click += Content_Button_sortCreated_Click;
-            content.button_sortTitle.Click += Content_Button_sortDeadline_Click;
+            content.button_sortName.Click += Content_Button_sortDeadline_Click;
             SortNotes(sorted);
         }
 
@@ -112,7 +112,7 @@ namespace View.Pages
             {
                 if ((bool)i.check.IsChecked)
                 {
-                    logic.DeleteNote(i.textTitle.Text);
+                    logic.DeleteNote(i.textName.Text);
                 }
             }
             content.check.IsChecked = false;
@@ -163,14 +163,14 @@ namespace View.Pages
         {
             return logic.GetSubjects();
         }
-        public void AddNote(string title, string date, string subject, string text)
+        public void AddNoteFromString(string name, string deadline, string subject, string materials)
         {
-            logic.AddNote(title, date, subject, text);
+            logic.AddNote(name, deadline, subject, materials);
             fillNotes();
         }
-        public void ChangeNote(Note note)
+        public void ChangeNote(Note note,Note newNote)
         {
-            logic.UpdateNote(note);
+            logic.UpdateNote(note,newNote);
             fillNotes();
         }
         public void SortNotes(SortedBy by)

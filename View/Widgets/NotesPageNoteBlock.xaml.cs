@@ -22,26 +22,14 @@ namespace View.Widgets
     public partial class NotesPageNoteBlock : UserControl
     {
         public Note note { get; set; } = null;
-        public NotesPageNoteBlock()
-        {
-            InitializeComponent();
-        }
-        public NotesPageNoteBlock(string date, string subject, string title, string text)
-        {
-            InitializeComponent();
-            textDate.Text = date;
-            textSubject.Text = subject;
-            textTitle.Text = title;
-            textNote.AppendText(text);
-        }
         public NotesPageNoteBlock(Note note)
         {
             this.note = note;
             InitializeComponent();
-            textDate.Text = note.Deadline.ToShortDateString() ;
+            textDeadline.Text = note.Deadline.ToShortDateString() ;
             textSubject.Text = note.SubjectID;
-            textTitle.Text = note.Name;
-            textNote.AppendText(note.Materials);
+            textName.Text = note.Name;
+            textMaterials.AppendText(note.Materials);
         }
     }
 }

@@ -21,76 +21,69 @@ namespace View.Widgets
     /// </summary>
     public partial class NotesPageNoteWindow : Window
     {
-        private string textTitlePlaceholder = "Title of your note";
+        private string textNamePlaceholder = "Title of your note";
         private string textDeadlinePlaceholder = "Deadline";
-        NotesPage parent = null;
-        Note note = null;
-        public NotesPageNoteWindow()
+        NotesPage parent;
+        Note note;
+        public NotesPageNoteWindow(NotesPage parent, Note note = null)
         {
-            setUp();
-        }
-        public NotesPageNoteWindow(NotesPage parent)
-        {
-            setUp();
             this.parent = parent;
-            combo.ItemsSource = parent.GetSubjects();
-            button_cancel.Click += Button_cancel_Click;
-            button_add.Click += Button_add_Click;
-        }
-        public NotesPageNoteWindow(NotesPage parent, Note note)
-        {
             this.note = note;
             this.Title = "Note";
             InitializeComponent();
-            textTitle.Text = note.Name;
-            textDate.Text = note.Deadline.ToShortDateString();
-            combo.SelectedItem = note.SubjectID;
-            textNote.AppendText(note.Materials);
-            this.parent = parent;
-            combo.ItemsSource = parent.GetSubjects();
+            comboSubject.ItemsSource = parent.GetSubjects();
             button_cancel.Click += Button_cancel_Click;
-            button_add.Click += Button_add_Click_Modify;
-        }
-        private void setUp()
-        {
-            InitializeComponent();
-            textTitle.Text = textTitlePlaceholder;
-            textDate.Text = textDeadlinePlaceholder;
-            textTitle.GotFocus += TextTitle_GotFocus;
-            textDate.GotFocus += TextDate_GotFocus;
+            if (note == null)
+            {
+                textName.Text = textNamePlaceholder;
+                textDeadline.Text = textDeadlinePlaceholder;
+                textName.GotFocus += TextTitle_GotFocus;
+                textDeadline.GotFocus += TextDate_GotFocus;
+                button_add.Click += Button_add_Click;
+            }
+            else
+            {
+                textName.Text = note.Name;
+                textDeadline.Text = note.Deadline.ToShortDateString();
+                comboSubject.SelectedItem = note.SubjectID;
+                textMaterials.AppendText(note.Materials);
+                button_add.Click += Button_add_Click_Modify;
+            }
         }
 
         private void TextDate_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (textDate.Text == textDeadlinePlaceholder)
+            if (textDeadline.Text == textDeadlinePlaceholder)
             {
-                textDate.Text = "";
+                textDeadline.Text = "";
             }
         }
 
         private void TextTitle_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (textTitle.Text == textTitlePlaceholder)
+            if (textName.Text == textNamePlaceholder)
             {
-                textTitle.Text = "";
+                textName.Text = "";
             }
         }
         private void Button_add_Click(object sender, RoutedEventArgs e)
         {
             if (validateText())
             {
-                parent.AddNote(textTitle.Text, textDate.Text, combo.SelectedItem.ToString(), new TextRange(textNote.Document.ContentStart, textNote.Document.ContentEnd).Text);
+                parent.AddNoteFromString(textName.Text, textDeadline.Text, comboSubject.SelectedItem.ToString(), new TextRange(textMaterials.Document.ContentStart, textMaterials.Document.ContentEnd).Text);
                 this.Close();
             }
         }
         private void Button_add_Click_Modify(object sender, RoutedEventArgs e)
         {
-            if (validateText())
+            if (validateText() && wasChanged())
             {
-                note.Deadline = DateTime.Parse(textDate.Text);
-                note.SubjectID = combo.SelectedItem.ToString();
-                note.Materials = new TextRange(textNote.Document.ContentStart, textNote.Document.ContentEnd).Text;
-                parent.ChangeNote(note);
+                Note newNote = new Note();
+                newNote.Deadline = DateTime.Parse(textDeadline.Text);
+                newNote.SubjectID = comboSubject.SelectedItem.ToString();
+                newNote.Materials = new TextRange(textMaterials.Document.ContentStart, textMaterials.Document.ContentEnd).Text;
+                newNote.Name = textName.Text;
+                parent.ChangeNote(note,newNote);
                 this.Close();
             }
         }
@@ -100,16 +93,40 @@ namespace View.Widgets
         }
         private bool validateText()
         {
-            if (String.IsNullOrWhiteSpace(textTitle.Text))
+            if (String.IsNullOrWhiteSpace(textName.Text))
             {
                 return false;
             }
             DateTime temp = new DateTime();
-            if (DateTime.TryParse(textDate.Text, out temp) == false)
+            if (DateTime.TryParse(textDeadline.Text, out temp) == false)
             {
                 return false;
             }
             return true;
+        }
+        private bool wasChanged()
+        {
+            if (note.Name != textName.Text)
+            {
+                return true;
+            }
+            DateTime temp = new DateTime();
+            if (DateTime.TryParse(textDeadline.Text, out temp))
+            {
+                if (note.Deadline != temp)
+                {
+                    return true;
+                }
+            }
+            if (note.SubjectID != comboSubject.SelectedItem.ToString())
+            {
+                return true;
+            }
+            if(note.Materials!= new TextRange(textMaterials.Document.ContentStart, textMaterials.Document.ContentEnd).Text)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

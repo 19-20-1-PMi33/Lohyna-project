@@ -16,9 +16,9 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <CheckBox x:Name="check" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <TextBlock x:Name="textDate" Grid.Column="1" FontSize="15" VerticalAlignment="Center" TextAlignment="Center"/>
+        <TextBlock x:Name="textDeadline" Grid.Column="1" FontSize="15" VerticalAlignment="Center" TextAlignment="Center"/>
         <TextBlock x:Name="textSubject" Grid.Column="2" FontSize="15" VerticalAlignment="Center" TextAlignment="Center"/>
-        <TextBlock x:Name="textTitle" Grid.Column="3" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <RichTextBox x:Name="textNote" Grid.Column="4" FontSize="15" IsReadOnly="True"/>
+        <TextBlock x:Name="textName" Grid.Column="3" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <RichTextBox x:Name="textMaterials" Grid.Column="4" FontSize="15" IsReadOnly="True"/>
     </Grid>
 </UserControl>

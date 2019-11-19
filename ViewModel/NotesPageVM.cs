@@ -17,9 +17,6 @@ namespace ViewModel
         {
             this.noteService = noteService;
             this.username = username;
-            //Note temp = new Note { Created = DateTime.Now, Deadline = DateTime.Now, Finished = false, Name = "test", PersonID = "RomanLevkovych", Materials = "test", SubjectID = "Numeric Methods" };
-            //noteService.DeleteNoteAsync(temp).Wait();
-            //noteService.CreateNoteAsync(temp).Wait();
         }
         public IList<Note> GetNotes()
         {
@@ -73,17 +70,15 @@ namespace ViewModel
             notes.Add(n);
             noteService.CreateNoteAsync(n).Wait();
         }
-        public void UpdateNote(Note note)
+        public void UpdateNote(Note note, Note newNote)
         {
-            noteService.UpdateNoteAsync(note).Wait();
-            if (notes.Contains(note))
-            {
-                Console.WriteLine("1");
-            }
-            else
-            {
-                Console.WriteLine("2");
-            }
+            newNote.PersonID = username;
+            var del = noteService.DeleteNoteAsync(note);
+            var add = noteService.CreateNoteAsync(newNote);
+            notes.Remove(note);
+            notes.Add(newNote);
+            del.Wait();
+            add.Wait();
         }
 
         public void sort(SortedBy key)
