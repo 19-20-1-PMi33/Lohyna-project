@@ -15,6 +15,7 @@ namespace View
 	/// </summary>
 	public partial class App : Application
 	{
+        public string username { get; set; }
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
@@ -22,6 +23,7 @@ namespace View
             {
                 File.WriteAllText(Logger.DefaultFilePath, string.Empty);
             }
+            this.ShutdownMode = ShutdownMode.OnMainWindowClose;
         }
     }
 }

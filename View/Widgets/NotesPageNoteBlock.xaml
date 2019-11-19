@@ -6,19 +6,19 @@
              xmlns:local="clr-namespace:View.Widgets"
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="560"
-             Height="56">
+             Height="56" Cursor="Hand">
     <Grid x:Name="grid" Background="#f9f9f9" Margin="0 3 0 3">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <CheckBox Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <TextBlock Text="10/05/2000" Grid.Column="1" FontSize="15" VerticalAlignment="Center" TextAlignment="Center"/>
-        <TextBlock Text="Subject" Grid.Column="2" FontSize="15" VerticalAlignment="Center" TextAlignment="Center"/>
-        <TextBlock Text="Title" Grid.Column="3" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <RichTextBox Grid.Column="4" FontSize="15"/>
+        <CheckBox x:Name="check" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <TextBlock x:Name="textDate" Grid.Column="1" FontSize="15" VerticalAlignment="Center" TextAlignment="Center"/>
+        <TextBlock x:Name="textSubject" Grid.Column="2" FontSize="15" VerticalAlignment="Center" TextAlignment="Center"/>
+        <TextBlock x:Name="textTitle" Grid.Column="3" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <RichTextBox x:Name="textNote" Grid.Column="4" FontSize="15" IsReadOnly="True"/>
     </Grid>
 </UserControl>
