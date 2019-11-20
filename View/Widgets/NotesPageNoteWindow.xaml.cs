@@ -22,7 +22,6 @@ namespace View.Widgets
     public partial class NotesPageNoteWindow : Window
     {
         private string textNamePlaceholder = "Title of your note";
-        private string textDeadlinePlaceholder = "Deadline";
         NotesPage parent;
         Note note;
         public NotesPageNoteWindow(NotesPage parent, Note note = null)
@@ -31,14 +30,13 @@ namespace View.Widgets
             this.note = note;
             this.Title = "Note";
             InitializeComponent();
+            textDeadline.DisplayDateStart = DateTime.Now;
             comboSubject.ItemsSource = parent.GetSubjects();
             button_cancel.Click += Button_cancel_Click;
             if (note == null)
             {
                 textName.Text = textNamePlaceholder;
-                textDeadline.Text = textDeadlinePlaceholder;
                 textName.GotFocus += TextTitle_GotFocus;
-                textDeadline.GotFocus += TextDate_GotFocus;
                 button_add.Click += Button_add_Click;
             }
             else
@@ -50,15 +48,6 @@ namespace View.Widgets
                 button_add.Click += Button_add_Click_Modify;
             }
         }
-
-        private void TextDate_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if (textDeadline.Text == textDeadlinePlaceholder)
-            {
-                textDeadline.Text = "";
-            }
-        }
-
         private void TextTitle_GotFocus(object sender, RoutedEventArgs e)
         {
             if (textName.Text == textNamePlaceholder)
@@ -94,6 +83,10 @@ namespace View.Widgets
         private bool validateText()
         {
             if (String.IsNullOrWhiteSpace(textName.Text))
+            {
+                return false;
+            }
+            if (textName.Text==textNamePlaceholder)
             {
                 return false;
             }
