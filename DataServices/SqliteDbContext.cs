@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
@@ -63,5 +63,7 @@ namespace DataServices
         public DbSet<Time> Time { get; set; }
 
         public DbSet<Timetable> Timetable { get; set; }
+
+        public DbSet<Subject> Subject { get; set; }
     }
 }

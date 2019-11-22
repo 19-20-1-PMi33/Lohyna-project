@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Model;
 
 namespace View.Widgets
 {
@@ -20,9 +21,15 @@ namespace View.Widgets
     /// </summary>
     public partial class NotesPageNoteBlock : UserControl
     {
-        public NotesPageNoteBlock()
+        public Note note { get; set; } = null;
+        public NotesPageNoteBlock(Note note)
         {
+            this.note = note;
             InitializeComponent();
+            textDeadline.Text = note.Deadline.ToShortDateString() ;
+            textSubject.Text = note.SubjectID;
+            textName.Text = note.Name;
+            textMaterials.AppendText(note.Materials);
         }
     }
 }

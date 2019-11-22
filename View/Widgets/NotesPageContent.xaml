@@ -11,35 +11,35 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.1*"/>
             <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition/>
             <ColumnDefinition Width="0.1*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*"/>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="25"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="0.1*"/>
         </Grid.RowDefinitions>
-        <CheckBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Button Content="Time" Grid.Row="1" Grid.Column="2" FontSize="15" Background="{x:Null}" BorderBrush="{x:Null}"/>
-        <Button Content="Subject" Grid.Row="1" Grid.Column="3" FontSize="15" Background="{x:Null}" BorderBrush="{x:Null}"/>
-        <Button Content="Title" Grid.Row="1" Grid.Column="4" FontSize="15" Background="{x:Null}" BorderBrush="{x:Null}"/>
-        <Button Content="Text" Grid.Row="1" Grid.Column="5" FontSize="15" Background="{x:Null}" BorderBrush="{x:Null}"/>
+        <CheckBox x:Name="check" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Button x:Name="button_sortDeadline" Content="Deadline" Grid.Row="1" Grid.Column="2" FontSize="15" Background="{x:Null}" BorderBrush="{x:Null}" Cursor="Hand"/>
+        <Button x:Name="button_sortSubject" Content="Subject" Grid.Row="1" Grid.Column="3" FontSize="15" Background="{x:Null}" BorderBrush="{x:Null}" Cursor="Hand"/>
+        <Button x:Name="button_sortName" Content="Title" Grid.Row="1" Grid.Column="4" FontSize="15" Background="{x:Null}" BorderBrush="{x:Null}" Cursor="Hand"/>
+        <Button x:Name="button_sortCreated" Content="Note (created)" Grid.Row="1" Grid.Column="5" FontSize="15" Background="{x:Null}" BorderBrush="{x:Null}" Cursor="Hand"/>
         <ScrollViewer Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="5" Margin="0 10 0 10" VerticalScrollBarVisibility="Auto">
             <StackPanel x:Name="stack">
 
             </StackPanel>
         </ScrollViewer>
-        <Button Content="Mark checked as done" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" FontSize="15" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Left" Background="#f9f9f9" BorderBrush="{x:Null}">
+        <Button x:Name="button_delete" Content="Mark checked as done" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" FontSize="15" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Left" Background="#f9f9f9" BorderBrush="{x:Null}">
             <Button.Effect>
                 <DropShadowEffect BlurRadius="8" Opacity="0.8"/>
             </Button.Effect>
         </Button>
-        <images:cancel_icon Grid.Column="5" Grid.Row="3" Height="50" Width="50" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Cursor="Hand">
+        <images:cancel_icon x:Name="button_add" Grid.Column="5" Grid.Row="3" Height="50" Width="50" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Cursor="Hand">
             <images:cancel_icon.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
