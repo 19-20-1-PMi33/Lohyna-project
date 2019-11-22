@@ -20,6 +20,7 @@ namespace DataServices
         DbSet<Student> Student { get; }
         DbSet<Time> Time { get; }
         DbSet<Timetable> Timetable { get; }
+        DbSet<Subject> Subject { get; }
 
         EntityEntry<TEntity> Entry<TEntity>(TEntity entity) where TEntity : class;
 
