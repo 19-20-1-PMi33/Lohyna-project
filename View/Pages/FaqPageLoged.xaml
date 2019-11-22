@@ -18,7 +18,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <widgets:Navbar x:Name="navbar" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"></widgets:Navbar>
-        <widgets:SearchBar x:Name="serachBar" Grid.Column="1" Grid.Row="0"/>
+        <widgets:SearchBar x:Name="searchBar" Grid.Column="1" Grid.Row="0"/>
         <widgets:FaqPageContent x:Name="content" Grid.Column="1" Grid.Row="1"/>
     </Grid>
 </Page>

@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Model;
 using View.Pages;
+using ViewModel;
 
 namespace View.Widgets
 {
@@ -23,20 +24,20 @@ namespace View.Widgets
     public partial class SearchPageBlock : UserControl
     {
         private string notFoundText = "Nothing was found (";
-        public SearchPageBlock(Person p)
+        public SearchPageBlock(SearchPageVM logic,Person p)
         {
             InitializeComponent();
             if (p != null)
             {
                 textNameSurname.Text = $"{p.Name} {p.Surname}";
                 image_profile.Source = new BitmapImage(new Uri(p.Photo, UriKind.Relative));
-                if (p.Student != null)
+                if (logic.GetStudent(p) != null)
                 {
                     textInfo.Text = $"{p.Student.GroupID}";
                 }
-                else
+                else if(logic.GetLecturer(p)!=null)
                 {
-                    textInfo.Text = $"{p.Lecturer.Department}, {p.Lecturer.Specializations}";
+                    textInfo.Text = $"{p.Lecturer.Department}";
                 }
             }
             else

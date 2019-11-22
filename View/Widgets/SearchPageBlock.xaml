@@ -5,18 +5,18 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:View.Widgets"
              mc:Ignorable="d" 
-             d:DesignHeight="100" d:DesignWidth="500" Height="100" Background="WhiteSmoke" Cursor="Hand">
+             d:DesignHeight="100" d:DesignWidth="500" Height="160" Background="WhiteSmoke" Cursor="Hand">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="160"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="1.5*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Image x:Name="image_profile" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Margin="3" HorizontalAlignment="Left"/>
-        <TextBlock x:Name="textNameSurname" Grid.Column="1" Grid.Row="0" FontSize="35" TextAlignment="Center"/>
-        <TextBlock x:Name="textInfo" Grid.Column="1" Grid.Row="1"/>
+        <Image x:Name="image_profile" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Margin="2.5" HorizontalAlignment="Left" Width="155" Height="155"/>
+        <TextBlock x:Name="textNameSurname" Grid.Column="1" Grid.Row="0" FontSize="35" TextAlignment="Left" Margin="20 0 0 0"/>
+        <TextBlock x:Name="textInfo" Grid.Column="1" Grid.Row="1" TextAlignment="Left" FontSize="20" Margin="20 0 0 0"/>
     </Grid>
 </UserControl>

@@ -27,22 +27,10 @@ namespace View.Pages
             navbar.button_register.Click += LogInNavbar_Button_register_Click;
             navbar.button_login.Click += LogInNavbar_Buttom_login_Click;
             navbar.button_FAQ.Click += LogInNavbar_Button_FAQ_Click;
-            searchBar.textSearch.KeyDown += SearchBar_TextSearch_KeyDown;
         }
 
-        private void SearchBar_TextSearch_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter&&!String.IsNullOrWhiteSpace(searchBar.textSearch.Text))
-            {
-                App.LastSearch = searchBar.textSearch.Text;
-                this.NavigationService.Navigate(new Uri("Pages/SearchPage.xaml", UriKind.Relative));
-            }
-        }
-
-        //we must write navigation in wpf app, because of system.windows.controls
         private void LogInNavbar_Buttom_login_Click(object sender, RoutedEventArgs e)
         {
-            //add if (authorise)
             this.NavigationService.Navigate(new Uri("Pages/ProfilePage.xaml", UriKind.Relative));
         }
 

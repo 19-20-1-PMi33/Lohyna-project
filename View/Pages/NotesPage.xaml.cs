@@ -44,6 +44,16 @@ namespace View.Pages
             content.button_sortSubject.Click += Content_Button_sortCreated_Click;
             content.button_sortName.Click += Content_Button_sortDeadline_Click;
             SortNotes(sorted);
+            searchBar.textSearch.KeyDown += SearchBar_TextSearch_KeyDown;
+        }
+
+        private void SearchBar_TextSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter && !String.IsNullOrWhiteSpace(searchBar.textSearch.Text))
+            {
+                App.LastSearch = searchBar.textSearch.Text;
+                this.NavigationService.Navigate(new Uri("Pages/SearchPage.xaml", UriKind.Relative));
+            }
         }
 
         private void Content_Button_sortDeadline_Click(object sender, RoutedEventArgs e)

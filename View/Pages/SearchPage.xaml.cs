@@ -31,6 +31,30 @@ namespace View.Pages
             InitializeComponent();
             searchBar.textSearch.KeyDown += SearchBar_TextSearch_KeyDown;
             fillSearch();
+            navbar.button_Profile.Click += Navbar_Button_Profile_Click;
+            navbar.button_FAQ.Click += Navbar_Button_FAQ_Click;
+            navbar.button_Notes.Click += Navbar_Button_Notes_Click;
+            navbar.button_TimeTable.Click += Navbar_Button_TimeTable_Click;
+        }
+
+        private void Navbar_Button_TimeTable_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("Pages/TimeTablePage.xaml", UriKind.Relative));
+        }
+
+        private void Navbar_Button_Notes_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("Pages/NotesPage.xaml", UriKind.Relative));
+        }
+
+        private void Navbar_Button_FAQ_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("Pages/FaqPageLoged.xaml", UriKind.Relative));
+        }
+
+        private void Navbar_Button_Profile_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.Navigate(new Uri("Pages/ProfilePage.xaml", UriKind.Relative));
         }
         private void SearchBar_TextSearch_KeyDown(object sender, KeyEventArgs e)
         {
@@ -46,15 +70,15 @@ namespace View.Pages
             if(App.LastSearch != null)
             {
                 List<Person> searchResult = logic.Search(App.LastSearch);
-                searchBar.textSearch.Text = App.LastSearch + " aaa";
+                searchBar.textSearch.Text = App.LastSearch;
                 int cnt = 0;
                 if (searchResult.Count == 0)
                 {
-                    content.stack.Children.Add(new SearchPageBlock(null));
+                    content.stack.Children.Add(new SearchPageBlock(logic,null));
                 }
                 searchResult.ForEach(person =>
                 {
-                    var block = new SearchPageBlock(person);
+                    var block = new SearchPageBlock(logic,person);
                     block.MouseDown += SearchPageBlock_MouseDown;
                     if (cnt++ % 2 == 1)
                     {
