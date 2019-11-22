@@ -15,6 +15,7 @@ namespace View
 	/// </summary>
 	public partial class App : Application
 	{
+        public static string LastSearch { get; set; }
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);

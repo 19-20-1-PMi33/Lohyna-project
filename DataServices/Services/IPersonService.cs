@@ -9,5 +9,6 @@ namespace DataServices.Services
         Task<List<Person>> LoadPersonAsync(string name);
         Task<int> UpdatePersonInfo(Person person);
         Person LoadLogInPersonAsync(string username);
+        Task<List<Person>> SearchPersonByNameAsync(string name);
     }
 }
