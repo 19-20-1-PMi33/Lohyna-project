@@ -22,20 +22,20 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.1*"/>
             <ColumnDefinition Width="0.7*"/>
-            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="150"/>
             <ColumnDefinition Width="0.7*"/>
             <ColumnDefinition Width="0.1*"/>
         </Grid.ColumnDefinitions>
 
         <Image x:Name="profile_photo" Grid.Row="1" Grid.RowSpan="4" Grid.Column="1" Source="Images/profile_placeholder.jpg" HorizontalAlignment="Left"/>
-        <TextBlock Text="Group : " Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" FontSize="22" Margin="10 0 0 0"></TextBlock>
-        <TextBlock x:Name="name_surname_textblock" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Text="Roman Levkovych" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBlock Text="Course : " Grid.Row="3" Grid.Column="2" VerticalAlignment="Center" FontSize="22" Margin="10 0 0 0"></TextBlock>
-        <TextBlock x:Name="group_textblock"  Grid.Row="2" Text="PMi-33" Grid.Column="3" FontSize="22" VerticalAlignment="Center"  Margin="10 0 0 0"/>
-        <TextBlock Text="Nom zal : " Grid.Row="4" Grid.Column="2" VerticalAlignment="Center" FontSize="22" Margin="10 0 0 0"/>
+        <TextBlock x:Name="label1" Text="Group : " Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" FontSize="22" Margin="10 0 0 0"></TextBlock>
+        <TextBlock x:Name="name_surname_textblock" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Text="Roman Levkovych" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="WrapWithOverflow"/>
+        <TextBlock x:Name="label2" Text="Course : " Grid.Row="3" Grid.Column="2" VerticalAlignment="Center" FontSize="22" Margin="10 0 0 0"></TextBlock>
+        <TextBlock x:Name="group_department_textblock"  Grid.Row="2" Text="PMi-33" Grid.Column="3" FontSize="22" VerticalAlignment="Center"  Margin="10 0 0 0" TextWrapping="WrapWithOverflow"/>
+        <TextBlock x:Name="label3" Text="Nom zal : " Grid.Row="4" Grid.Column="2" VerticalAlignment="Center" FontSize="22" Margin="10 0 0 0"/>
         <TextBlock x:Name="course_textblock" Text="3" Grid.Row="3" Grid.Column="3" FontSize="22" VerticalAlignment="Center"  Margin="10 0 0 0"/>
         <TextBlock x:Name="nom_zalik_textblock" Text="BC 81791218" Grid.Row="4" Grid.Column="3" FontSize="22" VerticalAlignment="Center" Margin="10 0 0 0"/>
-        <local:ProfilePageTableMarks Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="3"/>
+        <local:ProfilePageTableMarks x:Name="marks" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="3"/>
         <TextBlock Text="1 of 3" Grid.Row="7" Grid.Column="2" TextAlignment="Center" VerticalAlignment="Center" FontSize="23"/>
         <images:collapse_down_icon Grid.Row="7" Grid.Column="1" Width="40" Height="40" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Cursor="Hand">
             <images:collapse_down_icon.RenderTransform>

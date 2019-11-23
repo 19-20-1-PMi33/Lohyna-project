@@ -9,11 +9,12 @@
     <Grid x:Name="grid" Background="#f9f9f9">
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
-            <RowDefinition Height="0"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <local:ProfilePageTableMarksHead Grid.Row="0"/>
-        <StackPanel x:Name="stack" Grid.Row="1">
-
-        </StackPanel>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel x:Name="stack">
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </UserControl>

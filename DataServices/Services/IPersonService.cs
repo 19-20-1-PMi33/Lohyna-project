@@ -9,5 +9,8 @@ namespace DataServices.Services
         Task<List<Person>> LoadPersonAsync(string name);
         Task<int> UpdatePersonInfo(Person person);
         Person LoadLogInPersonAsync(string username);
+        Student LoadStudent(Person person);
+        Lecturer LoadLecturer(Person person);
+        
     }
 }

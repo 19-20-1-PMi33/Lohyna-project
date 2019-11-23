@@ -111,6 +111,21 @@ namespace DataServices
             return await _dataSource.Subject.ToListAsync();
         }
 
+        public Student LoadStudent(Person person)
+        {
+            return _dataSource.Student.SingleOrDefault(p => p.Person.Username == person.Username);
+          
+        }
+
+        public Lecturer LoadLecturer(Person person)
+        {
+            return _dataSource.Lecturer.SingleOrDefault(p => p.Person.Username == person.Username);
+
+        }
+        public Group LoadGroup(Student student)
+        {
+            return _dataSource.Group.SingleOrDefault(p => p.Name == student.GroupID);
+        }
         #region Disposable
         public void Dispose()
         {

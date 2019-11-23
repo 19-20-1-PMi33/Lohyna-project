@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Model;
 
 namespace View.Widgets
 {
@@ -20,9 +21,13 @@ namespace View.Widgets
     /// </summary>
     public partial class ProfilePageTableMarksRow : UserControl
     {
-        public ProfilePageTableMarksRow()
+        public Rating mark { get; set; } = null;
+        public ProfilePageTableMarksRow(Rating mark)
         {
+            this.mark = mark;
             InitializeComponent();
+            subject_textbox.Text = mark.SubjectID;
+            mark_textbox.Text = Convert.ToString(mark.Mark);
         }
     }
 }
