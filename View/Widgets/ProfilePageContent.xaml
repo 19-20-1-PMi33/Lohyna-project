@@ -36,8 +36,8 @@
         <TextBlock x:Name="course_textblock" Text="3" Grid.Row="3" Grid.Column="3" FontSize="22" VerticalAlignment="Center"  Margin="10 0 0 0"/>
         <TextBlock x:Name="nom_zalik_textblock" Text="BC 81791218" Grid.Row="4" Grid.Column="3" FontSize="22" VerticalAlignment="Center" Margin="10 0 0 0"/>
         <local:ProfilePageTableMarks x:Name="marks" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="3"/>
-        <TextBlock Text="1 of 3" Grid.Row="7" Grid.Column="2" TextAlignment="Center" VerticalAlignment="Center" FontSize="23"/>
-        <images:collapse_down_icon Grid.Row="7" Grid.Column="1" Width="40" Height="40" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Cursor="Hand">
+        <TextBlock x:Name="page_index" Grid.Row="7" Grid.Column="2" TextAlignment="Center" VerticalAlignment="Center" FontSize="23"/>
+        <images:collapse_down_icon x:Name="button_prev" Grid.Row="7" Grid.Column="1" Width="40" Height="40" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Cursor="Hand">
             <images:collapse_down_icon.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -47,7 +47,7 @@
                 </TransformGroup>
             </images:collapse_down_icon.RenderTransform>
         </images:collapse_down_icon>
-        <images:collapse_down_icon Grid.Row="7" Grid.Column="3" Width="40" Height="40" HorizontalAlignment="Left" RenderTransformOrigin="0.5,0.5" Cursor="Hand">
+        <images:collapse_down_icon x:Name="button_next" Grid.Row="7" Grid.Column="3" Width="40" Height="40" HorizontalAlignment="Left" RenderTransformOrigin="0.5,0.5" Cursor="Hand">
             <images:collapse_down_icon.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>

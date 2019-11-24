@@ -26,6 +26,8 @@ namespace View.Pages
     {
         private SortMarkTable sorted;
         private ProfilePageVM logic;
+        int page_limit = 1;
+        int current_page_number = 0;
         public ProfilePage()
 
         {
@@ -59,6 +61,9 @@ namespace View.Pages
                     content.nom_zalik_textblock.Text = $"{logic.GetStudent().TicketNumber}";
                     content.marks.HeadRow.subject_column.Click += Content_Marks_HeadRow_Button_sortSubject_Click;
                     content.marks.HeadRow.mark_column.Click += Content_Marks_HeadRow_Button_sortMarks_Click;
+                    content.button_next.MouseDown += Content_Button_Next_MouseDown;
+                    content.button_prev.MouseDown += Content_Button_prev_MouseDown;
+                    content.page_index.Text = $"{current_page_number + 1} of {logic.GetPageCount(page_limit)}";
                 }
             }
             fillMarksTable();
@@ -87,10 +92,11 @@ namespace View.Pages
         private void fillMarksTable()
         {
             this.content.marks.stack.Children.Clear();
-            foreach (Rating row in logic.GetRatings())
+            foreach (Rating row in logic.GetCurrentPageRatings(page_limit, current_page_number))
             {
                 ProfilePageTableMarksRow item = new ProfilePageTableMarksRow(row);
                 this.content.marks.stack.Children.Add(item);
+
             }
         }
         public void SortMarksTableRows(SortMarkTable by)
@@ -109,6 +115,27 @@ namespace View.Pages
             {
                 SortMarksTableRows(SortMarkTable.Subject);
                 sorted = SortMarkTable.Subject;
+            }
+        }
+
+        private void Content_Button_Next_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (current_page_number < logic.GetPageCount(page_limit) - 1)
+            {
+                current_page_number += 1;
+                content.page_index.Text = $"{current_page_number + 1} of {logic.GetPageCount(page_limit)}";
+                fillMarksTable();
+
+            }
+        }
+
+        private void Content_Button_prev_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (current_page_number > 0)
+            {
+                current_page_number -= 1;
+                content.page_index.Text = $"{current_page_number + 1} of {logic.GetPageCount(page_limit)}";
+                fillMarksTable();
             }
         }
 
