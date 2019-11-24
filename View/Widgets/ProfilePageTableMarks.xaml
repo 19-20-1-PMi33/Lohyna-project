@@ -6,13 +6,13 @@
              xmlns:local="clr-namespace:View.Widgets"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid x:Name="grid" Background="#f9f9f9">
+    <Grid x:Name="grid" Background="#f9f9f9" >
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <local:ProfilePageTableMarksHead Grid.Row="0"/>
-        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+        <local:ProfilePageTableMarksHead x:Name="HeadRow" Grid.Row="0"/>
+        <ScrollViewer  Grid.Row="1" VerticalScrollBarVisibility="Auto">
             <StackPanel x:Name="stack">
             </StackPanel>
         </ScrollViewer>

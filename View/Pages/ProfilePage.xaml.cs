@@ -24,13 +24,15 @@ namespace View.Pages
     /// </summary>
     public partial class ProfilePage : Page
     {
+        private SortMarkTable sorted;
         private ProfilePageVM logic;
         public ProfilePage()
+
         {
-            this.logic = new ProfilePageVM(new SQLiteDataService(), "NikitaZhavoronkov");
+            this.logic = new ProfilePageVM(new SQLiteDataService(), "OlegAndrus");
             logic.GetRatings();
             InitializeComponent();
-            
+
             navbar.button_Profile.Click += Navbar_Button_Profile_Click;
             navbar.button_FAQ.Click += Navbar_Button_FAQ_Click;
             navbar.button_Notes.Click += Navbar_Button_Notes_Click;
@@ -55,8 +57,9 @@ namespace View.Pages
                     content.group_department_textblock.Text = $"{logic.GetStudent().GroupID}";
                     content.course_textblock.Text = $"{logic.GetGroup().Course}";
                     content.nom_zalik_textblock.Text = $"{logic.GetStudent().TicketNumber}";
-                    
-                }  
+                    content.marks.HeadRow.subject_column.Click += Content_Marks_HeadRow_Button_sortSubject_Click;
+                    content.marks.HeadRow.mark_column.Click += Content_Marks_HeadRow_Button_sortMarks_Click;
+                }
             }
             fillMarksTable();
         }
@@ -83,15 +86,43 @@ namespace View.Pages
 
         private void fillMarksTable()
         {
-            int count = 0;
+            this.content.marks.stack.Children.Clear();
             foreach (Rating row in logic.GetRatings())
             {
                 ProfilePageTableMarksRow item = new ProfilePageTableMarksRow(row);
-                if (++count % 2 == 0)
-                {
-                    item.grid.Background = new SolidColorBrush(Colors.LightGray);
-                }
                 this.content.marks.stack.Children.Add(item);
+            }
+        }
+        public void SortMarksTableRows(SortMarkTable by)
+        {
+            logic.sort(by);
+            fillMarksTable();
+        }
+        private void Content_Marks_HeadRow_Button_sortSubject_Click(object sender, RoutedEventArgs e)
+        {
+            if (sorted == SortMarkTable.Subject)
+            {
+                SortMarksTableRows(SortMarkTable.SubjectReverse);
+                sorted = SortMarkTable.SubjectReverse;
+            }
+            else
+            {
+                SortMarksTableRows(SortMarkTable.Subject);
+                sorted = SortMarkTable.Subject;
+            }
+        }
+
+        private void Content_Marks_HeadRow_Button_sortMarks_Click(object sender, RoutedEventArgs e)
+        {
+            if (sorted == SortMarkTable.Mark)
+            {
+                SortMarksTableRows(SortMarkTable.MarkReverse);
+                sorted = SortMarkTable.MarkReverse;
+            }
+            else
+            {
+                SortMarksTableRows(SortMarkTable.Mark);
+                sorted = SortMarkTable.Mark;
             }
         }
 

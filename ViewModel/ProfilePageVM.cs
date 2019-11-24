@@ -7,6 +7,7 @@ using Model;
 
 namespace ViewModel
 {
+    public enum SortMarkTable {Subject, SubjectReverse, MarkReverse, Mark, Lecturer, LecturerReverse};
     public class ProfilePageVM
     {
         IPersonService personService;
@@ -48,11 +49,22 @@ namespace ViewModel
             return personService.LoadLecturer(personService.LoadLogInPersonAsync(username));
         }
 
-
         public Group GetGroup()
         {
             return groupService.LoadGroup(GetStudent());
         }
-
+        public void sort(SortMarkTable key)
+        {
+            if (marks.Count > 1)
+            {
+                switch (key)
+                {
+                    case SortMarkTable.Subject: marks.Sort((x, y) => x.SubjectID.CompareTo(y.SubjectID)); break;
+                    case SortMarkTable.SubjectReverse:marks.Sort((x, y) => y.SubjectID.CompareTo(x.SubjectID)); break;
+                    case SortMarkTable.Mark: marks.Sort((x, y) => x.Mark.CompareTo(y.Mark)); break;
+                    case SortMarkTable.MarkReverse: marks.Sort((x, y) => y.Mark.CompareTo(x.Mark)); break;
+                }
+            }
+        }
     }
 }
