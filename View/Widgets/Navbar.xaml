@@ -27,14 +27,14 @@
         <Button x:Name="button_Profile" Style="{StaticResource MenuButton}" Grid.Column="0" Grid.Row="2" HorizontalContentAlignment="Left">
             <StackPanel Orientation="Horizontal">
                 <images:profile_icon Grid.Column="0" Width="50" Height="50" HorizontalAlignment="Left"/>
-                <TextBlock Grid.Column="1" Text="Profile" HorizontalAlignment="Left" FontSize="25" VerticalAlignment="Center" Width="250" />
+                <TextBlock Grid.Column="1" Text="Profile" HorizontalAlignment="Left" FontSize="25" VerticalAlignment="Center"/>
             </StackPanel>
         </Button>
 
         <Button x:Name="button_TimeTable" Style="{StaticResource MenuButton}" Grid.Column="0" Grid.Row="3" HorizontalContentAlignment="Left">
             <StackPanel Orientation="Horizontal">
                 <images:timeTable_icon Grid.Column="0" Width="50" Height="50" HorizontalAlignment="Left"/>
-                <TextBlock Grid.Column="1" Text="Time table" HorizontalAlignment="Left" FontSize="25" VerticalAlignment="Center" Width="250"/>
+                <TextBlock Grid.Column="1" Text="Time table" HorizontalAlignment="Left" FontSize="25" VerticalAlignment="Center"/>
             </StackPanel>
         </Button>
 
