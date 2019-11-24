@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ViewModel;
 
 namespace View.Widgets
 {
@@ -23,6 +24,15 @@ namespace View.Widgets
         public NotesPageContent()
         {
             InitializeComponent();
+            check.Click += Check_Click;
+        }
+
+        private void Check_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (NotesPageNoteBlock block in stack.Children)
+            {
+                block.check.IsChecked = check.IsChecked;
+            }
         }
     }
 }

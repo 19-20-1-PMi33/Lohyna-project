@@ -5,6 +5,7 @@ using Model;
 using System.Linq;
 
 using Microsoft.EntityFrameworkCore;
+using DataServices.Services;
 
 namespace DataServices
 {
@@ -49,7 +50,7 @@ namespace DataServices
         public async Task<IList<Note>> LoadNotesAsync(string person)
         {
             return await _dataSource.Note
-                .Where(note => note.Person.Name.Equals(person))
+                .Where(note => note.Person.Username.Equals(person))
                 .ToListAsync();
         }
 
@@ -98,6 +99,16 @@ namespace DataServices
         string LoadAnswerForQuestionAsync(string question)
         {
             return _dataSource.FAQ.Find(question).Answer;
+        }
+
+        string IFaqService.LoadAnswerForQuestionAsync(string question)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<IList<Subject>> LoadSubjectsAsync()
+        {
+            return await _dataSource.Subject.ToListAsync();
         }
 
         #region Disposable
