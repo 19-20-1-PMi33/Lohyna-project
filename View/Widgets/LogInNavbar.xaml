@@ -22,8 +22,8 @@
         </Grid.ColumnDefinitions>
         
         <local:logo x:Name="logo" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"  Width="180" Height="180" HorizontalAlignment="Left"/>
-        <TextBox HorizontalAlignment="Left" FontSize="16" Foreground="#959595" Height="30" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Text="Username" Width="250" Margin="25 0 25 0"/>
-        <TextBox HorizontalAlignment="Left" FontSize="16" Foreground="#959595" Height="30" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Text="Password" Width="250" Margin="25 0 25 0"/>
+        <TextBox Name="usernameTextBox" HorizontalAlignment="Left" FontSize="16" Foreground="#959595" Height="30" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Width="250" Margin="25 0 25 0"/>
+        <TextBox Name="passwordTextBox" HorizontalAlignment="Left" FontSize="16" Foreground="#959595" Height="30" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Width="250" Margin="25 0 25 0"/>
         <Button x:Name="button_login" Content="Log in" Background ="#F9F9F9" FontSize="16"  Grid.Column="1" Height="32" Grid.Row="4" Width="120" HorizontalAlignment="Right" Margin="0 0 25 0">
             <Button.Effect>
                 <DropShadowEffect Opacity="0.7" BlurRadius="8"/>
