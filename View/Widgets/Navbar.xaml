@@ -41,14 +41,14 @@
         <Button x:Name="button_Notes" Style="{StaticResource MenuButton}" Grid.Column="0" Grid.Row="4" HorizontalContentAlignment="Left">
             <StackPanel Orientation="Horizontal">
                 <images:notes_icon Grid.Column="0" Width="50" Height="50" HorizontalAlignment="Left"/>
-                <TextBlock Grid.Column="1" Text="Notes" HorizontalAlignment="Left" FontSize="25" VerticalAlignment="Center" Width="250"/>
+                <TextBlock Grid.Column="1" Text="Notes" HorizontalAlignment="Left" FontSize="25" VerticalAlignment="Center"/>
             </StackPanel>
         </Button>
 
         <Button x:Name="button_FAQ" Style="{StaticResource MenuButton}" Grid.Column="0" Grid.Row="6" HorizontalContentAlignment="Left">
             <StackPanel Orientation="Horizontal">
                 <images:faq_icon Grid.Column="0" Width="50" Height="50" HorizontalAlignment="Left"/>
-                <TextBlock Grid.Column="1" Text="F.A.Q." HorizontalAlignment="Left" FontSize="25" VerticalAlignment="Center" Width="250"/>
+                <TextBlock Grid.Column="1" Text="F.A.Q." HorizontalAlignment="Left" FontSize="25" VerticalAlignment="Center"/>
             </StackPanel>
         </Button>
     </Grid>
