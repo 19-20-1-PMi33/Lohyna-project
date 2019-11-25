@@ -26,7 +26,7 @@ namespace View.Pages
     {
         private SortMarkTable sorted;
         private ProfilePageVM logic;
-        int page_limit = 1;
+        int page_limit = 3;
         int current_page_number = 0;
         public ProfilePage()
 
@@ -53,6 +53,8 @@ namespace View.Pages
                     content.course_textblock.Text = "";
                     content.nom_zalik_textblock.Text = "";
                     content.marks.Visibility = Visibility.Hidden;
+                    content.button_next.Visibility = Visibility.Hidden;
+                    content.button_prev.Visibility = Visibility.Hidden;
                 }
                 else if (logic.GetStudent() != null)
                 {
