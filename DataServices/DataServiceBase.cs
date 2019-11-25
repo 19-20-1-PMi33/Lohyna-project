@@ -95,7 +95,7 @@ namespace DataServices
             return await _dataSource.SaveChangesAsync();
         }
 
-        string LoadAnswerForQuestionAsync(string question)
+        public string LoadAnswerForQuestionAsync(string question)
         {
             return _dataSource.FAQ.Find(question).Answer;
         }

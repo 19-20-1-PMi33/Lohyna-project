@@ -20,9 +20,23 @@ namespace View.Widgets
     /// </summary>
     public partial class Navbar : UserControl
     {
+        private Dictionary<Button, Uri> _routingPaths;
         public Navbar()
         {
             InitializeComponent();
+            _routingPaths = new Dictionary<Button, Uri>
+            {
+                { ProfileButton, new Uri("../Pages/ProfilePage.xaml", UriKind.Relative) },
+                { NotesButton, new Uri("../Pages/NotesPage.xaml", UriKind.Relative) },
+                { TimeTableButton, new Uri("../Pages/TimeTablePage.xaml", UriKind.Relative) },
+                { FAQButton, new Uri("../Pages/FaqPageLoged.xaml", UriKind.Relative) }
+            };
+        }
+
+        private void NavigationButtonTransitionHandler(object sender, RoutedEventArgs eventArgs)
+        {
+            Button senderButton = sender as Button;
+            
         }
     }
 }

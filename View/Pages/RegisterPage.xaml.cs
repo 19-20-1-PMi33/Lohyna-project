@@ -23,24 +23,24 @@ namespace View.Pages
         public RegisterPage()
         {
             InitializeComponent();
-            navbar.button_register.Click += LogInNavbar_Button_register_Click;
-            navbar.button_login.Click += LogInNavbar_Buttom_login_Click;
-            navbar.button_FAQ.Click += LogInNavbar_Button_FAQ_Click;
+            //navbar.button_register.Click += LogInNavbar_Button_register_Click;
+            //navbar.button_login.Click += LogInNavbar_Buttom_login_Click;
+            //navbar.button_FAQ.Click += LogInNavbar_Button_FAQ_Click;
         }
 
-        private void LogInNavbar_Button_FAQ_Click(object sender, RoutedEventArgs e)
-        {
-            this.NavigationService.Navigate(new Uri("Pages/FaqPageUnloged.xaml", UriKind.Relative));
-        }
+        //private void LogInNavbar_Button_FAQ_Click(object sender, RoutedEventArgs e)
+        //{
+        //    this.NavigationService.Navigate(new Uri("Pages/FaqPageUnloged.xaml", UriKind.Relative));
+        //}
 
-        private void LogInNavbar_Buttom_login_Click(object sender, RoutedEventArgs e)
-        {
-            this.NavigationService.Navigate(new Uri("Pages/ProfilePage.xaml", UriKind.Relative));
-        }
+        //private void LogInNavbar_Buttom_login_Click(object sender, RoutedEventArgs e)
+        //{
+        //    this.NavigationService.Navigate(new Uri("Pages/ProfilePage.xaml", UriKind.Relative));
+        //}
 
-        private void LogInNavbar_Button_register_Click(object sender, RoutedEventArgs e)
-        {
-            this.NavigationService.Navigate(new Uri("Pages/RegisterPage.xaml", UriKind.Relative));
-        }
+        //private void LogInNavbar_Button_register_Click(object sender, RoutedEventArgs e)
+        //{
+        //    this.NavigationService.Navigate(new Uri("Pages/RegisterPage.xaml", UriKind.Relative));
+        //}
     }
 }

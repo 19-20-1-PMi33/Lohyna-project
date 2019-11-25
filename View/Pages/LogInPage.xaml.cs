@@ -24,26 +24,26 @@ namespace View.Pages
         public LogInPage()
         {
             InitializeComponent();
-            navbar.button_register.Click += LogInNavbar_Button_register_Click;
+            //navbar.button_register.Click += LogInNavbar_Button_register_Click;
             navbar.button_login.Click += LogInNavbar_Buttom_login_Click;
-            navbar.button_FAQ.Click += LogInNavbar_Button_FAQ_Click;
+            //navbar.button_FAQ.Click += LogInNavbar_Button_FAQ_Click;
         }
 
-        //we must write navigation in wpf app, because of system.windows.controls
+        ////we must write navigation in wpf app, because of system.windows.controls
         private void LogInNavbar_Buttom_login_Click(object sender, RoutedEventArgs e)
         {
             //add if (authorise)
             this.NavigationService.Navigate(new Uri("Pages/ProfilePage.xaml", UriKind.Relative));
         }
 
-        private void LogInNavbar_Button_register_Click(object sender, RoutedEventArgs e)
-        {
-            this.NavigationService.Navigate(new Uri("Pages/RegisterPage.xaml", UriKind.Relative));
-        }
-        private void LogInNavbar_Button_FAQ_Click(object sender, RoutedEventArgs e)
-        {
-            this.NavigationService.Navigate(new Uri("Pages/FaqPageUnloged.xaml", UriKind.Relative));
-        }
+        //private void LogInNavbar_Button_register_Click(object sender, RoutedEventArgs e)
+        //{
+        //    this.NavigationService.Navigate(new Uri("Pages/RegisterPage.xaml", UriKind.Relative));
+        //}
+        //private void LogInNavbar_Button_FAQ_Click(object sender, RoutedEventArgs e)
+        //{
+        //    this.NavigationService.Navigate(new Uri("Pages/FaqPageUnloged.xaml", UriKind.Relative));
+        //}
 
     }
 }
