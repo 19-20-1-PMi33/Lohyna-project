@@ -32,10 +32,10 @@ namespace View.Pages
             navbar.button_FAQ.Click += LogInNavbar_Button_FAQ_Click;
         }
 
-        //we must write navigation in wpf app, because of system.windows.controls
+        // FIXME: we must write navigation in wpf app, because of system.windows.controls
         private void LogInNavbar_Buttom_login_Click(object sender, RoutedEventArgs e)
         {
-            if (authorisation.IsCorrectPersonData(navbar.usernameTextBox.Text, navbar.passwordTextBox.Text))
+            if (authorisation.IsCorrectPersonData(navbar.usernameTextBox.Text, navbar.passwordTextBox.Password))
             {
                 this.NavigationService.Navigate(new Uri("Pages/ProfilePage.xaml", UriKind.Relative));
             }
@@ -50,7 +50,6 @@ namespace View.Pages
                 {
                     this.NavigationService.Navigate(new Uri("Pages/RegisterPage.xaml", UriKind.Relative));
                 }
-
             }
         }
 
