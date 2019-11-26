@@ -2,14 +2,14 @@
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
-using DataServices;
+using DataServices.Services;
 
 namespace ViewModel
 {
 	public class Authorisation
 	{
-        readonly DataServices.Services.IPersonService service;
-        public Authorisation(DataServices.Services.IPersonService personService)
+        readonly IPersonService service;
+        public Authorisation(IPersonService personService)
         {
             Console.WriteLine($"{Directory.GetCurrentDirectory()}");
             service = personService;
