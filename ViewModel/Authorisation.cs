@@ -18,7 +18,7 @@ namespace ViewModel
 
             var person = service.LoadLogInPersonAsync(username);
 
-            return person.Password.Equals(password);
+            return person != null && person.Password.Equals(password);
         }
 	}
 }

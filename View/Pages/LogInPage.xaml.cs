@@ -39,6 +39,19 @@ namespace View.Pages
             {
                 this.NavigationService.Navigate(new Uri("Pages/ProfilePage.xaml", UriKind.Relative));
             }
+            else
+            {
+                MessageBoxResult result = MessageBox.Show("You don't have an account here. Register?",
+                                          "Confirmation",
+                                          MessageBoxButton.YesNoCancel,
+                                          MessageBoxImage.Question);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    this.NavigationService.Navigate(new Uri("Pages/RegisterPage.xaml", UriKind.Relative));
+                }
+
+            }
         }
 
         private void LogInNavbar_Button_register_Click(object sender, RoutedEventArgs e)
@@ -47,8 +60,7 @@ namespace View.Pages
         }
         private void LogInNavbar_Button_FAQ_Click(object sender, RoutedEventArgs e)
         {
-            
-                this.NavigationService.Navigate(new Uri("Pages/FaqPageUnloged.xaml", UriKind.Relative));
+            this.NavigationService.Navigate(new Uri("Pages/FaqPageUnloged.xaml", UriKind.Relative));
         }
 
     }
