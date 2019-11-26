@@ -108,7 +108,7 @@ namespace DataServices
             return await _dataSource.SaveChangesAsync();
         }
 
-        string LoadAnswerForQuestionAsync(string question)
+        public string LoadAnswerForQuestionAsync(string question)
         {
             return _dataSource.FAQ.Find(question).Answer;
         }
@@ -145,11 +145,6 @@ namespace DataServices
                     _dataSource.Dispose();
                 }
             }
-        }
-
-        string IFaqService.LoadAnswerForQuestionAsync(string question)
-        {
-            throw new NotImplementedException();
         }
         #endregion
     }
