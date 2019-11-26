@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ViewModel;
+using DataServices.Services;
+using DataServices;
 
 namespace View.Pages
 {
@@ -21,6 +23,7 @@ namespace View.Pages
     /// </summary>
     public partial class LogInPage : Page
     {
+        private Authorisation authorisation = new Authorisation(new SQLiteDataService());
         public LogInPage()
         {
             InitializeComponent();
@@ -32,8 +35,10 @@ namespace View.Pages
         //we must write navigation in wpf app, because of system.windows.controls
         private void LogInNavbar_Buttom_login_Click(object sender, RoutedEventArgs e)
         {
-            //add if (authorise)
-            this.NavigationService.Navigate(new Uri("Pages/ProfilePage.xaml", UriKind.Relative));
+            if (authorisation.IsCorrectPersonData(navbar.usernameTextBox.Text, navbar.passwordTextBox.Text))
+            {
+                this.NavigationService.Navigate(new Uri("Pages/ProfilePage.xaml", UriKind.Relative));
+            }
         }
 
         private void LogInNavbar_Button_register_Click(object sender, RoutedEventArgs e)
@@ -42,7 +47,8 @@ namespace View.Pages
         }
         private void LogInNavbar_Button_FAQ_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("Pages/FaqPageUnloged.xaml", UriKind.Relative));
+            
+                this.NavigationService.Navigate(new Uri("Pages/FaqPageUnloged.xaml", UriKind.Relative));
         }
 
     }
