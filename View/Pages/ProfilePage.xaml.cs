@@ -31,8 +31,8 @@ namespace View.Pages
         public ProfilePage()
 
         {
-            this.logic = new ProfilePageVM(new SQLiteDataService(), "OlegAndrus");
-            logic.GetRatings();
+            this.logic = new ProfilePageVM(new SQLiteDataService(), "LubomyrHalamaga");
+            
             InitializeComponent();
 
             navbar.button_Profile.Click += Navbar_Button_Profile_Click;
@@ -58,6 +58,7 @@ namespace View.Pages
                 }
                 else if (logic.GetStudent() != null)
                 {
+                    logic.GetRatings();
                     content.group_department_textblock.Text = $"{logic.GetStudent().GroupID}";
                     content.course_textblock.Text = $"{logic.GetGroup().Course}";
                     content.nom_zalik_textblock.Text = $"{logic.GetStudent().TicketNumber}";
@@ -66,9 +67,10 @@ namespace View.Pages
                     content.button_next.MouseDown += Content_Button_Next_MouseDown;
                     content.button_prev.MouseDown += Content_Button_prev_MouseDown;
                     content.page_index.Text = $"{current_page_number + 1} of {logic.GetPageCount(page_limit)}";
+
+                    fillMarksTable();
                 }
             }
-            fillMarksTable();
         }
 
         private void Navbar_Button_TimeTable_Click(object sender, RoutedEventArgs e)
