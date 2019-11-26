@@ -44,10 +44,10 @@ namespace View.Pages
             content.button_sortSubject.Click += Content_Button_sortCreated_Click;
             content.button_sortName.Click += Content_Button_sortDeadline_Click;
             SortNotes(sorted);
-            searchBar.textSearch.KeyDown += SearchBar_TextSearch_KeyDown;
+            searchBar.textSearch.KeyDown += SearchBar_TextSearch_Search_On_KeyDown;
         }
 
-        private void SearchBar_TextSearch_KeyDown(object sender, KeyEventArgs e)
+        private void SearchBar_TextSearch_Search_On_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter && !String.IsNullOrWhiteSpace(searchBar.textSearch.Text))
             {
