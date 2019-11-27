@@ -27,17 +27,17 @@
             <ColumnDefinition Width="0.1*"/>
         </Grid.ColumnDefinitions>
 
-        <Image x:Name="profile_photo" Grid.Row="1" Grid.RowSpan="4" Grid.Column="1" Source="Images/profile_placeholder.jpg" HorizontalAlignment="Left"/>
-        <TextBlock x:Name="group_department_label" Text="Group : " Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" FontSize="22" Margin="10 0 0 0"></TextBlock>
-        <TextBlock x:Name="name_surname_textblock" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Text="Roman Levkovych" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="WrapWithOverflow"/>
-        <TextBlock x:Name="course_label" Text="Course : " Grid.Row="3" Grid.Column="2" VerticalAlignment="Center" FontSize="22" Margin="10 0 0 0"></TextBlock>
-        <TextBlock x:Name="group_department_textblock"  Grid.Row="2" Text="PMi-33" Grid.Column="3" FontSize="22" VerticalAlignment="Center"  Margin="10 0 0 0" TextWrapping="WrapWithOverflow"/>
-        <TextBlock x:Name="number_zalikovka_label" Text="Nom zal : " Grid.Row="4" Grid.Column="2" VerticalAlignment="Center" FontSize="22" Margin="10 0 0 0"/>
-        <TextBlock x:Name="course_textblock" Text="3" Grid.Row="3" Grid.Column="3" FontSize="22" VerticalAlignment="Center"  Margin="10 0 0 0"/>
-        <TextBlock x:Name="number_zalikovka_textblock" Text="BC 81791218" Grid.Row="4" Grid.Column="3" FontSize="22" VerticalAlignment="Center" Margin="10 0 0 0"/>
+        <Image x:Name="profilePhoto" Grid.Row="1" Grid.RowSpan="4" Grid.Column="1" Source="Images/profile_placeholder.jpg" HorizontalAlignment="Left"/>
+        <TextBlock x:Name="groupDepartmentLabel" Text="Group : " Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" FontSize="22" Margin="10 0 0 0"></TextBlock>
+        <TextBlock x:Name="nameSurnameTextblock" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Text="Roman Levkovych" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="WrapWithOverflow"/>
+        <TextBlock x:Name="courseLabel" Text="Course : " Grid.Row="3" Grid.Column="2" VerticalAlignment="Center" FontSize="22" Margin="10 0 0 0"></TextBlock>
+        <TextBlock x:Name="groupDepartmentTextblock"  Grid.Row="2" Text="PMi-33" Grid.Column="3" FontSize="22" VerticalAlignment="Center"  Margin="10 0 0 0" TextWrapping="WrapWithOverflow"/>
+        <TextBlock x:Name="numberZalikovkaLabel" Text="Nom zal : " Grid.Row="4" Grid.Column="2" VerticalAlignment="Center" FontSize="22" Margin="10 0 0 0"/>
+        <TextBlock x:Name="courseTextblock" Text="3" Grid.Row="3" Grid.Column="3" FontSize="22" VerticalAlignment="Center"  Margin="10 0 0 0"/>
+        <TextBlock x:Name="numberZalikovkaTextblock" Text="BC 81791218" Grid.Row="4" Grid.Column="3" FontSize="22" VerticalAlignment="Center" Margin="10 0 0 0"/>
         <local:ProfilePageTableMarks x:Name="marks" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="3"/>
-        <TextBlock x:Name="page_index_textblock" Grid.Row="7" Grid.Column="2" TextAlignment="Center" VerticalAlignment="Center" FontSize="23"/>
-        <images:collapse_down_icon x:Name="button_prev" Grid.Row="7" Grid.Column="1" Width="40" Height="40" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Cursor="Hand">
+        <TextBlock x:Name="pageIndexTextblock" Grid.Row="7" Grid.Column="2" TextAlignment="Center" VerticalAlignment="Center" FontSize="23"/>
+        <images:collapse_down_icon x:Name="buttonPrev" Grid.Row="7" Grid.Column="1" Width="40" Height="40" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Cursor="Hand">
             <images:collapse_down_icon.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -47,7 +47,7 @@
                 </TransformGroup>
             </images:collapse_down_icon.RenderTransform>
         </images:collapse_down_icon>
-        <images:collapse_down_icon x:Name="button_next" Grid.Row="7" Grid.Column="3" Width="40" Height="40" HorizontalAlignment="Left" RenderTransformOrigin="0.5,0.5" Cursor="Hand">
+        <images:collapse_down_icon x:Name="buttonNext" Grid.Row="7" Grid.Column="3" Width="40" Height="40" HorizontalAlignment="Left" RenderTransformOrigin="0.5,0.5" Cursor="Hand">
             <images:collapse_down_icon.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>

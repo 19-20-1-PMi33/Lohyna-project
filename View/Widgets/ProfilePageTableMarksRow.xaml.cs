@@ -21,13 +21,13 @@ namespace View.Widgets
     /// </summary>
     public partial class ProfilePageTableMarksRow : UserControl
     {
-        public Rating mark { get; set; } = null;
+        public Rating Mark { get; set; } = null;
         public ProfilePageTableMarksRow(Rating mark)
         {
-            this.mark = mark;
+            this.Mark = mark;
             InitializeComponent();
-            subject_textbox.Text = mark.SubjectID;
-            mark_textbox.Text = Convert.ToString(mark.Mark);
+            subjectTextbox.Text = Mark.SubjectID;
+            markTextbox.Text = Convert.ToString(mark.Mark);
         }
     }
 }

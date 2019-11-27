@@ -11,7 +11,7 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="subject_column" Grid.Column="0" Content="Subject" FontSize="20" Cursor="Hand" Style="{StaticResource HeaderRowButton}"/>
-        <Button x:Name="mark_column" Grid.Column="1" Content="Mark" FontSize="20" Cursor="Hand" Style="{StaticResource HeaderRowButton}"/>
+        <Button x:Name="subjectColumn" Grid.Column="0" Content="Subject" FontSize="20" Cursor="Hand" Style="{StaticResource HeaderRowButton}"/>
+        <Button x:Name="markColumn" Grid.Column="1" Content="Mark" FontSize="20" Cursor="Hand" Style="{StaticResource HeaderRowButton}"/>
     </Grid>
 </UserControl>

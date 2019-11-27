@@ -42,37 +42,37 @@ namespace View.Pages
             navbar.button_Profile.Style = Application.Current.Resources["MenuButtonActive"] as Style;
             if (logic.GetPerson() != null)
             {
-                content.name_surname_textblock.Text = $"{logic.GetPerson().Name} {logic.GetPerson().Surname}";
+                content.nameSurnameTextblock.Text = $"{logic.GetPerson().Name} {logic.GetPerson().Surname}";
                 if (logic.GetPerson().Photo != null)
-                    content.profile_photo.Source = new BitmapImage(new Uri(logic.GetPerson().Photo, UriKind.Relative));
+                    content.profilePhoto.Source = new BitmapImage(new Uri(logic.GetPerson().Photo, UriKind.Relative));
                 else
-                    content.profile_photo.Source = new BitmapImage(new Uri("Images/profile_placeholder.jpg", UriKind.Relative));
+                    content.profilePhoto.Source = new BitmapImage(new Uri("Images/profile_placeholder.jpg", UriKind.Relative));
                 
                 if (logic.GetLecturer() != null)
                 {
-                    content.group_department_label.Text = "Department:";
-                    content.group_department_textblock.Text = $"{logic.GetLecturer().Department}";
-                    content.number_zalikovka_label.Visibility = Visibility.Hidden;
-                    content.number_zalikovka_textblock.Visibility = Visibility.Hidden;
-                    content.course_label.Visibility = Visibility.Hidden;
-                    content.course_textblock.Visibility = Visibility.Hidden;
+                    content.groupDepartmentLabel.Text = "Department:";
+                    content.groupDepartmentTextblock.Text = $"{logic.GetLecturer().Department}";
+                    content.numberZalikovkaLabel.Visibility = Visibility.Hidden;
+                    content.numberZalikovkaTextblock.Visibility = Visibility.Hidden;
+                    content.courseLabel.Visibility = Visibility.Hidden;
+                    content.courseTextblock.Visibility = Visibility.Hidden;
                     content.marks.Visibility = Visibility.Hidden;
-                    content.button_next.Visibility = Visibility.Hidden;
-                    content.button_prev.Visibility = Visibility.Hidden;
+                    content.buttonNext.Visibility = Visibility.Hidden;
+                    content.buttonPrev.Visibility = Visibility.Hidden;
                 }
                 else if (logic.GetStudent() != null)
                 {
                     logic.GetRatings();
-                    content.group_department_textblock.Text = $"{logic.GetStudent().GroupID}";
-                    content.course_textblock.Text = $"{logic.GetGroup().Course}";
-                    content.number_zalikovka_textblock.Text = $"{logic.GetStudent().TicketNumber}";
-                    content.marks.HeadRow1.subject_column.Click += sortRatingsBySubjectClick;
-                    content.marks.HeadRow1.mark_column.Click += SortRatingsByMarkClick;
-                    content.marks.HeadRow2.subject_column.Click += sortRatingsBySubjectClick;
-                    content.marks.HeadRow2.mark_column.Click += SortRatingsByMarkClick;
-                    content.button_next.MouseDown += PreviousRatingsPageMouseDown;
-                    content.button_prev.MouseDown += NextRatingsPageMouseDown;
-                    content.page_index_textblock.Text = $"{current_page_number + 1} of {logic.GetPageCount(pageLimit)}";
+                    content.groupDepartmentTextblock.Text = $"{logic.GetStudent().GroupID}";
+                    content.courseTextblock.Text = $"{logic.GetGroup().Course}";
+                    content.numberZalikovkaTextblock.Text = $"{logic.GetStudent().TicketNumber}";
+                    content.marks.HeadRow1.subjectColumn.Click += SortRatingsBySubjectClick;
+                    content.marks.HeadRow1.markColumn.Click += SortRatingsByMarkClick;
+                    content.marks.HeadRow2.subjectColumn.Click += SortRatingsBySubjectClick;
+                    content.marks.HeadRow2.markColumn.Click += SortRatingsByMarkClick;
+                    content.buttonNext.MouseDown += PreviousRatingsPageMouseDown;
+                    content.buttonPrev.MouseDown += NextRatingsPageMouseDown;
+                    content.pageIndexTextblock.Text = $"{current_page_number + 1} of {logic.GetPageCount(pageLimit)}";
 
                     FillMarksTable();
                 }
@@ -121,7 +121,7 @@ namespace View.Pages
             logic.Sort(by);
             FillMarksTable();
         }
-        private void sortRatingsBySubjectClick(object sender, RoutedEventArgs e)
+        private void SortRatingsBySubjectClick(object sender, RoutedEventArgs e)
         {
             if (sorted == SortMarkTable.Subject)
             {
@@ -140,7 +140,7 @@ namespace View.Pages
             if (current_page_number < logic.GetPageCount(pageLimit) - 1)
             {
                 current_page_number += 1;
-                content.page_index_textblock.Text = $"{current_page_number + 1} of {logic.GetPageCount(pageLimit)}";
+                content.pageIndexTextblock.Text = $"{current_page_number + 1} of {logic.GetPageCount(pageLimit)}";
                 FillMarksTable();
 
             }
@@ -151,7 +151,7 @@ namespace View.Pages
             if (current_page_number > 0)
             {
                 current_page_number -= 1;
-                content.page_index_textblock.Text = $"{current_page_number + 1} of {logic.GetPageCount(pageLimit)}";
+                content.pageIndexTextblock.Text = $"{current_page_number + 1} of {logic.GetPageCount(pageLimit)}";
                 FillMarksTable();
             }
         }
