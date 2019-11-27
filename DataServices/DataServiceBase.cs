@@ -67,6 +67,18 @@ namespace DataServices
                 .Where(person => person.Username.Equals(name))
                 .ToListAsync();
         }
+        public async Task<List<Person>> SearchPersonByNameAsync(string name)
+        {
+            return await _dataSource.Person
+                .Where(person => person.Name.Equals(name))
+                .ToListAsync();
+        }
+        public async Task<List<Person>> SearchPersonBySurnameAsync(string surname)
+        {
+            return await _dataSource.Person
+                .Where(person => person.Surname.Equals(surname))
+                .ToListAsync();
+        }
 
         public async Task<List<string>> LoadQuestionsAsync()
         {
@@ -96,19 +108,25 @@ namespace DataServices
             return await _dataSource.SaveChangesAsync();
         }
 
-        string LoadAnswerForQuestionAsync(string question)
+        public string LoadAnswerForQuestionAsync(string question)
         {
             return _dataSource.FAQ.Find(question).Answer;
         }
 
-        string IFaqService.LoadAnswerForQuestionAsync(string question)
-        {
-            throw new NotImplementedException();
-        }
 
         public async Task<IList<Subject>> LoadSubjectsAsync()
         {
             return await _dataSource.Subject.ToListAsync();
+        }
+
+        public Student LoadStudent(Person person)
+        {
+            return _dataSource.Student.FirstOrDefault(p=>p.Person==person);
+        }
+
+        public Lecturer LoadLecturer(Person person)
+        {
+            return _dataSource.Lecturer.FirstOrDefault(p => p.Person == person);
         }
 
         #region Disposable
