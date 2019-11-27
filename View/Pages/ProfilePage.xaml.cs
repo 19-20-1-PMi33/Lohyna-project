@@ -25,33 +25,37 @@ namespace View.Pages
     public partial class ProfilePage : Page
     {
         private SortMarkTable sorted;
-        private ProfilePageVM logic;
-        int page_limit = 3;
+        private readonly ProfilePageVM logic;
+        private readonly int pageLimit = 4;
         int current_page_number = 0;
         public ProfilePage()
 
         {
-            this.logic = new ProfilePageVM(new SQLiteDataService(), "LubomyrHalamaga");
-            
+            this.logic = new ProfilePageVM(new SQLiteDataService(), "OlegAndrus");
+
             InitializeComponent();
 
-            navbar.button_Profile.Click += Navbar_Button_Profile_Click;
-            navbar.button_FAQ.Click += Navbar_Button_FAQ_Click;
-            navbar.button_Notes.Click += Navbar_Button_Notes_Click;
-            navbar.button_TimeTable.Click += Navbar_Button_TimeTable_Click;
+            navbar.button_Profile.Click += ProfileTransition;
+            navbar.button_FAQ.Click += FAQTransition;
+            navbar.button_Notes.Click += NotesTransition;
+            navbar.button_TimeTable.Click += TimetableTransition;
             navbar.button_Profile.Style = Application.Current.Resources["MenuButtonActive"] as Style;
             if (logic.GetPerson() != null)
             {
                 content.name_surname_textblock.Text = $"{logic.GetPerson().Name} {logic.GetPerson().Surname}";
-                //content.profile_photo.Source = new BitmapImage(new Uri(logic.GetPerson().Photo, UriKind.Relative));
+                if (logic.GetPerson().Photo != null)
+                    content.profile_photo.Source = new BitmapImage(new Uri(logic.GetPerson().Photo, UriKind.Relative));
+                else
+                    content.profile_photo.Source = new BitmapImage(new Uri("Images/profile_placeholder.jpg", UriKind.Relative));
+                
                 if (logic.GetLecturer() != null)
                 {
-                    content.label1.Text = "Department:";
+                    content.group_department_label.Text = "Department:";
                     content.group_department_textblock.Text = $"{logic.GetLecturer().Department}";
-                    content.label2.Text = "";
-                    content.label3.Text = "";
-                    content.course_textblock.Text = "";
-                    content.nom_zalik_textblock.Text = "";
+                    content.number_zalikovka_label.Visibility = Visibility.Hidden;
+                    content.number_zalikovka_textblock.Visibility = Visibility.Hidden;
+                    content.course_label.Visibility = Visibility.Hidden;
+                    content.course_textblock.Visibility = Visibility.Hidden;
                     content.marks.Visibility = Visibility.Hidden;
                     content.button_next.Visibility = Visibility.Hidden;
                     content.button_prev.Visibility = Visibility.Hidden;
@@ -61,54 +65,63 @@ namespace View.Pages
                     logic.GetRatings();
                     content.group_department_textblock.Text = $"{logic.GetStudent().GroupID}";
                     content.course_textblock.Text = $"{logic.GetGroup().Course}";
-                    content.nom_zalik_textblock.Text = $"{logic.GetStudent().TicketNumber}";
-                    content.marks.HeadRow.subject_column.Click += Content_Marks_HeadRow_Button_sortSubject_Click;
-                    content.marks.HeadRow.mark_column.Click += Content_Marks_HeadRow_Button_sortMarks_Click;
-                    content.button_next.MouseDown += Content_Button_Next_MouseDown;
-                    content.button_prev.MouseDown += Content_Button_prev_MouseDown;
-                    content.page_index.Text = $"{current_page_number + 1} of {logic.GetPageCount(page_limit)}";
+                    content.number_zalikovka_textblock.Text = $"{logic.GetStudent().TicketNumber}";
+                    content.marks.HeadRow1.subject_column.Click += sortRatingsBySubjectClick;
+                    content.marks.HeadRow1.mark_column.Click += SortRatingsByMarkClick;
+                    content.marks.HeadRow2.subject_column.Click += sortRatingsBySubjectClick;
+                    content.marks.HeadRow2.mark_column.Click += SortRatingsByMarkClick;
+                    content.button_next.MouseDown += PreviousRatingsPageMouseDown;
+                    content.button_prev.MouseDown += NextRatingsPageMouseDown;
+                    content.page_index_textblock.Text = $"{current_page_number + 1} of {logic.GetPageCount(pageLimit)}";
 
-                    fillMarksTable();
+                    FillMarksTable();
                 }
             }
         }
 
-        private void Navbar_Button_TimeTable_Click(object sender, RoutedEventArgs e)
+        private void TimetableTransition(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("Pages/TimeTablePage.xaml", UriKind.Relative));
         }
 
-        private void Navbar_Button_Notes_Click(object sender, RoutedEventArgs e)
+        private void NotesTransition(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("Pages/NotesPage.xaml", UriKind.Relative));
         }
 
-        private void Navbar_Button_FAQ_Click(object sender, RoutedEventArgs e)
+        private void FAQTransition(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("Pages/FaqPageLoged.xaml", UriKind.Relative));
         }
 
-        private void Navbar_Button_Profile_Click(object sender, RoutedEventArgs e)
+        private void ProfileTransition(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("Pages/ProfilePage.xaml", UriKind.Relative));
         }
 
-        private void fillMarksTable()
+        private void FillMarksTable()
         {
-            this.content.marks.stack.Children.Clear();
-            foreach (Rating row in logic.GetCurrentPageRatings(page_limit, current_page_number))
+            this.content.marks.stack1.Children.Clear();
+            this.content.marks.stack2.Children.Clear();
+            foreach (Rating row in logic.GetCurrentPageRatings(pageLimit, current_page_number))
             {
                 ProfilePageTableMarksRow item = new ProfilePageTableMarksRow(row);
-                this.content.marks.stack.Children.Add(item);
-
+                if (content.marks.stack1.Children.Count < Math.Ceiling((double)pageLimit / 2))
+                    this.content.marks.stack1.Children.Add(item);
+                else
+                    this.content.marks.stack2.Children.Add(item);
             }
+            if (content.marks.stack2.Children.Count == 0)
+                content.marks.HeadRow2.Visibility = Visibility.Hidden;
+            else
+                content.marks.HeadRow2.Visibility = Visibility.Visible;
         }
         public void SortMarksTableRows(SortMarkTable by)
         {
-            logic.sort(by);
-            fillMarksTable();
+            logic.Sort(by);
+            FillMarksTable();
         }
-        private void Content_Marks_HeadRow_Button_sortSubject_Click(object sender, RoutedEventArgs e)
+        private void sortRatingsBySubjectClick(object sender, RoutedEventArgs e)
         {
             if (sorted == SortMarkTable.Subject)
             {
@@ -122,28 +135,28 @@ namespace View.Pages
             }
         }
 
-        private void Content_Button_Next_MouseDown(object sender, MouseButtonEventArgs e)
+        private void PreviousRatingsPageMouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (current_page_number < logic.GetPageCount(page_limit) - 1)
+            if (current_page_number < logic.GetPageCount(pageLimit) - 1)
             {
                 current_page_number += 1;
-                content.page_index.Text = $"{current_page_number + 1} of {logic.GetPageCount(page_limit)}";
-                fillMarksTable();
+                content.page_index_textblock.Text = $"{current_page_number + 1} of {logic.GetPageCount(pageLimit)}";
+                FillMarksTable();
 
             }
         }
 
-        private void Content_Button_prev_MouseDown(object sender, MouseButtonEventArgs e)
+        private void NextRatingsPageMouseDown(object sender, MouseButtonEventArgs e)
         {
             if (current_page_number > 0)
             {
                 current_page_number -= 1;
-                content.page_index.Text = $"{current_page_number + 1} of {logic.GetPageCount(page_limit)}";
-                fillMarksTable();
+                content.page_index_textblock.Text = $"{current_page_number + 1} of {logic.GetPageCount(pageLimit)}";
+                FillMarksTable();
             }
         }
 
-        private void Content_Marks_HeadRow_Button_sortMarks_Click(object sender, RoutedEventArgs e)
+        private void SortRatingsByMarkClick(object sender, RoutedEventArgs e)
         {
             if (sorted == SortMarkTable.Mark)
             {

@@ -10,12 +10,8 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Button x:Name="subject_column" Grid.Column="0" Content="Subject" FontSize="20" Cursor="Hand" Style="{StaticResource HeaderRowButton}"/>
         <Button x:Name="mark_column" Grid.Column="1" Content="Mark" FontSize="20" Cursor="Hand" Style="{StaticResource HeaderRowButton}"/>
-        <Button x:Name="lecturer_column" Grid.Column="2" Content="Lecturer" FontSize="20" Cursor="Hand" Style="{StaticResource HeaderRowButton}"/>
-        <Button x:Name="semester_column" Grid.Column="3" Content="Semester" FontSize="20" Cursor="Hand" Style="{StaticResource HeaderRowButton}"/>
     </Grid>
 </UserControl>
