@@ -23,23 +23,23 @@ namespace ViewModel
         }
         public bool validateValues(string name, string surname, string zal, string username, string password, string passwordRepeat)
         {
-            if (!String.IsNullOrWhiteSpace(name))
+            if (String.IsNullOrWhiteSpace(name))
             {
                 return false;
             }
-            if (!String.IsNullOrWhiteSpace(surname))
+            if (String.IsNullOrWhiteSpace(surname))
             {
                 return false;
             }
-            if (!String.IsNullOrWhiteSpace(zal))
+            if (String.IsNullOrWhiteSpace(zal))
             {
                 return false;
             }
-            if (!String.IsNullOrWhiteSpace(username))
+            if (String.IsNullOrWhiteSpace(username))
             {
                 return false;
             }
-            if (!String.IsNullOrWhiteSpace(password))
+            if (String.IsNullOrWhiteSpace(password))
             {
                 return false;
             }
@@ -51,7 +51,8 @@ namespace ViewModel
         }
         public bool registerUser(string name, string surname, string zal, string username, string password, string photo)
         {
-            
+            Model.Person person = new Model.Person { Name = name, Surname = surname, Password = password, Photo = photo, Username = username };
+            service.CreatePersonAsync(person).Wait();
             return true;
         }
     }
