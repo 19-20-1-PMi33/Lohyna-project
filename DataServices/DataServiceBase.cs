@@ -123,12 +123,6 @@ namespace DataServices
             return await _dataSource.Subject.ToListAsync();
         }
 
-
-        public async Task<IList<Subject>> LoadSubjectsAsync()
-        {
-            return await _dataSource.Subject.ToListAsync();
-        }
-
         public Student LoadStudent(Person person)
         {
             return _dataSource.Student.FirstOrDefault(p=>p.Person==person);

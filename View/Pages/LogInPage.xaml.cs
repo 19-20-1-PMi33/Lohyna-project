@@ -28,7 +28,7 @@ namespace View.Pages
         {
             InitializeComponent();
             navbar.button_register.Click += RegisterNavigationTransition;
-            navbar.button_login.Click += SuccessfulLogInNavigationTransition;
+            navbar.button_login.Click += LogInNavbar_Buttom_login_Click;
             navbar.button_FAQ.Click += FAQNavigationTransition;
         }
 
