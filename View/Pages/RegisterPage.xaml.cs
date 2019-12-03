@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Forms;
 using ViewModel;
 using DataServices;
 
@@ -22,15 +23,58 @@ namespace View.Pages
     /// </summary>
     public partial class RegisterPage : Page
     {
+        private RegisterPageVM logic;
         private readonly Authorisation authorisation = new Authorisation(new SQLiteDataService());
         public RegisterPage()
         {
+            logic = new RegisterPageVM(new SQLiteDataService());
             InitializeComponent();
+            navbar.button_register.Click += LogInNavbar_Button_register_Click;
+            navbar.button_login.Click += LogInNavbar_Buttom_login_Click;
+            navbar.button_FAQ.Click += LogInNavbar_Button_FAQ_Click;
+            content.button_cancel.Click += Content_Button_cancel_Click;
+            content.button_upload_photo.Click += Content_Button_upload_photo_Click;
+            content.button_Register.Click += Content_Button_Register_Click;
             navbar.button_register.Click += LogInRegisterNavigationTransition;
             navbar.button_login.Click += LogInToApplicationNavigationTransition;
             navbar.button_FAQ.Click += FAQNavigationTransition;
         }
 
+        private void Content_Button_Register_Click(object sender, RoutedEventArgs e)
+        {
+            if (logic.validateValues(content.edit_Name.Text, content.edit_Surname.Text, content.edit_Zal.Text, content.edit_Username.Text, content.edit_Password.Password, content.edit_RepPassword.Password))
+            {
+                if(logic.registerUser(content.edit_Name.Text, content.edit_Surname.Text, content.edit_Zal.Text, content.edit_Username.Text, content.edit_Password.Password, content.profile_photo.Source.ToString()))
+                {
+                    this.NavigationService.Navigate(new Uri("Pages/ProfilePage.xaml", UriKind.Relative));
+                }
+            }
+        }
+
+        private void Content_Button_upload_photo_Click(object sender, RoutedEventArgs e)
+        {
+            if (!String.IsNullOrWhiteSpace(content.edit_Zal.Text))
+            {
+                OpenFileDialog imagePicker = new OpenFileDialog();
+                imagePicker.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg";
+                if (imagePicker.ShowDialog() == DialogResult.OK)
+                {
+                    BitmapImage tmpBitMap = new BitmapImage();
+                    tmpBitMap.BeginInit();
+                    tmpBitMap.CacheOption = BitmapCacheOption.OnLoad;
+                    tmpBitMap.UriSource = new Uri(logic.copyImage(imagePicker.FileName, content.edit_Zal.Text), UriKind.Relative);
+                    tmpBitMap.EndInit();
+                    content.profile_photo.Source = tmpBitMap;
+                }
+            }
+        }
+
+        private void Content_Button_cancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
+        }
+
+        private void LogInNavbar_Button_FAQ_Click(object sender, RoutedEventArgs e)
         private void FAQNavigationTransition(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("Pages/FaqPageUnloged.xaml", UriKind.Relative));
