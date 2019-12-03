@@ -43,11 +43,23 @@ namespace View.Pages
             if (logic.GetPerson() != null)
             {
                 content.nameSurnameTextblock.Text = $"{logic.GetPerson().Name} {logic.GetPerson().Surname}";
+                BitmapImage temp = new BitmapImage();
+                temp.BeginInit();
+                temp.CacheOption = BitmapCacheOption.OnLoad;
                 if (logic.GetPerson().Photo != null)
-                    content.profilePhoto.Source = new BitmapImage(new Uri(logic.GetPerson().Photo, UriKind.Relative));
+                {
+                    temp.UriSource = new Uri(logic.GetPerson().Photo, UriKind.Relative);
+                    
+                    
+                }
                 else
-                    content.profilePhoto.Source = new BitmapImage(new Uri("Images/profile_placeholder.jpg", UriKind.Relative));
-                
+                {
+                    temp.UriSource = new Uri("Images./profile_placeholder.jpg", UriKind.Relative);
+                    temp.EndInit();
+                    content.profilePhoto.Source = temp;
+                }
+                temp.EndInit();
+                content.profilePhoto.Source = temp;
                 if (logic.GetLecturer() != null)
                 {
                     content.groupDepartmentLabel.Text = "Department:";
