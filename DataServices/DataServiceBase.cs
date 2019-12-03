@@ -113,6 +113,10 @@ namespace DataServices
             return _dataSource.FAQ.Find(question).Answer;
         }
 
+        string IFaqService.LoadAnswerForQuestionAsync(string question)
+        {
+            throw new NotImplementedException();
+        }
 
         public async Task<IList<Subject>> LoadSubjectsAsync()
         {

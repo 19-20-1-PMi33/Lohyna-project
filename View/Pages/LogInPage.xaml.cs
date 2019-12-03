@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ViewModel;
+using DataServices.Services;
+using DataServices;
 
 namespace View.Pages
 {
@@ -21,24 +23,41 @@ namespace View.Pages
     /// </summary>
     public partial class LogInPage : Page
     {
+        private readonly Authorisation authorisation = new Authorisation(new SQLiteDataService());
         public LogInPage()
         {
             InitializeComponent();
-            navbar.button_register.Click += LogInNavbar_Button_register_Click;
+            navbar.button_register.Click += RegisterNavigationTransition;
             navbar.button_login.Click += LogInNavbar_Buttom_login_Click;
-            navbar.button_FAQ.Click += LogInNavbar_Button_FAQ_Click;
+            navbar.button_FAQ.Click += FAQNavigationTransition;
         }
 
         private void LogInNavbar_Buttom_login_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.Navigate(new Uri("Pages/ProfilePage.xaml", UriKind.Relative));
+            if (authorisation.IsCorrectPersonData(navbar.usernameTextBox.Text, navbar.passwordTextBox.Password))
+            {
+                this.NavigationService.Navigate(new Uri("Pages/ProfilePage.xaml", UriKind.Relative));
+            }
+            else
+            {
+                MessageBoxResult result = MessageBox.Show("You don't have an account here. Register?",
+                                          "Confirmation",
+                                          MessageBoxButton.YesNoCancel,
+                                          MessageBoxImage.Question);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    this.NavigationService.Navigate(new Uri("Pages/RegisterPage.xaml", UriKind.Relative));
+                }
+            }
         }
 
-        private void LogInNavbar_Button_register_Click(object sender, RoutedEventArgs e)
+        private void RegisterNavigationTransition(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("Pages/RegisterPage.xaml", UriKind.Relative));
         }
-        private void LogInNavbar_Button_FAQ_Click(object sender, RoutedEventArgs e)
+
+        private void FAQNavigationTransition(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("Pages/FaqPageUnloged.xaml", UriKind.Relative));
         }

@@ -12,11 +12,13 @@ namespace DataServices
     public class SqliteDbContext : DbContext, IDataSource
     {
         private string _connectionString = null;
-        public SqliteDbContext(string connectionString = null)
+        public SqliteDbContext(string connectionStringPath = @"..\..\..\univerity-db.db")
         {
-            var connectionStringBuilder = new SqliteConnectionStringBuilder();
-            // TODO: create adequate location for DB.
-            connectionStringBuilder.DataSource = @"..\..\..\DataServices\univerity-db.db";
+            var connectionStringBuilder = new SqliteConnectionStringBuilder
+            {
+                // TODO: create adequate location for DB.
+                DataSource = connectionStringPath
+            };
             _connectionString = connectionStringBuilder.ConnectionString;
         }
 
