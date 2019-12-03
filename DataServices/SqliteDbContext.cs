@@ -14,10 +14,11 @@ namespace DataServices
         private string _connectionString = null;
         public SqliteDbContext(string connectionStringPath = @"..\..\..\univerity-db.db")
         {
-            var connectionStringBuilder = new SqliteConnectionStringBuilder();
-            // TODO: create adequate location for DB.
-            Console.WriteLine($"{Directory.GetCurrentDirectory()}");
-            connectionStringBuilder.DataSource = connectionStringPath;
+            var connectionStringBuilder = new SqliteConnectionStringBuilder
+            {
+                // TODO: create adequate location for DB.
+                DataSource = connectionStringPath
+            };
             _connectionString = connectionStringBuilder.ConnectionString;
         }
 
