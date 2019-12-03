@@ -24,5 +24,14 @@ namespace View.Widgets
         {
             InitializeComponent();
         }
-    }
+		public FaqPageQuestionBlock_answer(string text)
+		{
+			InitializeComponent();
+			answer_string.Text = text;
+		}
+		public void setText(string text)
+		{
+			answer_string.Text = text;
+		}
+	}
 }

@@ -20,9 +20,31 @@ namespace View.Widgets
     /// </summary>
     public partial class FaqPageQuesionBlock_question : UserControl
     {
-        public FaqPageQuesionBlock_question()
-        {
-            InitializeComponent();
-        }
-    }
+		Images.collapse_up_icon col_up;
+		public FaqPageQuesionBlock_question()
+		{
+			InitializeComponent();
+			col_up = new Images.collapse_up_icon();
+			col_up.Height = 50;
+			col_up.Width = 50;
+			Grid.SetColumn(col_up, 0);
+		}
+		public void setCollapsed(bool collapsed)
+		{
+			if (collapsed)
+			{
+				grid.Children.Remove(col_up);
+				grid.Children.Add(col_down);
+			}
+			else
+			{
+				grid.Children.Remove(col_down);
+				grid.Children.Add(col_up);
+			}
+		}
+		public void setText(string text)
+		{
+			quest_string.Text = text;
+		}
+	}
 }

@@ -20,9 +20,61 @@ namespace View.Widgets
     /// </summary>
     public partial class FaqPageQuestionBlock : UserControl
     {
+		StackPanel stack;
+		List<String> answers;
+		bool collapsed;
         public FaqPageQuestionBlock()
         {
-            InitializeComponent();
+			collapsed = true;
+			stack = new StackPanel();
+			answers = new List<string>();
+			InitializeComponent();
+			question.setText("Question");
+			Grid.SetRow(stack, 1);
+			Grid.SetColumn(stack, 1);
         }
+		private void question_collapse(object sender, MouseButtonEventArgs e)
+		{
+			if (collapsed)
+			{
+				collapsed = false;
+				question.setCollapsed(collapsed);
+				stack.Children.Clear();
+				for (int i = 0; i < answers.Count; i++)
+				{
+					FaqPageQuestionBlock_answer temp = new FaqPageQuestionBlock_answer();
+					temp.setText(answers[i]);
+					stack.Children.Add(temp);
+				}
+				grid.Children.Add(stack);
+				question.Background = new SolidColorBrush(Color.FromRgb(200, 200, 200));
+			}
+			else
+			{
+				collapsed = true;
+				question.setCollapsed(collapsed);
+				grid.Children.Remove(stack);
+				question.Background = null;
+			}
+		}
+
+		private void Question_MouseEnter(object sender, MouseEventArgs e)
+		{
+			if (collapsed)
+				question.Background = new SolidColorBrush(Color.FromRgb(220, 220, 220));
+		}
+
+		private void Question_MouseLeave(object sender, MouseEventArgs e)
+		{
+			if (collapsed)
+				question.Background = null;
+		}
+		public void setText(string ques, List<String> answers)
+		{
+			question.setText(ques);
+			this.answers = answers;
+		}
     }
 }
+
+
