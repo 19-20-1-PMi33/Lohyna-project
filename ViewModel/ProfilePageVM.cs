@@ -37,16 +37,16 @@ namespace ViewModel
         public IList<Rating> GetCurrentPageRatings(int pageLimit, int currentPageNumber)
         {
             double page_count = GetPageCount(pageLimit);
-            if (currentPageNumber < page_count - 1)
+            if (currentPageNumber < page_count-1)
                 currentPageMarks = marks.GetRange(currentPageNumber * pageLimit, (currentPageNumber + 1) * pageLimit - currentPageNumber * pageLimit);
-            if (currentPageNumber == page_count - 1 && marks.Count % page_count != 0)
+            if (currentPageNumber == page_count-1)
                 currentPageMarks = marks.GetRange(currentPageNumber * pageLimit, marks.Count % pageLimit);
             return currentPageMarks;
         }
 
         public double GetPageCount(int page_limit)
         {
-            return Math.Ceiling((double)marks.Count / page_limit);
+            return Math.Ceiling((double) marks.Count / page_limit);
         }
 
         public Person GetPerson()

@@ -103,13 +103,15 @@ namespace View.Pages
         {
             this.content.marks.stack1.Children.Clear();
             this.content.marks.stack2.Children.Clear();
+            double FillTableIndex = 0;
             foreach (Rating row in logic.GetCurrentPageRatings(pageLimit, current_page_number))
             {
                 ProfilePageTableMarksRow item = new ProfilePageTableMarksRow(row);
-                if (content.marks.stack1.Children.Count < Math.Ceiling((double)pageLimit / 2))
+                if (FillTableIndex % 2 == 0)
                     this.content.marks.stack1.Children.Add(item);
                 else
                     this.content.marks.stack2.Children.Add(item);
+                ++FillTableIndex;
             }
             if (content.marks.stack2.Children.Count == 0)
                 content.marks.HeadRow2.Visibility = Visibility.Hidden;
