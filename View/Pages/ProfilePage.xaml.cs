@@ -46,18 +46,7 @@ namespace View.Pages
                 BitmapImage temp = new BitmapImage();
                 temp.BeginInit();
                 temp.CacheOption = BitmapCacheOption.OnLoad;
-                if (logic.GetPerson().Photo != null)
-                {
-                    temp.UriSource = new Uri(logic.GetPerson().Photo, UriKind.Relative);
-                    
-                    
-                }
-                else
-                {
-                    temp.UriSource = new Uri("Images./profile_placeholder.jpg", UriKind.Relative);
-                    temp.EndInit();
-                    content.profilePhoto.Source = temp;
-                }
+                temp.UriSource = new Uri("C:/Users/andru/Documents/GitHub/Lohyna-project/View/Widgets/Images/profile_placeholder.jpg", UriKind.Relative);
                 temp.EndInit();
                 content.profilePhoto.Source = temp;
                 if (logic.GetLecturer() != null)
