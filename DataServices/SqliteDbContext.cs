@@ -16,7 +16,7 @@ namespace DataServices
         {
             var connectionStringBuilder = new SqliteConnectionStringBuilder();
             // TODO: create adequate location for DB.
-            connectionStringBuilder.DataSource = @"C:\Users\andru\Documents\GitHub\Lohyna-project\DataServices\university-db.db";
+            connectionStringBuilder.DataSource = @"..\..\..\..\DataServices\univerity-db.db";
             _connectionString = connectionStringBuilder.ConnectionString;
         }
 
