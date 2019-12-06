@@ -27,7 +27,7 @@ namespace View.Pages
         private SortMarkTable sorted;
         private readonly ProfilePageVM logic;
         private readonly int pageLimit = 4;
-        int current_page_number = 0;
+        int currentPageNumber = 0;
         public ProfilePage()
 
         {
@@ -52,7 +52,7 @@ namespace View.Pages
                 if (logic.GetLecturer() != null)
                 {
                     content.groupDepartmentLabel.Text = "Department:";
-                    content.groupDepartmentTextblock.Text = $"{logic.GetLecturer().Department}";
+                    content.groupDepartmentTextblock.Text = logic.GetLecturer().Department;
                     content.numberZalikovkaLabel.Visibility = Visibility.Hidden;
                     content.numberZalikovkaTextblock.Visibility = Visibility.Hidden;
                     content.courseLabel.Visibility = Visibility.Hidden;
@@ -64,16 +64,16 @@ namespace View.Pages
                 else if (logic.GetStudent() != null)
                 {
                     logic.GetRatings();
-                    content.groupDepartmentTextblock.Text = $"{logic.GetStudent().GroupID}";
-                    content.courseTextblock.Text = $"{logic.GetGroup().Course}";
-                    content.numberZalikovkaTextblock.Text = $"{logic.GetStudent().TicketNumber}";
+                    content.groupDepartmentTextblock.Text = logic.GetStudent().GroupID;
+                    content.courseTextblock.Text = logic.GetGroup().Course.ToString();
+                    content.numberZalikovkaTextblock.Text = logic.GetStudent().TicketNumber.ToString();
                     content.marks.HeadRow1.subjectColumn.Click += SortRatingsBySubjectClick;
                     content.marks.HeadRow1.markColumn.Click += SortRatingsByMarkClick;
                     content.marks.HeadRow2.subjectColumn.Click += SortRatingsBySubjectClick;
                     content.marks.HeadRow2.markColumn.Click += SortRatingsByMarkClick;
                     content.buttonNext.MouseDown += PreviousRatingsPageMouseDown;
                     content.buttonPrev.MouseDown += NextRatingsPageMouseDown;
-                    content.pageIndexTextblock.Text = $"{current_page_number + 1} of {logic.GetPageCount(pageLimit)}";
+                    content.pageIndexTextblock.Text = $"{currentPageNumber + 1} of {logic.GetPageCount(pageLimit)}";
 
                     FillMarksTable();
                 }
@@ -102,17 +102,17 @@ namespace View.Pages
 
         private void FillMarksTable()
         {
-            this.content.marks.stack1.Children.Clear();
-            this.content.marks.stack2.Children.Clear();
-            double FillTableIndex = 0;
-            foreach (Rating row in logic.GetCurrentPageRatings(pageLimit, current_page_number))
+            content.marks.stack1.Children.Clear();
+            content.marks.stack2.Children.Clear();
+            var fillTableIndex = 0;
+            foreach (Rating row in logic.GetCurrentPageRatings(pageLimit, currentPageNumber))
             {
                 ProfilePageTableMarksRow item = new ProfilePageTableMarksRow(row);
-                if (FillTableIndex % 2 == 0)
+                if (fillTableIndex % 2 == 0)
                     this.content.marks.stack1.Children.Add(item);
                 else
                     this.content.marks.stack2.Children.Add(item);
-                ++FillTableIndex;
+                ++fillTableIndex;
             }
             if (content.marks.stack2.Children.Count == 0)
                 content.marks.HeadRow2.Visibility = Visibility.Hidden;
@@ -126,24 +126,16 @@ namespace View.Pages
         }
         private void SortRatingsBySubjectClick(object sender, RoutedEventArgs e)
         {
-            if (sorted == SortMarkTable.Subject)
-            {
-                SortMarksTableRows(SortMarkTable.SubjectReverse);
-                sorted = SortMarkTable.SubjectReverse;
-            }
-            else
-            {
-                SortMarksTableRows(SortMarkTable.Subject);
-                sorted = SortMarkTable.Subject;
-            }
+            sorted = (sorted == SortMarkTable.Subject) ? SortMarkTable.SubjectReverse : SortMarkTable.Subject;
+            SortMarksTableRows(sorted);
         }
 
         private void PreviousRatingsPageMouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (current_page_number < logic.GetPageCount(pageLimit) - 1)
+            if (currentPageNumber < logic.GetPageCount(pageLimit) - 1)
             {
-                current_page_number += 1;
-                content.pageIndexTextblock.Text = $"{current_page_number + 1} of {logic.GetPageCount(pageLimit)}";
+                currentPageNumber += 1;
+                content.pageIndexTextblock.Text = $"{currentPageNumber + 1} of {logic.GetPageCount(pageLimit)}";
                 FillMarksTable();
 
             }
@@ -151,26 +143,18 @@ namespace View.Pages
 
         private void NextRatingsPageMouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (current_page_number > 0)
+            if (currentPageNumber > 0)
             {
-                current_page_number -= 1;
-                content.pageIndexTextblock.Text = $"{current_page_number + 1} of {logic.GetPageCount(pageLimit)}";
+                currentPageNumber -= 1;
+                content.pageIndexTextblock.Text = $"{currentPageNumber + 1} of {logic.GetPageCount(pageLimit)}";
                 FillMarksTable();
             }
         }
 
         private void SortRatingsByMarkClick(object sender, RoutedEventArgs e)
         {
-            if (sorted == SortMarkTable.Mark)
-            {
-                SortMarksTableRows(SortMarkTable.MarkReverse);
-                sorted = SortMarkTable.MarkReverse;
-            }
-            else
-            {
-                SortMarksTableRows(SortMarkTable.Mark);
-                sorted = SortMarkTable.Mark;
-            }
+            sorted = (sorted == SortMarkTable.Mark) ? SortMarkTable.MarkReverse : SortMarkTable.Mark;
+            SortMarksTableRows(sorted);
         }
 
     }

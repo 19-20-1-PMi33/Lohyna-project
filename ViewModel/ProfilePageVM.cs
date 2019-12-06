@@ -7,6 +7,7 @@ using Model;
 namespace ViewModel
 {
     public enum SortMarkTable { Subject, SubjectReverse, MarkReverse, Mark };
+
     public class ProfilePageVM
     {
         private readonly IPersonService personService;
@@ -14,7 +15,6 @@ namespace ViewModel
         private readonly IMarkService markService;
         private readonly string username;
         private List<Rating> marks;
-        private List<Rating> currentPageMarks;
 
         public ProfilePageVM(SQLiteDataService dataService, string username)
         {
@@ -25,28 +25,28 @@ namespace ViewModel
 
         }
 
-        public IList<Rating> GetRatings()
+        public List<Rating> GetRatings()
         {
             if (marks == null)
             {
-                marks = (List<Rating>)markService.LoadMarksAsync(GetStudent()).Result;
+                marks = markService.LoadMarksAsync(GetStudent()).Result;
             }
             return marks;
         }
 
-        public IList<Rating> GetCurrentPageRatings(int pageLimit, int currentPageNumber)
+        public List<Rating> GetCurrentPageRatings(int pageLimit, int currentPageNumber)
         {
-            double page_count = GetPageCount(pageLimit);
-            if (currentPageNumber < page_count-1)
-                currentPageMarks = marks.GetRange(currentPageNumber * pageLimit, (currentPageNumber + 1) * pageLimit - currentPageNumber * pageLimit);
-            if (currentPageNumber == page_count-1)
-                currentPageMarks = marks.GetRange(currentPageNumber * pageLimit, marks.Count % pageLimit);
-            return currentPageMarks;
+            var pageCount = GetPageCount(pageLimit);
+            var rangeEnd = (currentPageNumber + 1) * pageLimit - currentPageNumber * pageLimit;
+            List<Rating> CurrentPageMarks = currentPageNumber < pageCount - 1 ? 
+                marks.GetRange(currentPageNumber * pageLimit, rangeEnd) :
+                marks.GetRange(currentPageNumber * pageLimit, marks.Count % pageLimit);
+            return CurrentPageMarks;
         }
 
-        public double GetPageCount(int page_limit)
+        public double GetPageCount(int pageLimit)
         {
-            return Math.Ceiling((double) marks.Count / page_limit);
+            return Math.Ceiling((double) marks.Count / pageLimit);
         }
 
         public Person GetPerson()
@@ -69,12 +69,14 @@ namespace ViewModel
         }
         public void Sort(SortMarkTable key)
         {
-            if (marks.Count > 1)
+            if (GetRatings().Count > 1)
             {
                 switch (key)
                 {
                     case SortMarkTable.Subject: marks.Sort((x, y) => x.SubjectID.CompareTo(y.SubjectID)); break;
                     case SortMarkTable.SubjectReverse: marks.Sort((x, y) => y.SubjectID.CompareTo(x.SubjectID)); break;
+                    case SortMarkTable.Mark: marks.Sort((x, y) => x.Mark.CompareTo(y.Mark)); break;
+                    case SortMarkTable.MarkReverse: marks.Sort((x, y) => y.Mark.CompareTo(x.Mark)); break;
                 }
             }
         }

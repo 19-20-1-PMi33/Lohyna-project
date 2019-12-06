@@ -29,10 +29,5 @@ namespace View.Widgets
             subjectTextbox.Text = Mark.SubjectID;
             markTextbox.Text = Convert.ToString(mark.Mark);
         }
-
-        private void markTextbox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
     }
 }
