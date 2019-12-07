@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
 using Model;
 using ViewModel;
 using DataServices;
@@ -27,11 +28,17 @@ namespace View.Pages
         private SortMarkTable sorted;
         private readonly ProfilePageVM logic;
         private readonly int pageLimit = 4;
+        private readonly string viewDirectory;
         int currentPageNumber = 0;
         public ProfilePage()
 
         {
             this.logic = new ProfilePageVM(new SQLiteDataService(), "OlegAndrus");
+            viewDirectory = Directory
+                .GetParent(Directory
+                .GetParent(System.IO.Path.Combine(Directory.GetCurrentDirectory()))
+                .FullName)
+                .FullName;
 
             InitializeComponent();
 
@@ -42,11 +49,12 @@ namespace View.Pages
             navbar.button_Profile.Style = Application.Current.Resources["MenuButtonActive"] as Style;
             if (logic.GetPerson() != null)
             {
-                content.nameSurnameTextblock.Text = $"{logic.GetPerson().Name} {logic.GetPerson().Surname}";
+                content.nameSurnameTextblock.Text = logic.GetPerson().Name + " " + logic.GetPerson().Surname;
+
                 BitmapImage temp = new BitmapImage();
                 temp.BeginInit();
                 temp.CacheOption = BitmapCacheOption.OnLoad;
-                temp.UriSource = new Uri("C:/Users/andru/Documents/GitHub/Lohyna-project/View/Widgets/Images/profile_placeholder.jpg", UriKind.Relative);
+                temp.UriSource = new Uri(System.IO.Path.Combine(viewDirectory) + logic.GetPerson().Photo, UriKind.Relative);
                 temp.EndInit();
                 content.profilePhoto.Source = temp;
                 if (logic.GetLecturer() != null)
