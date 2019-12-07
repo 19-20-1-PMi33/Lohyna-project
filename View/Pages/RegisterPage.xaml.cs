@@ -26,17 +26,17 @@ namespace View.Pages
         public RegisterPage()
         {
             InitializeComponent();
-            navbar.button_register.Click += LogInNavbar_Button_register_Click;
-            navbar.button_login.Click += LogInNavbar_Buttom_login_Click;
-            navbar.button_FAQ.Click += LogInNavbar_Button_FAQ_Click;
+            navbar.button_register.Click += LogInRegisterNavigationTransition;
+            navbar.button_login.Click += LogInToApplicationNavigationTransition;
+            navbar.button_FAQ.Click += FAQNavigationTransition;
         }
 
-        private void LogInNavbar_Button_FAQ_Click(object sender, RoutedEventArgs e)
+        private void FAQNavigationTransition(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("Pages/FaqPageUnloged.xaml", UriKind.Relative));
         }
 
-        private void LogInNavbar_Buttom_login_Click(object sender, RoutedEventArgs e)
+        private void LogInToApplicationNavigationTransition(object sender, RoutedEventArgs e)
         {
             if (authorisation.IsCorrectPersonData(navbar.usernameTextBox.Text, navbar.passwordTextBox.Password))
             {
@@ -56,7 +56,7 @@ namespace View.Pages
             }
         }
 
-        private void LogInNavbar_Button_register_Click(object sender, RoutedEventArgs e)
+        private void LogInRegisterNavigationTransition(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("Pages/RegisterPage.xaml", UriKind.Relative));
         }

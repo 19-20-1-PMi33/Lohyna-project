@@ -28,11 +28,11 @@ namespace View.Pages
         {
             InitializeComponent();
             navbar.button_register.Click += RegisterNavigationTransition;
-            navbar.button_login.Click += LogInNavbar_Buttom_login_Click;
+            navbar.button_login.Click += LogInToApplicationNavigationTransition;
             navbar.button_FAQ.Click += FAQNavigationTransition;
         }
 
-        private void LogInNavbar_Buttom_login_Click(object sender, RoutedEventArgs e)
+        private void LogInToApplicationNavigationTransition(object sender, RoutedEventArgs e)
         {
             if (authorisation.IsCorrectPersonData(navbar.usernameTextBox.Text, navbar.passwordTextBox.Password))
             {
