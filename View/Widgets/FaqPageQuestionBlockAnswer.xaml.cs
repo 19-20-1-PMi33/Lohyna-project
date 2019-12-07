@@ -18,13 +18,13 @@ namespace View.Widgets
     /// <summary>
     /// Interaction logic for FaqPageQuestionBlock_answer.xaml
     /// </summary>
-    public partial class FaqPageQuestionBlock_answer : UserControl
+    public partial class FaqPageQuestionBlockAnswer : UserControl
     {
-        public FaqPageQuestionBlock_answer()
+        public FaqPageQuestionBlockAnswer()
         {
             InitializeComponent();
         }
-		public FaqPageQuestionBlock_answer(string text)
+		public FaqPageQuestionBlockAnswer(string text)
 		{
 			InitializeComponent();
 			answer_string.Text = text;

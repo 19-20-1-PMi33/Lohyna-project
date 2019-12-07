@@ -15,16 +15,16 @@ using System.Windows.Shapes;
 
 namespace View.Widgets
 {
-    /// <summary>
-    /// Interaction logic for FaqPageQuestionBlock.xaml
-    /// </summary>
-    public partial class FaqPageQuestionBlock : UserControl
-    {
+	/// <summary>
+	/// Interaction logic for FaqPageQuestionBlock.xaml
+	/// </summary>
+	public partial class FaqPageQuestionBlock : UserControl
+	{
 		StackPanel stack;
 		List<String> answers;
 		bool collapsed;
-        public FaqPageQuestionBlock()
-        {
+		public FaqPageQuestionBlock()
+		{
 			collapsed = true;
 			stack = new StackPanel();
 			answers = new List<string>();
@@ -32,49 +32,61 @@ namespace View.Widgets
 			question.setText("Question");
 			Grid.SetRow(stack, 1);
 			Grid.SetColumn(stack, 1);
-        }
-		private void question_collapse(object sender, MouseButtonEventArgs e)
+		}
+		public FaqPageQuestionBlock(String questionText, String answerText)
+		{
+			collapsed = true;
+			stack = new StackPanel();
+			answers = new List<String>();
+			InitializeComponent();
+			question.setText("Question");
+			Grid.SetRow(stack, 1);
+			Grid.SetColumn(stack, 1);
+
+			this.setText(questionText, answerText);
+		}
+		private void QuestionCollapse(object sender, MouseButtonEventArgs e)
 		{
 			if (collapsed)
 			{
 				collapsed = false;
 				question.setCollapsed(collapsed);
+
 				stack.Children.Clear();
-				for (int i = 0; i < answers.Count; i++)
-				{
-					FaqPageQuestionBlock_answer temp = new FaqPageQuestionBlock_answer();
-					temp.setText(answers[i]);
-					stack.Children.Add(temp);
-				}
+				answers.ForEach(x => stack.Children.Add(new FaqPageQuestionBlockAnswer(x)));
+
 				grid.Children.Add(stack);
+
 				question.Background = new SolidColorBrush(Color.FromRgb(200, 200, 200));
 			}
 			else
 			{
 				collapsed = true;
 				question.setCollapsed(collapsed);
+
 				grid.Children.Remove(stack);
+
 				question.Background = null;
 			}
 		}
 
-		private void Question_MouseEnter(object sender, MouseEventArgs e)
+		private void QuestionMouseEnter(object sender, MouseEventArgs e)
 		{
 			if (collapsed)
 				question.Background = new SolidColorBrush(Color.FromRgb(220, 220, 220));
 		}
 
-		private void Question_MouseLeave(object sender, MouseEventArgs e)
+		private void QuestionMouseLeave(object sender, MouseEventArgs e)
 		{
 			if (collapsed)
 				question.Background = null;
 		}
-		public void setText(string ques, List<String> answers)
+		public void setText(String questionText, String answerText)
 		{
-			question.setText(ques);
-			this.answers = answers;
+			question.setText(questionText);
+			this.answers.Add(answerText);
 		}
-    }
+	}
 }
 
 

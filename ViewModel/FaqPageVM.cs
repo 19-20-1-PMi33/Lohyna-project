@@ -27,13 +27,15 @@ namespace ViewModel
 		{
 			if(Questions == null)
 			{
-				Questions = (List<String>)FaqService.LoadQuestionsAsync().Result;
+				GetFAQ();
+				Questions = FAQs.ConvertAll<String>(x => x.Question);
 			}
 			return Questions;
 		}
 		public String GetAnswer(String Question)
 		{
-			return (String)FaqService.LoadAnswerForQuestionAsync(Question);
+			GetFAQ();
+			return FAQs.Find(x => x.Question.Equals(Question)).Answer;		
 		}
-    }
+	}
 }

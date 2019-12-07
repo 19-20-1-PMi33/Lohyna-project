@@ -26,22 +26,12 @@ namespace View.Widgets
         public FaqPageContent()
         {
             InitializeComponent();
-			QuestionBlocks = new List<FaqPageQuestionBlock>();
-
+			InitializeComponent();
 			FaqPageVM Service = new FaqPageVM(new SQLiteDataService());
-			
-			List<String> Questions = new List<String>();
-			Questions = Service.GetQuestions();
+			List<String> Questions = Service.GetQuestions();
 
-			for (int i = 0; i < Questions.Count; i++)
-			{
-				List<String> Answers = new List<string>();
-				Answers.Add(Service.GetAnswer(Questions[i]));
-
-				FaqPageQuestionBlock Block = new FaqPageQuestionBlock();
-				Block.setText(Questions[i], Answers);
-				QuestionBlocks.Add(Block);
-			}
+			QuestionBlocks = new List<FaqPageQuestionBlock>();
+			Questions.ForEach(x => QuestionBlocks.Add(new FaqPageQuestionBlock(x, Service.GetAnswer(x))));
 			QuestionBlocks.ForEach(x => stack.Children.Add(x));
 		}
 	}

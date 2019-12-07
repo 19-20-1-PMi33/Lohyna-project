@@ -18,10 +18,10 @@ namespace View.Widgets
     /// <summary>
     /// Interaction logic for FaqPageQuesionBlock_question.xaml
     /// </summary>
-    public partial class FaqPageQuesionBlock_question : UserControl
+    public partial class FaqPageQuesionBlockQuestion : UserControl
     {
 		Images.collapse_up_icon col_up;
-		public FaqPageQuesionBlock_question()
+		public FaqPageQuesionBlockQuestion()
 		{
 			InitializeComponent();
 			col_up = new Images.collapse_up_icon();

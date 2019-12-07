@@ -192,14 +192,14 @@
     <Compile Include="Widgets\FaqPageContent.xaml.cs">
       <DependentUpon>FaqPageContent.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Widgets\FaqPageQuesionBlock_question.xaml.cs">
-      <DependentUpon>FaqPageQuesionBlock_question.xaml</DependentUpon>
+    <Compile Include="Widgets\FaqPageQuesionBlockQuestion.xaml.cs">
+      <DependentUpon>FaqPageQuesionBlockQuestion.xaml</DependentUpon>
     </Compile>
     <Compile Include="Widgets\FaqPageQuestionBlock.xaml.cs">
       <DependentUpon>FaqPageQuestionBlock.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Widgets\FaqPageQuestionBlock_answer.xaml.cs">
-      <DependentUpon>FaqPageQuestionBlock_answer.xaml</DependentUpon>
+    <Compile Include="Widgets\FaqPageQuestionBlockAnswer.xaml.cs">
+      <DependentUpon>FaqPageQuestionBlockAnswer.xaml</DependentUpon>
     </Compile>
     <Compile Include="Widgets\LogInNavbar.xaml.cs">
       <DependentUpon>LogInNavbar.xaml</DependentUpon>
@@ -319,7 +319,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Widgets\FaqPageQuesionBlock_question.xaml">
+    <Page Include="Widgets\FaqPageQuesionBlockQuestion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -327,7 +327,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Widgets\FaqPageQuestionBlock_answer.xaml">
+    <Page Include="Widgets\FaqPageQuestionBlockAnswer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
