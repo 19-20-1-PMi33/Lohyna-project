@@ -17,6 +17,7 @@
       <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.2.6" />
       <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0" />
       <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="2.2.4" />
+      <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
       <PackageReference Include="System.Data.SQLite" Version="1.0.111" />
     </ItemGroup>
 
