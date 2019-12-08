@@ -8,6 +8,8 @@ namespace ViewModel
 {
     public class RegisterPageVM
     {
+        private string profileImagesFolder = "Widgets/Images/Profile_Images/";
+        private string userPhoto = "Widgets/Images/profile_placeholder.jpg";
         private IPersonService service;
         public RegisterPageVM(IPersonService service)
         {
@@ -19,7 +21,9 @@ namespace ViewModel
             string destFolder = Path.Combine("..","..","..", "View", "Widgets", "Images", "Profile_Images");
             string destFile = Path.Combine(destFolder, nom_zal + Path.GetExtension(fileName));
             File.Copy(fileName, destFile);
-            return destFile;
+            string returningPath = profileImagesFolder + nom_zal + Path.GetExtension(fileName);
+            this.userPhoto = returningPath;
+            return returningPath;
         }
         public bool validateValues(string name, string surname, string zal, string username, string password, string passwordRepeat)
         {
@@ -49,9 +53,9 @@ namespace ViewModel
             }
             return true;
         }
-        public bool registerUser(string name, string surname, string zal, string username, string password, string photo)
+        public bool registerUser(string name, string surname, string zal, string username, string password)
         {
-            Model.Person person = new Model.Person { Name = name, Surname = surname, Password = password, Photo = photo, Username = username };
+            Model.Person person = new Model.Person { Name = name, Surname = surname, Password = password, Photo = userPhoto, Username = username };
             service.CreatePersonAsync(person).Wait();
             return true;
         }

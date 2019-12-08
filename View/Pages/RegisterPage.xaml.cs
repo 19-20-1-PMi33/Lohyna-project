@@ -44,7 +44,7 @@ namespace View.Pages
         {
             if (logic.validateValues(content.edit_Name.Text, content.edit_Surname.Text, content.edit_Zal.Text, content.edit_Username.Text, content.edit_Password.Password, content.edit_RepPassword.Password))
             {
-                if(logic.registerUser(content.edit_Name.Text, content.edit_Surname.Text, content.edit_Zal.Text, content.edit_Username.Text, content.edit_Password.Password, content.profile_photo.Source.ToString()))
+                if(logic.registerUser(content.edit_Name.Text, content.edit_Surname.Text, content.edit_Zal.Text, content.edit_Username.Text, content.edit_Password.Password))
                 {
                     this.NavigationService.Navigate(new Uri("Pages/ProfilePage.xaml", UriKind.Relative));
                 }
@@ -56,13 +56,14 @@ namespace View.Pages
             if (!String.IsNullOrWhiteSpace(content.edit_Zal.Text))
             {
                 OpenFileDialog imagePicker = new OpenFileDialog();
+                imagePicker.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
                 imagePicker.Filter = "Image files (*.png;*.jpeg)|*.png;*.jpeg";
                 if (imagePicker.ShowDialog() == DialogResult.OK)
                 {
                     BitmapImage tmpBitMap = new BitmapImage();
                     tmpBitMap.BeginInit();
                     tmpBitMap.CacheOption = BitmapCacheOption.OnLoad;
-                    tmpBitMap.UriSource = new Uri(logic.copyImage(imagePicker.FileName, content.edit_Zal.Text), UriKind.Relative);
+                    tmpBitMap.UriSource = new Uri("../../"+logic.copyImage(imagePicker.FileName, content.edit_Zal.Text),UriKind.RelativeOrAbsolute);
                     tmpBitMap.EndInit();
                     content.profile_photo.Source = tmpBitMap;
                 }
