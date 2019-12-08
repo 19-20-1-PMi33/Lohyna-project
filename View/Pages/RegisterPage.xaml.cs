@@ -23,11 +23,12 @@ namespace View.Pages
     /// </summary>
     public partial class RegisterPage : Page
     {
+        private RegisterPageVM viewModel;
         private RegisterPageVM logic;
         private readonly Authorisation authorisation = new Authorisation(new SQLiteDataService());
         public RegisterPage()
         {
-            logic = new RegisterPageVM(new SQLiteDataService());
+            viewModel = new RegisterPageVM(new SQLiteDataService());
             InitializeComponent();
             navbar.button_register.Click += LogInNavbar_Button_register_Click;
             navbar.button_login.Click += LogInNavbar_Buttom_login_Click;
@@ -40,11 +41,16 @@ namespace View.Pages
             navbar.button_FAQ.Click += FAQNavigationTransition;
         }
 
+        private bool validateValues()
+        {
+            return viewModel.validateValues(content.edit_Name.Text, content.edit_Surname.Text, content.edit_Zal.Text, content.edit_Username.Text, content.edit_Password.Password, content.edit_RepPassword.Password);
+        }
+
         private void Content_Button_Register_Click(object sender, RoutedEventArgs e)
         {
-            if (logic.validateValues(content.edit_Name.Text, content.edit_Surname.Text, content.edit_Zal.Text, content.edit_Username.Text, content.edit_Password.Password, content.edit_RepPassword.Password))
+            if (validateValues())
             {
-                if(logic.registerUser(content.edit_Name.Text, content.edit_Surname.Text, content.edit_Zal.Text, content.edit_Username.Text, content.edit_Password.Password))
+                if(viewModel.registerUser(content.edit_Name.Text, content.edit_Surname.Text, content.edit_Zal.Text, content.edit_Username.Text, content.edit_Password.Password))
                 {
                     this.NavigationService.Navigate(new Uri("Pages/ProfilePage.xaml", UriKind.Relative));
                 }
@@ -63,7 +69,7 @@ namespace View.Pages
                     BitmapImage tmpBitMap = new BitmapImage();
                     tmpBitMap.BeginInit();
                     tmpBitMap.CacheOption = BitmapCacheOption.OnLoad;
-                    tmpBitMap.UriSource = new Uri("../../"+logic.copyImage(imagePicker.FileName, content.edit_Zal.Text),UriKind.RelativeOrAbsolute);
+                    tmpBitMap.UriSource = new Uri("../../"+viewModel.copyImage(imagePicker.FileName, content.edit_Zal.Text),UriKind.RelativeOrAbsolute);
                     tmpBitMap.EndInit();
                     content.profile_photo.Source = tmpBitMap;
                 }

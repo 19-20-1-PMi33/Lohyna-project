@@ -8,7 +8,7 @@ namespace ViewModel
 {
     public class RegisterPageVM
     {
-        private string profileImagesFolder = "Widgets/Images/Profile_Images/";
+        private const string profileImagesFolder = "Widgets/Images/Profile_Images/";
         private string userPhoto = "Widgets/Images/profile_placeholder.jpg";
         private IPersonService service;
         public RegisterPageVM(IPersonService service)
@@ -25,33 +25,19 @@ namespace ViewModel
             this.userPhoto = returningPath;
             return returningPath;
         }
-        public bool validateValues(string name, string surname, string zal, string username, string password, string passwordRepeat)
+        public bool validateValues(params string[] values)
         {
-            if (String.IsNullOrWhiteSpace(name))
+            bool res = true;
+            new List<String>(values).ForEach(value =>
             {
-                return false;
-            }
-            if (String.IsNullOrWhiteSpace(surname))
+                if (String.IsNullOrWhiteSpace(value))
+                    res = false;
+            });
+            if (values[values.Length-1] != values[values.Length-2])
             {
-                return false;
+                res = false;
             }
-            if (String.IsNullOrWhiteSpace(zal))
-            {
-                return false;
-            }
-            if (String.IsNullOrWhiteSpace(username))
-            {
-                return false;
-            }
-            if (String.IsNullOrWhiteSpace(password))
-            {
-                return false;
-            }
-            if (password != passwordRepeat)
-            {
-                return false;
-            }
-            return true;
+            return res;
         }
         public bool registerUser(string name, string surname, string zal, string username, string password)
         {
