@@ -6,7 +6,7 @@ namespace DataServices.Services
 {
     public interface ITimeTableService
     {
-        Task<IList<Timetable>> LoadTimetableAsync(Person person);
+        Task<IList<Timetable>> LoadTimetableAsync(string username);
 		Person SearchLectorById(int LecturerID);
 	}
 }

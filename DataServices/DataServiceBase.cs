@@ -87,15 +87,11 @@ namespace DataServices
                 .ToListAsync();
         }
 
-        public async Task<IList<Timetable>> LoadTimetableAsync(Person person)
+        public async Task<IList<Timetable>> LoadTimetableAsync(string username)
         {
 			return await _dataSource.Timetable
-				.Select(item => item)
+				.Where(item => item.GroupID.Equals(this.LoadStudent(this.LoadLogInPersonAsync(username)).GroupID))
 				.ToListAsync();
-
-			return await _dataSource.Timetable
-                .Where(item => item.Group.Equals(person.Student.Group))
-                .ToListAsync();
         }
 
         public async Task<int> UpdateNoteAsync(Note note)

@@ -19,11 +19,9 @@ namespace ViewModel
 		}
 		public List<Timetable> GetLessons(string username)
 		{
-			if (Lessons == null && username != null)
+			if (Lessons == null)
 			{
-				Person WhoIsLogIn = (Person)PersonService.LoadLogInPersonAsync(username);
-				Lessons = new List<Timetable>();
-				Lessons = (List<Timetable>)TimeTableService.LoadTimetableAsync(WhoIsLogIn).Result;
+				Lessons = (List<Timetable>)TimeTableService.LoadTimetableAsync(username).Result;
 			}
 			return Lessons;
 		}
