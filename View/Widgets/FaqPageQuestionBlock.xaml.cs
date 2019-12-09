@@ -29,62 +29,56 @@ namespace View.Widgets
 			stack = new StackPanel();
 			answers = new List<string>();
 			InitializeComponent();
-			question.setText("Question");
+			question.SetText("Question");
 			Grid.SetRow(stack, 1);
 			Grid.SetColumn(stack, 1);
 		}
-		public FaqPageQuestionBlock(String questionText, String answerText)
+		public FaqPageQuestionBlock(String questionText, String answerText):
+			this()
 		{
-			collapsed = true;
-			stack = new StackPanel();
-			answers = new List<String>();
-			InitializeComponent();
-			question.setText("Question");
-			Grid.SetRow(stack, 1);
-			Grid.SetColumn(stack, 1);
-
-			this.setText(questionText, answerText);
+			this.SetText(questionText, answerText);
 		}
 		private void QuestionCollapse(object sender, MouseButtonEventArgs e)
 		{
+			collapsed = !collapsed;
+			question.SetCollapsed(collapsed);
+
 			if (collapsed)
 			{
-				collapsed = false;
-				question.setCollapsed(collapsed);
-
-				stack.Children.Clear();
-				answers.ForEach(x => stack.Children.Add(new FaqPageQuestionBlockAnswer(x)));
-
-				grid.Children.Add(stack);
-
-				question.Background = new SolidColorBrush(Color.FromRgb(200, 200, 200));
-			}
-			else
-			{
-				collapsed = true;
-				question.setCollapsed(collapsed);
-
 				grid.Children.Remove(stack);
 
 				question.Background = null;
+			}
+			else
+			{
+				grid.Children.Add(stack);
+
+				question.Background = new SolidColorBrush(Color.FromRgb(200, 200, 200));
 			}
 		}
 
 		private void QuestionMouseEnter(object sender, MouseEventArgs e)
 		{
 			if (collapsed)
+			{
 				question.Background = new SolidColorBrush(Color.FromRgb(220, 220, 220));
+			}
 		}
 
 		private void QuestionMouseLeave(object sender, MouseEventArgs e)
 		{
 			if (collapsed)
+			{
 				question.Background = null;
+			}
 		}
-		public void setText(String questionText, String answerText)
+		public void SetText(String questionText, String answerText)
 		{
-			question.setText(questionText);
+			question.SetText(questionText);
 			this.answers.Add(answerText);
+
+			stack.Children.Clear();
+			answers.ForEach(x => stack.Children.Add(new FaqPageQuestionBlockAnswer(x)));
 		}
 	}
 }

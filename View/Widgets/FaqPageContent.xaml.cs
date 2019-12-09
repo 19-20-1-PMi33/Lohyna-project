@@ -22,17 +22,13 @@ namespace View.Widgets
     /// </summary>
     public partial class FaqPageContent : UserControl
     {
-		List<FaqPageQuestionBlock> QuestionBlocks;
         public FaqPageContent()
         {
             InitializeComponent();
-			InitializeComponent();
-			FaqPageVM Service = new FaqPageVM(new SQLiteDataService());
-			List<String> Questions = Service.GetQuestions();
 
-			QuestionBlocks = new List<FaqPageQuestionBlock>();
-			Questions.ForEach(x => QuestionBlocks.Add(new FaqPageQuestionBlock(x, Service.GetAnswer(x))));
-			QuestionBlocks.ForEach(x => stack.Children.Add(x));
+			FaqPageVM Service = new FaqPageVM(new SQLiteDataService());
+			Service.GetQuestions()
+				.ForEach(x => stack.Children.Add(new FaqPageQuestionBlock(x, Service.GetAnswer(x))));
 		}
 	}
 }

@@ -12,7 +12,7 @@
             <ColumnDefinition Width="50"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <images:collapse_down_icon x:Name="col_down" Grid.Column="0" Width="50" Height="50"/>
+        <images:collapse_down_icon x:Name="ColDown" Grid.Column="0" Width="50" Height="50"/>
         <TextBlock x:Name="quest_string" Grid.Column="1" FontSize="24" VerticalAlignment="Center"/>
     </Grid>
 </UserControl>
