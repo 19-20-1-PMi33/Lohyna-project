@@ -14,6 +14,11 @@ namespace ViewModel
         {
             personService = service;
         }
+        /// <summary>
+        /// Search for person in database
+        /// </summary>
+        /// <param name="key">String to search by. Could be name,surname or username of person</param>
+        /// <returns>List of objects type Person due to key</returns>
         public List<Person> Search(string key)
         {
             List<Person> res = new List<Person>();
@@ -37,10 +42,20 @@ namespace ViewModel
             }
             return res;
         }
+        /// <summary>
+        /// Get student from person
+        /// </summary>
+        /// <param name="person">Person from whom student should be taken</param>
+        /// <returns>Student for given person</returns>
         public Student GetStudent(Person person)
         {
             return personService.LoadStudent(person);
         }
+        /// <summary>
+        /// Get lecturer from person
+        /// </summary>
+        /// <param name="person">Person from whom lecturer should be taken</param>
+        /// <returns>Lecturer for given person</returns>
         public Lecturer GetLecturer(Person person)
         {
             return personService.LoadLecturer(person);
