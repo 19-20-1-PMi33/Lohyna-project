@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ViewModel;
+using DataServices;
 
 namespace View.Widgets
 {
@@ -23,6 +25,10 @@ namespace View.Widgets
         public FaqPageContent()
         {
             InitializeComponent();
-        }
-    }
+
+			FaqPageVM Service = new FaqPageVM(new SQLiteDataService());
+			Service.GetQuestions()
+				.ForEach(x => stack.Children.Add(new FaqPageQuestionBlock(x, Service.GetAnswer(x))));
+		}
+	}
 }

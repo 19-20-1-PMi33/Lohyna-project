@@ -96,15 +96,10 @@ namespace DataServices
             return await _dataSource.SaveChangesAsync();
         }
 
-        string LoadAnswerForQuestionAsync(string question)
-        {
-            return _dataSource.FAQ.Find(question).Answer;
-        }
-
         string IFaqService.LoadAnswerForQuestionAsync(string question)
         {
-            throw new NotImplementedException();
-        }
+			return _dataSource.FAQ.Find(question).Answer;
+		}
 
         public async Task<IList<Subject>> LoadSubjectsAsync()
         {
