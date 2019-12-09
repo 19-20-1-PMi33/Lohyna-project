@@ -24,15 +24,38 @@ namespace View.Widgets
 	public partial class TimeTablePageContent : UserControl
 	{
 		TimeTablePageVM Service;
-		public TimeTablePageContent(string username)
+		string username = "OlegAndrus";
+		public TimeTablePageContent()
 		{
 			InitializeComponent();
 			DefaultTimeTable();
 			Service = new TimeTablePageVM(new SQLiteDataService(), new SQLiteDataService());
 
 			List<Timetable> Lessons = Service.GetLessons(username);
+			Lessons.Add(new Timetable()
+			{
+				GroupID = "PMI-33",
+				Id = 0,
+				SubjectID = "Programming Engeenering",
+				Day = "Середа",
+				Time = new Time() { Number = 5 },
+				LecturerID = 1
+			});
+			Lessons.Add(new Timetable()
+			{
+				GroupID = "PMI-33",
+				Id = 0,
+				SubjectID = "Web development",
+				Day = "П'ятниця",
+				Time = new Time() { Number = 3 },
+				LecturerID = 1
+			});
+
 			Lessons.ForEach(Lesson => AddTimeTableBlock(Lesson));
 		}
+		/// <summary>
+		/// Addition Lesson to TimeTable
+		/// </summary>
 		public void AddTimeTableBlock(Timetable lesson)
 		{
 			String NameOfLesson = lesson.SubjectID;
@@ -41,7 +64,7 @@ namespace View.Widgets
 
 			block.name.Text = NameOfLesson;
 			block.lecturer.Text = LecturerName;
-			block.room.Text = "439";
+			block.room.Text = "119a";
 			//TODO: Add property room to TimeTable entiti
 
 			int column = GetDayOfWeek(lesson.Day);
@@ -52,6 +75,9 @@ namespace View.Widgets
 
 			timeTable.Children.Add(block);
 		}
+		/// <summary>
+		/// Creating TimeTable column and row titles
+		/// </summary>
 		public void DefaultTimeTable()
 		{
 			AddTextBlock("Номер/Час", 1, 1, false);
@@ -78,6 +104,9 @@ namespace View.Widgets
 				AddTextBlock(TimesOfLessons[i], 1, i + 2, false);
 			}
 		}
+		/// <summary>
+		/// Add some text, not Lesson, to TimeTable 
+		/// </summary>
 		public void AddTextBlock(string text, int column, int row, bool isWrap)
 		{
 			TextBlock block;
@@ -91,6 +120,9 @@ namespace View.Widgets
 
 			timeTable.Children.Add(block);
 		}
+		/// <summary>
+		/// Indexing column for some day
+		/// </summary>
 		public int GetDayOfWeek(string day)
 		{
 			switch (day)
@@ -109,6 +141,9 @@ namespace View.Widgets
 					return 0;
 			}
 		}
+		/// <summary>
+		/// Indexing number of lesson at that time
+		/// </summary>
 		public int NumberOfLesson(Time time)
 		{
 			return time.Number + 1;

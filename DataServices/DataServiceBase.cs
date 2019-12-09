@@ -89,7 +89,11 @@ namespace DataServices
 
         public async Task<IList<Timetable>> LoadTimetableAsync(Person person)
         {
-            return await _dataSource.Timetable
+			return await _dataSource.Timetable
+				.Select(item => item)
+				.ToListAsync();
+
+			return await _dataSource.Timetable
                 .Where(item => item.Group.Equals(person.Student.Group))
                 .ToListAsync();
         }
@@ -133,8 +137,14 @@ namespace DataServices
             return _dataSource.Lecturer.FirstOrDefault(p => p.Person == person);
         }
 
-        #region Disposable
-        public void Dispose()
+		public Person SearchLectorById(int LecturerID)
+		{
+			string PersonID = _dataSource.Lecturer.FirstOrDefault(p => p.ID == LecturerID).PersonID;
+			return _dataSource.Person.FirstOrDefault(p => p.Username.Equals(PersonID));
+		}
+
+		#region Disposable
+		public void Dispose()
         {
             Dispose(true);
             GC.SuppressFinalize(this);
@@ -150,6 +160,6 @@ namespace DataServices
                 }
             }
         }
-        #endregion
-    }
+		#endregion
+	}
 }
