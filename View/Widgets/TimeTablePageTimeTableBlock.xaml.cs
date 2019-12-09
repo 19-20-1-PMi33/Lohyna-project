@@ -26,5 +26,9 @@ namespace View.Widgets
 			notes = new TimeTablePageTimeTableNote();
 			InitializeComponent();
 		}
+		private void OpenNotesForSubject(object sender, MouseButtonEventArgs e)
+		{
+			new TimeTablePageTimeTableNote(this.name.Text, this.lecturer.Text).ShowDialog();
+		}
 	}
 }

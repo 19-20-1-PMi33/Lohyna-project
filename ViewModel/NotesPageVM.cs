@@ -13,7 +13,7 @@ namespace ViewModel
         INoteService noteService;
         private List<Note> notes;
         private string username;
-        public NotesPageVM(INoteService noteService,string username)
+        public NotesPageVM(INoteService noteService, string username)
         {
             this.noteService = noteService;
             this.username = username;

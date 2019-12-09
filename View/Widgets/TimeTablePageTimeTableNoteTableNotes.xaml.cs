@@ -18,9 +18,9 @@ namespace View.Widgets
     /// <summary>
     /// Interaction logic for TimeTablePageTimeTableNote_tableNotes.xaml
     /// </summary>
-    public partial class TimeTablePageTimeTableNote_tableNotes : UserControl
+    public partial class TimeTablePageTimeTableNoteTableNotes : UserControl
     {
-        public TimeTablePageTimeTableNote_tableNotes()
+        public TimeTablePageTimeTableNoteTableNotes()
         {
             InitializeComponent();
         }

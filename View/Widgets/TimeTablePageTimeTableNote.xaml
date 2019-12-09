@@ -25,9 +25,9 @@
             <RowDefinition Height="30"/>
             <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
-        <TextBlock Text="Subject" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" FontSize="30" TextAlignment="Center" VerticalAlignment="Center"/>
-        <TextBlock Text="Teacher" Grid.Row="2"  Grid.Column="1" Grid.ColumnSpan="3" FontSize="20" TextAlignment="Center" VerticalAlignment="Center"/>
-        <images:cancel_icon Grid.Column="4" Grid.Row="1" Grid.RowSpan="2" Height="50" Width="50" RenderTransformOrigin="0.5,0.5" Cursor="Hand">
+        <TextBlock Text="Subject" x:Name="Subject" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" FontSize="30" TextAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Text="Teacher" x:Name="Teacher" Grid.Row="2"  Grid.Column="1" Grid.ColumnSpan="3" FontSize="20" TextAlignment="Center" VerticalAlignment="Center"/>
+        <images:cancel_icon Grid.Column="4" Grid.Row="1" Grid.RowSpan="2" Height="50" Width="50" RenderTransformOrigin="0.5,0.5" Cursor="Hand" MouseDown="AddNoteOnClick">
             <images:cancel_icon.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -40,13 +40,13 @@
         <CheckBox Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <Button Content="Time" Grid.Row="3" Grid.Column="2"  FontSize="15" Background="Transparent" BorderBrush="{x:Null}"/>
         <Button Content="Title" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" FontSize="15" HorizontalAlignment="Center" Background="Transparent" BorderBrush="{x:Null}"/>
-        <local:TimeTablePageTimeTableNote_tableNotes Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="4"/>
-        <Button Content="Mark checked as done" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Left" Background="#f9f9f9">
+        <local:TimeTablePageTimeTableNoteTableNotes x:Name="TimeTablePageTimeTableNoteTableNotes" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="4"/>
+        <Button Content="Mark checked as done" Name="button_checked_done" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Left" Background="#f9f9f9">
             <Button.Effect>
                 <DropShadowEffect BlurRadius="8" Opacity="0.8"/>
             </Button.Effect>
         </Button>
-        <Button Content="OK" Grid.Row="5" Grid.Column="4" Width="100" Background="#f9f9f9">
+        <Button Content="OK" Name="button_ok" Grid.Row="5" Grid.Column="4" Width="100" Background="#f9f9f9" MouseDown="EndWorkWithNotes">
             <Button.Effect>
                 <DropShadowEffect BlurRadius="8" Opacity="0.8"/>
             </Button.Effect>

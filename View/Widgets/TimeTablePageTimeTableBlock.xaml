@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:View.Widgets"
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="100">
-    <Grid Background="#efefef" Cursor="Hand">
+    <Grid Background="#efefef" Cursor="Hand" MouseDown="OpenNotesForSubject">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition/>
