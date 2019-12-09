@@ -30,36 +30,33 @@ namespace View.Pages
         {
             viewModel = new RegisterPageVM(new SQLiteDataService());
             InitializeComponent();
-            navbar.button_register.Click += LogInNavbar_Button_register_Click;
-            navbar.button_login.Click += LogInNavbar_Buttom_login_Click;
-            navbar.button_FAQ.Click += LogInNavbar_Button_FAQ_Click;
-            content.button_cancel.Click += Content_Button_cancel_Click;
-            content.button_upload_photo.Click += Content_Button_upload_photo_Click;
-            content.button_Register.Click += Content_Button_Register_Click;
-            navbar.button_register.Click += LogInRegisterNavigationTransition;
-            navbar.button_login.Click += LogInToApplicationNavigationTransition;
-            navbar.button_FAQ.Click += FAQNavigationTransition;
+            navbar.button_register.Click += RegisterTransition;
+            navbar.button_login.Click += ProfileTransition;
+            navbar.button_FAQ.Click += FAQTransition;
+            content.buttonCancel.Click += GoBack;
+            content.buttonUploadPhoto.Click += UploadPhoto;
+            content.buttonRegister.Click += Register;
         }
 
         private bool validateValues()
         {
-            return viewModel.validateValues(content.edit_Name.Text, content.edit_Surname.Text, content.edit_Zal.Text, content.edit_Username.Text, content.edit_Password.Password, content.edit_RepPassword.Password);
+            return viewModel.validateValues(content.editName.Text, content.editSurname.Text, content.editZal.Text, content.editUsername.Text, content.editPassword.Password, content.editRepPassword.Password);
         }
 
-        private void Content_Button_Register_Click(object sender, RoutedEventArgs e)
+        private void Register(object sender, RoutedEventArgs e)
         {
             if (validateValues())
             {
-                if(viewModel.registerUser(content.edit_Name.Text, content.edit_Surname.Text, content.edit_Zal.Text, content.edit_Username.Text, content.edit_Password.Password))
+                if(viewModel.registerUser(content.editName.Text, content.editSurname.Text, content.editZal.Text, content.editUsername.Text, content.editPassword.Password))
                 {
                     this.NavigationService.Navigate(new Uri("Pages/ProfilePage.xaml", UriKind.Relative));
                 }
             }
         }
 
-        private void Content_Button_upload_photo_Click(object sender, RoutedEventArgs e)
+        private void UploadPhoto(object sender, RoutedEventArgs e)
         {
-            if (!String.IsNullOrWhiteSpace(content.edit_Zal.Text))
+            if (!String.IsNullOrWhiteSpace(content.editZal.Text))
             {
                 OpenFileDialog imagePicker = new OpenFileDialog();
                 imagePicker.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
@@ -69,25 +66,24 @@ namespace View.Pages
                     BitmapImage tmpBitMap = new BitmapImage();
                     tmpBitMap.BeginInit();
                     tmpBitMap.CacheOption = BitmapCacheOption.OnLoad;
-                    tmpBitMap.UriSource = new Uri("../../"+viewModel.copyImage(imagePicker.FileName, content.edit_Zal.Text),UriKind.RelativeOrAbsolute);
+                    tmpBitMap.UriSource = new Uri("../../"+viewModel.copyImage(imagePicker.FileName, content.editZal.Text),UriKind.RelativeOrAbsolute);
                     tmpBitMap.EndInit();
-                    content.profile_photo.Source = tmpBitMap;
+                    content.profilePhoto.Source = tmpBitMap;
                 }
             }
         }
 
-        private void Content_Button_cancel_Click(object sender, RoutedEventArgs e)
+        private void GoBack(object sender, RoutedEventArgs e)
         {
             this.NavigationService.GoBack();
         }
 
-        private void LogInNavbar_Button_FAQ_Click(object sender, RoutedEventArgs e)
-        private void FAQNavigationTransition(object sender, RoutedEventArgs e)
+        private void FAQTransition(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("Pages/FaqPageUnloged.xaml", UriKind.Relative));
         }
 
-        private void LogInToApplicationNavigationTransition(object sender, RoutedEventArgs e)
+        private void ProfileTransition(object sender, RoutedEventArgs e)
         {
             if (authorisation.IsCorrectPersonData(navbar.usernameTextBox.Text, navbar.passwordTextBox.Password))
             {
@@ -107,7 +103,7 @@ namespace View.Pages
             }
         }
 
-        private void LogInRegisterNavigationTransition(object sender, RoutedEventArgs e)
+        private void RegisterTransition(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("Pages/RegisterPage.xaml", UriKind.Relative));
         }
