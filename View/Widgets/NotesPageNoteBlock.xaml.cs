@@ -26,7 +26,7 @@ namespace View.Widgets
         {
             this.note = note;
             InitializeComponent();
-            textDeadline.Text = note.Deadline.ToShortDateString() ;
+            textDeadline.Text = note.Deadline.ToShortDateString();
             textSubject.Text = note.SubjectID;
             textName.Text = note.Name;
             textMaterials.AppendText(note.Materials);

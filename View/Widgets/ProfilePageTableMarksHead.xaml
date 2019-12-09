@@ -10,12 +10,8 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <TextBox Grid.Column="0" Text="Subject" FontSize="20"  TextAlignment="Center" Background="Transparent" IsReadOnly="True" TextWrapping="NoWrap" BorderThickness="2 1 1 2" BorderBrush="Black" Cursor="Hand"/>
-        <TextBox Grid.Column="1" Text="Mark" FontSize="20" TextAlignment="Center" Background="Transparent" IsReadOnly="True" TextWrapping="NoWrap" BorderThickness="1 1 2 2" BorderBrush="Black" Cursor="Hand"/>
-        <TextBox Grid.Column="2" Text="Subject" FontSize="20" TextAlignment="Center" Background="Transparent" IsReadOnly="True" TextWrapping="NoWrap" BorderThickness="2 1 1 2" BorderBrush="Black" Cursor="Hand"/>
-        <TextBox Grid.Column="3" Text="Mark" FontSize="20" TextAlignment="Center" Background="Transparent" IsReadOnly="True" TextWrapping="NoWrap" BorderThickness="1 1 2 2" BorderBrush="Black" Cursor="Hand"/>
+        <Button x:Name="subjectColumn" Grid.Column="0" Content="Subject" FontSize="20" Cursor="Hand" Style="{StaticResource HeaderRowButton}"/>
+        <Button x:Name="markColumn" Grid.Column="1" Content="Mark" FontSize="20" Cursor="Hand" Style="{StaticResource HeaderRowButton}"/>
     </Grid>
 </UserControl>

@@ -12,6 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Model;
+using ViewModel;
+using DataServices;
+using View.Widgets;
 
 namespace View.Widgets
 {
@@ -24,5 +28,6 @@ namespace View.Widgets
         {
             InitializeComponent();
         }
+
     }
 }

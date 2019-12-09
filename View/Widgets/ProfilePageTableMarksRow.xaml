@@ -5,17 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:View.Widgets"
              mc:Ignorable="d" 
-             d:DesignHeight="30" d:DesignWidth="600">
+             d:DesignHeight="60" d:DesignWidth="600">
     <Grid x:Name="grid" Background="#f9f9f9">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <TextBox Grid.Column="0" Text="Subject" FontSize="18" TextAlignment="Center" Background="Transparent" IsReadOnly="True" TextWrapping="NoWrap" BorderThickness="2 1 1 1" BorderBrush="Black" Cursor="Arrow"/>
-        <TextBox Grid.Column="1" Text="100" FontSize="18" TextAlignment="Center" Background="Transparent" IsReadOnly="True" TextWrapping="NoWrap" BorderThickness="1 1 2 1" BorderBrush="Black" Cursor="Arrow"/>
-        <TextBox Grid.Column="2" Text="Subject" FontSize="18" TextAlignment="Center" Background="Transparent" IsReadOnly="True" TextWrapping="NoWrap" BorderThickness="2 1 1 1" BorderBrush="Black" Cursor="Arrow"/>
-        <TextBox Grid.Column="3" Text="100" FontSize="18" TextAlignment="Center" Background="Transparent" IsReadOnly="True" TextWrapping="NoWrap" BorderThickness="1 1 2 1" BorderBrush="Black" Cursor="Arrow"/>
+        <TextBox x:Name="subjectTextbox" Grid.Column="0" FontSize="25" TextAlignment="Center" VerticalContentAlignment="Center" Background="Transparent" IsReadOnly="True" BorderThickness="2 1 1 1" BorderBrush="Black" Cursor="Arrow" Style ="{StaticResource TextBoxStyle2}"/>
+        <TextBox x:Name="markTextbox" Grid.Column="1" VerticalContentAlignment="Center" FontSize="25" TextAlignment="Center" Background="Transparent" IsReadOnly="True" TextWrapping="NoWrap" BorderThickness="1 1 2 1" BorderBrush="Black" Cursor="Arrow" Style="{StaticResource TextBoxStyle2}"/>
     </Grid>
 </UserControl>

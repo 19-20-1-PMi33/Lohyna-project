@@ -24,12 +24,6 @@ namespace DataServices
             return await _dataSource.SaveChangesAsync();
         }
 
-        public async Task<int> CreatePersonAsync(Person person)
-        {
-            _dataSource.Person.Add(person);
-            return await _dataSource.SaveChangesAsync();
-        }
-
         public async Task<int> DeleteNoteAsync(params Note[] note)
         {
             _dataSource.Note.RemoveRange(note);
@@ -73,18 +67,6 @@ namespace DataServices
                 .Where(person => person.Username.Equals(name))
                 .ToListAsync();
         }
-        public async Task<List<Person>> SearchPersonByNameAsync(string name)
-        {
-            return await _dataSource.Person
-                .Where(person => person.Name.Equals(name))
-                .ToListAsync();
-        }
-        public async Task<List<Person>> SearchPersonBySurnameAsync(string surname)
-        {
-            return await _dataSource.Person
-                .Where(person => person.Surname.Equals(surname))
-                .ToListAsync();
-        }
 
         public async Task<List<string>> LoadQuestionsAsync()
         {
@@ -114,7 +96,7 @@ namespace DataServices
             return await _dataSource.SaveChangesAsync();
         }
 
-        public string LoadAnswerForQuestionAsync(string question)
+        string LoadAnswerForQuestionAsync(string question)
         {
             return _dataSource.FAQ.Find(question).Answer;
         }
@@ -131,14 +113,19 @@ namespace DataServices
 
         public Student LoadStudent(Person person)
         {
-            return _dataSource.Student.FirstOrDefault(p=>p.Person==person);
+            return _dataSource.Student.FirstOrDefault(p => p.Person.Username == person.Username);
+          
         }
 
         public Lecturer LoadLecturer(Person person)
         {
-            return _dataSource.Lecturer.FirstOrDefault(p => p.Person == person);
-        }
+            return _dataSource.Lecturer.FirstOrDefault(p => p.Person.Username == person.Username);
 
+        }
+        public Group LoadGroup(Student student)
+        {
+            return _dataSource.Group.FirstOrDefault(p => p.Name == student.GroupID);
+        }
         #region Disposable
         public void Dispose()
         {
