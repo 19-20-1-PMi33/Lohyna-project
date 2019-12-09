@@ -32,12 +32,21 @@ namespace ViewModel
     public class RegisterPageVM
     {
         private const string profileImagesFolder = "Widgets/Images/Profile_Images/";
+        /// <summary>
+        /// Currently used photo
+        /// </summary>
         private string userPhoto = "Widgets/Images/profile_placeholder.jpg";
         private IPersonService service;
         public RegisterPageVM(IPersonService service)
         {
             this.service = service;
         }
+        /// <summary>
+        /// Copy image from users folder to apps one
+        /// </summary>
+        /// <param name="fileName">Photo`s file name</param>
+        /// <param name="nom_zal">Student ticket number to store picture, as it should be unique</param>
+        /// <returns></returns>
         public string copyImage(string fileName,string nom_zal)
         {
             string path = Directory.GetCurrentDirectory();
@@ -48,7 +57,12 @@ namespace ViewModel
             this.userPhoto = returningPath;
             return returningPath;
         }
-        public bool validateValues(ParamsForRegister values)
+        /// <summary>
+        /// Validate values of person data
+        /// </summary>
+        /// <param name="values">List of strings to validate</param>
+        /// <returns>True if values are valid, in other case false</returns>
+        public bool validateValues(params string[] values)
         {
             bool res = true;
             new List<String>{values.name,values.surname,values.username,values.password,values.group,values.zal,values.ticket }.ForEach(value =>
@@ -73,7 +87,16 @@ namespace ViewModel
             }
             return res;
         }
-        public bool registerUser(ParamsForRegister values)
+        /// <summary>
+        /// Register user with adding one to database
+        /// </summary>
+        /// <param name="name">Name of new user</param>
+        /// <param name="surname">Surname of new user</param>
+        /// <param name="zal">Student ticket number of new user</param>
+        /// <param name="username">Username of new user</param>
+        /// <param name="password">Password of new user</param>
+        /// <returns></returns>
+        public bool registerUser(string name, string surname, string zal, string username, string password)
         {
             Model.Person person = new Model.Person { Name = values.name, Surname = values.surname, Password = values.password, Photo = userPhoto, Username = values.username };
             Model.Student student = new Model.Student { TicketNumber = long.Parse(values.ticket), ReportCard = long.Parse(values.zal), PersonID = values.username, GroupID = values.group };
