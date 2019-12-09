@@ -27,12 +27,12 @@ namespace View.Pages
     {
         private SortMarkTable sorted;
         private readonly ProfilePageVM logic;
-        private readonly int pageLimit = 4;
+        private readonly int pageLimit = 10;
         int currentPageNumber = 0;
         public ProfilePage()
 
         {
-            this.logic = new ProfilePageVM(new SQLiteDataService(), "OlegAndrus");
+            this.logic = new ProfilePageVM(new SQLiteDataService(), "RomanLevkovych");
             InitializeComponent();
 
             navbar.button_Profile.Click += ProfileTransition;
@@ -47,7 +47,7 @@ namespace View.Pages
                 BitmapImage temp = new BitmapImage();
                 temp.BeginInit();
                 temp.CacheOption = BitmapCacheOption.OnLoad;
-                temp.UriSource = new Uri("../../"+logic.GetPerson().Photo,UriKind.Relative);
+                temp.UriSource = new Uri("../../" + logic.GetPerson().Photo,UriKind.Relative);
                 temp.EndInit();
                 content.profilePhoto.Source = temp;
                 if (logic.GetLecturer() != null)
