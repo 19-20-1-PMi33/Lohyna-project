@@ -24,6 +24,12 @@ namespace DataServices
             return await _dataSource.SaveChangesAsync();
         }
 
+        public async Task<int> CreatePersonAsync(Person person)
+        {
+            _dataSource.Person.Add(person);
+            return await _dataSource.SaveChangesAsync();
+        }
+
         public async Task<int> DeleteNoteAsync(params Note[] note)
         {
             _dataSource.Note.RemoveRange(note);
