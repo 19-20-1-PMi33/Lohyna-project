@@ -24,7 +24,6 @@ namespace View.Pages
     public partial class RegisterPage : Page
     {
         private RegisterPageVM viewModel;
-        private RegisterPageVM logic;
         private readonly Authorisation authorisation = new Authorisation(new SQLiteDataService());
         public RegisterPage()
         {

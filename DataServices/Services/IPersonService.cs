@@ -11,6 +11,9 @@ namespace DataServices.Services
         Person LoadLogInPersonAsync(string username);
         Student LoadStudent(Person person);
         Lecturer LoadLecturer(Person person);
-        
+        Task<int> CreatePersonAsync(Person person);
+        Task<List<Person>> SearchPersonByNameAsync(string name);
+        Task<List<Person>> SearchPersonBySurnameAsync(string surname);
+
     }
 }

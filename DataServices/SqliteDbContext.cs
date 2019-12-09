@@ -13,7 +13,7 @@ namespace DataServices
     public class SqliteDbContext : DbContext, IDataSource
     {
         private string _connectionString = null;
-        private const string dbName = "univerity-db.db";
+        private const string dbName = "university-db.db";
         public SqliteDbContext(string connectionStringPath = null)
         {
             if (connectionStringPath == null)
