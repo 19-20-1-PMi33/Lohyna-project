@@ -11,7 +11,7 @@ namespace ViewModel
     public class Logger : ILogger
     {
         /// <summary>
-        /// Path to file with logs. May be used in derived classes.
+        /// Class for logging
         /// </summary>
         protected string FilePath { get; set; }
 
@@ -23,7 +23,12 @@ namespace ViewModel
         {
             FilePath = filePath;
         }
-
+        /// <summary>
+        /// Creates local scope for logging
+        /// </summary>
+        /// <typeparam name="TState">State of logger</typeparam>
+        /// <param name="state">State of events to log</param>
+        /// <returns></returns>
         public IDisposable BeginScope<TState>(TState state)
         {
             scopes.Add(state.ToString());
@@ -35,7 +40,15 @@ namespace ViewModel
         {
             return true;
         }
-
+        /// <summary>
+        /// Mthod for writing logs in file
+        /// </summary>
+        /// <typeparam name="TState">State of logger</typeparam>
+        /// <param name="logLevel">Level if logging</param>
+        /// <param name="eventId">Reference on event to log</param>
+        /// <param name="state">State of logging event</param>
+        /// <param name="exception">Exception of event</param>
+        /// <param name="formatter">Format type for logging</param>
         public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)
         {
             if (!IsEnabled(logLevel))
