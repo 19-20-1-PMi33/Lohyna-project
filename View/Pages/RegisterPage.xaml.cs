@@ -91,7 +91,7 @@ namespace View.Pages
             }
             else
             {
-                MessageBoxResult result = MessageBox.Show("You don't have an account here. Register?",
+                MessageBoxResult result = System.Windows.MessageBox.Show("You don't have an account here. Register?",
                                           "Confirmation",
                                           MessageBoxButton.YesNoCancel,
                                           MessageBoxImage.Question);
