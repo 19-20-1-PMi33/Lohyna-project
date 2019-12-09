@@ -6,14 +6,20 @@ using Model;
 using System.IO;
 using Model.EntitiesConfiguration;
 using Microsoft.Data.Sqlite;
+using System.Configuration;
 
 namespace DataServices
 {
     public class SqliteDbContext : DbContext, IDataSource
     {
         private string _connectionString = null;
-        public SqliteDbContext(string connectionStringPath = @"..\..\..\univerity-db.db")
+        private const string dbName = "univerity-db.db";
+        public SqliteDbContext(string connectionStringPath = null)
         {
+            if (connectionStringPath == null)
+            {
+                connectionStringPath = Path.Combine(ConfigurationManager.AppSettings["projectPath"], dbName);
+            }
             var connectionStringBuilder = new SqliteConnectionStringBuilder
             {
                 // TODO: create adequate location for DB.
