@@ -5,6 +5,7 @@
         <ApplicationIcon />
         <OutputType>Library</OutputType>
         <StartupObject></StartupObject>
+      <GenerateDocumentationFile>true</GenerateDocumentationFile>
     </PropertyGroup>
 
     <ItemGroup>

@@ -10,9 +10,19 @@ using System.Configuration;
 
 namespace DataServices
 {
+    /// <summary>
+    /// Context of DB connection.
+    /// </summary>
     public class SqliteDbContext : DbContext, IDataSource
     {
+        /// <summary>
+        /// String for connecting to DB.
+        /// </summary>
         private string _connectionString = null;
+
+        /// <summary>
+        /// Name of DB file.
+        /// </summary>
         private const string dbName = "university-db.db";
         public SqliteDbContext(string connectionStringPath = null)
         {
@@ -28,11 +38,19 @@ namespace DataServices
             _connectionString = connectionStringBuilder.ConnectionString;
         }
 
+        /// <summary>
+        /// Method of DB connection lifecycle.
+        /// </summary>
+        /// <param name="optionsBuilder">Options for connecting to DB.</param>
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite(_connectionString);
         }
 
+        /// <summary>
+        /// Method of DB connection lifecycle.
+        /// </summary>
+        /// <param name="modelBuilder">DB models builder.</param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new CabinetConfiguration());
