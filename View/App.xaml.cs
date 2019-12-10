@@ -16,7 +16,7 @@ namespace View
 	public partial class App : Application
 	{
         public static string LastSearch { get; set; }
-		public static string username { get; set; } = "OlegAndrus";
+		public static string username { get; set; } = "RomanLevkovych";
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);

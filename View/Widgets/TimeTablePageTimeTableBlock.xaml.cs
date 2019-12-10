@@ -23,11 +23,11 @@ namespace View.Widgets
 		TimeTablePageTimeTableNote notes;
 		public TimeTablePageTimeTableBlock()
 		{
-			notes = new TimeTablePageTimeTableNote();
 			InitializeComponent();
 		}
 		private void OpenNotesForSubject(object sender, MouseButtonEventArgs e)
 		{
+			notes = new TimeTablePageTimeTableNote(name.Text, lecturer.Text);
 			new TimeTablePageTimeTableNote(this.name.Text, this.lecturer.Text).ShowDialog();
 		}
 	}

@@ -25,6 +25,7 @@ namespace View.Widgets
     {
 		List<Note> NotesOfSubject;
 		private NotesPageVM logic;
+		private SortedBy sorted = SortedBy.Created;
 		public TimeTablePageTimeTableNote(string Subject, string Teacher)
 		{
             InitializeComponent();
@@ -32,21 +33,26 @@ namespace View.Widgets
 			this.Teacher.Text = Teacher;
 			logic = new NotesPageVM(new SQLiteDataService(), App.username);
 			NotesOfSubject = (List<Note>)logic.GetNotes();
-			fillNotes();
+
+			FillNotes();
 			button_ok.Click += EndWorkWithNotes;
+			check.Click += MarkAll;
+			button_checked_done.Click += DeleteMarked;
+			sort_by_time.Click += SortByTime;
+			sort_by_title.Click += SortByTitle;
 		}
 		private void AddNoteOnClick(object sender, MouseButtonEventArgs e)
 		{
-			new TimeTablePageNoteWindow(this,Subject.Text).ShowDialog();
+			new TimeTablePageNoteWindow(this, Subject.Text).ShowDialog();
 		}
 		public void AddNoteFromString(string name, string deadline, string subject, string materials)
 		{
 			logic.AddNote(name, deadline, subject, materials);
-			fillNotes();
+			FillNotes();
 		}
-		private void fillNotes()
+		private void FillNotes()
 		{
-			this.TimeTablePageTimeTableNoteTableNotes.stack.Children.Clear();
+			this.stack.Children.Clear();
 			int cnt = 0;
 			foreach (var note in NotesOfSubject)
 			{
@@ -56,7 +62,7 @@ namespace View.Widgets
 				{
 					temp.grid.Background = new SolidColorBrush(Colors.LightGray);
 				}
-				this.TimeTablePageTimeTableNoteTableNotes.stack.Children.Add(temp);
+				this.stack.Children.Add(temp);
 			}
 
 		}
@@ -64,11 +70,60 @@ namespace View.Widgets
 		{
 			NotesOfSubject.Remove(Old);
 			NotesOfSubject.Add(New);
-			fillNotes();
+			FillNotes();
 		}
 		private void EndWorkWithNotes(object sender, RoutedEventArgs e)
 		{
 			this.Close();
+		}
+		private void MarkAll(object sender, RoutedEventArgs e)
+		{
+			foreach (NotesPageNoteBlock block in stack.Children)
+			{
+				block.check.IsChecked = check.IsChecked;
+			}
+		}
+		private void SortByTime(object sender, RoutedEventArgs e)
+		{
+			if (sorted == SortedBy.Deadline)
+			{
+				SortNotes(SortedBy.DeadlineReverse);
+				sorted = SortedBy.DeadlineReverse;
+			}
+			else
+			{
+				SortNotes(SortedBy.Deadline);
+				sorted = SortedBy.Deadline;
+			}
+		}
+		private void SortByTitle(object sender, RoutedEventArgs e)
+		{
+			if (sorted == SortedBy.Title)
+			{
+				SortNotes(SortedBy.TitleReverse);
+				sorted = SortedBy.TitleReverse;
+			}
+			else
+			{
+				SortNotes(SortedBy.Title);
+				sorted = SortedBy.Title;
+			}
+		}
+		private void DeleteMarked(object sender, RoutedEventArgs e)
+		{
+			foreach (NotesPageNoteBlock block in stack.Children)
+			{
+				if((bool)block.check.IsChecked)
+				{
+					logic.DeleteNote(block.textName.Text);
+				}
+			}
+			FillNotes();
+		}
+		public void SortNotes(SortedBy by)
+		{
+			logic.sort(by);
+			FillNotes();
 		}
 	}
 }

@@ -318,9 +318,6 @@
     <Compile Include="Widgets\TimeTablePageTimeTableNote.xaml.cs">
       <DependentUpon>TimeTablePageTimeTableNote.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Widgets\TimeTablePageTimeTableNoteTableNotes.xaml.cs">
-      <DependentUpon>TimeTablePageTimeTableNoteTableNotes.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Widgets\Images\collapse_down_icon.xaml.cs">
       <DependentUpon>collapse_down_icon.xaml</DependentUpon>
     </Compile>
@@ -477,10 +474,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Widgets\TimeTablePageTimeTableNote.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Widgets\TimeTablePageTimeTableNoteTableNotes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
