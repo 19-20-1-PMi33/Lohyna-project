@@ -29,7 +29,7 @@ namespace View.Pages
         private NotesPageVM logic;
         public NotesPage()
         {
-            this.logic = new NotesPageVM(new SQLiteDataService(), "RomanLevkovych");
+            this.logic = new NotesPageVM(new SQLiteDataService(), App.currentUser);
             logic.GetNotes();
             InitializeComponent();
             navbar.button_Profile.Click += Navbar_Button_Profile_Click;

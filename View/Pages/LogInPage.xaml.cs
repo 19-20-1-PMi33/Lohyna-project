@@ -28,8 +28,9 @@ namespace View.Pages
         {
             InitializeComponent();
             navbar.button_register.Click += RegisterNavigationTransition;
-            navbar.button_login.Click += LogInToApplicationNavigationTransition;
             navbar.button_FAQ.Click += FAQNavigationTransition;
+            navbar.button_login.Click += LogInToApplicationNavigationTransition;
+            this.navbar.usernameTextBox.Text = App.currentUser;
         }
 
         /// <summary>
@@ -43,14 +44,15 @@ namespace View.Pages
         {
             if (authorisation.IsCorrectPersonData(navbar.usernameTextBox.Text, navbar.passwordTextBox.Password))
             {
+                App.setUser(navbar.usernameTextBox.Text);
                 this.NavigationService.Navigate(new Uri("Pages/ProfilePage.xaml", UriKind.Relative));
             }
             else
             {
                 MessageBoxResult result = MessageBox.Show("You don't have an account here. Register?",
-                                          "Confirmation",
-                                          MessageBoxButton.YesNoCancel,
-                                          MessageBoxImage.Question);
+                                            "Confirmation",
+                                            MessageBoxButton.YesNoCancel,
+                                            MessageBoxImage.Question);
 
                 if (result == MessageBoxResult.Yes)
                 {
@@ -68,6 +70,5 @@ namespace View.Pages
         {
             this.NavigationService.Navigate(new Uri("Pages/FaqPageUnloged.xaml", UriKind.Relative));
         }
-
     }
 }
