@@ -24,5 +24,17 @@ namespace View.Widgets
         {
             InitializeComponent();
         }
+
+        private void usernameTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+             if (e.Key == Key.Enter)
+                passwordTextBox.Focus();
+        }
+
+        private void passwordTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                button_login.Focus();
+        }
     }
 }

@@ -24,13 +24,20 @@ namespace View.Widgets
     public partial class SearchPageBlock : UserControl
     {
         private string notFoundText = "Nothing was found (";
+        public Person Person { get; set; }
         public SearchPageBlock(SearchPageVM logic,Person p)
         {
             InitializeComponent();
             if (p != null)
             {
+                this.Person = p;
                 textNameSurname.Text = $"{p.Name} {p.Surname}";
-                image_profile.Source = new BitmapImage(new Uri(p.Photo, UriKind.Relative));
+                BitmapImage tmpBitMap = new BitmapImage();
+                tmpBitMap.BeginInit();
+                tmpBitMap.CacheOption = BitmapCacheOption.OnLoad;
+                tmpBitMap.UriSource = new Uri("../../" + p.Photo,UriKind.RelativeOrAbsolute);
+                tmpBitMap.EndInit();
+                image_profile.Source = tmpBitMap;
                 if (logic.GetStudent(p) != null)
                 {
                     textInfo.Text = $"{p.Student.GroupID}";

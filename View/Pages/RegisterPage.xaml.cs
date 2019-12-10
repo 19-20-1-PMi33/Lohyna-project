@@ -86,14 +86,15 @@ namespace View.Pages
         {
             if (authorisation.IsCorrectPersonData(navbar.usernameTextBox.Text, navbar.passwordTextBox.Password))
             {
+                App.setUser(navbar.usernameTextBox.Text);
                 this.NavigationService.Navigate(new Uri("Pages/ProfilePage.xaml", UriKind.Relative));
             }
             else
             {
                 MessageBoxResult result = System.Windows.MessageBox.Show("You don't have an account here. Register?",
-                                          "Confirmation",
-                                          MessageBoxButton.YesNoCancel,
-                                          MessageBoxImage.Question);
+                                            "Confirmation",
+                                            MessageBoxButton.YesNoCancel,
+                                            MessageBoxImage.Question);
 
                 if (result == MessageBoxResult.Yes)
                 {
