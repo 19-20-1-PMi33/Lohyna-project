@@ -37,11 +37,19 @@ namespace View.Pages
             content.buttonRegister.Click += Register;
         }
 
+        /// <summary>
+        /// Validate values in Register Page
+        /// </summary>
+        /// <returns>True for valide values</returns>
         private bool validateValues()
         {
             return viewModel.validateValues(content.editName.Text, content.editSurname.Text, content.editZal.Text, content.editUsername.Text, content.editPassword.Password, content.editRepPassword.Password);
         }
 
+
+        /// <summary>
+        /// Method for execute registration
+        /// </summary>
         private void Register(object sender, RoutedEventArgs e)
         {
             if (validateValues())
@@ -53,6 +61,10 @@ namespace View.Pages
             }
         }
 
+
+        /// <summary>
+        /// Method for Upload photo from directory
+        /// </summary>
         private void UploadPhoto(object sender, RoutedEventArgs e)
         {
             if (!String.IsNullOrWhiteSpace(content.editZal.Text))
@@ -82,6 +94,13 @@ namespace View.Pages
             this.NavigationService.Navigate(new Uri("Pages/FaqPageUnloged.xaml", UriKind.Relative));
         }
 
+        /// <summary>
+        /// Method for User after authorization transition
+        /// </summary>
+        /// <remarks>
+        /// Autentifivation confirmed: user is transited to ProfilePage
+        /// Authentification failed: user has a choice: create or reject new account creation
+        /// </remarks>
         private void ProfileTransition(object sender, RoutedEventArgs e)
         {
             if (authorisation.IsCorrectPersonData(navbar.usernameTextBox.Text, navbar.passwordTextBox.Password))

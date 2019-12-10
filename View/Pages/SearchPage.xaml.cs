@@ -56,6 +56,10 @@ namespace View.Pages
         {
             this.NavigationService.Navigate(new Uri("Pages/ProfilePage.xaml", UriKind.Relative));
         }
+
+        /// <summary>
+        /// Method for executing search in searchBar
+        /// </summary>
         private void SearchBar_TextSearch_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter && !String.IsNullOrWhiteSpace(searchBar.textSearch.Text))
@@ -64,6 +68,10 @@ namespace View.Pages
                 fillSearch();
             }
         }
+
+        /// <summary>
+        /// Method for getting search results
+        /// </summary>
         private void fillSearch()
         {
             content.stack.Children.Clear();

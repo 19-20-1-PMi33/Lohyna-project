@@ -29,6 +29,7 @@ namespace View.Pages
         private readonly ProfilePageVM logic;
         private readonly int pageLimit = 10;
         int currentPageNumber = 0;
+
         public ProfilePage()
 
         {
@@ -80,27 +81,48 @@ namespace View.Pages
                 }
             }
         }
-
+        
+        /// <summary>
+        /// Method for transition from current ProfilePage to TimeTablePage
+        /// </summary>
         private void TimetableTransition(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("Pages/TimeTablePage.xaml", UriKind.Relative));
         }
 
+
+        /// <summary>
+        /// Method for transition from current ProfilePage to Notes
+        /// </summary>
         private void NotesTransition(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("Pages/NotesPage.xaml", UriKind.Relative));
         }
 
+
+        /// <summary>
+        /// Method for transition from current ProfilePage to FAQ page
+        /// </summary>
         private void FAQTransition(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("Pages/FaqPageLoged.xaml", UriKind.Relative));
         }
 
+
+        /// <summary>
+        /// Method for transition to Profile page
+        /// </summary>
         private void ProfileTransition(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("Pages/ProfilePage.xaml", UriKind.Relative));
         }
 
+        /// <summary>
+        /// Method that fill table with marks in Profile Page
+        /// </summary>
+        /// <remarks>
+        /// Marks Table consist of two vertical stacks and filled in horizontal order
+        /// </remarks>
         private void FillMarksTable()
         {
             content.marks.stack1.Children.Clear();
@@ -120,17 +142,29 @@ namespace View.Pages
             else
                 content.marks.HeadRow2.Visibility = Visibility.Visible;
         }
+
+        /// <summary>
+        /// Method that execute marks table rows sortition
+        /// </summary>
+        /// <param name="by">Order for sortition</param>
         public void SortMarksTableRows(SortMarkTable by)
         {
             logic.Sort(by);
             FillMarksTable();
         }
+        /// <summary>
+        /// Method for sorting column in Profile page marks table by Subject
+        /// </summary>
         private void SortRatingsBySubjectClick(object sender, RoutedEventArgs e)
         {
             sorted = (sorted == SortMarkTable.Subject) ? SortMarkTable.SubjectReverse : SortMarkTable.Subject;
             SortMarksTableRows(sorted);
         }
 
+
+        /// <summary>
+        /// Method for transition to previous table marks page
+        /// </summary>
         private void PreviousRatingsPageMouseDown(object sender, MouseButtonEventArgs e)
         {
             if (currentPageNumber < logic.GetPageCount(pageLimit) - 1)
@@ -142,6 +176,9 @@ namespace View.Pages
             }
         }
 
+        /// <summary>
+        /// Method for transition to next table marks page
+        /// </summary>
         private void NextRatingsPageMouseDown(object sender, MouseButtonEventArgs e)
         {
             if (currentPageNumber > 0)
@@ -152,6 +189,9 @@ namespace View.Pages
             }
         }
 
+        /// <summary>
+        /// Method for sorting column in Profile page marks table by Marks
+        /// </summary>
         private void SortRatingsByMarkClick(object sender, RoutedEventArgs e)
         {
             sorted = (sorted == SortMarkTable.Mark) ? SortMarkTable.MarkReverse : SortMarkTable.Mark;
