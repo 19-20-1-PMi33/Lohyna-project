@@ -118,6 +118,7 @@ namespace View.Widgets
 					logic.DeleteNote(block.textName.Text);
 				}
 			}
+			check.IsChecked = false;
 			FillNotes();
 		}
 		private void TimeTableNotesNoteBlockChange(object sender, MouseButtonEventArgs e)

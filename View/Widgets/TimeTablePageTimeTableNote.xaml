@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:View.Widgets"
         xmlns:images="clr-namespace:View.Widgets.Images"
         mc:Ignorable="d"
-        Title="TimeTableNote" Height="300" Width="500" MinHeight="300" MinWidth="500">
+        Title="TimeTableNote" Height="500" Width="700" MinHeight="300" MinWidth="500">
     <Grid Background ="#f9f9f9">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
@@ -18,9 +18,9 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="10"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="30"/>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="20"/>
             <RowDefinition/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="10"/>
