@@ -4,8 +4,7 @@
         <TargetFramework>netstandard2.0</TargetFramework>
         <ApplicationIcon />
         <OutputType>Library</OutputType>
-        <StartupObject></StartupObject>
-      <GenerateDocumentationFile>true</GenerateDocumentationFile>
+      <StartupObject></StartupObject>
     </PropertyGroup>
 
     <ItemGroup>
