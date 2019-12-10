@@ -3,9 +3,32 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using DataServices.Services;
-
+using DataServices;
+using Model;
 namespace ViewModel
 {
+    public struct ParamsForRegister
+    {
+        public string name { get; set; }
+        public string surname { get; set; }
+        public string username { get; set; }
+        public string password { get; set; }
+        public string passwordRepeat { get; set; }
+        public string group { get; set; }
+        public string zal { get; set; }
+        public string ticket { get; set; }
+        public ParamsForRegister(string name,string surname,string username,string password,string passwordRep,string group,string zal,string ticket)
+        {
+            this.name = name;
+            this.surname = surname;
+            this.username = username;
+            this.password = password;
+            this.passwordRepeat = passwordRep;
+            this.group = group;
+            this.zal = zal;
+            this.ticket = ticket;
+        }
+    }
     public class RegisterPageVM
     {
         private const string profileImagesFolder = "Widgets/Images/Profile_Images/";
@@ -25,25 +48,54 @@ namespace ViewModel
             this.userPhoto = returningPath;
             return returningPath;
         }
-        public bool validateValues(params string[] values)
+        public bool validateValues(ParamsForRegister values)
         {
             bool res = true;
-            new List<String>(values).ForEach(value =>
+            new List<String>{values.name,values.surname,values.username,values.password,values.group,values.zal,values.ticket }.ForEach(value =>
             {
                 if (String.IsNullOrWhiteSpace(value))
+                {
                     res = false;
+                }
             });
-            if (values[values.Length-1] != values[values.Length-2])
+            if (values.password != values.passwordRepeat)
+            {
+                res = false;
+            }
+            long temp;
+            if(!long.TryParse(values.ticket,out temp))
+            {
+                res = false;
+            }
+            if (!long.TryParse(values.zal, out temp))
             {
                 res = false;
             }
             return res;
         }
-        public bool registerUser(string name, string surname, string zal, string username, string password)
+        public bool registerUser(ParamsForRegister values)
         {
-            Model.Person person = new Model.Person { Name = name, Surname = surname, Password = password, Photo = userPhoto, Username = username };
-            service.CreatePersonAsync(person).Wait();
-            return true;
+            Model.Person person = new Model.Person { Name = values.name, Surname = values.surname, Password = values.password, Photo = userPhoto, Username = values.username };
+            Model.Student student = new Model.Student { TicketNumber = long.Parse(values.ticket), ReportCard = long.Parse(values.zal), PersonID = values.username, GroupID = values.group };
+            if (service.LoadLogInPersonAsync(values.username) == null)
+            {
+                service.CreatePersonAsync(person).Wait();
+                service.CreateStudentAsync(student).Wait();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public List<String> GetGroups()
+        {
+            List<String> res = new List<string>();
+            foreach (Group s in (new SQLiteDataService()).LoadGroupsAsync().Result)
+            {
+                res.Add(s.Name);
+            }
+            return res;
         }
     }
 }
