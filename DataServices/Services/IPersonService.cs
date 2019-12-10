@@ -51,6 +51,7 @@ namespace DataServices.Services
         /// <returns>Status of operation.</returns>
         Task<int> CreatePersonAsync(Person person);
         Task<int> CreateStudentAsync(Student student);
+        Task<int> CreateStudentAsync(Student student);
 
         /// <summary>
         /// Load people with given name.
