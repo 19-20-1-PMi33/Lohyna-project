@@ -37,7 +37,7 @@ namespace ViewModel
         /// </summary>
         /// <param name="rawData">Password as usual string</param>
         /// <returns>Password as hashed string</returns>
-        static string ComputeSha256Hash(string rawData)
+        public static string ComputeSha256Hash(string rawData)
         {
             using (SHA256 sha256Hash = SHA256.Create())
             {
