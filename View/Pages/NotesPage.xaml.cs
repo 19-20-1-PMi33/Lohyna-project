@@ -47,6 +47,9 @@ namespace View.Pages
             searchBar.textSearch.KeyDown += SearchBar_TextSearch_Search_On_KeyDown;
         }
 
+        /// <summary>
+        /// Method for executing search in searchBar
+        /// </summary>
         private void SearchBar_TextSearch_Search_On_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter && !String.IsNullOrWhiteSpace(searchBar.textSearch.Text))
@@ -55,7 +58,9 @@ namespace View.Pages
                 this.NavigationService.Navigate(new Uri("Pages/SearchPage.xaml", UriKind.Relative));
             }
         }
-
+        /// <summary>
+        /// Method for sorting notes by Deadline
+        /// </summary>
         private void Content_Button_sortDeadline_Click(object sender, RoutedEventArgs e)
         {
             if (sorted == SortedBy.Deadline)
@@ -70,6 +75,9 @@ namespace View.Pages
             }
         }
 
+        /// <summary>
+        /// Method for sorting notes by Creation date
+        /// </summary>
         private void Content_Button_sortCreated_Click(object sender, RoutedEventArgs e)
         {
             if(sorted == SortedBy.Created)
@@ -83,6 +91,10 @@ namespace View.Pages
                 sorted = SortedBy.Created;
             }
         }
+
+        /// <summary>
+        /// Method for sorting notes by Subject
+        /// </summary>
         private void Content_Button_sortSubject_Click(object sender, RoutedEventArgs e)
         {
             if (sorted == SortedBy.Subject)
@@ -97,6 +109,9 @@ namespace View.Pages
             }
         }
 
+        /// <summary>
+        /// Method for sorting notes by Title
+        /// </summary>
         private void Content_Button_sortTitle_Click(object sender, RoutedEventArgs e)
         {
             if (sorted == SortedBy.Title)
@@ -116,6 +131,10 @@ namespace View.Pages
             new NotesPageNoteWindow(this).ShowDialog();
         }
 
+
+        /// <summary>
+        /// Method for delation all checked notes
+        /// </summary>
         private void Content_Button_delete_Click(object sender, RoutedEventArgs e)
         { 
             foreach(NotesPageNoteBlock i in content.stack.Children)
@@ -148,6 +167,14 @@ namespace View.Pages
         {
             this.NavigationService.Navigate(new Uri("Pages/ProfilePage.xaml", UriKind.Relative));
         }
+
+
+        /// <summary>
+        /// Method for filling notes
+        /// </summary>
+        /// <remarks>
+        /// Notes are preserved in stack
+        /// </remarks>
         private void fillNotes()
         {
             this.content.stack.Children.Clear();
@@ -169,20 +196,38 @@ namespace View.Pages
             new NotesPageNoteWindow(this,(sender as NotesPageNoteBlock).note).ShowDialog();
         }
 
+        /// <summary>
+        /// Method for getting subjects
+        /// </summary>
         public List<String> GetSubjects()
         {
             return logic.GetSubjects();
         }
+
+
+        /// <summary>
+        /// Method for adding notes
+        /// </summary>
         public void AddNoteFromString(string name, string deadline, string subject, string materials)
         {
             logic.AddNote(name, deadline, subject, materials);
             fillNotes();
         }
+
+
+        /// <summary>
+        /// Method for changing notes info
+        /// </summary>
         public void ChangeNote(Note note,Note newNote)
         {
             logic.UpdateNote(note,newNote);
             fillNotes();
         }
+
+
+        /// <summary>
+        /// Method for executing notes sortition
+        /// </summary>
         public void SortNotes(SortedBy by)
         {
             logic.sort(by);

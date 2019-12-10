@@ -31,6 +31,9 @@ namespace View.Pages
             searchBar.textSearch.KeyDown += SearchBar_TextSearch_KeyDown;
         }
 
+        /// <summary>
+        /// Method for executing search in searchBar
+        /// </summary>
         private void SearchBar_TextSearch_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter && !String.IsNullOrWhiteSpace(searchBar.textSearch.Text))

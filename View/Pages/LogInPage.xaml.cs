@@ -32,6 +32,13 @@ namespace View.Pages
             navbar.button_FAQ.Click += FAQNavigationTransition;
         }
 
+        /// <summary>
+        /// Method for User after authorization transition
+        /// </summary>
+        /// <remarks>
+        /// Autentifivation confirmed: user is transited to ProfilePage
+        /// Authentification failed: user has a choice: create or reject new account creation
+        /// </remarks>
         private void LogInToApplicationNavigationTransition(object sender, RoutedEventArgs e)
         {
             if (authorisation.IsCorrectPersonData(navbar.usernameTextBox.Text, navbar.passwordTextBox.Password))
