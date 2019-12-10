@@ -31,8 +31,9 @@ namespace View.Widgets
             InitializeComponent();
 			this.Subject.Text = Subject;
 			this.Teacher.Text = Teacher;
+			
 			logic = new NotesPageVM(new SQLiteDataService(), App.username);
-			NotesOfSubject = (List<Note>)logic.GetNotes();
+			NotesOfSubject = ((List<Note>)logic.GetNotes()).Where(x => x.SubjectID == Subject).ToList();
 
 			FillNotes();
 			button_ok.Click += EndWorkWithNotes;
