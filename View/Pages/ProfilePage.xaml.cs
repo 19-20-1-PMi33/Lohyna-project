@@ -31,11 +31,12 @@ namespace View.Pages
         int currentPageNumber = 0;
 
         public ProfilePage()
-
         {
-            this.logic = new ProfilePageVM(new SQLiteDataService(), "RomanLevkovych");
+            Console.WriteLine(App.userToDisplay);
+            this.logic = new ProfilePageVM(new SQLiteDataService(), App.userToDisplay);
+            App.userToDisplay = App.currentUser;
             InitializeComponent();
-
+            searchBar.textSearch.KeyDown += SearchBar_TextSearch_Search_On_KeyDown;
             navbar.button_Profile.Click += ProfileTransition;
             navbar.button_FAQ.Click += FAQTransition;
             navbar.button_Notes.Click += NotesTransition;
@@ -85,6 +86,16 @@ namespace View.Pages
         /// <summary>
         /// Method for transition from current ProfilePage to TimeTablePage
         /// </summary>
+
+        private void SearchBar_TextSearch_Search_On_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter && !String.IsNullOrWhiteSpace(searchBar.textSearch.Text))
+            {
+                App.LastSearch = searchBar.textSearch.Text;
+                this.NavigationService.Navigate(new Uri("Pages/SearchPage.xaml", UriKind.Relative));
+            }
+        }
+
         private void TimetableTransition(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("Pages/TimeTablePage.xaml", UriKind.Relative));

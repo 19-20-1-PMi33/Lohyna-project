@@ -99,7 +99,8 @@ namespace View.Pages
 
         private void SearchPageBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            //somehow navigate to profile of person in block (sender as SearchPageBlock.person)
+            App.userToDisplay = (sender as SearchPageBlock).Person.Username;
+            this.NavigationService.Navigate(new Uri("Pages/ProfilePage.xaml", UriKind.Relative));
         }
     }
 }
