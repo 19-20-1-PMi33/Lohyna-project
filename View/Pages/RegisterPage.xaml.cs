@@ -44,7 +44,7 @@ namespace View.Pages
         /// <returns>True for valide values</returns>
         private bool validateValues()
         {
-            return viewModel.validateValues(content.editName.Text, content.editSurname.Text, content.editZal.Text, content.editUsername.Text, content.comboGroup.SelectedItem.ToString(), content.editTicket.Text, content.editPassword.Password, content.editRepPassword.Password);
+            return viewModel.validateValues(new ParamsForRegister(content.editName.Text, content.editSurname.Text, content.editUsername.Text, content.editPassword.Password, content.editRepPassword.Password, content.comboGroup.SelectedItem.ToString(), content.editZal.Text, content.editTicket.Text));
         }
 
 
@@ -56,7 +56,7 @@ namespace View.Pages
             if (validateValues())
             {
                 content.editPassword.Password = authorisation.ComputeSha256Hash(content.editPassword.Password);
-                if(viewModel.registerUser(content.editName.Text, content.editSurname.Text, content.editZal.Text, content.editUsername.Text, content.editPassword.Password, content.comboGroup.SelectedItem.ToString(), content.editTicket.Text))
+                if(viewModel.registerUser(new ParamsForRegister(content.editName.Text, content.editSurname.Text, content.editUsername.Text, content.editPassword.Password, content.editRepPassword.Password, content.comboGroup.SelectedItem.ToString(), content.editZal.Text,  content.editTicket.Text)))
                 {
                     this.NavigationService.Navigate(new Uri("Pages/ProfilePage.xaml", UriKind.Relative));
                 }
