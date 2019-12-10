@@ -32,7 +32,7 @@ namespace View.Widgets
 			this.Subject.Text = Subject;
 			this.Teacher.Text = Teacher;
 			
-			logic = new NotesPageVM(new SQLiteDataService(), App.username);
+			logic = new NotesPageVM(new SQLiteDataService(), App.currentUser);
 			NotesOfSubject = ((List<Note>)logic.GetNotes()).Where(x => x.SubjectID == Subject).ToList();
 
 			FillNotes();

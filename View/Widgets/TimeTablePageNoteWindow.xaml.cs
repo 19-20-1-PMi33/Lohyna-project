@@ -29,7 +29,7 @@ namespace View.Widgets
 		Note note;
 		public TimeTablePageNoteWindow(TimeTablePageTimeTableNote parent, string SubjectName, Note Note = null)
 		{
-			logic = new NotesPageVM(new SQLiteDataService(), App.username);
+			logic = new NotesPageVM(new SQLiteDataService(), App.currentUser);
 			Title = "Note";
 			this.parent = parent;
 
