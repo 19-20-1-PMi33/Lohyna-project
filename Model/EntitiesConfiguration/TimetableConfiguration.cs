@@ -12,8 +12,7 @@ namespace Model.EntitiesConfiguration
 			builder.Property(x => x.Day)
 				.IsRequired();
 
-			builder.Property(x => x.Period)
-				.IsRequired();
+			builder.Property(x => x.Period);
 
 			builder.HasOne(x => x.Time)
 				.WithMany(y => y.Lessons)
