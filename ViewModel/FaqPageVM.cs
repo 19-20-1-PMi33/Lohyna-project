@@ -16,6 +16,9 @@ namespace ViewModel
 		{
 			this.FaqService = FaqService;
 		}
+        /// <summary>
+        /// Gets all questions with answers synchronously and saves them into inner list
+        /// </summary>
 		public void GetFAQ()
 		{
 			if(FAQs == null)
@@ -23,6 +26,10 @@ namespace ViewModel
 				FAQs = (List<FAQ>)FaqService.LoadAllFaqAsync().Result;
 			}
 		}
+        /// <summary>
+        /// Get all questions from inner list and transform them into strings
+        /// </summary>
+        /// <returns>List of faq elements as strings</returns>
 		public List<String> GetQuestions()
 		{
 			if(Questions == null)
@@ -32,6 +39,11 @@ namespace ViewModel
 			}
 			return Questions;
 		}
+        /// <summary>
+        /// Gets answer for question
+        /// </summary>
+        /// <param name="Question">Text of question to get answers on</param>
+        /// <returns>Answer for question as string</returns>
 		public String GetAnswer(String Question)
 		{
 			GetFAQ();
