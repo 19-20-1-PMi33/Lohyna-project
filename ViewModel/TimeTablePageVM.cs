@@ -15,6 +15,11 @@ namespace ViewModel
 		{
 			this.TimeTableService = timeTableService;
 		}
+        /// <summary>
+        /// Get all lessons of user
+        /// </summary>
+        /// <param name="username">Username of person to search lessons</param>
+        /// <returns>List of lessons as TimeTables objects</returns>
 		public List<Timetable> GetLessons(string username)
 		{
 			if (Lessons == null)
@@ -23,6 +28,11 @@ namespace ViewModel
 			}
 			return Lessons;
 		}
+        /// <summary>
+        /// Get lecturer name from id
+        /// </summary>
+        /// <param name="LecturerID">Id of lecturer</param>
+        /// <returns>Name as string</returns>
 		public String LecturerName(int LecturerID)
 		{
 			Person Lecturer = TimeTableService.SearchLectorById(LecturerID);

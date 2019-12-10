@@ -62,7 +62,7 @@ namespace ViewModel
         /// </summary>
         /// <param name="values">List of strings to validate</param>
         /// <returns>True if values are valid, in other case false</returns>
-        public bool validateValues(params string[] values)
+        public bool validateValues(ParamsForRegister values)
         {
             bool res = true;
             new List<String>{values.name,values.surname,values.username,values.password,values.group,values.zal,values.ticket }.ForEach(value =>
@@ -96,7 +96,7 @@ namespace ViewModel
         /// <param name="username">Username of new user</param>
         /// <param name="password">Password of new user</param>
         /// <returns></returns>
-        public bool registerUser(string name, string surname, string zal, string username, string password)
+        public bool registerUser(ParamsForRegister values)
         {
             Model.Person person = new Model.Person { Name = values.name, Surname = values.surname, Password = values.password, Photo = userPhoto, Username = values.username };
             Model.Student student = new Model.Student { TicketNumber = long.Parse(values.ticket), ReportCard = long.Parse(values.zal), PersonID = values.username, GroupID = values.group };
@@ -111,6 +111,10 @@ namespace ViewModel
                 return false;
             }
         }
+        /// <summary>
+        /// Get list of all groups in university
+        /// </summary>
+        /// <returns>List of groups as strings</returns>
         public List<String> GetGroups()
         {
             List<String> res = new List<string>();
