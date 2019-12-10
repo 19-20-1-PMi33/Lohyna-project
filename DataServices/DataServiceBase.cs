@@ -90,7 +90,7 @@ namespace DataServices
         public async Task<IList<Timetable>> LoadTimetableAsync(string username)
         {
 			return await _dataSource.Timetable
-				.Where(item => item.GroupID.Equals(this.LoadStudent(this.LoadLogInPersonAsync(username)).GroupID))
+				.Where(item => item.GroupID.Equals(LoadStudent(LoadLogInPersonAsync(username)).GroupID))
 				.ToListAsync();
         }
 

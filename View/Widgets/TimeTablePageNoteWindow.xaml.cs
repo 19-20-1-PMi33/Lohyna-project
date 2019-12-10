@@ -29,11 +29,11 @@ namespace View.Widgets
 		Note note;
 		public TimeTablePageNoteWindow(TimeTablePageTimeTableNote parent, string SubjectName, Note Note = null)
 		{
-			this.logic = new NotesPageVM(new SQLiteDataService(), App.username);
-			this.Title = "Note";
+			logic = new NotesPageVM(new SQLiteDataService(), App.username);
+			Title = "Note";
 			this.parent = parent;
 
-			this.note = Note;
+			note = Note;
 			InitializeComponent();
 			textDeadline.DisplayDateStart = DateTime.Now;
 			subjectName.Text = SubjectName;
@@ -57,15 +57,16 @@ namespace View.Widgets
 		{
 			if (textName.Text == textNamePlaceholder)
 			{
-				textName.Text = "";
+				textName.Text = string.Empty;
 			}
 		}
 		private void ButtonAddClick(object sender, RoutedEventArgs e)
 		{
 			if (validateText())
 			{
-				parent.AddNoteFromString(textName.Text, textDeadline.Text, subjectName.Text, new TextRange(textMaterials.Document.ContentStart, textMaterials.Document.ContentEnd).Text);
-				this.Close();
+				String Materials = new TextRange(textMaterials.Document.ContentStart, textMaterials.Document.ContentEnd).Text;
+				parent.AddNoteFromString(textName.Text, textDeadline.Text, subjectName.Text, Materials);
+				Close();
 			}
 		}
 		private void ButtonAddClickModify(object sender, RoutedEventArgs e)
@@ -78,12 +79,12 @@ namespace View.Widgets
 				newNote.Materials = new TextRange(textMaterials.Document.ContentStart, textMaterials.Document.ContentEnd).Text;
 				newNote.Name = textName.Text;
 				parent.ChangeNote(note, newNote);
-				this.Close();
+				Close();
 			}
 		}
 		private void ButtonCancelClick(object sender, RoutedEventArgs e)
 		{
-			this.Close();
+			Close();
 		}
 		private bool validateText()
 		{
