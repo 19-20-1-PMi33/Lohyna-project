@@ -76,7 +76,10 @@ namespace View.Pages
                     content.marks.HeadRow2.markColumn.Click += SortRatingsByMarkClick;
                     content.buttonNext.MouseDown += PreviousRatingsPageMouseDown;
                     content.buttonPrev.MouseDown += NextRatingsPageMouseDown;
-                    content.pageIndexTextblock.Text = $"{currentPageNumber + 1} of {logic.GetPageCount(pageLimit)}";
+                    double pages = logic.GetPageCount(pageLimit);
+                    if (pages < 1)
+                        pages = 1;
+                    content.pageIndexTextblock.Text = $"{currentPageNumber + 1} of {pages}";
 
                     FillMarksTable();
                 }
@@ -158,10 +161,6 @@ namespace View.Pages
                     this.content.marks.stack2.Children.Add(item);
                 ++fillTableIndex;
             }
-            if (content.marks.stack2.Children.Count == 0)
-                content.marks.HeadRow2.Visibility = Visibility.Hidden;
-            else
-                content.marks.HeadRow2.Visibility = Visibility.Visible;
         }
 
         /// <summary>
