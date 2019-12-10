@@ -32,12 +32,21 @@ namespace ViewModel
     public class RegisterPageVM
     {
         private const string profileImagesFolder = "Widgets/Images/Profile_Images/";
+        /// <summary>
+        /// Currently used photo
+        /// </summary>
         private string userPhoto = "Widgets/Images/profile_placeholder.jpg";
         private IPersonService service;
         public RegisterPageVM(IPersonService service)
         {
             this.service = service;
         }
+        /// <summary>
+        /// Copy image from users folder to apps one
+        /// </summary>
+        /// <param name="fileName">Photo`s file name</param>
+        /// <param name="nom_zal">Student ticket number to store picture, as it should be unique</param>
+        /// <returns></returns>
         public string copyImage(string fileName,string nom_zal)
         {
             string path = Directory.GetCurrentDirectory();
@@ -48,6 +57,11 @@ namespace ViewModel
             this.userPhoto = returningPath;
             return returningPath;
         }
+        /// <summary>
+        /// Validate values of person data
+        /// </summary>
+        /// <param name="values">List of strings to validate</param>
+        /// <returns>True if values are valid, in other case false</returns>
         public bool validateValues(ParamsForRegister values)
         {
             bool res = true;
@@ -73,6 +87,15 @@ namespace ViewModel
             }
             return res;
         }
+        /// <summary>
+        /// Register user with adding one to database
+        /// </summary>
+        /// <param name="name">Name of new user</param>
+        /// <param name="surname">Surname of new user</param>
+        /// <param name="zal">Student ticket number of new user</param>
+        /// <param name="username">Username of new user</param>
+        /// <param name="password">Password of new user</param>
+        /// <returns></returns>
         public bool registerUser(ParamsForRegister values)
         {
             Model.Person person = new Model.Person { Name = values.name, Surname = values.surname, Password = values.password, Photo = userPhoto, Username = values.username };
@@ -88,6 +111,10 @@ namespace ViewModel
                 return false;
             }
         }
+        /// <summary>
+        /// Get list of all groups in university
+        /// </summary>
+        /// <returns>List of groups as strings</returns>
         public List<String> GetGroups()
         {
             List<String> res = new List<string>();

@@ -99,6 +99,16 @@ namespace View.Pages
         /// <summary>
         /// Method for transition from current ProfilePage to TimeTablePage
         /// </summary>
+
+        private void SearchBar_TextSearch_Search_On_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter && !String.IsNullOrWhiteSpace(searchBar.textSearch.Text))
+            {
+                App.LastSearch = searchBar.textSearch.Text;
+                this.NavigationService.Navigate(new Uri("Pages/SearchPage.xaml", UriKind.Relative));
+            }
+        }
+
         private void TimetableTransition(object sender, RoutedEventArgs e)
         {
             this.NavigationService.Navigate(new Uri("Pages/TimeTablePage.xaml", UriKind.Relative));

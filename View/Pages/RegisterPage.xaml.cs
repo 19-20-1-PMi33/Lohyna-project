@@ -55,7 +55,7 @@ namespace View.Pages
         {
             if (validateValues())
             {
-                content.editPassword.Password = authorisation.ComputeSha256Hash(content.editPassword.Password);
+                content.editPassword.Password = Authorisation.ComputeSha256Hash(content.editPassword.Password);
                 if(viewModel.registerUser(new ParamsForRegister(content.editName.Text, content.editSurname.Text, content.editUsername.Text, content.editPassword.Password, content.editRepPassword.Password, content.comboGroup.SelectedItem.ToString(), content.editZal.Text,  content.editTicket.Text)))
                 {
                     App.setUser(content.editUsername.Text);
