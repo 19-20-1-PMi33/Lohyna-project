@@ -37,12 +37,12 @@ namespace View.Widgets
 			InitializeComponent();
 			textDeadline.DisplayDateStart = DateTime.Now;
 			subjectName.Text = SubjectName;
-			button_cancel.Click += Button_cancel_Click;
+			buttonCancel.Click += ButtonCancelClick;
 			if (note == null)
 			{
 				textName.Text = textNamePlaceholder;
-				textName.GotFocus += TextTitle_GotFocus;
-				button_add.Click += Button_add_Click;
+				textName.GotFocus += TextTitleGotFocus;
+				buttonAdd.Click += ButtonAddClick;
 			}
 			else
 			{
@@ -50,17 +50,17 @@ namespace View.Widgets
 				textDeadline.Text = note.Deadline.ToShortDateString();
 				subjectName.Text = note.SubjectID;
 				textMaterials.AppendText(note.Materials);
-				button_add.Click += Button_add_Click_Modify;
+				buttonAdd.Click += ButtonAddClickModify;
 			}
 		}
-		private void TextTitle_GotFocus(object sender, RoutedEventArgs e)
+		private void TextTitleGotFocus(object sender, RoutedEventArgs e)
 		{
 			if (textName.Text == textNamePlaceholder)
 			{
 				textName.Text = "";
 			}
 		}
-		private void Button_add_Click(object sender, RoutedEventArgs e)
+		private void ButtonAddClick(object sender, RoutedEventArgs e)
 		{
 			if (validateText())
 			{
@@ -68,7 +68,7 @@ namespace View.Widgets
 				this.Close();
 			}
 		}
-		private void Button_add_Click_Modify(object sender, RoutedEventArgs e)
+		private void ButtonAddClickModify(object sender, RoutedEventArgs e)
 		{
 			if (validateText() && wasChanged())
 			{
@@ -81,7 +81,7 @@ namespace View.Widgets
 				this.Close();
 			}
 		}
-		private void Button_cancel_Click(object sender, RoutedEventArgs e)
+		private void ButtonCancelClick(object sender, RoutedEventArgs e)
 		{
 			this.Close();
 		}

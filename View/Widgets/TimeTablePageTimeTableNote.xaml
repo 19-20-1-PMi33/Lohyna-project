@@ -38,19 +38,19 @@
             </images:cancel_icon.RenderTransform>
         </images:cancel_icon>
         <CheckBox x:Name="check" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Button x:Name="sort_by_time" Content="Time" Grid.Row="3" Grid.Column="2"  FontSize="15" Background="Transparent" BorderBrush="{x:Null}"/>
-        <Button x:Name="sort_by_title" Content="Title" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" FontSize="15" HorizontalAlignment="Center" Background="Transparent" BorderBrush="{x:Null}"/>
+        <Button x:Name="toSortByTime" Content="Time" Grid.Row="3" Grid.Column="2"  FontSize="15" Background="Transparent" BorderBrush="{x:Null}"/>
+        <Button x:Name="toSortByTitle" Content="Title" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" FontSize="15" HorizontalAlignment="Center" Background="Transparent" BorderBrush="{x:Null}"/>
         <ScrollViewer Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="5" Margin="0 10 0 10" VerticalScrollBarVisibility="Auto">
             <StackPanel x:Name="stack">
 
             </StackPanel>
         </ScrollViewer>
-        <Button Content="Mark checked as done" Name="button_checked_done" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Left" Background="#f9f9f9">
+        <Button Content="Mark checked as done" Name="buttonCheckedDone" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" HorizontalAlignment="Left" Background="#f9f9f9">
             <Button.Effect>
                 <DropShadowEffect BlurRadius="8" Opacity="0.8"/>
             </Button.Effect>
         </Button>
-        <Button Content="OK" Name="button_ok" Grid.Row="5" Grid.Column="4" Width="100" Background="#f9f9f9" MouseDown="EndWorkWithNotes">
+        <Button Content="OK" Name="buttonOk" Grid.Row="5" Grid.Column="4" Width="100" Background="#f9f9f9" MouseDown="EndWorkWithNotes">
             <Button.Effect>
                 <DropShadowEffect BlurRadius="8" Opacity="0.8"/>
             </Button.Effect>

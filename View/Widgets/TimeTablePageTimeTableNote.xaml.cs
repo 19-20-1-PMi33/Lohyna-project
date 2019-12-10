@@ -36,11 +36,11 @@ namespace View.Widgets
 			NotesOfSubject = ((List<Note>)logic.GetNotes()).Where(x => x.SubjectID == Subject).ToList();
 
 			FillNotes();
-			button_ok.Click += EndWorkWithNotes;
+			buttonOk.Click += EndWorkWithNotes;
 			check.Click += MarkAll;
-			button_checked_done.Click += DeleteMarked;
-			sort_by_time.Click += SortByTime;
-			sort_by_title.Click += SortByTitle;
+			buttonCheckedDone.Click += DeleteMarked;
+			toSortByTime.Click += SortByTime;
+			toSortByTitle.Click += SortByTitle;
 		}
 		private void AddNoteOnClick(object sender, MouseButtonEventArgs e)
 		{

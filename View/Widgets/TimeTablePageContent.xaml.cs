@@ -29,9 +29,9 @@ namespace View.Widgets
 		{
 			InitializeComponent();
 
-			DaysOfWeek = new List<String>() { "Monday", "Tuesday", "Wednesday", "Thuesday", "Friday" };
+			DaysOfWeek = new List<String>() { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday" };
 
-			Service = new TimeTablePageVM(new SQLiteDataService(), new SQLiteDataService());
+			Service = new TimeTablePageVM(new SQLiteDataService());
 			Service.GetLessons(App.username).ForEach(Lesson => AddTimeTableBlock(Lesson));
 		}
 		/// <summary>
@@ -43,10 +43,8 @@ namespace View.Widgets
 			String LecturerName = Service.LecturerName(lesson.LecturerID);
 			TimeTablePageTimeTableBlock block = new TimeTablePageTimeTableBlock() { };
 
-			block.name.Text = NameOfLesson;
-			block.lecturer.Text = LecturerName;
-			block.room.Text = "119a";
-			//TODO: Add property room to TimeTable entiti
+			block.Name.Text = NameOfLesson;
+			block.Lecturer.Text = LecturerName;
 
 			int column = GetDayOfWeek(lesson.Day);
 			int row = NumberOfLesson(lesson.TimeID);
@@ -54,7 +52,7 @@ namespace View.Widgets
 			Grid.SetColumn(block, column);
 			Grid.SetRow(block, row);
 
-			timeTable.Children.Add(block);
+			TimeTable.Children.Add(block);
 		}
 		/// <summary>
 		/// Indexing column for some day

@@ -20,15 +20,13 @@ namespace View.Widgets
     /// </summary>
     public partial class TimeTablePageTimeTableBlock : UserControl
 	{
-		TimeTablePageTimeTableNote notes;
 		public TimeTablePageTimeTableBlock()
 		{
 			InitializeComponent();
 		}
 		private void OpenNotesForSubject(object sender, MouseButtonEventArgs e)
 		{
-			notes = new TimeTablePageTimeTableNote(name.Text, lecturer.Text);
-			new TimeTablePageTimeTableNote(this.name.Text, this.lecturer.Text).ShowDialog();
+			new TimeTablePageTimeTableNote(Name.Text, Lecturer.Text).ShowDialog();
 		}
 	}
 }
