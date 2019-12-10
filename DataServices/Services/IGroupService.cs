@@ -7,5 +7,6 @@ namespace DataServices.Services
     public interface IGroupService
     {
         Group LoadGroup(Student student);
+        Task<IList<Group>> LoadGroupsAsync();
     }
 }

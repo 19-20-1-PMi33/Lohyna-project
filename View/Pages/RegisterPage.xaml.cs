@@ -35,18 +35,20 @@ namespace View.Pages
             content.buttonCancel.Click += GoBack;
             content.buttonUploadPhoto.Click += UploadPhoto;
             content.buttonRegister.Click += Register;
+            content.comboGroup.ItemsSource = viewModel.GetGroups();
         }
 
         private bool validateValues()
         {
-            return viewModel.validateValues(content.editName.Text, content.editSurname.Text, content.editZal.Text, content.editUsername.Text, content.editPassword.Password, content.editRepPassword.Password);
+            return viewModel.validateValues(content.editName.Text, content.editSurname.Text, content.editZal.Text, content.editUsername.Text, content.comboGroup.SelectedItem.ToString(), content.editTicket.Text, content.editPassword.Password, content.editRepPassword.Password);
         }
 
         private void Register(object sender, RoutedEventArgs e)
         {
             if (validateValues())
             {
-                if(viewModel.registerUser(content.editName.Text, content.editSurname.Text, content.editZal.Text, content.editUsername.Text, content.editPassword.Password))
+                content.editPassword.Password = authorisation.ComputeSha256Hash(content.editPassword.Password);
+                if(viewModel.registerUser(content.editName.Text, content.editSurname.Text, content.editZal.Text, content.editUsername.Text, content.editPassword.Password, content.comboGroup.SelectedItem.ToString(), content.editTicket.Text))
                 {
                     this.NavigationService.Navigate(new Uri("Pages/ProfilePage.xaml", UriKind.Relative));
                 }

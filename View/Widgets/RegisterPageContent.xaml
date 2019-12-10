@@ -13,6 +13,7 @@
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="15"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
@@ -43,12 +44,16 @@
         <TextBox x:Name="editSurname" Grid.Row="2" Grid.Column="5" Height="25" FontSize="18"></TextBox>
         <TextBlock Text="Nom zal : " Grid.Row="3" Grid.Column="4" VerticalAlignment="Center" FontSize="18"></TextBlock>
         <TextBox x:Name="editZal" Grid.Row="3" Grid.Column="5" Height="25" FontSize="18"></TextBox>
-        <TextBlock Text="UserName : " Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2" VerticalAlignment="Center" FontSize="18"></TextBlock>
-        <TextBox x:Name="editUsername" Grid.Row="6" Grid.Column="4" Grid.ColumnSpan="2" Height="25" FontSize="18"/>
-        <TextBlock Text="Password : " Grid.Row="7"  Grid.Column="2" Grid.ColumnSpan="2" VerticalAlignment="Center" FontSize="18"></TextBlock>
-        <PasswordBox x:Name="editPassword" Grid.Row="7" Grid.Column="4" Grid.ColumnSpan="2" Height="25" FontSize="18"></PasswordBox>
-        <TextBlock Text="Repeat : " Grid.Row="8" Grid.Column="2" Grid.ColumnSpan="3" VerticalAlignment="Center" FontSize="18" Margin="5,13,95,13"></TextBlock>
-        <PasswordBox x:Name="editRepPassword" Grid.Row="8" Grid.Column="4" Grid.ColumnSpan="2" Height="25" FontSize="18"></PasswordBox>
+        <TextBlock Text=" Ticket : " Grid.Row="4" Grid.Column="4" VerticalAlignment="Center" FontSize="18"></TextBlock>
+        <TextBox x:Name="editTicket" Grid.Row="4" Grid.Column="5" Height="25" FontSize="18"></TextBox>
+        <TextBlock Text=" Group : " Grid.Row="5" Grid.Column="4" VerticalAlignment="Center" FontSize="18"></TextBlock>
+        <ComboBox x:Name="comboGroup" Text="Group" Grid.Row="5" Grid.Column="5" FontSize="18" Margin="0,10,0,10" Background="#f9f9f9" SelectedIndex="0"/>
+        <TextBlock Text="UserName : " Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="2" VerticalAlignment="Center" FontSize="18"></TextBlock>
+        <TextBox x:Name="editUsername" Grid.Row="7" Grid.Column="4" Grid.ColumnSpan="2" Height="25" FontSize="18"/>
+        <TextBlock Text="Password : " Grid.Row="8"  Grid.Column="2" Grid.ColumnSpan="2" VerticalAlignment="Center" FontSize="18"></TextBlock>
+        <PasswordBox x:Name="editPassword" Grid.Row="8" Grid.Column="4" Grid.ColumnSpan="2" Height="25" FontSize="18"></PasswordBox>
+        <TextBlock Text="Repeat : " Grid.Row="9" Grid.Column="2" Grid.ColumnSpan="3" VerticalAlignment="Center" FontSize="18" Margin="5,13,95,13"></TextBlock>
+        <PasswordBox x:Name="editRepPassword" Grid.Row="9" Grid.Column="4" Grid.ColumnSpan="2" Height="25" FontSize="18"></PasswordBox>
         <Button x:Name="buttonCancel" Background="#F9F9F9" Grid.Row="10" Grid.Column="1" Content="Cancel" Height="40" FontSize="18" IsCancel="True">
             <Button.Effect>
                 <DropShadowEffect Opacity="0.7" BlurRadius="8"/>

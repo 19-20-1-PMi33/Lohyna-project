@@ -30,6 +30,12 @@ namespace DataServices
             return await _dataSource.SaveChangesAsync();
         }
 
+        public async Task<int> CreateStudentAsync(Student student)
+        {
+            _dataSource.Student.Add(student);
+            return await _dataSource.SaveChangesAsync();
+        }
+
         public async Task<int> DeleteNoteAsync(params Note[] note)
         {
             _dataSource.Note.RemoveRange(note);
@@ -122,6 +128,11 @@ namespace DataServices
         public async Task<IList<Subject>> LoadSubjectsAsync()
         {
             return await _dataSource.Subject.ToListAsync();
+        }
+
+        public async Task<IList<Group>> LoadGroupsAsync()
+        {
+            return await _dataSource.Group.ToListAsync();
         }
 
         public Student LoadStudent(Person person)
