@@ -19,10 +19,14 @@ namespace View.Widgets
     /// Interaction logic for TimeTablePageTimeTableBlock.xaml
     /// </summary>
     public partial class TimeTablePageTimeTableBlock : UserControl
-    {
-        public TimeTablePageTimeTableBlock()
-        {
-            InitializeComponent();
-        }
-    }
+	{
+		public TimeTablePageTimeTableBlock()
+		{
+			InitializeComponent();
+		}
+		private void OpenNotesForSubject(object sender, MouseButtonEventArgs e)
+		{
+			new TimeTablePageTimeTableNote(Name.Text, Lecturer.Text).ShowDialog();
+		}
+	}
 }

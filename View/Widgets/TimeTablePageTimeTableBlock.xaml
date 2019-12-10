@@ -6,14 +6,12 @@
              xmlns:local="clr-namespace:View.Widgets"
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="100">
-    <Grid Background="#efefef" Cursor="Hand">
+    <Grid Background="#efefef" Cursor="Hand" MouseDown="OpenNotesForSubject" Margin="2">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition/>
-            <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBlock x:Name="name" Grid.Row="0" Text="Паралельні та розподілені обчислення" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <TextBlock x:Name="lecturer" Grid.Row="1" Text="Г. А. Квасниця" TextWrapping="Wrap" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
-        <TextBlock x:Name="room" Grid.Row="2" Text="279" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
+        <TextBlock x:Name="Name" Grid.Row="0" Text="Паралельні та розподілені обчислення" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <TextBlock x:Name="Lecturer" Grid.Row="1" Text="Г. А. Квасниця" TextWrapping="Wrap" VerticalAlignment="Center"  HorizontalAlignment="Center"/>
     </Grid>
 </UserControl>

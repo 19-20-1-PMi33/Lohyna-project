@@ -14,6 +14,7 @@ namespace DataServices.Services
         /// </summary>
         /// <param name="person"></param>
         /// <returns>Timetable of person.</returns>
-        Task<IList<Timetable>> LoadTimetableAsync(Person person);
+        Task<IList<Timetable>> LoadTimetableAsync(string username);
+		Person SearchLectorById(int LecturerID);
     }
 }
