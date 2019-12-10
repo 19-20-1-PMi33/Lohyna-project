@@ -56,24 +56,19 @@ namespace ViewModel
                 if (String.IsNullOrWhiteSpace(value))
                 {
                     res = false;
-                    Console.WriteLine("1");
-                    Console.WriteLine(value);
                 }
             });
             if (values.password != values.passwordRepeat)
             {
                 res = false;
-                Console.WriteLine("2");
             }
             long temp;
             if(!long.TryParse(values.ticket,out temp))
             {
-                Console.WriteLine("3");
                 res = false;
             }
             if (!long.TryParse(values.zal, out temp))
             {
-                Console.WriteLine("4");
                 res = false;
             }
             return res;
