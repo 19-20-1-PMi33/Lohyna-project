@@ -32,7 +32,7 @@ namespace View.Widgets
 			DaysOfWeek = new List<String>() { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday" };
 
 			Service = new TimeTablePageVM(new SQLiteDataService());
-			Service.GetLessons(App.username).ForEach(Lesson => AddTimeTableBlock(Lesson));
+			Service.GetLessons(App.currentUser).ForEach(Lesson => AddTimeTableBlock(Lesson));
 		}
 		/// <summary>
 		/// Addition Lesson to TimeTable
