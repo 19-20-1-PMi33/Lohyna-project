@@ -25,7 +25,7 @@ namespace ViewModel
             return person != null && person.Password.Equals(ComputeSha256Hash(password));
         }
 
-        static string ComputeSha256Hash(string rawData)
+        public string ComputeSha256Hash(string rawData)
         {
             using (SHA256 sha256Hash = SHA256.Create())
             {

@@ -50,6 +50,7 @@ namespace DataServices.Services
         /// <param name="person">Person to be saved.</param>
         /// <returns>Status of operation.</returns>
         Task<int> CreatePersonAsync(Person person);
+        Task<int> CreateStudentAsync(Student student);
 
         /// <summary>
         /// Load people with given name.

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using DataServices.Services;
-
+using DataServices;
+using Model;
 namespace ViewModel
 {
     public class RegisterPageVM
@@ -39,11 +40,22 @@ namespace ViewModel
             }
             return res;
         }
-        public bool registerUser(string name, string surname, string zal, string username, string password)
+        public bool registerUser(string name, string surname, string zal, string username, string password, string group, string ticket)
         {
             Model.Person person = new Model.Person { Name = name, Surname = surname, Password = password, Photo = userPhoto, Username = username };
+            Model.Student student = new Model.Student { TicketNumber = (long)Convert.ToDouble(ticket), ReportCard = (long)Convert.ToDouble(zal), PersonID = username, GroupID = group };
             service.CreatePersonAsync(person).Wait();
+            service.CreateStudentAsync(student).Wait();
             return true;
+        }
+        public List<String> GetGroups()
+        {
+            List<String> res = new List<string>();
+            foreach (Group s in (new SQLiteDataService()).LoadGroupsAsync().Result)
+            {
+                res.Add(s.Name);
+            }
+            return res;
         }
     }
 }
