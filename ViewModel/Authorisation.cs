@@ -8,13 +8,21 @@ namespace ViewModel
 {
 	public class Authorisation
 	{
+        /// <summary>
+        /// Class providing services for autherisate user using username and password
+        /// </summary>
         readonly IPersonService service;
         public Authorisation(IPersonService personService)
         {
             Console.WriteLine($"{Directory.GetCurrentDirectory()}");
             service = personService;
         }
-
+        /// <summary>
+        /// Method to validate username and password
+        /// </summary>
+        /// <param name="username">Username of person</param>
+        /// <param name="password">Password of person</param>
+        /// <returns>True if values are valid, in other cases false</returns>
         public bool IsCorrectPersonData(string username, string password)
         {
 
@@ -24,8 +32,12 @@ namespace ViewModel
 
             return person != null && person.Password.Equals(ComputeSha256Hash(password));
         }
-
-        public string ComputeSha256Hash(string rawData)
+        /// <summary>
+        /// Method to hash password to store it in db
+        /// </summary>
+        /// <param name="rawData">Password as usual string</param>
+        /// <returns>Password as hashed string</returns>
+        static string ComputeSha256Hash(string rawData)
         {
             using (SHA256 sha256Hash = SHA256.Create())
             {
