@@ -44,9 +44,16 @@ namespace ViewModel
         {
             Model.Person person = new Model.Person { Name = name, Surname = surname, Password = password, Photo = userPhoto, Username = username };
             Model.Student student = new Model.Student { TicketNumber = (long)Convert.ToDouble(ticket), ReportCard = (long)Convert.ToDouble(zal), PersonID = username, GroupID = group };
-            service.CreatePersonAsync(person).Wait();
-            service.CreateStudentAsync(student).Wait();
-            return true;
+            if (service.LoadLogInPersonAsync(username) == null)
+            {
+                service.CreatePersonAsync(person).Wait();
+                service.CreateStudentAsync(student).Wait();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         public List<String> GetGroups()
         {
