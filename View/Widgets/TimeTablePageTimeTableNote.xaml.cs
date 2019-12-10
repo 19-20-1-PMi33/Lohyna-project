@@ -57,7 +57,7 @@ namespace View.Widgets
 			foreach (var note in NotesOfSubject)
 			{
 				NotesPageNoteBlock temp = new NotesPageNoteBlock(note);
-				//temp.MouseDown += NotesPageBlock_MouseDown;
+				temp.MouseDown += TimeTableNotesNoteBlockChange;
 				if (cnt++ % 2 == 1)
 				{
 					temp.grid.Background = new SolidColorBrush(Colors.LightGray);
@@ -119,6 +119,10 @@ namespace View.Widgets
 				}
 			}
 			FillNotes();
+		}
+		private void TimeTableNotesNoteBlockChange(object sender, MouseButtonEventArgs e)
+		{
+			new TimeTablePageNoteWindow(this, Subject.Text, (sender as NotesPageNoteBlock).note).ShowDialog();
 		}
 		public void SortNotes(SortedBy by)
 		{
