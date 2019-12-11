@@ -61,13 +61,13 @@ namespace DataServices
 		public async Task<List<Person>> SearchPersonByNameAsync(string name)
 		{
 			return await _dataSource.Person
-				.Where(person => person.Name.Equals(name))
+				.Where(person => person.Name.ToLower().Equals(name.ToLower()))
 				.ToListAsync();
 		}
 		public async Task<List<Person>> SearchPersonBySurnameAsync(string surname)
 		{
 			return await _dataSource.Person
-				.Where(person => person.Surname.Equals(surname))
+				.Where(person => person.Surname.ToLower().Equals(surname.ToLower()))
 				.ToListAsync();
 		}
 		public async Task<IList<Note>> LoadNotesAsync(string person)

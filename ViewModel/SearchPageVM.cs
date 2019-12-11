@@ -34,9 +34,9 @@ namespace ViewModel
                     }
                     else
                     {
-                        personService.SearchPersonByNameAsync(search).Result.ForEach(x => res.Add(x));
-                        personService.SearchPersonBySurnameAsync(search).Result.ForEach(x => res.Add(x));
-                        personService.LoadPersonAsync(search).Result.ForEach(x => res.Add(x));
+                        personService.SearchPersonByNameAsync(search).Result.ForEach(x => { if (!res.Contains(x)) { res.Add(x); } });
+                        personService.SearchPersonBySurnameAsync(search).Result.ForEach(x => { if (!res.Contains(x)) { res.Add(x); } });
+                        personService.LoadPersonAsync(search).Result.ForEach(x => { if (!res.Contains(x)) { res.Add(x); } });
                     }
                 }
             }
