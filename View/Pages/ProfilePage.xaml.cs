@@ -31,11 +31,12 @@ namespace View.Pages
         int currentPageNumber = 0;
 
         public ProfilePage()
-
         {
-            this.logic = new ProfilePageVM(new SQLiteDataService(), "RomanLevkovych");
+            Console.WriteLine(App.userToDisplay);
+            this.logic = new ProfilePageVM(new SQLiteDataService(), App.userToDisplay);
+            App.userToDisplay = App.currentUser;
             InitializeComponent();
-
+            searchBar.textSearch.KeyDown += SearchBar_TextSearch_Search_On_KeyDown;
             navbar.button_Profile.Click += ProfileTransition;
             navbar.button_FAQ.Click += FAQTransition;
             navbar.button_Notes.Click += NotesTransition;
@@ -75,12 +76,25 @@ namespace View.Pages
                     content.marks.HeadRow2.markColumn.Click += SortRatingsByMarkClick;
                     content.buttonNext.MouseDown += PreviousRatingsPageMouseDown;
                     content.buttonPrev.MouseDown += NextRatingsPageMouseDown;
-                    content.pageIndexTextblock.Text = $"{currentPageNumber + 1} of {logic.GetPageCount(pageLimit)}";
+                    double pages = logic.GetPageCount(pageLimit);
+                    if (pages < 1)
+                        pages = 1;
+                    content.pageIndexTextblock.Text = $"{currentPageNumber + 1} of {pages}";
 
                     FillMarksTable();
                 }
             }
         }
+
+        private void SearchBar_TextSearch_Search_On_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter && !String.IsNullOrWhiteSpace(searchBar.textSearch.Text))
+            {
+                App.LastSearch = searchBar.textSearch.Text;
+                this.NavigationService.Navigate(new Uri("Pages/SearchPage.xaml", UriKind.Relative));
+            }
+        }
+
         
         /// <summary>
         /// Method for transition from current ProfilePage to TimeTablePage
@@ -137,10 +151,6 @@ namespace View.Pages
                     this.content.marks.stack2.Children.Add(item);
                 ++fillTableIndex;
             }
-            if (content.marks.stack2.Children.Count == 0)
-                content.marks.HeadRow2.Visibility = Visibility.Hidden;
-            else
-                content.marks.HeadRow2.Visibility = Visibility.Visible;
         }
 
         /// <summary>
