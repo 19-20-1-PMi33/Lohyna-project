@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="View.Widgets.ProfilePageTableMarksHead"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:View.Widgets"
+             mc:Ignorable="d" 
+             d:DesignHeight="30" d:DesignWidth="600">
+    <Grid  Background="#DDD">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="subjectColumn" Grid.Column="0" Content="Subject" FontSize="20" Cursor="Hand" Style="{StaticResource HeaderRowButton}"/>
+        <Button x:Name="markColumn" Grid.Column="1" Content="Mark" FontSize="20" Cursor="Hand" Style="{StaticResource HeaderRowButton}"/>
+    </Grid>
+</UserControl>
