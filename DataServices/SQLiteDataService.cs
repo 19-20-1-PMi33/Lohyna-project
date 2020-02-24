@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DataServices
+﻿namespace DataServices
 {
     /// <summary>
     /// Service for obtaining data from SQLite DB.
