@@ -1,12 +1,16 @@
 body{
-	background-color: #f9f9f9
+	background-color: #f9f9f9;
 }
 p{
 	margin-bottom: 0px;
+	font: roboto;
 }
 .dropdown-menu{
 	min-width: 0px;
 }
 .dropdown-item{
 	padding: 4px;
+}
+.card-news{
+	background-color: #f3f3f3;
 }
