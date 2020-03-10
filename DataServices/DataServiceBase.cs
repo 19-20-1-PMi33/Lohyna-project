@@ -150,10 +150,10 @@ namespace DataServices
 		{
 			return _dataSource.Group.FirstOrDefault(p => p.Name == student.GroupID);
 		}
-		public Person SearchLectorById(int LecturerID)
+		public Person SearchLecturerById(int lecturerId)
 		{
-			string PersonID = _dataSource.Lecturer.FirstOrDefault(p => p.ID == LecturerID).PersonID;
-			return _dataSource.Person.FirstOrDefault(p => p.Username.Equals(PersonID));
+			string personId = _dataSource.Lecturer.FirstOrDefault(p => p.ID == lecturerId)?.PersonID;
+			return _dataSource.Person.FirstOrDefault(p => p.Username.Equals(personId));
 		}
 		#region Disposable
 		public void Dispose()
