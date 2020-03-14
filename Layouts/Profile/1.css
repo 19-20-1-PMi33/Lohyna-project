@@ -24,3 +24,22 @@ p{
 .card-body{
 	padding: 0.75rem;
 }
+
+.info-name{
+	font-size: 4rem;
+}
+.info-other{
+	font-size: 3rem;
+}
+@media (max-width: 768px){
+	.info-name{
+		font-size: 1.5rem;
+		padding-top: 1rem;
+	}
+	.info-other{
+		font-size: 1rem;
+	}
+}
+.text-message{
+	background-color: #f9f9f9;
+}
