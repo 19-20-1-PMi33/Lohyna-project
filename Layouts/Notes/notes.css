@@ -16,3 +16,9 @@ hr {
 .highlight-row:hover {
     background-color: #e2e2e2;
 }
+
+@media only screen and (max-width: 576px) {
+    .list-title {
+        display: none;
+    }
+}
