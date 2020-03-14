@@ -1,0 +1,18 @@
+body {
+    height: 100%;
+}
+
+nav {
+    background-color: #d2d2d2;
+    /* height: 100%; */
+}
+
+hr {
+    border-style: inset;
+    width: 100%;
+    border-width: 1px;
+}
+
+.highlight-row:hover {
+    background-color: #e2e2e2;
+}
