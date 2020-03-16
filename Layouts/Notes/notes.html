@@ -17,8 +17,8 @@
 
 <body class="container-fluid row">
 
-    <nav class="nav flex-column col-sm-3 col-2">
-        <a class="nav-link highlight-row ml-2" href="#">
+    <nav class="nav flex-column col-sm-2 col-2">
+        <a class="nav-link active row-active highlight-row ml-2" href="#">
             <div class="row"><i class="material-icons">calendar_today</i> <span class="ml-2 list-title">My day</span></div>
         </a>
         <a class="nav-link highlight-row ml-2" href="#">
@@ -33,8 +33,24 @@
         </a>
     </nav>
 
-    <main class="col-sm-9">
+    <main class="col-sm-9 col-10 container-fluid col">
+        <header class="ml-1 container-fluid row col-2"> 
+            <h1>My day</h1>
+            <i class="material-icons align-self-center">more_horiz</i>
+        </header>
 
+        <main>
+            <ul>
+                <li>List</li>
+            </ul>
+        </main>
+
+        <footer id="add-task" class="ml-1 mr-1 input-group col-4">
+            <div class="input-group-prepend">
+                <i class="material-icons">add</i>
+            </div>
+            <input type="text" class="form-control" />
+        </footer>
     </main>
 
     <!-- Optional JavaScript -->

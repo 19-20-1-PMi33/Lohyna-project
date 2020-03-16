@@ -17,6 +17,15 @@ hr {
     background-color: #e2e2e2;
 }
 
+.row-active {
+    background-color: #e2e2e2;
+}
+
+#add-task {
+    background-color: #e2e2e2;
+    bottom: 10px;
+}
+
 @media only screen and (max-width: 576px) {
     .list-title {
         display: none;
