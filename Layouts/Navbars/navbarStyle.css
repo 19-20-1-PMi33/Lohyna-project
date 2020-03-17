@@ -23,10 +23,7 @@ html, body,header
 {
 	background-color: #0078D7;
 }
-.row p
-{
-	font-size: 20px;
-}
+
 @media (max-width: 768px)
 {
 	.navbar: not(.top-nav-collapse)
@@ -34,6 +31,7 @@ html, body,header
 		background-color: #24355c;		
 	}
 }
+
 #linksList
 {
     font-size: 22px;
