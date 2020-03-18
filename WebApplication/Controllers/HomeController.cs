@@ -33,6 +33,10 @@ namespace WebApplication.Controllers
             return View();
         }
 
+        public IActionResult Profile(){
+            return View(new ProfileViewModel{User="Roman",Person=new Person(0,"Roman","Levkovych","Applied Mathematics and Informatics","PMi-33","profile1.jpg")});
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

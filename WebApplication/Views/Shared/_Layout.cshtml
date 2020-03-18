@@ -18,10 +18,11 @@
             <img src="/Logo2.png" id="logo" class="d-inline-block align-top"/>
         </a>
         <div class="collapse  navbar-collapse" id="navbarTogglerDemo03">
+            @if(!String.IsNullOrEmpty(((string)ViewData["User"]))){
             <ul class="navbar-nav mx-auto" id="linksList">
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#" id="navLink">Profile</a>
+                    <a class="nav-link" asp-action="Profile" id="navLink">Profile</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="navLink" href="#">Timetable</a>
@@ -41,6 +42,16 @@
                 <input class="form-control  mr-sm-2 my-sm-2 mb-2" type="search" placeholder="Search" aria-label="Search">
                 <button id="btn" class="btn btn-primary  my-2 my-sm-0 " type="submit">Search</button>
             </form>
+            }
+            else
+            {
+                <form class="form-inline my-2 ml-auto my-lg-0 justify-content-center">
+                    <input class="form-control mr-sm-2 my-sm-2 mb-2" type="text" placeholder="Username">
+                    <input class="form-control input-sm mr-sm-2 my-sm-2 mb-2" type="password" placeholder="Password">
+                    <button class="btn btn-primary" id="btn" type="submit">Log in</button>
+                    <button class="btn btn-primary" id="btn" type="submit">Register</button>
+                </form>
+            }
         </div>
     </nav>
     <div class="content">

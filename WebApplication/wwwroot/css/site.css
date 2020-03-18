@@ -86,3 +86,100 @@ p{
 .text-share{
   font-size: 1.25rem;
 }
+body{
+	background-color: #f9f9f9;
+}
+p{
+	margin-bottom: 0px;
+	font: roboto;
+}
+.dropdown-menu{
+	min-width: 0px;
+}
+.dropdown-item{
+	padding: 4px;
+}
+.card-news{
+	background-color: #f3f3f3;
+}
+body{
+	background-color: #f9f9f9;
+	overflow-x: hidden;
+}
+p{
+	margin-bottom: 0px;
+	font: roboto;
+}
+.dropdown-menu{
+	min-width: 0px;
+}
+.dropdown-item{
+	padding: 4px;
+}
+.card-news{
+	background-color: #f3f3f3;
+}
+.block-title{
+	z-index: 5;
+	background-color: #f9f9f9;
+}
+.block-profile{
+	background-color: #f9f9f9;
+}
+.card-body{
+	padding: 0.75rem;
+}
+
+.info-name{
+	font-size: 4rem;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+.info-other{
+	font-size: 3rem;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+@media (max-width: 991px){
+	.info-name{
+		font-size: 3rem;
+	}
+	.info-other{
+		font-size: 2rem;
+	}
+}
+@media (max-width: 767px){
+	.info-name{
+		font-size: 2rem;
+		padding-top: 1rem;
+	}
+	.info-other{
+		font-size: 1.5rem;
+	}
+}
+@media (max-width: 575px){
+	.info-name{
+		font-size: 1.5rem;
+		padding-top: 1rem;
+		padding-right: 5px;
+		padding-left: 0px;
+	}
+	.info-other{
+		font-size: 1rem;
+		padding-right: 5px;
+		padding-left: 0px;
+	}
+}
+.text-message{
+	background-color: #f9f9f9;
+}
+#input-message{
+	height: 38px;
+	min-height: 38px;
+}
+#button-message{
+  text-transform: none;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  margin: 0px;
+}
