@@ -6,6 +6,7 @@
 #logo
 {
     height: 50px;
+    margin-left: 50px;
 }
 
 html, body,header
@@ -39,20 +40,26 @@ html, body,header
 
 #navLink
 {
-  color: #ffffff;
+  color: black;
   transition: 0.3s ease;
   text-decoration: none;
 }
 #navLink:hover {
-  border-bottom: 4px solid #ffffff;
-  padding: 6px 0; 
+  color: white;
 }
 
-
+.input
+{
+    color: black !important;
+}
+.navbar.navbar-dark form .md-form input {
+    border-bottom: 1px solid #fff;
+}
 #linksList > li{
   padding-left:10px;
   padding-right:10px;
 }
+
 
 #btn
 {
