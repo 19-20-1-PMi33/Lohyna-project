@@ -14,6 +14,9 @@ namespace Model.EntitiesConfiguration
 
 			builder.Property(x => x.Time)
 				.IsRequired();
+
+			builder.Property(x => x.Photo)
+				.IsRequired();
 		}
 	}
 }
