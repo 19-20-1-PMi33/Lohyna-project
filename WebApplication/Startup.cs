@@ -1,4 +1,6 @@
 using System;
+using System.IO;
+using System.Reflection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -15,9 +17,15 @@ namespace WebApplication
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup()
         {
-            Configuration = configuration;
+            Console.WriteLine(Directory.GetCurrentDirectory());
+            var configurationBuilder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory());
+
+            configurationBuilder.AddJsonFile("appsettings.json", false, true);
+
+            Configuration = configurationBuilder.Build();
         }
 
         public IConfiguration Configuration { get; }
@@ -28,17 +36,18 @@ namespace WebApplication
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<LohynaDbContext>(options => 
-                options.UseSqlite("/Users/roman_levkovych/Projects/Lohyna-project/university-db.db"));
+            services.AddDbContext<LohynaDbContext>(options =>
+                options.UseSqlite("Filename=/Users/roman_levkovych/Projects/Lohyna-project/university-db.db",
+                    o => o.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName)));
             services.AddOptions();
-            
-            
+
+
             var builder = new ContainerBuilder();
             builder.Populate(services);
             builder.RegisterModule<RepositoryDependencyModule>();
 
             ApplicationContainer = builder.Build();
-            
+
             return new AutofacServiceProvider(ApplicationContainer);
         }
 
@@ -62,7 +71,7 @@ namespace WebApplication
             app.UseRouting();
 
             app.UseAuthorization();
-            
+
             app.UseCors(builder => builder
                 .AllowAnyOrigin()
                 .AllowAnyMethod()
