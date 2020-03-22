@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -5,6 +6,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Model;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using AutoMapper;
+using DataServices;
 
 namespace WebApplication
 {
@@ -16,13 +21,25 @@ namespace WebApplication
         }
 
         public IConfiguration Configuration { get; }
+        public IContainer ApplicationContainer { get; private set; }
+
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
             services.AddDbContext<LohynaDbContext>(options => 
                 options.UseSqlite("/Users/roman_levkovych/Projects/Lohyna-project/university-db.db"));
+            services.AddOptions();
+            
+            
+            var builder = new ContainerBuilder();
+            builder.Populate(services);
+            builder.RegisterModule<RepositoryDependencyModule>();
+
+            ApplicationContainer = builder.Build();
+            
+            return new AutofacServiceProvider(ApplicationContainer);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +62,12 @@ namespace WebApplication
             app.UseRouting();
 
             app.UseAuthorization();
+            
+            app.UseCors(builder => builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+            );
 
             app.UseEndpoints(endpoints =>
             {

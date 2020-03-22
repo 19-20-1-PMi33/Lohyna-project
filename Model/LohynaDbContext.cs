@@ -1,9 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using Model;
-using System.IO;
 using Model.EntitiesConfiguration;
-using Microsoft.Data.Sqlite;
-using System.Configuration;
 
 namespace Model
 {
