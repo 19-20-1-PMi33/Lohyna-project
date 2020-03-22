@@ -5,7 +5,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\DataServices\DataServices.csproj" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Model\Model.csproj" />
+      <ProjectReference Include="..\Repositories\Repositories.csproj" />
     </ItemGroup>
 
 

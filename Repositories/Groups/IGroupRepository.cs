@@ -2,12 +2,12 @@
 using System.Threading.Tasks;
 using Model;
 
-namespace DataServices.Services
+namespace Repositories.Groups
 {
     /// <summary>
     /// Service for obtaining data about groups.
     /// </summary>
-    public interface IGroupService
+    public interface IGroupRepository
     {
         /// <summary>
         /// Load group where the student is.

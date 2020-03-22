@@ -2,12 +2,12 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Model;
 
-namespace DataServices.Services
+namespace Repositories.Persons
 {
     /// <summary>
     /// Service for obtaining person info.
     /// </summary>
-    public interface IPersonService
+    public interface IPersonRepository
     {
         /// <summary>
         /// Load person.
@@ -70,6 +70,13 @@ namespace DataServices.Services
         /// <param name="surname">Surname to be searched.</param>
         /// <returns>List of people with given surname.</returns>
         Task<List<Person>> SearchPersonBySurnameAsync(string surname);
+        
+        /// <summary>
+        /// Load lecturer by given ID.
+        /// </summary>
+        /// <param name="LecturerID">id of lecturer to search</param>
+        /// <returns></returns>
+        Person SearchLecturerById(int LecturerID);
 
     }
 }

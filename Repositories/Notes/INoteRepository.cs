@@ -2,12 +2,12 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Model;
 
-namespace DataServices.Services
+namespace Repositories.Notes
 {
     /// <summary>
     /// Service for obtaining person's notes.
     /// </summary>
-    public interface INoteService
+    public interface INoteRepository
     {
         /// <summary>
         /// Load all the notes for given person.
