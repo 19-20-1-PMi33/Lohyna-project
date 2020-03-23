@@ -23,6 +23,11 @@ body {
   min-width: 100vw;
 }
 
+#dashLink
+{
+    text-decoration: none;
+    color: black;
+}
 
 #brandIco
 {
@@ -35,6 +40,14 @@ body {
 {
   color: white;
   font-size: 20px;
+}
+
+#userIco
+{
+    height: 40px;
+    float: left;
+    margin-left: 62rem;
+    margin-top: -5px; 
 }
 
 #navLink, #sideLink

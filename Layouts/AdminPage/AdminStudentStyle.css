@@ -19,6 +19,21 @@ body {
     width: auto;
     margin-top: -5px;
 }
+
+#dashLink
+{
+    text-decoration: none;
+    color: black;
+}
+
+#userIco
+{
+    height: 40px;
+    float: left;
+    margin-left: 62rem;
+    margin-top: -5px; 
+}
+
 .list-group {
   width: 17rem;
 }
