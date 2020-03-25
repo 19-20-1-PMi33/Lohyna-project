@@ -49,6 +49,11 @@ body {
   min-width: 100vw;
 }
 
+#textWrap
+{
+    width: 50px;
+}
+
 .navbar-custom
 {
     justify-content: center;
