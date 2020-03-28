@@ -39,11 +39,10 @@
             </div>
             <div class="list-group list-group-flush justify-content-center">
                 <a href="AdminPageStudent.html" class="list-group-item text-center" id="sideLink">Students</a>
-                <a href="AdminPageLecturers.html" class="list-group-item text-center active" id="sideLink">Lecturers</a>
+                <a href="AdminPageLecturers.html" class="list-group-item text-center" id="sideLink">Lecturers</a>
                 <a href="AdminPageDisciplines.html" class="list-group-item text-center" id="sideLink">Disciplines</a>
                 <a href="AdminPageMarks.html" class="list-group-item text-center" id="sideLink">Marks</a>
-                
-               <a href="AdminPageTimeTable.html" class="list-group-item text-center" id="sideLink">Timetable</a>
+               <a href="AdminPageTimeTable.html" class="list-group-item text-center active" id="sideLink">Timetable</a>
                <a href="AdminPageNotes.html" class="list-group-item text-center" id="sideLink">Notes</a>
                 <a href="AdminPageNews.html" class="list-group-item text-center" id="sideLink">News</a>
             </div>
@@ -78,29 +77,38 @@
                 <table class="table table-bordered shadow bg-white rounded" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Username</th>
+                            <th>ID</th>
+                            <th>Day</th>
+                            <th>Period</th>
+                            <th>Time ID</th>
+                            <th>Subject ID</th>
+                            <th>Group ID</th>
                             <th>Lecturer ID</th>
-                            <th>Department</th>
-                            <th>Photo</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>Username</th>
+                            <th>ID</th>
+                            <th>Day</th>
+                            <th>Period</th>
+                            <th>Time ID</th>
+                            <th>Subject ID</th>
+                            <th>Group ID</th>
                             <th>Lecturer ID</th>
-                            <th>Department</th>
-                            <th>Photo</th>
                             <th>Action</th>
                         </tr>
                     </tfoot>
                     <tbody>
 
                         <tr>
-                            <th>Liubomyr Halamaha</th>
-                            <th>23</th>
-                            <th>AMI</th>
-                            <th>images/halamha.png</th>
+                            <th>1</th>
+                            <th>Fill Me</th>
+                            <th>Fill Me</th>
+                            <th>Fill Me</th>
+                            <th>Fill Me</th>
+                            <th>Fill Me</th>
+                            <th>Fill Me</th>
                             <th>
                                 <a href="#editTimetableModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                 <a href="#deleteTimetableModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
@@ -108,10 +116,13 @@
                         </tr>
 
                         <tr>
-                            <th>Kiselyk Roman</th>
-                            <th>212</th>
-                            <th>AMI</th>
-                            <th>image/kiselyk.png</th>
+                            <th>2</th>
+                            <th>Fill Me</th>
+                            <th>Fill Me</th>
+                            <th>Fill Me</th>
+                            <th>Fill Me</th>
+                            <th>Fill Me</th>
+                            <th>Fill Me</th>
                             <th>
                                 <a href="#editTimetableModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                 <a href="#deleteTimetableModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
@@ -119,15 +130,19 @@
                         </tr>
 
                         <tr>
-                            <th>Dr X</th>
-                            <th>23</th>
-                            <th>Philosophy</th>
-                            <th>images/dr.png</th>
+                            <th>3</th>
+                            <th>Fill Me</th>
+                            <th>Fill Me</th>
+                            <th>Fill Me</th>
+                            <th>Fill Me</th>
+                            <th>Fill Me</th>
+                            <th>Fill Me</th>
                             <th>
                                 <a href="#editTimetableModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                 <a href="#deleteTimetableModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                             </th>
                         </tr>
+
                     </tbody>
                 </table>
             <div id="addTimetableModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -135,39 +150,41 @@
                   <div class="modal-content">
                      <form>
                         <div class="modal-header">
-                           <h4 class="modal-title">Add Lecturer</h4>
+                           <h4 class="modal-title">Add Timetable</h4>
                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
                         <div class="modal-body">
                            <div class="form-group">
-                              <label>Name</label>
+                              <label>ID</label>
+                              <input type="number" class="form-control" required>
+                           </div>
+                           <div class="form-group">
+                              <label>Day</label>
                               <input type="text" class="form-control" required>
                            </div>
                            <div class="form-group">
-                              <label>Surname</label>
+                              <label>Period</label>
+                              <input type="text" class="form-control" required>
+                           </div>
+                           
+                           <div class="form-group">
+                              <label>Time ID</label>
                               <input type="text" class="form-control" required>
                            </div>
                            <div class="form-group">
-                              <label>Username</label>
+                              <label>Subject ID</label>
                               <input type="text" class="form-control" required>
                            </div>
+                           <div class="form-group">
+                              <label>Group ID</label>
+                              <input type="text" class="form-control" required>
+                        </div>
+                          
                            <div class="form-group">
                               <label>Lecturer ID</label>
                               <input type="text" class="form-control" required>
-                           </div>
-                           <div class="form-group">
-                              <label>Department</label>
-                              <input type="text" class="form-control" required>
-                           </div>
-                           <div class="form-group">
-                              <label>Photo</label>
-                              <input type="file" class="form-control" required>
-                           </div>
-                           <div class="form-group">
-                              <label>Password</label>
-                              <input type="password" class="form-control" required>
-                           </div>
-                        </div>
+                         </div>
+                         </div>
                         <div class="modal-footer justify-content-center">
                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
                            <input type="submit" class="btn btn-success" value="Add">
@@ -186,34 +203,36 @@
                         </div>
                         <div class="modal-body">
                            <div class="form-group">
-                              <label>Name</label>
+                              <label>ID</label>
+                              <input type="number" class="form-control" required>
+                           </div>
+                           <div class="form-group">
+                              <label>Day</label>
                               <input type="text" class="form-control" required>
                            </div>
                            <div class="form-group">
-                              <label>Surname</label>
+                              <label>Period</label>
+                              <input type="text" class="form-control" required>
+                           </div>
+                           
+                           <div class="form-group">
+                              <label>Time ID</label>
                               <input type="text" class="form-control" required>
                            </div>
                            <div class="form-group">
-                              <label>Username</label>
+                              <label>Subject ID</label>
                               <input type="text" class="form-control" required>
                            </div>
+                           <div class="form-group">
+                              <label>Group ID</label>
+                              <input type="text" class="form-control" required>
+                        </div>
+                          
                            <div class="form-group">
                               <label>Lecturer ID</label>
                               <input type="text" class="form-control" required>
-                           </div>
-                           <div class="form-group">
-                              <label>Department</label>
-                              <input type="text" class="form-control" required>
-                           </div>
-                           <div class="form-group">
-                              <label>Photo</label>
-                              <input type="file" class="form-control" required>
-                           </div>
-                           <div class="form-group">
-                              <label>Password</label>
-                              <input type="password" class="form-control" required>
-                           </div>
-                        </div>
+                         </div>
+                         </div>
                         <div class="modal-footer justify-content-center">
                            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
                            <input type="submit" class="btn btn-success" value="Edit">
@@ -228,7 +247,7 @@
                         <div class="modal-content">
                             <form>
                                 <div class="modal-header">
-                                    <h4 class="modal-title">Delete Lecturer</h4>
+                                    <h4 class="modal-title">Delete Timetable</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                 </div>
                                 <div class="modal-body">
