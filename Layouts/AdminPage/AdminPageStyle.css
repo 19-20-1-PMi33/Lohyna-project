@@ -23,6 +23,12 @@ body {
   min-width: 100vw;
 }
 
+#cardLink
+{
+    text-decoration: none;
+}
+
+
 #dashLink
 {
     text-decoration: none;
