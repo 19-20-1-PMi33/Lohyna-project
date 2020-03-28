@@ -32,6 +32,8 @@
                <a href="AdminPageLecturers.html" class="list-group-item text-center" id="sideLink">Lecturers</a>
                <a href="#" class="list-group-item text-center" id="sideLink">Subjects</a>
                <a href="AdminPageMarks.html"class="list-group-item text-center" id="sideLink">Marks</a>
+               <a href="AdminPageTimeTable.html" class="list-group-item text-center" id="sideLink">Timetable</a>
+               <a href="AdminPageNotes.html" class="list-group-item text-center" id="sideLink">Notes</a>
                <a href="AdminPageNews.html" class="list-group-item text-center" id="sideLink">News</a>
             </div>
          </div>
@@ -54,6 +56,7 @@
                   </li>
                </ul>
             </nav>
+            
             <div class="container">
                <div class="table-wrapper">
                   <div class="table-title">
@@ -79,6 +82,7 @@
                            <th>Name</th>
                            <th>Ticket Number</th>
                            <th>Report Card</th>
+                           <th>Group</th>
                            <th>Photo</th>
                            <th>Actions</th>
                         </tr>
@@ -93,6 +97,7 @@
                            </td>
                            <td>Nikita Zhavoronkov</td>
                            <td>BC 212312</td>
+                           <td>AMI-33</td>
                            <td>41231c</td>
                            <td>image/nikita</td>
                            <td>
@@ -109,6 +114,7 @@
                            </td>
                            <td>Petro Tarnavskyy</td>
                            <td>BC 112111</td>
+                           <td>AMI-439</td>
                            <td>231212c</td>
                            <td>image/tarnavskyy.png</td>
                            <td>
@@ -125,6 +131,7 @@
                            </td>
                            <td>Oleh Andrus</td>
                            <td>BC 2312123</td>
+                           <td>AMI-33</td>
                            <td>231213c</td>
                            <td>image/andrus.png</td>
                            <td>
@@ -148,6 +155,7 @@
                   </div>
                </div>
             </div>
+            
             <!-- Edit Modal HTML -->
             <div id="addEmployeeModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                <div class="modal-dialog">
@@ -168,6 +176,11 @@
                            </div>
                            <div class="form-group">
                               <label>Username</label>
+                              <input type="text" class="form-control" required>
+                           </div>
+                           
+                           <div class="form-group">
+                              <label>Group</label>
                               <input type="text" class="form-control" required>
                            </div>
                            <div class="form-group">
@@ -215,6 +228,11 @@
                            </div>
                            <div class="form-group">
                               <label>Username</label>
+                              <input type="text" class="form-control" required>
+                           </div>
+                           
+                           <div class="form-group">
+                              <label>Group</label>
                               <input type="text" class="form-control" required>
                            </div>
                            <div class="form-group">
