@@ -5,11 +5,15 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
-      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+      <link href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css" rel="stylesheet">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-      <link rel="stylesheet" href="AdminStudentStyle.css">
+      <!-- Bootstrap core JavaScript-->
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <!-- Page level plugin JavaScript-->
+      <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+      <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
+      <link rel="stylesheet" href="DataTableStyle.css">
    </head>
    <body>
       <div class="d-flex">
@@ -57,102 +61,73 @@
                </ul>
             </nav>
             <div class="container">
-               <div class="table-wrapper">
-                  <div class="table-title">
-                     <div class="row">
-                        <div class="col-sm-6">
-                           <h2>Manage <b>Students</b></h2>
-                        </div>
-                        <div class="col-sm-6">
-                           <button id = "btnTable" type="button" class="btn btn-primary" data-toggle="modal" data-target="#addEmployeeModal"><i class="material-icons">&#xE147;</i> <span>Add Student</span></button>
-                           <button id = "btnTable" type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteEmployeeModal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></button>
-                        </div>
+               <div class="table-title">
+                  <div class="row">
+                     <div class="col-sm-6">
+                        <h2>Manage <b>Students</b></h2>
+                     </div>
+                     <div class="col-sm-6">
+                        <button id="btnTable" type="button" class="btn btn-primary" style="width:" data-toggle="modal" data-target="#addEmployeeModal"> <span>Add New</span></button>
                      </div>
                   </div>
-                  <table class="table table-striped table-hover">
-                     <thead>
-                        <tr>
-                           <th>
-                              <span class="custom-checkbox">
-                              <input type="checkbox" id="selectAll">
-                              <label for="selectAll"></label>
-                              </span>
-                           </th>
-                           <th>Name</th>
-                           <th>Ticket Number</th>
-                           <th>Report Card</th>
-                           <th>Group</th>
-                           <th>Photo</th>
-                           <th>Actions</th>
-                        </tr>
-                     </thead>
-                     <tbody>
-                        <tr>
-                           <td>
-                              <span class="custom-checkbox">
-                              <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                              <label for="checkbox1"></label>
-                              </span>
-                           </td>
-                           <td>Nikita Zhavoronkov</td>
-                           <td>BC 212312</td>
-                           <td>AMI-33</td>
-                           <td>41231c</td>
-                           <td>image/nikita</td>
-                           <td>
-                              <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                              <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>
-                              <span class="custom-checkbox">
-                              <input type="checkbox" id="checkbox2" name="options[]" value="1">
-                              <label for="checkbox2"></label>
-                              </span>
-                           </td>
-                           <td>Petro Tarnavskyy</td>
-                           <td>BC 112111</td>
-                           <td>AMI-439</td>
-                           <td>231212c</td>
-                           <td>image/tarnavskyy.png</td>
-                           <td>
-                              <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                              <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                           </td>
-                        </tr>
-                        <tr>
-                           <td>
-                              <span class="custom-checkbox">
-                              <input type="checkbox" id="checkbox3" name="options[]" value="1">
-                              <label for="checkbox3"></label>
-                              </span>
-                           </td>
-                           <td>Oleh Andrus</td>
-                           <td>BC 2312123</td>
-                           <td>AMI-33</td>
-                           <td>231213c</td>
-                           <td>image/andrus.png</td>
-                           <td>
-                              <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                              <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                           </td>
-                        </tr>
-                     </tbody>
-                  </table>
-                  <div class="clearfix">
-                     <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
-                     <ul class="pagination">
-                        <li class="page-item disabled"><a href="#">Previous</a></li>
-                        <li class="page-item"><a href="#" class="page-link">1</a></li>
-                        <li class="page-item"><a href="#" class="page-link">2</a></li>
-                        <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                        <li class="page-item"><a href="#" class="page-link">4</a></li>
-                        <li class="page-item"><a href="#" class="page-link">5</a></li>
-                        <li class="page-item"><a href="#" class="page-link">Next</a></li>
-                     </ul>
-                  </div>
                </div>
+               <table class="table table-bordered shadow bg-white rounded" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                     <tr>
+                        <th>Name</th>
+                        <th>Ticket Number</th>
+                        <th>Report Card</th>
+                        <th>Group</th>
+                        <th>Photo</th>
+                        <th>Actions</th>
+                     </tr>
+                  </thead>
+                  <tfoot>
+                     <tr>
+                        <th>Name</th>
+                        <th>Ticket Number</th>
+                        <th>Report Card</th>
+                        <th>Group</th>
+                        <th>Photo</th>
+                        <th>Actions</th>
+                     </tr>
+                  </tfoot>
+                  <tbody>
+                     <tr>
+                        <th>Nikita Zhavoronkov</th>
+                        <th>BC 212312</th>
+                        <th>AMI-33</th>
+                        <th>41231c</th>
+                        <th>image/nikita</th>
+                        <th>
+                           <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                           <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                        </th>
+                     </tr>
+                     <tr>
+                        <th>Petro Tarnavskyy</th>
+                        <th>BC 112111</th>
+                        <th>AMI-439</th>
+                        <th>231212c</th>
+                        <th>image/tarnavskyy.png</th>
+                        <th>
+                           <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                           <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                        </th>
+                     </tr>
+                     <tr>
+                        <th>Oleh Andrus</th>
+                        <th>BC 2312123</th>
+                        <th>AMI-33</th>
+                        <th>231213c</th>
+                        <th>image/andrus.png</th>
+                        <th>
+                           <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                           <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                        </th>
+                     </tr>
+                  </tbody>
+               </table>
             </div>
             <!-- Edit Modal HTML -->
             <div id="addEmployeeModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -279,33 +254,24 @@
             </div>
          </div>
       </div>
-      <script type="text/javascript">
-         $(document).ready(function(){
-         	// Activate tooltip
-         	$('[data-toggle="tooltip"]').tooltip();
-         	
-         	// Select/Deselect checkboxes
-         	var checkbox = $('table tbody input[type="checkbox"]');
-         	$("#selectAll").click(function(){
-         		if(this.checked){
-         			checkbox.each(function(){
-         				this.checked = true;                        
-         			});
-         		} else{
-         			checkbox.each(function(){
-         				this.checked = false;                        
-         			});
-         		} 
-         	});
-         	checkbox.click(function(){
-         		if(!this.checked){
-         			$("#selectAll").prop("checked", false);
-         		}
-         	});
+      <script>
+         $(function() {
+             $('#dataTable').DataTable({
+                 "pageLength": 4,
+                 "paging": true,
+                 "lengthChange": true,
+                 "searching": true,
+                 "ordering": true,
+                 "info": true,
+                 "autoWidth": false
+             });
          });
       </script>
-      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script>
+         $(document).ready(function() {
+             $('#dataTable').DataTable();
+         });
+      </script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
    </body>
 </html>

@@ -2,10 +2,33 @@ body {
 	overflow-x: hidden;
 }
 
+#btnTable {
+	font-size: 14px;
+	vertical-align:
+}
+
 .sidebar-heading {
 	padding: 0.875rem 1.25rem;
 	font-size: 1.2rem;
 	margin-bottom: -15px;
+}
+
+#brandIco {
+	height: 75px;
+	width: auto;
+	margin-top: -5px;
+}
+
+#dashLink {
+	text-decoration: none;
+	color: black;
+}
+
+#userIco {
+	height: 40px;
+	float: left;
+	margin-left: 62rem;
+	margin-top: -5px;
 }
 
 .list-group {
@@ -22,19 +45,14 @@ body {
 	min-width: 100vw;
 }
 
-#cardLink {
-	text-decoration: none;
+#textWrap {
+	width: 50px;
 }
 
-#dashLink {
-	text-decoration: none;
-	color: black;
-}
-
-#brandIco {
-	height: 75px;
-	width: auto;
-	margin-top: -5px;
+.navbar-custom {
+	justify-content: center;
+	vertical-align: middle;
+	background-color: #1E9AFD;
 }
 
 .nav-link {
@@ -42,29 +60,10 @@ body {
 	font-size: 20px;
 }
 
-#userIco {
-	height: 40px;
-	float: left;
-	margin-left: 62rem;
-	margin-top: -5px;
-}
-
 #navLink,
 #sideLink {
 	transition: 0.3s ease;
 	text-decoration: none;
-}
-
-#icoCard {
-	height: 110px;
-	width: 110px;
-}
-
-#icoCard2 {
-	justify-content: space-between;
-	padding-left: -20px;
-	border-radius: 20px;
-	margin-left: 40px;
 }
 
 #sideLink:hover {
@@ -78,22 +77,19 @@ body {
 	color: white;
 }
 
-.navbar-custom {
-	justify-content: center;
-	vertical-align: middle;
-	background-color: #1E9AFD;
+#btnTable {
+	margin-left: 453px;
 }
 
-.card {
-	overflow: hidden;
-	width: 400px;
+table.table th a.edit {
+	color: #FFC107;
 }
 
-.row {
-	margin-right: 50px;
-	margin-top: 100px;
+table.table th a.delete {
+	color: #F44336;
 }
 
-#rowCard {
+.container {
+	margin-left: 50px;
 	margin-top: 50px;
 }
