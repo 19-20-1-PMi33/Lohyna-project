@@ -35,7 +35,6 @@ html, body,header
     font-size: 22px;
 }
 .content{
-  padding-top: 80px;
 }
 
 #navLink
@@ -246,6 +245,7 @@ p{
 .timetable-notes-item{
 	height: 50px;
 }
+<<<<<<< HEAD
 .modal
 {
     overflow: hidden;
@@ -266,4 +266,52 @@ p{
 {
  text-decoration: none;
     color: black;
+=======
+#messagesList{
+	height: 90vh;
+	overflow-y: scroll;
+	border-right: 5px ridge;
+	border-color: blue;
+	-ms-overflow-style: none;
+}
+#messagesList::-webkit-scrollbar{
+	display: none;
+}
+.messagesList-item{
+	display: flex;
+	flex-direction: row;
+	align-content: space-between;
+	min-height: 80px;
+	border-bottom: 2px solid;
+	border-color: blue;
+}
+.messagesList-item-person{
+	font-size: 2rem;
+}
+.messagesList-item-img{
+	position: relative;
+	height: 80px;
+}
+.no-scroll{
+	overflow-y: hidden;
+}
+#message-box{
+	height: 70vh;
+	display: flex;
+	flex-direction: column;
+	overflow-y: scroll;
+	-ms-overflow-style: none;
+}
+#message-box::-webkit-scrollbar{
+	display: none;
+}
+#message-tools{
+	border-top: 2px outset;
+	border-color: blue;
+	height: 20vh;
+}
+.message{
+	width: auto;
+	padding-bottom: 1rem!important;
+>>>>>>> f57957cd9b7f483053740051c4249676cc9a2909
 }
