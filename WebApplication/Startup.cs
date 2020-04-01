@@ -1,8 +1,12 @@
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Services;
 
 namespace WebApplication
 {
@@ -19,6 +23,13 @@ namespace WebApplication
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddAutoMapper(
+                typeof(ServiceMapProfile).Assembly);
+            
+            var builder = new ContainerBuilder();
+
+            builder.Populate(services);
+            builder.RegisterModule<ServiceDependencyModule>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
