@@ -20,13 +20,13 @@ namespace WebApplication.Controllers
             _logger = logger;
         }
 
-        public IActionResult Profile()
+        public IActionResult Index()
         {
 
             var personType = _profile.PersonTypeAsync("username").Result;
             if(personType==Core.DTO.PersonType.student){
                 Core.DTO.Student studentData = _profile.LoadPersonAsync("username").Result as Core.DTO.Student;
-                return View(new ProfileViewModel{Username = studentData.Username,Name=studentData.Name,Surname=studentData.Surname,Photo=studentData.Photo,Group=studentData.GroupID,Faculty=studentData.Faculty});
+                return View("Profile");//,new ProfileViewModel{Username = studentData.Username,Name=studentData.Name,Surname=studentData.Surname,Photo=studentData.Photo,Group=studentData.GroupID,Faculty=studentData.Faculty});
             }
             else{
                 return View();
