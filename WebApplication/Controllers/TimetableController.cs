@@ -2,6 +2,7 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System.Collections.Generic;
 using Services.TimeTableService;
 using WebApplication.Models;
 
@@ -22,7 +23,8 @@ namespace WebApplication.Controllers
 
         public IActionResult Index()
         {
-            return View("Timetable");
+            Dictionary<int, List<Core.DTO.Timetable>> keyValues = new Dictionary<int, List<Core.DTO.Timetable>>();
+            return View("Timetable", keyValues);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
