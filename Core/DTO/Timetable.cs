@@ -7,8 +7,8 @@ namespace Core.DTO
         public int Id { get; set; }
 		public string Day { get; set; } 
 		public string Period { get; set; }
-
-		public int TimeID { get; set; }
+        public virtual Time Time { get; set; }
+        public int TimeID { get; set; }
 
 		public virtual Subject Subject { get; set; }
 		public string SubjectID { get; set; }
