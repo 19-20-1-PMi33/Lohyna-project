@@ -1,6 +1,6 @@
 @model WebApplication.Models.ProfileViewModel
 @{
-    ViewData["user"]=Model.Username;
+    ViewData["user"]= @Model.Username?? "DefaultUser";
     ViewData["Title"]="Profile";
 }
  <div class="row">

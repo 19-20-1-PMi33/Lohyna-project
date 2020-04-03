@@ -22,15 +22,8 @@ namespace WebApplication.Controllers
 
         public IActionResult Index()
         {
+            return View("Profile", new ProfileViewModel() { Username = "user", Surname = " ", Photo = " ", PersonType = PersonType.student, Faculty = " ", Group = "PMI-33", Name = " " });
 
-            var personType = _profile.PersonTypeAsync("username").Result;
-            if(personType==Core.DTO.PersonType.student){
-                Core.DTO.Student studentData = _profile.LoadPersonAsync("username").Result as Core.DTO.Student;
-                return View("Profile");//,new ProfileViewModel{Username = studentData.Username,Name=studentData.Name,Surname=studentData.Surname,Photo=studentData.Photo,Group=studentData.GroupID,Faculty=studentData.Faculty});
-            }
-            else{
-                return View();
-            }
         }
 
         public IActionResult Privacy()
