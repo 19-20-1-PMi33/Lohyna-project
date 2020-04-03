@@ -1,5 +1,6 @@
 using Autofac;
 using Services.NewsFeedService;
+using Services.TimeTableService;
 
 namespace Services
 {
@@ -8,6 +9,7 @@ namespace Services
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<NewsFeedService.NewsFeedService>().As<INewsFeedService>();
+            builder.RegisterType<TimeTableService.TimeTableService>().As<ITimeTableService>();
         }
     }
 }

@@ -7,6 +7,7 @@ namespace Services
         public ServiceMapProfile()
         {
             CreateMap<Model.News, Core.DTO.News>();
+            CreateMap<Model.Timetable, Core.DTO.Timetable>();
         }
     }
 }
