@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using Services.TimeTableService;
 using WebApplication.Models;
+using System.Linq;
 
 namespace WebApplication.Controllers
 {
@@ -24,6 +25,7 @@ namespace WebApplication.Controllers
         public IActionResult Index()
         {
             Dictionary<int, List<Core.DTO.Timetable>> keyValues = new Dictionary<int, List<Core.DTO.Timetable>>();
+            
             return View("Timetable", keyValues);
         }
 
