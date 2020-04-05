@@ -8,14 +8,14 @@ namespace Services.ProfileService
     public class ProfileService : IProfileService
     {
 
-        public Task<Person> LoadPersonAsync(string username)
+        public async Task<Person> LoadPersonAsync(string username)
         {
-            return new Task<Person>(() => new Student{Name = "Roman",Surname = "Levkovych",Username="rlevkovych",Photo="profile1.jpg",Password="admin",personType = PersonType.student,GroupID="PMi-33",TicketNumber=1,ReportCard=1,Faculty="Applied Mathematics and Informatics"});
+            return new Student{Name = "Roman",Surname = "Levkovych",Username=username,Photo="profile1.jpg",Password="admin",personType = PersonType.student,GroupID="PMi-33",TicketNumber=1,ReportCard=1,Faculty="Applied Mathematics and Informatics"};
         }
 
-        public Task<PersonType> PersonTypeAsync(string username)
+        public async Task<PersonType> PersonTypeAsync(string username)
         {
-            return new Task<PersonType>(()=>PersonType.student);
+            return new Person{personType = PersonType.student}.personType;
         }
     }
 }
