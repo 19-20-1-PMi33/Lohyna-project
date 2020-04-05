@@ -32,7 +32,7 @@ namespace Model.EntitiesConfiguration
 
 				Чекаємо на вас із нетерпінням, буде чарівно й по-домашньому! ✨",
                     Time = DateTime.Today,
-                    Photo = "DbResources/kvartyrnyk.jpeg"
+                    Photo = "DbResources/News/kvartyrnyk.jpeg"
                 },
                 new News
                 {
@@ -49,7 +49,7 @@ namespace Model.EntitiesConfiguration
 
 💫Реєстрація обов'язкова!👇",
                     Time = new DateTime(2020, 2, 10, 12, 23, 40),
-                    Photo = "DbResources/bitok.jpeg"
+                    Photo = "DbResources/News/bitok.jpeg"
                 }, new News
                 {
                     Name = "​​Акустично-літературний вечір🎶🎹",
@@ -57,7 +57,7 @@ namespace Model.EntitiesConfiguration
                         @"4 березня в ЦКД о 18:00 відбудеться акустично-літературний вечір і ми шукаємо людей, які вміють грати, співати або читати вірші🔥🚀
 
 Реєструйся і покажи всім, що ти вмієш😉👇",
-                    Photo = "DbResources/evening.jpeg",
+                    Photo = "DbResources/News/evening.jpeg",
                     Time = new DateTime(2020, 2, 17, 17, 23, 40)
                 },
                 new News
@@ -78,7 +78,7 @@ namespace Model.EntitiesConfiguration
 Вартість 20 грн з учасника, з нас смаколики з чайком, а з тебе компанія)🙋‍♀️🙋‍♂️
 
 ❗Реєстрація обовязкова!⬇️",
-                    Photo = "DbResources/mafia.jpeg",
+                    Photo = "DbResources/News/mafia.jpeg",
                     Time = new DateTime(2020, 2, 17, 17, 23, 40)
                 });
         }

@@ -28,8 +28,8 @@ namespace WebApplication
             Configuration = configurationBuilder.Build();
         }
 
-        public IConfiguration Configuration { get; }
-        public IContainer ApplicationContainer { get; private set; }
+        private IConfiguration Configuration { get; }
+        private IContainer ApplicationContainer { get; set; }
 
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -37,7 +37,7 @@ namespace WebApplication
         {
             services.AddControllersWithViews();
             services.AddDbContext<AppDbContext>(options =>
-                options.UseSqlite("Filename=/Users/roman_levkovych/Projects/Lohyna-project/university-db.db",
+                options.UseSqlite($"Filename={Configuration["DbPath"]}",
                     o => o.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName)));
             services.AddOptions();
 
