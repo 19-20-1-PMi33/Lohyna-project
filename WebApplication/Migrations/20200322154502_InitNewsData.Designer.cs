@@ -8,7 +8,7 @@ using Model;
 
 namespace WebApplication.Migrations
 {
-    [DbContext(typeof(LohynaDbContext))]
+    [DbContext(typeof(AppDbContext))]
     [Migration("20200322154502_InitNewsData")]
     partial class InitNewsData
     {

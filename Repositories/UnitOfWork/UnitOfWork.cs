@@ -14,7 +14,7 @@ namespace Repositories.UnitOfWork
 {
     public class UnitOfWork : IUnitOfWork, IDisposable
     {
-        private readonly LohynaDbContext _dbContext;
+        private readonly AppDbContext _dbContext;
         private bool _disposedValue = false;
 
         #region Repositories
@@ -29,7 +29,7 @@ namespace Repositories.UnitOfWork
 
         #endregion
 
-        UnitOfWork(LohynaDbContext context)
+        UnitOfWork(AppDbContext context)
         {
             _dbContext = context;
 

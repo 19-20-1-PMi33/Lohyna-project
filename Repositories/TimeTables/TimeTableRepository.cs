@@ -8,9 +8,9 @@ namespace Repositories.TimeTables
 {
     public class TimeTableRepository : ITimeTableRepository
     {
-        private readonly LohynaDbContext _dbContext;
+        private readonly AppDbContext _dbContext;
 
-        public TimeTableRepository(LohynaDbContext context)
+        public TimeTableRepository(AppDbContext context)
         {
             _dbContext = context;
         }

@@ -8,17 +8,16 @@ namespace Repositories.Notes
 {
     public class NoteRepository : INoteRepository
     {
-        private readonly LohynaDbContext _dbContext;
+        private readonly AppDbContext _dbContext;
 
-        public NoteRepository(LohynaDbContext context)
+        public NoteRepository(AppDbContext context)
         {
             _dbContext = context;
         }
         
-        public async Task<int> CreateNoteAsync(Note note)
+        public void CreateNoteAsync(Note note)
         {
-            _dbContext.Note.Add(note);
-            return await _dbContext.SaveChangesAsync();
+            _dbContext.Note.AddAsync(note);
         }
         
         public async Task<IList<Note>> LoadNotesAsync(string person)
@@ -35,17 +34,14 @@ namespace Repositories.Notes
                 .ToListAsync();
         }
         
-        public async Task<int> UpdateNoteAsync(Note note)
+        public void UpdateNoteAsync(Note note)
         {
             _dbContext.Entry(note).State = EntityState.Modified;
-
-            return await _dbContext.SaveChangesAsync();
         }
         
-        public async Task<int> DeleteNoteAsync(params Note[] note)
+        public void DeleteNoteAsync(params Note[] note)
         {
             _dbContext.Note.RemoveRange(note);
-            return await _dbContext.SaveChangesAsync();
         }
     }
 }

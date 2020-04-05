@@ -8,9 +8,9 @@ namespace Repositories.Marks
 {
     public class MarkRepository : IMarkRepository
     {
-        private readonly LohynaDbContext _dbContext;
+        private readonly AppDbContext _dbContext;
 
-        public MarkRepository(LohynaDbContext context)
+        public MarkRepository(AppDbContext context)
         {
             _dbContext = context;
         }

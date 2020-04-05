@@ -29,20 +29,20 @@ namespace Repositories.Notes
         /// </summary>
         /// <param name="note">Note to save.</param>
         /// <returns>Status of operation.</returns>
-        Task<int> CreateNoteAsync(Note note);
+        void CreateNoteAsync(Note note);
 
         /// <summary>
         /// Delete certain notes.
         /// </summary>
         /// <param name="note">Notes to be deleted.</param>
         /// <returns>Status of operation.</returns>
-        Task<int> DeleteNoteAsync(params Note[] note);
+        void DeleteNoteAsync(params Note[] note);
 
         /// <summary>
         /// Updated a note in data source.
         /// </summary>
         /// <param name="note">Note to be updated.</param>
         /// <returns>Status of operation.</returns>
-        Task<int> UpdateNoteAsync(Note note);
+        void UpdateNoteAsync(Note note);
     }
 }

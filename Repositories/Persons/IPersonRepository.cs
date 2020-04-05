@@ -21,7 +21,7 @@ namespace Repositories.Persons
         /// </summary>
         /// <param name="person">Person to be updated.</param>
         /// <returns>Status of operation.</returns>
-        Task<int> UpdatePersonInfo(Person person);
+        void UpdatePersonInfo(Person person);
 
         /// <summary>
         /// Load person that try to log in.
@@ -49,13 +49,13 @@ namespace Repositories.Persons
         /// </summary>
         /// <param name="person">Person to be saved.</param>
         /// <returns>Status of operation.</returns>
-        Task<int> CreatePersonAsync(Person person);
+        void CreatePersonAsync(Person person);
         /// <summary>
         /// Save student in data source
         /// </summary>
         /// <param name="student">Student to be saved</param>
         /// <returns>Status of operation.</returns>
-        Task<int> CreateStudentAsync(Student student);
+        void CreateStudentAsync(Student student);
 
         /// <summary>
         /// Load people with given name.
@@ -76,7 +76,13 @@ namespace Repositories.Persons
         /// </summary>
         /// <param name="LecturerID">id of lecturer to search</param>
         /// <returns></returns>
-        Person SearchLecturerById(int LecturerID);
+        Lecturer SearchLecturerById(int LecturerID);
+
+        /// <summary>
+        /// Create lecturer and store in db.
+        /// </summary>
+        /// <param name="lecturer">Lecturer to save.</param>
+        void CreateLecturerAsync(Lecturer lecturer);
 
     }
 }

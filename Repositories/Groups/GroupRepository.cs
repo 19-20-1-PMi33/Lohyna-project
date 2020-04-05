@@ -8,9 +8,9 @@ namespace Repositories.Groups
 {
     public class GroupRepository : IGroupRepository
     {
-        private readonly LohynaDbContext _dbContext;
+        private readonly AppDbContext _dbContext;
 
-        public GroupRepository(LohynaDbContext context)
+        public GroupRepository(AppDbContext context)
         {
             _dbContext = context;
         }

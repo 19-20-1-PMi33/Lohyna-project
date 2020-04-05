@@ -8,25 +8,26 @@ namespace Repositories.Persons
 {
     public class PersonRepository : IPersonRepository
     {
-        private readonly LohynaDbContext _dbContext;
+        private readonly AppDbContext _dbContext;
 
-        public PersonRepository(LohynaDbContext context)
+        public PersonRepository(AppDbContext context)
         {
             _dbContext = context;
         }
 
-        public async Task<int> CreatePersonAsync(Person person)
+        public void CreatePersonAsync(Person person)
         {
             _dbContext.Person.Add(person);
-            return await _dbContext.SaveChangesAsync();
         }
 
-        public async Task<int> CreateStudentAsync(Student student)
+        public async void CreateStudentAsync(Student student)
         {
-            _dbContext.Student.Add(student);
-            return await _dbContext.SaveChangesAsync();
+            if (!_dbContext.Person.Contains(student.Person))
+            {
+                await _dbContext.Person.AddAsync(student.Person);
+            }
+            _dbContext.Student.AddAsync(student);
         }
-
 
         public Person LoadLogInPersonAsync(string username)
         {
@@ -46,8 +47,7 @@ namespace Repositories.Persons
                 .Where(person => person.Surname.ToLower().Equals(surname.ToLower()))
                 .ToListAsync();
         }
-
-
+        
         public async Task<List<Person>> LoadPersonAsync(string name)
         {
             return await _dbContext.Person
@@ -55,14 +55,10 @@ namespace Repositories.Persons
                 .ToListAsync();
         }
 
-
-        public async Task<int> UpdatePersonInfo(Person person)
+        public void UpdatePersonInfo(Person person)
         {
             _dbContext.Entry(person).State = EntityState.Modified;
-
-            return await _dbContext.SaveChangesAsync();
         }
-
 
         public Student LoadStudent(Person person)
         {
@@ -74,10 +70,18 @@ namespace Repositories.Persons
             return _dbContext.Lecturer.FirstOrDefault(p => p.Person.Username == person.Username);
         }
 
-        public Person SearchLecturerById(int lecturerId)
+        public Lecturer SearchLecturerById(int lecturerId)
         {
-            string personId = _dbContext.Lecturer.FirstOrDefault(p => p.ID == lecturerId)?.PersonID;
-            return _dbContext.Person.FirstOrDefault(p => p.Username.Equals(personId));
+            return _dbContext.Lecturer.FirstOrDefault(p => p.ID == lecturerId);
+        }
+
+        public async void CreateLecturerAsync(Lecturer lecturer)
+        {
+            if (!_dbContext.Person.Contains(lecturer.Person))
+            {
+                await _dbContext.Person.AddAsync(lecturer.Person);
+            }
+            _dbContext.Lecturer.AddAsync(lecturer);
         }
     }
 }

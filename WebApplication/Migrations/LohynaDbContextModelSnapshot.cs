@@ -7,7 +7,7 @@ using Model;
 
 namespace WebApplication.Migrations
 {
-    [DbContext(typeof(LohynaDbContext))]
+    [DbContext(typeof(AppDbContext))]
     partial class LohynaDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

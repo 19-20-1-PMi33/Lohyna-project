@@ -36,7 +36,7 @@ namespace WebApplication
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<LohynaDbContext>(options =>
+            services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlite("Filename=/Users/roman_levkovych/Projects/Lohyna-project/university-db.db",
                     o => o.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName)));
             services.AddOptions();

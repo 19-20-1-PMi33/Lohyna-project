@@ -8,9 +8,9 @@ namespace Repositories.Faqs
 {
     public class FaqRepository : IFaqRepository
     {
-        private readonly LohynaDbContext _dbContext;
+        private readonly AppDbContext _dbContext;
 
-        public FaqRepository(LohynaDbContext context)
+        public FaqRepository(AppDbContext context)
         {
             _dbContext = context;
         }

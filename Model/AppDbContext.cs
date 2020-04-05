@@ -6,9 +6,9 @@ namespace Model
     /// <summary>
     /// Context of DB connection.
     /// </summary>
-    public class LohynaDbContext : DbContext
+    public class AppDbContext : DbContext
     {
-        public LohynaDbContext(DbContextOptions<LohynaDbContext> options) : base(options) {}
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) {}
 
         /// <summary>
         /// Method of DB connection lifecycle.

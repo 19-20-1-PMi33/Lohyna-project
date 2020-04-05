@@ -7,9 +7,9 @@ namespace Repositories.Subjects
 {
     public class SubjectRepository : ISubjectRepository
     {
-        private readonly LohynaDbContext _dbContext;
+        private readonly AppDbContext _dbContext;
 
-        public SubjectRepository(LohynaDbContext context)
+        public SubjectRepository(AppDbContext context)
         {
             _dbContext = context;
         }
