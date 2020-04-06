@@ -10,11 +10,11 @@ using System;
 
 public enum WeekDays
 {
-    Monday = 0,
-    Tuesday = 1,
-    Wednesday = 2,
-    Thursday = 3,
-    Friday = 4
+    Monday,
+    Tuesday,
+    Wednesday,
+    Thursday,
+    Friday
 }
 
 namespace WebApplication.Controllers
@@ -37,24 +37,12 @@ namespace WebApplication.Controllers
             Dictionary<int, List<Core.DTO.Timetable>> keyValues;
             List<Core.DTO.Timetable> ls = _timeTable.LoadTimetableAsync().Result;
             keyValues = ls.GroupBy(x => x.TimeID)
-                .ToDictionary(x => x.Key, x => x.OrderBy(x => (int)((WeekDays)Enum.Parse(typeof(WeekDays), x.Day))).ToList())
-                ;
+                .ToDictionary(x => x.Key, x => x.OrderBy(x => (int)((WeekDays)Enum.Parse(typeof(WeekDays), x.Day))).ToList());
             keyValues = keyValues.OrderBy(k => k.Key).ToDictionary(z => z.Key, y => y.Value);
 
             foreach(var i in keyValues.Values)
             {
-
-                for(int j = 0; j<i.Count; ++j)
-                {
-                    if ((int)((WeekDays)Enum.Parse(typeof(WeekDays), i[j].Day)) != j)
-                    {
-                        i.Insert(j, null);
-                    }
-                }
-                while (i.Count != 5)
-                {
-                    i.Insert(i.Count, null);
-                }
+                adjustTimetableItems(i);
             }
             
             return View("Timetable", keyValues);
@@ -64,6 +52,21 @@ namespace WebApplication.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        private void adjustTimetableItems(List<Core.DTO.Timetable> timetables)
+        {
+            for (int j = 0; j < timetables.Count; ++j)
+            {
+                if ((int)((WeekDays)Enum.Parse(typeof(WeekDays), timetables[j].Day)) != j)
+                {
+                    timetables.Insert(j, null);
+                }
+            }
+            while (timetables.Count != 5)
+            {
+                timetables.Insert(timetables.Count, null);
+            }
         }
     }
 }

@@ -60,9 +60,6 @@
                                 else
                                 {
                                     <div class="border timetable-item">
-                                        <a href="#myModal" data-backdrop="false" data-toggle="modal">
-                                            <p>Nothing</p>
-                                        </a>
                                     </div>
                                 }
                             }
@@ -72,9 +69,6 @@
                             for (int j = 0; j < 5; ++j)
                             {
                                 <div class="border timetable-item">
-                                    <a href="#myModal" data-backdrop="false" data-toggle="modal">
-                                        <p>Nothing</p>
-                                    </a>
                                 </div>
                             }
                         }
@@ -226,23 +220,7 @@
                     </div>
                 </div>
             </div>
-            <script>
-                $(function () {
-                    $("#modalHeader").on({
-                        mousedown: function (e) {
-                            dragging = true;
-                            dragX = e.clientX - $(this).position().left;
-                            dragY = e.clientY - $(this).position().top;
-                        },
-                        mouseup: function () { dragging = false; },
-                        mousemove: function (e) {
-                            if (dragging)
-                                $(this).offset({ top: e.clientY - dragY, left: e.clientX - dragX });
-
-                        }
-                    })
-                })
-            </script>
+            <script type="text/javascript" src ="~/js/timetableScript.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
             <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
             <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
