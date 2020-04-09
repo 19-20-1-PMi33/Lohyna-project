@@ -8,15 +8,6 @@ using WebApplication.Models;
 using System.Linq;
 using System;
 
-public enum WeekDays
-{
-    Monday,
-    Tuesday,
-    Wednesday,
-    Thursday,
-    Friday
-}
-
 namespace WebApplication.Controllers
 {
     public class TimetableController : Controller
@@ -35,14 +26,22 @@ namespace WebApplication.Controllers
         public IActionResult Index()
         {
             Dictionary<int, List<Core.DTO.Timetable>> keyValues;
+            Dictionary<string, int> daysOfWeek = new Dictionary<string, int>()
+            {
+                ["Monday"] = 0,
+                ["Tuesday"] = 1,
+                ["Wednesday"] = 2,
+                ["Thursday"] = 3,
+                ["Friday"] = 4
+            };
             List<Core.DTO.Timetable> ls = _timeTable.LoadTimetableAsync().Result;
             keyValues = ls.GroupBy(x => x.TimeID)
-                .ToDictionary(x => x.Key, x => x.OrderBy(x => (int)((WeekDays)Enum.Parse(typeof(WeekDays), x.Day))).ToList());
+                .ToDictionary(x => x.Key, x => x.OrderBy(x => daysOfWeek[x.Day]).ToList());
             keyValues = keyValues.OrderBy(k => k.Key).ToDictionary(z => z.Key, y => y.Value);
 
             foreach(var i in keyValues.Values)
             {
-                adjustTimetableItems(i);
+                adjustTimetableItems(i, daysOfWeek);
             }
             
             return View("Timetable", keyValues);
@@ -54,11 +53,11 @@ namespace WebApplication.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        private void adjustTimetableItems(List<Core.DTO.Timetable> timetables)
+        private void adjustTimetableItems(List<Core.DTO.Timetable> timetables, Dictionary<string, int> daysOfWeek)
         {
             for (int j = 0; j < timetables.Count; ++j)
             {
-                if ((int)((WeekDays)Enum.Parse(typeof(WeekDays), timetables[j].Day)) != j)
+                if (daysOfWeek[timetables[j].Day] != j)
                 {
                     timetables.Insert(j, null);
                 }
