@@ -1,71 +1,72 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+﻿.navbar-custom {
+  background-color: #0078D7;
 }
 
-/* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
+#logo {
+  height: 50px;
 }
 
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+html, body, header {
+  height: 100%;
+  width: 100%;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+#basicExampleNav {
+  min-height: 50px;
+  font-size: 20px;
 }
 
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  font-size: 14px;
+.top-nav-collapse {
+  background-color: #0078D7;
 }
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
+
+@media (max-width: 768px) {
+  .navbar:not(.top-nav-collapse) {
+      background-color: #24355c;
   }
 }
 
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+#linksList {
+  font-size: 22px;
 }
 
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+#navLink {
+  color: #ffffff;
+  transition: 0.3s ease;
+  text-decoration: none;
 }
 
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+  #navLink:hover {
+      border-bottom: 4px solid #ffffff;
+      padding: 6px 0;
+  }
+
+
+#linksList > li {
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  position: relative;
-  min-height: 100%;
+#btn {
+  font-size: 18px;
+  padding-top: 8px;
+  height: 38px;
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+  background-color: #f9f9f9;
 }
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+
+p {
+  margin-bottom: 0px;
+  font: roboto;
+  font-size: 1.25rem;
+}
+
+.dropdown-menu {
+  min-width: 0px;
+}
+
+.dropdown-item {
+  padding: 4px;
 }
