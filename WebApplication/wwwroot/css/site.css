@@ -62,11 +62,3 @@ p {
   font: roboto;
   font-size: 1.25rem;
 }
-
-.dropdown-menu {
-  min-width: 0px;
-}
-
-.dropdown-item {
-  padding: 4px;
-}
