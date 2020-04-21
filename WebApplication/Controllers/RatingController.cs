@@ -24,9 +24,10 @@ namespace WebApplication.Controllers
         }
         public IActionResult Index()
         {
-            return (View("Rating"));
+            List<Core.DTO.Rating> ratingsList = _rating.LoadRatingAsync().Result;
+            return (View("Rating", ratingsList));
         }
-        
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
