@@ -12,7 +12,7 @@ namespace Services
             builder.RegisterType<NewsFeedService.NewsFeedService>().As<INewsFeedService>();
             builder.RegisterType<ProfileService.ProfileService>().As<IProfileService>();
             builder.RegisterType<TimeTableService.TimeTableService>().As<ITimeTableService>();
-            builder.RegisterType<RatingService.RatingService().As<IRatingService>();
+            builder.RegisterType<RatingService.RatingService>().As<IRatingService>();
         }
     }
 }
