@@ -1,5 +1,6 @@
 ﻿@using System.IO
 @using Core.DTO
+@using Core
 @model IEnumerable<(Core.DTO.News, string)>
 
 @{
@@ -20,7 +21,7 @@
                 </div>
                 <div class="card-footer container-fluid">
                     <div class="row">
-                        <div class="text-left text-muted p-3 col align-middle">Posted @((DateTime.Now - n.Item1.TimePosted).Minutes) minutes ago</div>
+                        <div class="text-left text-muted p-3 col align-middle">Posted @(TimeHelper.TimeCreated(n.Item1.TimePosted)) ago</div>
                         <div class="dropdown pr-3 align-middle">
                             <button class="btn btn-light dropdown-toggle shadow-sm mt-2" id="button-share" type="button" id="dropdownShareButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Share
