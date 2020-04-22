@@ -11,13 +11,14 @@ using Model;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using AutoMapper;
-using DataServices;
+using Services;
+using Repositories;
 
 namespace WebApplication
 {
     public class Startup
     {
-        public Startup()
+        public Startup(IConfiguration configuration)
         {
             Console.WriteLine(Directory.GetCurrentDirectory());
             var configurationBuilder = new ConfigurationBuilder()
@@ -40,14 +41,18 @@ namespace WebApplication
                 options.UseSqlite($"Filename={Configuration["DbPath"]}",
                     o => o.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName)));
             services.AddOptions();
-
-
+            
+            services.AddAutoMapper(
+                typeof(ServiceMapProfile).Assembly);
+            
             var builder = new ContainerBuilder();
+
             builder.Populate(services);
+            builder.RegisterModule<ServiceDependencyModule>();
             builder.RegisterModule<RepositoryDependencyModule>();
-
+            
             ApplicationContainer = builder.Build();
-
+            
             return new AutofacServiceProvider(ApplicationContainer);
         }
 

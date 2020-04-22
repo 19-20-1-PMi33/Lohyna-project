@@ -1,13 +1,13 @@
 using Autofac;
 using Repositories.UnitOfWork;
 
-namespace DataServices
+namespace Repositories
 {
     public class RepositoryDependencyModule : Module
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<UnitOfWork>().As<IUnitOfWork>();
+            builder.RegisterType<UnitOfWork.UnitOfWork>().As<IUnitOfWork>();
         }
     }
 }
