@@ -1,48 +1,14 @@
 using Microsoft.EntityFrameworkCore;
-using Model;
-using System.IO;
 using Model.EntitiesConfiguration;
-using Microsoft.Data.Sqlite;
-using System.Configuration;
 
-namespace DataServices
+namespace Model
 {
     /// <summary>
     /// Context of DB connection.
     /// </summary>
-    public class SqliteDbContext : DbContext, IDataSource
+    public class AppDbContext : DbContext
     {
-        /// <summary>
-        /// String for connecting to DB.
-        /// </summary>
-        private string _connectionString = null;
-
-        /// <summary>
-        /// Name of DB file.
-        /// </summary>
-        private const string dbName = "university-db.db";
-        public SqliteDbContext(string connectionStringPath = null)
-        {
-            if (connectionStringPath == null)
-            {
-                connectionStringPath = Path.Combine(ConfigurationManager.AppSettings["projectPath"], dbName);
-            }
-            var connectionStringBuilder = new SqliteConnectionStringBuilder
-            {
-                // TODO: create adequate location for DB.
-                DataSource = connectionStringPath
-            };
-            _connectionString = connectionStringBuilder.ConnectionString;
-        }
-
-        /// <summary>
-        /// Method of DB connection lifecycle.
-        /// </summary>
-        /// <param name="optionsBuilder">Options for connecting to DB.</param>
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlite(_connectionString);
-        }
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) {}
 
         /// <summary>
         /// Method of DB connection lifecycle.

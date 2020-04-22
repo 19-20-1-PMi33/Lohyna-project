@@ -2,12 +2,12 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Model;
 
-namespace DataServices.Services
+namespace Repositories.Faqs
 {
     /// <summary>
     /// Service to obtain FAQ data.
     /// </summary>
-    public interface IFaqService
+    public interface IFaqRepository
     {
         /// <summary>
         /// Load all the available questions.

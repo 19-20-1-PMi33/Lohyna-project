@@ -2,19 +2,18 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Model;
 
-namespace DataServices.Services
+namespace Repositories.TimeTables
 {
     /// <summary>
     /// Service for obtaining timetable data.
     /// </summary>
-    public interface ITimeTableService
+    public interface ITimeTableRepository
     {
         /// <summary>
         /// Load person's timetable.
         /// </summary>
         /// <param name="person"></param>
         /// <returns>Timetable of person.</returns>
-        Task<IList<Timetable>> LoadTimetableAsync(string username);
-		Person SearchLectorById(int LecturerID);
+        Task<IList<Timetable>> LoadTimetableAsync(Student student);
     }
 }

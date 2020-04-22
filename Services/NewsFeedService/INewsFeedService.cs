@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Core;
+using Core.DTO;
 
 namespace Services.NewsFeedService
 {
     public interface INewsFeedService
     {
-        Task<List<Core.DTO.News>> LoadNewsAsync();
+        Task<List<News>> LoadNewsAsync();
     }
 }

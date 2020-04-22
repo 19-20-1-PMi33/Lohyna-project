@@ -1,13 +1,18 @@
 using System;
-using Autofac;
-using Autofac.Extensions.DependencyInjection;
-using AutoMapper;
+using System.IO;
+using System.Reflection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
+using Model;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using AutoMapper;
 using Services;
+using Repositories;
 
 namespace WebApplication
 {
@@ -15,16 +20,28 @@ namespace WebApplication
     {
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            Console.WriteLine(Directory.GetCurrentDirectory());
+            var configurationBuilder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory());
+
+            configurationBuilder.AddJsonFile("appsettings.json", false, true);
+
+            Configuration = configurationBuilder.Build();
         }
 
-        public IConfiguration Configuration { get; }
-        public IContainer ApplicationContainer { get; private set; }
+        private IConfiguration Configuration { get; }
+        private IContainer ApplicationContainer { get; set; }
+
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddDbContext<AppDbContext>(options =>
+                options.UseSqlite($"Filename={Configuration["DbPath"]}",
+                    o => o.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName)));
+            services.AddOptions();
+            
             services.AddAutoMapper(
                 typeof(ServiceMapProfile).Assembly);
             
@@ -32,6 +49,7 @@ namespace WebApplication
 
             builder.Populate(services);
             builder.RegisterModule<ServiceDependencyModule>();
+            builder.RegisterModule<RepositoryDependencyModule>();
             
             ApplicationContainer = builder.Build();
             
@@ -58,6 +76,12 @@ namespace WebApplication
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors(builder => builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+            );
 
             app.UseEndpoints(endpoints =>
             {
