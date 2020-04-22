@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Core.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
 using Services.NewsFeedService;
@@ -22,26 +23,9 @@ namespace WebApplication.Controllers
             _newsFeed = newsFeed;
         }
 
-        private string EncodeImage(string path)
-        {
-            using (Image image = Image.FromFile(path))
-            {
-                using (MemoryStream m = new MemoryStream())
-                {
-                    
-                    image.Save(m, image.RawFormat);
-                    byte[] imageBytes = m.ToArray();
-
-                    // Convert byte[] to Base64 String
-                    string base64String = Convert.ToBase64String(imageBytes);
-                    return base64String;
-                }
-            }
-        }
-
         public async Task<IActionResult> Index()
         {
-            var news = _newsFeed.LoadNewsAsync().Result.Select(x => (x, EncodeImage(_host.ContentRootPath + x.Photo)));
+            var news = _newsFeed.LoadNewsAsync().Result.Select(x => (x, ImageHelper.EncodeImage(_host.ContentRootPath + x.Photo)));
             return View(news);
         }
 

@@ -1,8 +1,7 @@
 using System;
-using System.Globalization;
 using System.Text;
 
-namespace Core
+namespace Core.Helpers
 {
     public static class TimeHelper
     {

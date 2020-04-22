@@ -1,12 +1,9 @@
 ﻿@using Core
+@using Core.Helpers
 @model IEnumerable<(Core.DTO.News, string)>
 
 @{
     ViewData["Title"] = "Home Page";
-}
-
-@section Styles {
-    <link rel="stylesheet" href="~/css/local.css" />
 }
 
 @foreach (var (newsItem, imagePath) in Model)
@@ -19,7 +16,7 @@
                         @newsItem.Title
                     </h4>
                     <img class="card-img-top py-2" src="data:image/jpeg;base64,@imagePath" alt="Photo news"/>
-                    <p> </p>
+                    <p> @newsItem.Text </p>
                 </div>
                 <div class="card-footer container-fluid">
                     <div class="row">
