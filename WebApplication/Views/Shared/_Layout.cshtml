@@ -6,11 +6,17 @@
     <title>@ViewData["Title"] - WebApplication</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/timetableStyle.css">
 </head>
 <body>
     @RenderBody()
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src ="~/js/timetableScript.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/dataTableScript.js"></script>    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)

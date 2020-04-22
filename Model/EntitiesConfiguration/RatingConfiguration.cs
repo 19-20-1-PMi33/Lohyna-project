@@ -11,6 +11,9 @@ namespace Model.EntitiesConfiguration
 
 			builder.Property(x => x.Mark)
 				.IsRequired();
+			
+			builder.Property(x => x.Time)
+				.IsRequired();
 
 			builder.HasOne(x => x.Student)
 				.WithMany(y => y.Marks)
