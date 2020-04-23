@@ -11,25 +11,25 @@ ViewData["Title"] = "Ratings";
    <table class="table table-bordered shadow bg-white rounded" id="dataTable" width="100%" cellspacing="0">
       <thead>
          <tr>
-            <th>Date</th>
             <th>Subject ID</th>
             <th>Mark</th>
+            <th>Date</th>
          </tr>
       </thead>
       <tfoot>
          <tr>
-            <th>Date</th>
             <th>Subject ID</th>
             <th>Mark</th>
+            <th>Date</th>
          </tr>
       </tfoot>
       <tbody>
          @foreach (var markModel in Model)
          {
          <tr>
-            <th>@markModel.Time</th>
             <th>@markModel.SubjectID</th>
             <th>@markModel.Mark</th>
+            <th>@markModel.Time</th>
          </tr>
          }
       </tbody>
