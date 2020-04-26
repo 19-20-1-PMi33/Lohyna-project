@@ -12,7 +12,7 @@ namespace Repositories.TimeTables
         /// <summary>
         /// Load person's timetable.
         /// </summary>
-        /// <param name="person"></param>
+        /// <param name="student"></param>
         /// <returns>Timetable of person.</returns>
         Task<IList<Timetable>> LoadTimetableAsync(Student student);
     }
