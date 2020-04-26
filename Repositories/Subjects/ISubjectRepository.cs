@@ -2,12 +2,12 @@
 using System.Threading.Tasks;
 using Model;
 
-namespace DataServices.Services
+namespace Repositories.Subjects
 {
     /// <summary>
     /// Service for obtaining subjects' info.
     /// </summary>
-    public interface ISubjectService
+    public interface ISubjectRepository
     {
         /// <summary>
         /// Load all the subjects.

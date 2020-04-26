@@ -2,12 +2,12 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Model;
 
-namespace DataServices.Services
+namespace Repositories.Marks
 {
     /// <summary>
     /// Service for obtaining data abouts student's marks.
     /// </summary>
-    public interface IMarkService
+    public interface IMarkRepository
     {
         /// <summary>
         /// Load marks for given student.

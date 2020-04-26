@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using Core;
 using Core.DTO;
 
 namespace Services.NewsFeedService
