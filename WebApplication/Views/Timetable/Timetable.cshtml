@@ -3,358 +3,222 @@
     ViewData["Title"] = "Timetable";
 }
 
-@section Styles {
+@section Styles
+{
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/css/mdb.min.css" rel="stylesheet">
     <link rel="stylesheet" href="~/css/timetableStyle.css">
 }
+     <div class="content">
+        <main role="main">
+            <div class="justify-content-center row-scroll shadow mb-1">
+                <div id="timetable-header">
+                    <div class="border timetable-item-time">
+                        <p>Time</p>
+                    </div>
+                    <div class="border timetable-item">
+                        <p>Monday</p>
+                    </div>
+                    <div class="border timetable-item">
+                        <p>Tuesday</p>
+                    </div>
+                    <div class="border timetable-item">
+                        <p>Wednesdey</p>
+                    </div>
+                    <div class="border timetable-item">
+                        <p>Thursday</p>
+                    </div>
+                    <div class="border timetable-item">
+                        <p>Friday</p>
+                    </div>
+                </div>
+                @for (int i = 1; i <= 5; ++i)
+                {
+                    <div class="timetable-row">
+                        <div class="border timetable-item-time">
+                            <p>@i</p>
+                        </div>
+
+                        @if (Model.ContainsKey(i))
+                        {
+                            @foreach (var z in Model[i])
+                            {
+                                if (z != null)
+                                {
+                                    <div class="border timetable-item">
+                                        <a href="#myModal" data-backdrop="false" data-toggle="modal">
+                                            <p>Subject : @z.SubjectID Lecturer: @z.LecturerID</p>
+                                        </a>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="border timetable-item">
+                                    </div>
+                                }
+                            }
+                        }
+                        else
+                        {
+                            for (int j = 0; j < 5; ++j)
+                            {
+                                <div class="border timetable-item">
+                                </div>
+                            }
+                        }
+                    </div>
+
+                }
+
+                <div id="myModal" class="modal fade modeless">
+                    <div class="modal-content">
+                        <div class="shadow timetable-notes" id="modalHeader">
+                            <div class="modal-header border-bottom row m-0">
+                                <div class="row w-100 m-0 text-center">
+                                    <p class="col">Nothing</p>
+                                </div>
+                                <div class="row w-100 m-0 text-center">
+                                    <p class="col">at Nowhere</p>
+                                </div>
+                                <div class="row w-100 m-0 text-center">
+                                    <p class="col">by prof. Nobody</p>
+                                </div>
+                            </div>
+                            <div class="row m-0 p-1" id="timetable-notes-body">
+                                <div class="row m-0 w-100 timetable-notes-item">
+                                    <div class="col-1"><input type="checkbox" name=""></div>
+                                    <div class="col-3">
+                                        <p>Note title</p>
+                                    </div>
+                                    <div class="col-5">
+                                        <p>Note text</p>
+                                    </div>
+                                    <div class="col-2">
+                                        <p>Note date</p>
+                                    </div>
+                                </div>
+                                <div class="row m-0 w-100 timetable-notes-item">
+                                    <div class="col-1"><input type="checkbox" name=""></div>
+                                    <div class="col-3">
+                                        <p>Note title</p>
+                                    </div>
+                                    <div class="col-5">
+                                        <p>Note text</p>
+                                    </div>
+                                    <div class="col-2">
+                                        <p>Note date</p>
+                                    </div>
+                                </div>
+                                <div class="row m-0 w-100 timetable-notes-item">
+                                    <div class="col-1"><input type="checkbox" name=""></div>
+                                    <div class="col-3">
+                                        <p>Note title</p>
+                                    </div>
+                                    <div class="col-5">
+                                        <p>Note text</p>
+                                    </div>
+                                    <div class="col-2">
+                                        <p>Note date</p>
+                                    </div>
+                                </div>
+                                <div class="row m-0 w-100 timetable-notes-item">
+                                    <div class="col-1"><input type="checkbox" name=""></div>
+                                    <div class="col-3">
+                                        <p>Note title</p>
+                                    </div>
+                                    <div class="col-5">
+                                        <p>Note text</p>
+                                    </div>
+                                    <div class="col-2">
+                                        <p>Note date</p>
+                                    </div>
+                                </div>
+                                <div class="row m-0 w-100 timetable-notes-item">
+                                    <div class="col-1"><input type="checkbox" name=""></div>
+                                    <div class="col-3">
+                                        <p>Note title</p>
+                                    </div>
+                                    <div class="col-5">
+                                        <p>Note text</p>
+                                    </div>
+                                    <div class="col-2">
+                                        <p>Note date</p>
+                                    </div>
+                                </div>
+                                <div class="row m-0 w-100 timetable-notes-item">
+                                    <div class="col-1"><input type="checkbox" name=""></div>
+                                    <div class="col-3">
+                                        <p>Note title</p>
+                                    </div>
+                                    <div class="col-5">
+                                        <p>Note text</p>
+                                    </div>
+                                    <div class="col-2">
+                                        <p>Note date</p>
+                                    </div>
+                                </div>
+                                <div class="row m-0 w-100 timetable-notes-item">
+                                    <div class="col-1"><input type="checkbox" name=""></div>
+                                    <div class="col-3">
+                                        <p>Note title</p>
+                                    </div>
+                                    <div class="col-5">
+                                        <p>Note text</p>
+                                    </div>
+                                    <div class="col-2">
+                                        <p>Note date</p>
+                                    </div>
+                                </div>
+                                <div class="row m-0 w-100 timetable-notes-item">
+                                    <div class="col-1"><input type="checkbox" name=""></div>
+                                    <div class="col-3">
+                                        <p>Note title</p>
+                                    </div>
+                                    <div class="col-5">
+                                        <p>Note text</p>
+                                    </div>
+                                    <div class="col-2">
+                                        <p>Note date</p>
+                                    </div>
+                                </div>
+                                <div class="row m-0 w-100 timetable-notes-item">
+                                    <div class="col-1"><input type="checkbox" name=""></div>
+                                    <div class="col-3">
+                                        <p>Note title</p>
+                                    </div>
+                                    <div class="col-5">
+                                        <p>Note text</p>
+                                    </div>
+                                    <div class="col-2">
+                                        <p>Note date</p>
+                                    </div>
+                                </div>
+                                <div class="row m-0 w-100 timetable-notes-item">
+                                    <div class="col-1"><input type="checkbox" name=""></div>
+                                    <div class="col-3">
+                                        <p>Note title</p>
+                                    </div>
+                                    <div class="col-5">
+                                        <p>Note text</p>
+                                    </div>
+                                    <div class="col-2">
+                                        <p>Note date</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row m-0 justify-content-between " id="timetable-notes-footer">
+                                <button class="btn btn-light m-2">Mark checked as done</button>
+                                <button class="btn btn-primary m-2">Ok</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>   
+</body>
 
 @section Scripts
 {
-    <script async type="text/javascript" src="~/js/timetableScript.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src= "~/js/timetableScript.js" type="text/javascript"></script>
 }
-
-
-<div class="container-fluid">
-<div class="content">
-<main role="main">
-<div class="justify-content-center row-scroll shadow mb-1">
-<div id="timetable-header">
-    <div class="border timetable-item-time">
-        <p>Time</p>
-    </div>
-    <div class="border timetable-item">
-        <p>Monday</p>
-    </div>
-    <div class="border timetable-item">
-        <p>Tuesday</p>
-    </div>
-    <div class="border timetable-item">
-        <p>Wednesdey</p>
-    </div>
-    <div class="border timetable-item">
-        <p>Thursday</p>
-    </div>
-    <div class="border timetable-item">
-        <p>Friday</p>
-    </div>
-</div>
-@for (int i = 1; i <= 5; ++i)
-{
-    <div class="timetable-row">
-        <div class="border timetable-item-time">
-            <p>@i</p>
-        </div>
-
-        @if (Model.ContainsKey(i))
-        {
-            @foreach (var z in Model[i])
-            {
-                if (z != null)
-                {
-                    <div class="border timetable-item">
-                        <a href="#myModal" data-backdrop="false" data-toggle="modal">
-                            <p>Subject : @z.SubjectID Lecturer: @z.LecturerID</p>
-                        </a>
-                    </div>
-                }
-                else
-                {
-                    <div class="border timetable-item">
-                    </div>
-                }
-            }
-        }
-        else
-        {
-            for (int j = 0; j < 5; ++j)
-            {
-                <div class="border timetable-item">
-                </div>
-            }
-        }
-    </div>
-}
-
-<div id="myModal" class="modal fade modeless">
-    <div class="modal-content">
-        <div class="shadow timetable-notes" id="modalHeader">
-            <div class="modal-header border-bottom row m-0">
-                <div class="row w-100 m-0 text-center">
-                    <p class="col">Nothing</p>
-                </div>
-                <div class="row w-100 m-0 text-center">
-                    <p class="col">at Nowhere</p>
-                </div>
-                <div class="row w-100 m-0 text-center">
-                    <p class="col">by prof. Nobody</p>
-                </div>
-            </div>
-            <div class="row m-0 p-1" id="timetable-notes-body">
-                <div class="row m-0 w-100 timetable-notes-item">
-                    <div class="col-1">
-                        <input type="checkbox" name="">
-                    </div>
-                    <div class="col-3">
-                        <p>Note title</p>
-                    </div>
-                    <div class="col-5">
-                        <p>Note text</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Note date</p>
-                    </div>
-                </div>
-                <div class="row m-0 w-100 timetable-notes-item">
-                    <div class="col-1">
-                        <input type="checkbox" name="">
-                    </div>
-                    <div class="col-3">
-                        <p>Note title</p>
-                    </div>
-                    <div class="col-5">
-                        <p>Note text</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Note date</p>
-                    </div>
-                </div>
-                <div class="row m-0 w-100 timetable-notes-item">
-                    <div class="col-1">
-                        <input type="checkbox" name="">
-                    </div>
-                    <div class="col-3">
-                        <p>Note title</p>
-                    </div>
-                    <div class="col-5">
-                        <p>Note text</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Note date</p>
-                    </div>
-                </div>
-                <div class="row m-0 w-100 timetable-notes-item">
-                    <div class="col-1">
-                        <input type="checkbox" name="">
-                    </div>
-                    <div class="col-3">
-                        <p>Note title</p>
-                    </div>
-                    <div class="col-5">
-                        <p>Note text</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Note date</p>
-                    </div>
-                </div>
-                <div class="row m-0 w-100 timetable-notes-item">
-                    <div class="col-1">
-                        <input type="checkbox" name="">
-                    </div>
-                    <div class="col-3">
-                        <p>Note title</p>
-                    </div>
-                    <div class="col-5">
-                        <p>Note text</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Note date</p>
-                    </div>
-                </div>
-                <div class="row m-0 w-100 timetable-notes-item">
-                    <div class="col-1">
-                        <input type="checkbox" name="">
-                    </div>
-                    <div class="col-3">
-                        <p>Note title</p>
-                    </div>
-                    <div class="col-5">
-                        <p>Note text</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Note date</p>
-                    </div>
-                </div>
-                <div class="row m-0 w-100 timetable-notes-item">
-                    <div class="col-1">
-                        <input type="checkbox" name="">
-                    </div>
-                    <div class="col-3">
-                        <p>Note title</p>
-                    </div>
-                    <div class="col-5">
-                        <p>Note text</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Note date</p>
-                    </div>
-                </div>
-                <div class="row m-0 w-100 timetable-notes-item">
-                    <div class="col-1">
-                        <input type="checkbox" name="">
-                    </div>
-                    <div class="col-3">
-                        <p>Note title</p>
-                    </div>
-                    <div class="col-5">
-                        <p>Note text</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Note date</p>
-                    </div>
-                </div>
-                <div class="row m-0 w-100 timetable-notes-item">
-                    <div class="col-1">
-                        <input type="checkbox" name="">
-                    </div>
-                    <div class="col-3">
-                        <p>Note title</p>
-                    </div>
-                    <div class="col-5">
-                        <p>Note text</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Note date</p>
-                    </div>
-                </div>
-                <div class="row m-0 w-100 timetable-notes-item">
-                    <div class="col-1">
-                        <input type="checkbox" name="">
-                    </div>
-                    <div class="col-3">
-                        <p>Note title</p>
-                    </div>
-                    <div class="col-5">
-                        <p>Note text</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Note date</p>
-                    </div>
-                </div>
-                <div class="row m-0 w-100 timetable-notes-item">
-                    <div class="col-1">
-                        <input type="checkbox" name="">
-                    </div>
-                    <div class="col-3">
-                        <p>Note title</p>
-                    </div>
-                    <div class="col-5">
-                        <p>Note text</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Note date</p>
-                    </div>
-                </div>
-                <div class="row m-0 w-100 timetable-notes-item">
-                    <div class="col-1">
-                        <input type="checkbox" name="">
-                    </div>
-                    <div class="col-3">
-                        <p>Note title</p>
-                    </div>
-                    <div class="col-5">
-                        <p>Note text</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Note date</p>
-                    </div>
-                </div>
-                <div class="row m-0 w-100 timetable-notes-item">
-                    <div class="col-1">
-                        <input type="checkbox" name="">
-                    </div>
-                    <div class="col-3">
-                        <p>Note title</p>
-                    </div>
-                    <div class="col-5">
-                        <p>Note text</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Note date</p>
-                    </div>
-                </div>
-                <div class="row m-0 w-100 timetable-notes-item">
-                    <div class="col-1">
-                        <input type="checkbox" name="">
-                    </div>
-                    <div class="col-3">
-                        <p>Note title</p>
-                    </div>
-                    <div class="col-5">
-                        <p>Note text</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Note date</p>
-                    </div>
-                </div>
-                <div class="row m-0 w-100 timetable-notes-item">
-                    <div class="col-1">
-                        <input type="checkbox" name="">
-                    </div>
-                    <div class="col-3">
-                        <p>Note title</p>
-                    </div>
-                    <div class="col-5">
-                        <p>Note text</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Note date</p>
-                    </div>
-                </div>
-                <div class="row m-0 w-100 timetable-notes-item">
-                    <div class="col-1">
-                        <input type="checkbox" name="">
-                    </div>
-                    <div class="col-3">
-                        <p>Note title</p>
-                    </div>
-                    <div class="col-5">
-                        <p>Note text</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Note date</p>
-                    </div>
-                </div>
-                <div class="row m-0 w-100 timetable-notes-item">
-                    <div class="col-1">
-                        <input type="checkbox" name="">
-                    </div>
-                    <div class="col-3">
-                        <p>Note title</p>
-                    </div>
-                    <div class="col-5">
-                        <p>Note text</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Note date</p>
-                    </div>
-                </div>
-                <div class="row m-0 w-100 timetable-notes-item">
-                    <div class="col-1">
-                        <input type="checkbox" name="">
-                    </div>
-                    <div class="col-3">
-                        <p>Note title</p>
-                    </div>
-                    <div class="col-5">
-                        <p>Note text</p>
-                    </div>
-                    <div class="col-2">
-                        <p>Note date</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row m-0 justify-content-between " id="timetable-notes-footer">
-                <button class="btn btn-light m-2">Mark checked as done</button>
-                <button class="btn btn-primary m-2">Ok</button>
-            </div>
-            <div class="row m-0 justify-content-between " id="timetable-notes-footer">
-                <button class="btn btn-light m-2">Mark checked as done</button>
-                <button class="btn btn-primary m-2">Ok</button>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-</main>
-</div>
-
-</div>

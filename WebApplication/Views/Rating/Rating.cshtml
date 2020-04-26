@@ -1,0 +1,50 @@
+@model IEnumerable<Core.DTO.Rating>
+
+@{
+ViewData["Title"] = "Ratings";
+}
+
+@section Styles
+{
+   <link href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+   <link href="~/css/ratingsStyle.css" rel="stylesheet">
+}
+
+<div class="container">
+   <div class="table-title">
+      <h2>Marks Table</h2>
+   </div>
+   <table class="table table-bordered shadow bg-white rounded" id="dataTable" width="100%" cellspacing="0">
+      <thead>
+         <tr>
+            <th>Subject ID</th>
+            <th>Mark</th>
+            <th>Date</th>
+         </tr>
+      </thead>
+      <tfoot>
+         <tr>
+            <th>Subject ID</th>
+            <th>Mark</th>
+            <th>Date</th>
+         </tr>
+      </tfoot>
+      <tbody>
+         @foreach (var markModel in Model)
+         {
+         <tr>
+            <th>@markModel.SubjectID</th>
+            <th>@markModel.Mark</th>
+            <th>@markModel.Time</th>
+         </tr>
+         }
+      </tbody>
+   </table>
+</div>
+
+@section Scripts
+{
+    <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/js/dataTableScript.js" type = "text/javascript"></script>
+}
