@@ -1,9 +1,8 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using AutoMapper;
 using System.Threading.Tasks;
 using Core.Helpers;
 using Microsoft.AspNetCore.Mvc;
@@ -13,12 +12,12 @@ using WebApplication.Models;
 
 namespace WebApplication.Controllers
 {
-    public class HomeController : Controller
+    public class NewsController : Controller
     {
         private IHostEnvironment _host;
         private readonly INewsFeedService _newsFeed;
 
-        public HomeController(INewsFeedService newsFeed, IHostEnvironment host)
+        public NewsController(INewsFeedService newsFeed, IHostEnvironment host)
         {
             _host = host;
             _newsFeed = newsFeed;
@@ -27,7 +26,7 @@ namespace WebApplication.Controllers
         public async Task<IActionResult> Index()
         {
             var news = _newsFeed.LoadNewsAsync().Result.Select(x => (x, ImageHelper.EncodeImage(_host.ContentRootPath + x.Photo)));
-            return View(new HomeModel{news = news});
+            return View(news);
         }
 
         public IActionResult Privacy()

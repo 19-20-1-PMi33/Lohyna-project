@@ -1,0 +1,37 @@
+﻿@using Core.Helpers
+@model IEnumerable<(Core.DTO.News, string)>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@foreach (var (newsItem, imagePath) in Model)
+{
+    <div class="row justify-content-center my-4">
+        <div class="col-sm-12 col-md-8 col-lg-6">
+            <div class="card rounded shadow  justify-content-center card-news">
+                <div class="card-body">
+                    <h4 class="card-title text-center">
+                        @newsItem.Title
+                    </h4>
+                    <img class="card-img-top py-2" src="data:image/jpeg;base64,@imagePath" alt="Photo news"/>
+                    <p> @newsItem.Text </p>
+                </div>
+                <div class="card-footer container-fluid">
+                    <div class="row">
+                        <div class="text-left text-muted p-3 col align-middle">Posted @TimeHelper.TimeCreated(newsItem.TimePosted) ago</div>
+                        <div class="dropdown pr-3 align-middle">
+                            <button class="btn btn-light dropdown-toggle shadow-sm mt-2" id="button-share" type="button" id="dropdownShareButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Share
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownShareButton">
+                                <a class="dropdown-item text-share" href="#">With group</a>
+                                <a class="dropdown-item text-share" href="#">With person</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
