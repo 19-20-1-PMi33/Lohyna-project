@@ -2,7 +2,7 @@
 @model IEnumerable<(Core.DTO.News, string)>
 
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = ViewBag.User;
 }
 
 @foreach (var (newsItem, imagePath) in Model)

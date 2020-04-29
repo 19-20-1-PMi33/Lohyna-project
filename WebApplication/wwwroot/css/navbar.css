@@ -9,12 +9,11 @@
     margin-left: 50px;
 }
 
-html, body,header
+html, body
 {
 	height: 100%;
 	width: 100%;
 }
-
 #basicExampleNav
 {
 	min-height: 50px;
@@ -27,7 +26,7 @@ html, body,header
 
 @media (max-width: 768px)
 {
-	.navbar: not(.top-nav-collapse)
+	.navbar :not(.top-nav-collapse)
 	{
 		background-color: #24355c;		
 	}
