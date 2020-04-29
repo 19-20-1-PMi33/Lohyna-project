@@ -27,6 +27,12 @@ namespace Model.EntitiesConfiguration
 			builder.HasMany(x => x.Notes)
 				.WithOne(y => y.Subject)
 				.HasForeignKey(y => y.SubjectID);
+			builder.HasData(
+				new Subject{Name = "PE", ExamType = "Exam"},
+				new Subject{Name = "Math", ExamType = "Zalik"},
+				new Subject{Name = "Cryptology", ExamType = "Zalik"},
+				new Subject{Name = "Numerical methods", ExamType = "Zalik"}
+			);
 		}
 	}
 }

@@ -25,6 +25,9 @@ namespace Model.EntitiesConfiguration
 			builder.HasMany(x => x.Lessons)
 				.WithOne(y => y.Group)
 				.HasForeignKey(y => y.GroupID);
+			builder.HasData(
+				new Group{Name = "AMI-33", Size = 17, Course = 3}
+			);
 		}
 	}
 }

@@ -32,6 +32,10 @@ namespace Model.EntitiesConfiguration
 			builder.HasOne(x => x.Student)
 				.WithOne(y => y.Person)
 				.HasForeignKey<Student>(y => y.PersonID);
+				
+			builder.HasData(
+				new Person{Name = "Oleh", Surname = "Andrus", Username = "OlehAndrus", Photo = "DbResources/Person/oleh.jpeg", Password = "oleh"}
+			);
 		}
 	}
 }

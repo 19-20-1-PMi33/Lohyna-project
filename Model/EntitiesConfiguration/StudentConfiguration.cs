@@ -23,6 +23,10 @@ namespace Model.EntitiesConfiguration
 			builder.HasMany(x => x.Marks)
 				.WithOne(y => y.Student)
 				.HasForeignKey(y => y.StudentID);
+				
+			builder.HasData(
+				new Student{TicketNumber = 1, ReportCard = 1, PersonID  = "OlehAndrus", GroupID = "AMI-33"}
+			);
 		}
 	}
 }
