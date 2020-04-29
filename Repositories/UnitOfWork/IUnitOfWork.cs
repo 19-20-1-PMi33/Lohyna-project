@@ -2,6 +2,7 @@ using System.Threading.Tasks;
 using Repositories.Faqs;
 using Repositories.Groups;
 using Repositories.Marks;
+using Repositories.News;
 using Repositories.Notes;
 using Repositories.Persons;
 using Repositories.Subjects;
@@ -19,6 +20,7 @@ namespace Repositories.UnitOfWork
         public ISubjectRepository Subjects { get; }
         public IPersonRepository Persons { get; }
         public ITimeTableRepository TimeTables { get; }
+        public INewsRepository NewsRepository { get; }
         #endregion
         
         /// <summary>

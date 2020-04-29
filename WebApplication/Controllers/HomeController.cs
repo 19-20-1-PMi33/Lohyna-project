@@ -25,7 +25,14 @@ namespace WebApplication.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var news = _newsFeed.LoadNewsAsync().Result.Select(x => (x, ImageHelper.EncodeImage(_host.ContentRootPath + x.Photo)));
+            var news = _newsFeed
+                .LoadNewsAsync()
+                .Result
+                .Select(x => (x,
+                        x.Photo is null
+                            ? ""
+                            : $"data:image/jpeg;base64,{ImageHelper.EncodeImage(_host.ContentRootPath + "/" + x.Photo)}"
+                    ));
             return View(news);
         }
 

@@ -7,6 +7,6 @@ namespace Model
 		public string Name { get; set; }
 		public string Photo { get; set; }
 		public string Text { get; set; }
-		public DateTime Time { get; set; }
+		public string Time { get; set; }
 	}
 }
