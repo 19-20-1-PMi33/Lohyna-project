@@ -51,7 +51,7 @@ namespace AuthApp.Controllers
                 if (user == null)
                 {
                     Person newPerson = new Person{Name=model.Name,Surname = model.Surname, Username = model.Username, Password = model.Password};
-                    _service.CreateStudentAsync(new Student{Person=newPerson,GroupID="Pmi-33"});
+                    await _service.CreateStudentAsync(new Student{Person=newPerson,GroupID="Pmi-33"});
  
                     await Authenticate(model.Username);
  

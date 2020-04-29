@@ -15,18 +15,18 @@ namespace Repositories.Persons
             _dbContext = context;
         }
 
-        public void CreatePersonAsync(Person person)
+        public async Task CreatePersonAsync(Person person)
         {
-            _dbContext.Person.Add(person);
+            await _dbContext.Person.AddAsync(person);
         }
 
-        public async void CreateStudentAsync(Student student)
+        public async Task CreateStudentAsync(Student student)
         {
             if (!_dbContext.Person.Contains(student.Person))
             {
                 await _dbContext.Person.AddAsync(student.Person);
             }
-            _dbContext.Student.AddAsync(student);
+            await _dbContext.Student.AddAsync(student);
         }
 
         public Person LoadLogInPersonAsync(string username)

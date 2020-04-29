@@ -14,9 +14,9 @@ namespace Services.AccountService
         public AccountService(AppDbContext db){
             repository = new PersonRepository(db);
         }
-        public async void CreateStudentAsync(Student s)
+        public async Task CreateStudentAsync(Student s)
         {
-            repository.CreateStudentAsync(s);
+            await repository.CreateStudentAsync(s);
         }
 
         public async Task<Person> LoadPersonAsync(string username)

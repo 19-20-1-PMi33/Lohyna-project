@@ -8,6 +8,6 @@ namespace Services.AccountService
     public interface IAccountService
     {
         Task<Person> LoadPersonAsync(string username);
-        void CreateStudentAsync(Student s);
+        Task CreateStudentAsync(Student s);
     }
 }

@@ -10,7 +10,7 @@ body{
   height: 50px;
 }
 
-html, body, header {
+html, body{
   height: 100%;
   width: 100%;
 }
@@ -22,12 +22,6 @@ html, body, header {
 
 .top-nav-collapse {
   background-color: #0078D7;
-}
-
-@media (max-width: 768px) {
-  .navbar:not(.top-nav-collapse) {
-      background-color: #24355c;
-  }
 }
 
 #linksList {
@@ -65,4 +59,7 @@ p {
   margin-bottom: 0px;
   font: roboto;
   font-size: 1.25rem;
+}
+.content{
+  padding-top: 80px;
 }
