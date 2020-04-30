@@ -5,6 +5,7 @@ using Model;
 using Repositories.Faqs;
 using Repositories.Groups;
 using Repositories.Marks;
+using Repositories.News;
 using Repositories.Notes;
 using Repositories.Persons;
 using Repositories.Subjects;
@@ -26,10 +27,12 @@ namespace Repositories.UnitOfWork
         public ISubjectRepository Subjects { get; }
         public IPersonRepository Persons { get; }
         public ITimeTableRepository TimeTables { get; }
+        
+        public INewsRepository NewsRepository { get; }
 
         #endregion
 
-        UnitOfWork(AppDbContext context)
+        public UnitOfWork(AppDbContext context)
         {
             _dbContext = context;
 
@@ -40,6 +43,7 @@ namespace Repositories.UnitOfWork
             Subjects = new SubjectRepository(_dbContext);
             Persons = new PersonRepository(_dbContext);
             TimeTables = new TimeTableRepository(_dbContext);
+            NewsRepository = new NewsRepository(_dbContext);
         }
 
         /// <inheritdoc />
