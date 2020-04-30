@@ -23,7 +23,7 @@
                 <img src="/images/Logo.png" id="logo" class="d-inline-block align-top"/>
             </a>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-                <form class="form-inline my-2 ml-auto my-lg-0 justify-content-between" method="POST" asp-controller="Account" asp-action="Login">
+                <form class="form-inline my-2 ml-auto my-lg-0 justify-content-between" method="POST" asp-controller="Home" asp-action="Login">
                     <input class="form-control mr-sm-2 my-sm-2 mb-2" type="text" placeholder="Username">
                     <input class="form-control input-sm mr-sm-2 my-sm-2 mb-2" type="password" placeholder="Password">
                     <button class="btn btn-primary mr-sm-2" id="btn" type="submit">Log in</button>
@@ -33,8 +33,7 @@
         </nav>
         <div class="modal fade" id="modalRegisterForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog zindex-modal" role="document">
-    <form asp-controller="Account" asp-action="Register" method="POST">
-    <div class="validation" asp-validation-summary="ModelOnly"/>
+    <form asp-controller="Home" asp-action="Register" method="POST">
     <div class="modal-content">
       <div class="modal-header text-center">
         <h4 class="modal-title w-100 font-weight-bold">Register</h4>
@@ -42,30 +41,31 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <div class="validation" asp-validation-summary="All"></div>
       <div class="modal-body mx-3">
         <div class="md-form mb-3">
           <input class="form-control" asp-for="Name" type="text" placeholder="Your name">
-          <span asp-validation-for="Name"/>
+          <span asp-validation-for="Name"></span>
         </div>
 
         <div class="md-form mb-3">
           <input class="form-control" asp-for="Surname" type="text" placeholder="Your surname">
-          <span asp-validation-for="Surname"/>
+          <span asp-validation-for="Surname"></span>
         </div>
 
         <div class="md-form mb-3">
           <input class="form-control" asp-for="Username" type="text" placeholder="Your username">
-          <span asp-validation-for="Username"/>
+          <span asp-validation-for="Username"></span>
         </div>
 
         <div class="md-form mb-3">
           <input class="form-control" asp-for="Password" type="password" placeholder="Your password">
-          <span asp-validation-for="Password"/>
+          <span asp-validation-for="Password"></span>
         </div>
 
         <div class="md-form mb-3">
           <input class="form-control" asp-for="ConfirmPassword" type="password" placeholder="Repeat password">
-          <span asp-validation-for="ConfirmPassword"/>
+          <span asp-validation-for="ConfirmPassword"></span>
         </div>
       </div>
       <div class="modal-footer d-flex justify-content-center">
