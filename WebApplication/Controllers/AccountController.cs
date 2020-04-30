@@ -7,9 +7,9 @@ using System.Security.Claims;
 using WebApplication.Models;
 using Microsoft.AspNetCore.Authentication;
 using Model;
+using Services.AccountService;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.Extensions.Hosting;
-using Services.AccountService;
  
 namespace AuthApp.Controllers
 {
@@ -39,7 +39,7 @@ namespace AuthApp.Controllers
                 }
                 ModelState.AddModelError("", "Incorrect data");
             }
-            return RedirectToAction("Index", "Home");
+            return View("Index",model);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -60,7 +60,7 @@ namespace AuthApp.Controllers
                 else
                     ModelState.AddModelError("", "Incorrect data");
             }
-            return RedirectToAction("Index","Home");
+            return View("Index",model);
         }
  
         private async Task Authenticate(string userName)
@@ -76,7 +76,7 @@ namespace AuthApp.Controllers
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToAction("Index", "Home");
+            return View("Index");
         }
     }
 }

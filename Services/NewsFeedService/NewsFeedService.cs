@@ -9,6 +9,9 @@ namespace Services.NewsFeedService
 {
     public class NewsFeedService : INewsFeedService
     {
+        public NewsFeedService(Model.AppDbContext context){
+            
+        }
         public async Task<List<News>> LoadNewsAsync()
         {
             string photo = "/DbResources/News/bitok.jpeg";
