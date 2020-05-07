@@ -1,8 +1,7 @@
 using System.ComponentModel.DataAnnotations;
-using System.Collections.Generic;
 
 namespace WebApplication.Models{
-    public class HomeModel{
+    public class RegisterModel{
         [Required(ErrorMessage ="Please write your name")]
         public string Name {get;set;}
         [Required(ErrorMessage ="Please write your surname")]
@@ -16,6 +15,5 @@ namespace WebApplication.Models{
         [DataType(DataType.Password)]
         [Compare("Password", ErrorMessage = "Password incorrect")]
         public string ConfirmPassword{get;set;}
-        public IEnumerable<(Core.DTO.News, string)> news{get;set;}
     }
 }

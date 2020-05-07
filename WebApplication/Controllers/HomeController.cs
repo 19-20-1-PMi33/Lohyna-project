@@ -35,12 +35,12 @@ namespace WebApplication.Controllers
         public async Task<IActionResult> Index()
         {
             var news = _newsFeed.LoadNewsAsync().Result.Select(x => (x, ImageHelper.EncodeImage(_host.ContentRootPath + x.Photo)));
-            return View(new HomeModel{news = news});
+            return View(new LogInModel{news = news});
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(HomeModel model)
+        public async Task<IActionResult> Login(LogInModel model)
         {
             if (ModelState.IsValid)
             {
@@ -58,7 +58,7 @@ namespace WebApplication.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(HomeModel model)
+        public async Task<IActionResult> Register(RegisterModel model)
         {
             if (ModelState.IsValid)
             {
@@ -66,7 +66,7 @@ namespace WebApplication.Controllers
                 if (user == null)
                 {
                     Person newPerson = new Person{Name=model.Name,Surname = model.Surname, Username = model.Username, Password = model.Password};
-                    await _service.CreateStudentAsync(new Student{Person=newPerson,GroupID="Pmi-33"});
+                    await _service.CreateStudentAsync(new Student{Person=newPerson,GroupID="PMi-33"});
  
                     await Authenticate(model.Username);
  
@@ -75,8 +75,13 @@ namespace WebApplication.Controllers
                 else
                     ModelState.AddModelError("", "Incorrect data");
             }
-            model.news=_newsFeed.LoadNewsAsync().Result.Select(x => (x, ImageHelper.EncodeImage(_host.ContentRootPath + x.Photo)));
-            return View("Index",model);
+            return View("Register",model);
+        }
+
+        [HttpGet]
+        public IActionResult Register()
+        {
+            return View();
         }
  
         private async Task Authenticate(string userName)

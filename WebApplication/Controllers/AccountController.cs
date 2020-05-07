@@ -26,24 +26,7 @@ namespace AuthApp.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(HomeModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                Person user = await _service.LoadPersonAsync(model.Username);
-                if (user != null && user.Password == model.Password)
-                {
-                    await Authenticate(model.Username);
- 
-                    return RedirectToAction("Index", "News");
-                }
-                ModelState.AddModelError("", "Incorrect data");
-            }
-            return View("Index",model);
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(HomeModel model)
+        public async Task<IActionResult> Register(RegisterModel model)
         {
             if (ModelState.IsValid)
             {
