@@ -63,3 +63,6 @@ p {
 .content{
   padding-top: 80px;
 }
+.input-validation-error{
+  border: 1px solid red;
+}

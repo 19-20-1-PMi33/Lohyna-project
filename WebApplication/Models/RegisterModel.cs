@@ -12,8 +12,9 @@ namespace WebApplication.Models{
         [Required(ErrorMessage ="Please create password")]
         [DataType(DataType.Password)]
         public string Password{get;set;}
+        [Required(ErrorMessage="Please confirm password")]
         [DataType(DataType.Password)]
-        [Compare("Password", ErrorMessage = "Password incorrect")]
+        [Compare("Password", ErrorMessage = "Passwords are different")]
         public string ConfirmPassword{get;set;}
     }
 }

@@ -40,46 +40,46 @@
                                 <div class="card-body">
                                     <form asp-controller="Home" asp-action="Register" method="POST">
                                         <div class="row justify-content-center">
-                                        <div class="validation" asp-validation-summary="All"></div>
+                                        
                                         </div>
                                         <div class="form-group row">
                                             <label asp-for="Name" class="col-md-4 col-form-label text-md-right">Name</label>
                                             <div class="col-md-6">
                                                 <input type="text" class="form-control" asp-for="Name">
+                                                <span asp-validation-for="Name"></span>
                                             </div>
-                                            <span asp-validation-for="Name"/>
                                         </div>
 
                                         <div class="form-group row">
                                             <label asp-for="Surname" class="col-md-4 col-form-label text-md-right">Surname</label>
                                             <div class="col-md-6">
                                                 <input type="text" class="form-control" asp-for="Surname">
+                                                <span asp-validation-for="Surname"></span>
                                             </div>
-                                            <span asp-validation-for="Surname"/>
                                         </div>
 
                                         <div class="form-group row">
                                             <label asp-for="Username" class="col-md-4 col-form-label text-md-right">Username</label>
                                             <div class="col-md-6">
                                                 <input type="text" class="form-control" asp-for="Username">
+                                                <span asp-validation-for="Username"></span>
                                             </div>
-                                            <span asp-validation-for="Username"/>
                                         </div>
 
                                         <div class="form-group row">
                                             <label asp-for="Password" class="col-md-4 col-form-label text-md-right">Password</label>
                                             <div class="col-md-6">
                                                 <input type="password" asp-for="Password" class="form-control">
+                                                <span asp-validation-for="Password"></span>
                                             </div>
-                                            <span asp-validation-for="Password"/>
                                         </div>
 
                                         <div class="form-group row">
                                             <label asp-for="ConfirmPassword" class="col-md-4 col-form-label text-md-right">Confirm password</label>
                                             <div class="col-md-6">
                                                 <input type="password" asp-for="ConfirmPassword" class="form-control">
+                                                <span asp-validation-for="ConfirmPassword"></span>
                                             </div>
-                                            <span asp-validation-for="ConfirmPassword"/>
                                         </div>
 
                                             <div class="col-md-6 offset-md-4">
