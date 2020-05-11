@@ -25,12 +25,12 @@ namespace WebApplication.Controllers
         private readonly IAccountService _service;
         private readonly INewsFeedService _newsFeed;
         private readonly IHostEnvironment _host;
-        public HomeController(IMapper mapper, AppDbContext context, IHostEnvironment host)
+        public HomeController(IMapper mapper, INewsFeedService newsService, IAccountService accountService, IHostEnvironment host)
         {
             _host=host;
             _mapper=mapper;
-            _service = new AccountService(context);
-            _newsFeed = new NewsFeedService(context);
+            _service = accountService;
+            _newsFeed = newsService;
         }
         public async Task<IActionResult> Index()
         {
