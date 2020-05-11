@@ -24,8 +24,14 @@
             </a>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                 <form class="form-inline my-2 ml-auto my-lg-0 justify-content-between" method="POST" asp-controller="Home" asp-action="Login">
-                    <input class="form-control mr-sm-2 my-sm-2 mb-2" type="text" placeholder="Username">
-                    <input class="form-control input-sm mr-sm-2 my-sm-2 mb-2" type="password" placeholder="Password">
+                    <div class="mr-sm-2 my-sm-2 mb-2 d-flex flex-column">
+                        <input class="form-control" type="text" asp-for="Username" placeholder="Username">
+                        <span asp-validation-for="Username"></span>
+                    </div>
+                    <div class="mr-sm-2 my-sm-2 mb-2 d-flex flex-column">
+                        <input class="form-control" asp-for="Password" type="password" placeholder="Password">
+                        <span asp-validation-for="Password"></span>
+                    </div>
                     <button class="btn btn-primary mr-sm-2" id="btn" type="submit">Log in</button>
                     <a class="btn btn-primary" asp-controller="Home" asp-action="Register">Register</a>
                 </form>
