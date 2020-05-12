@@ -80,17 +80,11 @@ namespace WebApplication.Controllers
                 if (user == null)
                 {
                     Person newPerson = new Person{Name=model.Name,Surname = model.Surname, Username = model.Username, Password = model.Password};
-                    Student newStudent = new Student{Person = newPerson,TicketNumber=1,ReportCard=1,GroupID="PMi-33"};
-                    _service.CreateStudentAsync(newStudent).Wait();
-                    if(_service.ContainsPerson(newPerson)){
-
+                    Student newStudent = new Student{Person = newPerson,TicketNumber=2,ReportCard=2,GroupID="PMi-33"};
+                    await _service.CreateStudentAsync(newStudent);
                     await Authenticate(model.Username);
  
                     return RedirectToAction("Index", "News");
-                    }
-                    else{
-                        return View("Register",model);
-                    }
                 }
                 else
                     ModelState.AddModelError("", "Incorrect data");
