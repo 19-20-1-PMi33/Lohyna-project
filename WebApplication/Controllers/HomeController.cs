@@ -34,7 +34,14 @@ namespace WebApplication.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var news = _newsFeed.LoadNewsAsync().Result.Select(x => (x, ImageHelper.EncodeImage(_host.ContentRootPath + x.Photo)));
+            var news = _newsFeed
+            .LoadNewsAsync()
+            .Result
+            .Select(x => (x,
+                    x.Photo is null
+                        ? ""
+                        : $"data:image/jpeg;base64,{ImageHelper.EncodeImage(_host.ContentRootPath + "/" + x.Photo)}"
+                ));
             return View(new LogInModel{news = news});
         }
 
@@ -53,7 +60,14 @@ namespace WebApplication.Controllers
                 }
                 ModelState.AddModelError("", "Incorrect data");
             }
-            model.news=_newsFeed.LoadNewsAsync().Result.Select(x => (x, ImageHelper.EncodeImage(_host.ContentRootPath + x.Photo)));
+            model.news = _newsFeed
+            .LoadNewsAsync()
+            .Result
+            .Select(x => (x,
+                    x.Photo is null
+                        ? ""
+                        : $"data:image/jpeg;base64,{ImageHelper.EncodeImage(_host.ContentRootPath + "/" + x.Photo)}"
+                ));
             return View("Index",model);
         }
         [HttpPost]
@@ -66,11 +80,17 @@ namespace WebApplication.Controllers
                 if (user == null)
                 {
                     Person newPerson = new Person{Name=model.Name,Surname = model.Surname, Username = model.Username, Password = model.Password};
-                    await _service.CreateStudentAsync(new Student{Person=newPerson,GroupID="PMi-33"});
- 
+                    Student newStudent = new Student{Person = newPerson,TicketNumber=1,ReportCard=1,GroupID="PMi-33"};
+                    _service.CreateStudentAsync(newStudent).Wait();
+                    if(_service.ContainsPerson(newPerson)){
+
                     await Authenticate(model.Username);
  
                     return RedirectToAction("Index", "News");
+                    }
+                    else{
+                        return View("Register",model);
+                    }
                 }
                 else
                     ModelState.AddModelError("", "Incorrect data");

@@ -9,5 +9,6 @@ namespace Services.AccountService
     {
         Task<Person> LoadPersonAsync(string username);
         Task CreateStudentAsync(Student s);
+        bool ContainsPerson(Person p);
     }
 }

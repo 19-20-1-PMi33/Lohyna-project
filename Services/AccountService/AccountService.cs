@@ -23,5 +23,10 @@ namespace Services.AccountService
         {
             return _unitOfWork.Persons.LoadLogInPersonAsync(username);
         }
+
+        public bool ContainsPerson(Person p)
+        {
+            return _unitOfWork.Persons.ContainsPerson(p);
+        }
     }
 }

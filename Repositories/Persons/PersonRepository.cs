@@ -22,16 +22,21 @@ namespace Repositories.Persons
 
         public async Task CreateStudentAsync(Student student)
         {
+            await _dbContext.Student.AddAsync(student);
             if (!_dbContext.Person.Contains(student.Person))
             {
                 await _dbContext.Person.AddAsync(student.Person);
             }
-            await _dbContext.Student.AddAsync(student);
         }
 
         public Person LoadLogInPersonAsync(string username)
         {
             return _dbContext.Person.Find(username);
+        }
+
+        public bool ContainsPerson(Person p)
+        {
+            return _dbContext.Person.Contains(p);
         }
 
         public async Task<List<Person>> SearchPersonByNameAsync(string name)
@@ -81,7 +86,7 @@ namespace Repositories.Persons
             {
                 await _dbContext.Person.AddAsync(lecturer.Person);
             }
-            _dbContext.Lecturer.AddAsync(lecturer);
+            await _dbContext.Lecturer.AddAsync(lecturer);
         }
     }
 }
