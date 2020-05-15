@@ -52,13 +52,14 @@ namespace WebApplication.Controllers
             if (ModelState.IsValid)
             {
                 Person user = await _service.LoadPersonAsync(model.Username);
-                if (user != null && user.Password == model.Password)
-                {
+                if (user == null)
+                    ModelState.AddModelError("", "User not found");
+                else if (user.Password != model.Password)
+                    ModelState.AddModelError("", "Passwrod incorrect");
+                else{
                     await Authenticate(model.Username);
- 
                     return RedirectToAction("Index", "News");
                 }
-                ModelState.AddModelError("", "Incorrect data");
             }
             model.news = _newsFeed
             .LoadNewsAsync()
@@ -70,35 +71,7 @@ namespace WebApplication.Controllers
                 ));
             return View("Index",model);
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(RegisterModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                Person user = await _service.LoadPersonAsync(model.Username);
-                if (user == null)
-                {
-                    Person newPerson = new Person{Name=model.Name,Surname = model.Surname, Username = model.Username, Password = model.Password};
-                    Student newStudent = new Student{Person = newPerson,TicketNumber=2,ReportCard=2,GroupID="PMi-33"};
-                    await _service.CreateStudentAsync(newStudent);
-                    await Authenticate(model.Username);
- 
-                    return RedirectToAction("Index", "News");
-                }
-                else
-                    ModelState.AddModelError("", "Incorrect data");
-            }
-            return View("Register",model);
-        }
-
-        [HttpGet]
-        public IActionResult Register()
-        {
-            return View();
-        }
- 
-        private async Task Authenticate(string userName)
+        public async Task Authenticate(string userName)
         {
             var claims = new List<Claim>
             {

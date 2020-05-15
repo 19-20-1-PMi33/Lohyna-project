@@ -17,6 +17,7 @@ namespace Services.AccountService
         public async Task CreateStudentAsync(Student s)
         {
             await _unitOfWork.Persons.CreateStudentAsync(s);
+            await _unitOfWork.CommitAsync();
         }
 
         public async Task<Person> LoadPersonAsync(string username)
@@ -27,6 +28,11 @@ namespace Services.AccountService
         public bool ContainsPerson(Person p)
         {
             return _unitOfWork.Persons.ContainsPerson(p);
+        }
+
+        public Task<IList<Group>> getGroupListAsync()
+        {
+            return _unitOfWork.Groups.LoadGroupsAsync();
         }
     }
 }

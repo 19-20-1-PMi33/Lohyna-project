@@ -22,11 +22,12 @@ namespace Repositories.Persons
 
         public async Task CreateStudentAsync(Student student)
         {
-            await _dbContext.Student.AddAsync(student);
             if (!_dbContext.Person.Contains(student.Person))
             {
                 await _dbContext.Person.AddAsync(student.Person);
+                await _dbContext.SaveChangesAsync();
             }
+            await _dbContext.Student.AddAsync(student);
         }
 
         public Person LoadLogInPersonAsync(string username)

@@ -25,6 +25,12 @@ namespace Model.EntitiesConfiguration
 			builder.HasMany(x => x.Lessons)
 				.WithOne(y => y.Group)
 				.HasForeignKey(y => y.GroupID);
+			builder.HasData(new Group{Name="PMi-31",Size=20,Course=3},
+			new Group{Name="PMi-32",Size=20,Course=3},
+			new Group{Name="PMi-33",Size=20,Course=3},
+			new Group{Name="PMi-34",Size=20,Course=3},
+			new Group{Name="PMi-35",Size=20,Course=3},
+			new Group{Name="PMo-31",Size=20,Course=3});
 		}
 	}
 }

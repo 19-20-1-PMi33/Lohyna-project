@@ -11,7 +11,6 @@ namespace Model
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) {
             Database.EnsureCreated();
-            this.Person.AddAsync(new Model.Person{Name="Roman",Surname="Levkovych",Username="r_l",Password="1234",Student=new Model.Student{TicketNumber=1,ReportCard=1,GroupID="PMi-33"}});
         }
 
         /// <summary>
