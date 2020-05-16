@@ -15,6 +15,7 @@ namespace Services
             CreateMap<Model.Lecturer,Core.DTO.Lecturer>();
             CreateMap<Model.Timetable, Core.DTO.Timetable>();
             CreateMap<Model.Rating, Core.DTO.Rating>();
+            CreateMap<Model.Note, Core.DTO.Note>();
         }
     }
 }
