@@ -9,6 +9,7 @@ using WebApplication.Models;
 using Model;
 using Services.AccountService;
 using System.IO;
+using Core.Helpers;
 
 namespace WebApplication.Controllers
 {
@@ -42,6 +43,7 @@ namespace WebApplication.Controllers
                 {
                     string imageSavingPath = "../UploadedFiles/";
                     Person newPerson = new Person{Name=model.Name,Surname = model.Surname, Username = model.Username, Password = model.Password};
+                    newPerson.Password=AccountHelper.ComputeSha256Hash(newPerson.Password);
                     if(model.Photo==null || !model.Photo.ContentType.ToLower().Contains("image")){
                         newPerson.Photo="DbResources/Profile/profile_placeholder.jpg";
                     }

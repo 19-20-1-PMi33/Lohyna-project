@@ -54,7 +54,7 @@ namespace WebApplication.Controllers
                 Person user = await _service.LoadPersonAsync(model.Username);
                 if (user == null)
                     ModelState.AddModelError("", "User not found");
-                else if (user.Password != model.Password)
+                else if (user.Password != AccountHelper.ComputeSha256Hash(model.Password))
                     ModelState.AddModelError("", "Passwrod incorrect");
                 else{
                     await Authenticate(model.Username);
