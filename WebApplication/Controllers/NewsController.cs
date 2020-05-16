@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -25,15 +26,15 @@ namespace WebApplication.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var news = _newsFeed
-            .LoadNewsAsync()
-            .Result
-            .Select(x => (x,
-                    x.Photo is null
-                        ? ""
-                        : $"data:image/jpeg;base64,{ImageHelper.EncodeImage(_host.ContentRootPath + "/" + x.Photo)}"
-                ));
-            return View(news);
+            // var news = _newsFeed
+            // .LoadNewsAsync()
+            // .Result
+            // .Select(x => (x,
+            //         x.Photo is null
+            //             ? ""
+            //             : $"data:image/jpeg;base64,{ImageHelper.EncodeImage(_host.ContentRootPath + "/" + x.Photo)}"
+            //     ));
+            return View(new List<(Core.DTO.News,string)>());
         }
 
 

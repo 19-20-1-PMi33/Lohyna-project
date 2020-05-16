@@ -11,5 +11,6 @@ namespace Services.AccountService
         Task CreateStudentAsync(Student s);
         bool ContainsPerson(Person p);
         Task<IList<Group>> getGroupListAsync();
+        Task<IList<string>> getFacultyListAsync();
     }
 }

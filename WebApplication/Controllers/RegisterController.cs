@@ -8,6 +8,7 @@ using Microsoft.Extensions.Hosting;
 using WebApplication.Models;
 using Model;
 using Services.AccountService;
+using System.IO;
 
 namespace WebApplication.Controllers
 {
@@ -27,6 +28,7 @@ namespace WebApplication.Controllers
         {
             RegisterModel model = new RegisterModel();
             model.groupList = (_service.getGroupListAsync().Result as List<Model.Group>).Select(group=>group.Name).ToList();
+            model.facultyList = _service.getFacultyListAsync().Result as List<string>;
             return View(model);
         }
         [HttpPost]
@@ -38,7 +40,19 @@ namespace WebApplication.Controllers
                 Person user = await _service.LoadPersonAsync(model.Username);
                 if (user == null)
                 {
+                    string imageSavingPath = "../UploadedFiles/";
                     Person newPerson = new Person{Name=model.Name,Surname = model.Surname, Username = model.Username, Password = model.Password};
+                    if(model.Photo==null || !model.Photo.ContentType.ToLower().Contains("image")){
+                        newPerson.Photo="DbResources/Profile/profile_placeholder.jpg";
+                    }
+                    else{
+                        string path = imageSavingPath + model.Photo.FileName;
+                        using (var fileStream = new FileStream(path, FileMode.Create))
+                        {
+                            await model.Photo.CopyToAsync(fileStream);
+                        }
+                        newPerson.Photo=path;
+                    }
                     Student newStudent = new Student{Person = newPerson,TicketNumber=model.TicketNumber,ReportCard=model.ReportCard,GroupID=model.Group};
                     await _service.CreateStudentAsync(newStudent);
  
@@ -48,17 +62,8 @@ namespace WebApplication.Controllers
                     ModelState.AddModelError("", "Incorrect data");
             }
             model.groupList = (_service.getGroupListAsync().Result as List<Model.Group>).Select(group=>group.Name).ToList();
+            model.facultyList = _service.getFacultyListAsync().Result as List<string>;
             return View("Index",model);
-        }
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel {RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier});
         }
     }
 }

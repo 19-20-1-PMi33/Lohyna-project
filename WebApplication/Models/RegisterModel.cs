@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Http;
 
 namespace WebApplication.Models{
     public class RegisterModel{
@@ -14,6 +15,7 @@ namespace WebApplication.Models{
         public string Username {get;set;}
 
         public List<string> groupList{get;set;}
+        public List<string> facultyList{get;set;}
         [Required(ErrorMessage ="Please select your group")]
         public string Group{get;set;}
         [RegularExpression(@"[0-9]{8}",ErrorMessage = "Incorrect ticket number")]
@@ -22,7 +24,9 @@ namespace WebApplication.Models{
         [RegularExpression(@"[0-9]{7}",ErrorMessage="Incorrect report card")]
         [Required(ErrorMessage ="Please enter report card number")]
         public long ReportCard{get;set;}
-        public string Photo {get;set;}
+        [Required(ErrorMessage="Please select your faculty")]
+        public string Faculty{get;set;}
+        public IFormFile Photo {get;set;}
         [Required(ErrorMessage ="Please create password")]
         [RegularExpression(@"[a-zA-Z0-9]{8,16}",ErrorMessage="Incorrect password")]
         [DataType(DataType.Password)]
