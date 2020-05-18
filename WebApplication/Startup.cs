@@ -46,6 +46,7 @@ namespace WebApplication
             .AddCookie(options => {
                 options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/");
             });
+            services.AddAuthorization();
             services.AddOptions();
             
             services.AddAutoMapper(
@@ -81,15 +82,13 @@ namespace WebApplication
 
             app.UseRouting();
 
-            app.UseAuthorization();
-            app.UseAuthentication();
-
             app.UseCors(builder => builder
                 .AllowAnyOrigin()
                 .AllowAnyMethod()
                 .AllowAnyHeader()
             );
-
+            app.UseAuthentication();
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

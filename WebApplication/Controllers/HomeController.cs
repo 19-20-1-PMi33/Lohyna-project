@@ -16,9 +16,11 @@ using Model;
 using Services.AccountService;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApplication.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         private readonly IMapper _mapper;
@@ -40,7 +42,7 @@ namespace WebApplication.Controllers
             .Select(x => (x,
                     x.Photo is null
                         ? ""
-                        : $"data:image/jpeg;base64,{ImageHelper.EncodeImage(_host.ContentRootPath + "/" + x.Photo)}"
+                        : ImageHelper.EncodeImage(_host.ContentRootPath + "/" + x.Photo)
                 ));*/
             return View(new LogInModel{news = news});
         }
@@ -60,6 +62,7 @@ namespace WebApplication.Controllers
                     await Authenticate(model.Username);
                     return RedirectToAction("Index", "News");
                 }
+
             }
             model.news = _newsFeed
             .LoadNewsAsync()
@@ -67,7 +70,7 @@ namespace WebApplication.Controllers
             .Select(x => (x,
                     x.Photo is null
                         ? ""
-                        : $"data:image/jpeg;base64,{ImageHelper.EncodeImage(_host.ContentRootPath + "/" + x.Photo)}"
+                        : ImageHelper.EncodeImage(_host.ContentRootPath + "/" + x.Photo)
                 ));
             model.news= new List<(Core.DTO.News,string)>();
             return View("Index",model);

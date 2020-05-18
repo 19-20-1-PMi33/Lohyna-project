@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Core.Helpers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
 using Services.NewsFeedService;
@@ -13,6 +14,7 @@ using WebApplication.Models;
 
 namespace WebApplication.Controllers
 {
+    [Authorize]
     public class NewsController : Controller
     {
         private IHostEnvironment _host;
@@ -23,7 +25,6 @@ namespace WebApplication.Controllers
             _host = host;
             _newsFeed = newsFeed;
         }
-
         public async Task<IActionResult> Index()
         {
             // var news = _newsFeed
@@ -32,7 +33,7 @@ namespace WebApplication.Controllers
             // .Select(x => (x,
             //         x.Photo is null
             //             ? ""
-            //             : $"data:image/jpeg;base64,{ImageHelper.EncodeImage(_host.ContentRootPath + "/" + x.Photo)}"
+            //             : ImageHelper.EncodeImage(_host.ContentRootPath + "/" + x.Photo)
             //     ));
             return View(new List<(Core.DTO.News,string)>());
         }

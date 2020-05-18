@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using AutoMapper;
 using Core.Helpers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -9,6 +10,7 @@ using WebApplication.Models;
 
 namespace WebApplication.Controllers
 {
+    [Authorize]
     public class ProfileController : Controller
     {
         private readonly IMapper _mapper;
@@ -26,12 +28,11 @@ namespace WebApplication.Controllers
             _profile = profile;
             _logger = logger;
         }
-
         public IActionResult Index()
         {
             Model.Student userData = _profile.LoadStudentAsync(User.Identity.Name).Result;
             ProfileViewModel model = _mapper.Map<ProfileViewModel>(userData);
-            model.Person.Photo=$"data:image/jpg;base64,{ImageHelper.EncodeImage(_host.ContentRootPath+"/"+model.Person.Photo)}";
+            model.Person.Photo=ImageHelper.EncodeImage(_host.ContentRootPath+"/"+model.Person.Photo);
             return View("Profile", model);
         }
 

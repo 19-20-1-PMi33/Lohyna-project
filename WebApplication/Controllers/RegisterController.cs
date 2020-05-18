@@ -10,9 +10,12 @@ using Model;
 using Services.AccountService;
 using System.IO;
 using Core.Helpers;
+using System;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApplication.Controllers
 {
+    [AllowAnonymous]
     public class RegisterController : Controller
     {
         private readonly IMapper _mapper;
