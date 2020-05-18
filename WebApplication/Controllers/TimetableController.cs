@@ -7,9 +7,11 @@ using Services.TimeTableService;
 using WebApplication.Models;
 using System.Linq;
 using System;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApplication.Controllers
 {
+    [Authorize]
     public class TimetableController : Controller
     {
         private readonly IMapper _mapper;
@@ -22,7 +24,6 @@ namespace WebApplication.Controllers
             _timeTable = timeTable;
             _logger = logger;
         }
-
         public IActionResult Index()
         {
             Dictionary<int, List<Core.DTO.Timetable>> keyValues;

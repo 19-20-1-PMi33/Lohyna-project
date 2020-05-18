@@ -11,8 +11,7 @@ namespace Core.Helpers
             using var image = Image.FromFile(path);
             using var m = new MemoryStream();
             image.Save(m, image.RawFormat);
-            // Convert byte[] to Base64 String
-            return Convert.ToBase64String(m.ToArray());
+            return $"data:image/{Path.GetExtension(path)};base64,{Convert.ToBase64String(m.ToArray())}";
         }
     }
 }

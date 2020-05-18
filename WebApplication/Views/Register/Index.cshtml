@@ -1,0 +1,151 @@
+@model WebApplication.Models.RegisterModel;
+@{
+    Layout=null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lohyna</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/register.css"/>
+</head>
+<body class = "container-fluid">
+    <header>
+        <nav class="navbar navbar-custom navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a asp-controller="Home" asp-action="Index" class="navbar-brand mr-0 ml-sm-4">
+                <img src="/images/Logo.png" id="logo" class="d-inline-block align-top"/>
+            </a>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                <form class="form-inline my-2 ml-auto my-lg-0 justify-content-between" method="POST" asp-controller="Home" asp-action="Login">
+                    <input class="form-control mr-sm-2 my-sm-2 mb-2" type="text" placeholder="Username">
+                    <input class="form-control input-sm mr-sm-2 my-sm-2 mb-2" type="password" placeholder="Password">
+                    <button class="btn btn-primary mr-sm-2" id="btn" type="submit">Log in</button>
+                    <a class="btn btn-primary" asp-controller="Register" asp-action="Index">Register</a>
+                </form>
+            </div>
+        </nav>
+        <main class="my-form">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                            <div class="card">
+                                <div class="card-header">Register</div>
+                                <div class="card-body">
+                                    <form asp-controller="Register" asp-action="Register" method="POST" enctype="multipart/form-data">
+                                        <div class="form-group row">
+                                            <label asp-for="Photo" class="col-md-4 col-form-label text-md-right">Photo</label>
+                                            <div class="col-md-6 custom-file">
+                                                <input type="file" class="custom-file-input" asp-for="Photo" id="inputPhoto" lang="en">
+                                                <label class="custom-file-label" for="inputPhoto">Choose image</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label asp-for="Name" class="col-md-4 col-form-label text-md-right">Name</label>
+                                            <div class="col-md-6 px-0">
+                                                <input type="text" class="form-control" asp-for="Name">
+                                                <span asp-validation-for="Name"></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label asp-for="Surname" class="col-md-4 col-form-label text-md-right">Surname</label>
+                                            <div class="col-md-6 px-0">
+                                                <input type="text" class="form-control" asp-for="Surname">
+                                                <span asp-validation-for="Surname"></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label asp-for="Username" class="col-md-4 col-form-label text-md-right">Username</label>
+                                            <div class="col-md-6 px-0">
+                                                <input type="text" class="form-control" asp-for="Username">
+                                                <span asp-validation-for="Username"></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label asp-for="Faculty" class="col-md-4 col-form-label text-md-right">Faculty</label>
+                                            <div class="col-md-6 px-0">
+                                                <select type="text" class="form-control" asp-for="Faculty">
+                                                    <option></option>
+                                                    @foreach(var faculty in Model.facultyList){
+                                                        <option>@faculty</option>
+                                                    }
+                                                </select>
+                                                <span asp-validation-for="Faculty"></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label asp-for="Username" class="col-md-4 col-form-label text-md-right">Group</label>
+                                            <div class="col-md-6 px-0">
+                                                <select type="text" class="form-control" asp-for="Group">
+                                                    <option></option>
+                                                    @foreach(var group in Model.groupList){
+                                                        <option>@group</option>
+                                                    }
+                                                </select>
+                                                <span asp-validation-for="Group"></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label asp-for="TicketNumber" class="col-md-4 col-form-label text-md-right">Ticket number</label>
+                                            <div class="col-md-6 px-0">
+                                                <input type="text" class="form-control" asp-for="TicketNumber">
+                                                <span asp-validation-for="TicketNumber"></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label asp-for="ReportCard" class="col-md-4 col-form-label text-md-right">Report card</label>
+                                            <div class="col-md-6 px-0">
+                                                <input type="text" class="form-control" asp-for="ReportCard">
+                                                <span asp-validation-for="ReportCard"></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label asp-for="Password" class="col-md-4 col-form-label text-md-right">Password</label>
+                                            <div class="col-md-6 px-0">
+                                                <input type="password" asp-for="Password" class="form-control">
+                                                <span asp-validation-for="Password"></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label asp-for="ConfirmPassword" class="col-md-4 col-form-label text-md-right">Confirm password</label>
+                                            <div class="col-md-6 px-0">
+                                                <input type="password" asp-for="ConfirmPassword" class="form-control">
+                                                <span asp-validation-for="ConfirmPassword"></span>
+                                            </div>
+                                        </div>
+
+                                            <div class="col-md-6 offset-md-4">
+                                                <button type="submit" class="btn btn-primary">
+                                                    Register
+                                                </button>
+                                            </div>
+                                    </form>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="~/js/register.js" asp-append-version="true"></script>
+</body>
+</html>

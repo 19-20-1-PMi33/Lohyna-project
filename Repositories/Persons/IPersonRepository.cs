@@ -49,13 +49,13 @@ namespace Repositories.Persons
         /// </summary>
         /// <param name="person">Person to be saved.</param>
         /// <returns>Status of operation.</returns>
-        void CreatePersonAsync(Person person);
+        Task CreatePersonAsync(Person person);
         /// <summary>
         /// Save student in data source
         /// </summary>
         /// <param name="student">Student to be saved</param>
         /// <returns>Status of operation.</returns>
-        void CreateStudentAsync(Student student);
+        Task CreateStudentAsync(Student student);
 
         /// <summary>
         /// Load people with given name.
@@ -83,6 +83,6 @@ namespace Repositories.Persons
         /// </summary>
         /// <param name="lecturer">Lecturer to save.</param>
         void CreateLecturerAsync(Lecturer lecturer);
-
+        bool ContainsPerson(Person p);
     }
 }

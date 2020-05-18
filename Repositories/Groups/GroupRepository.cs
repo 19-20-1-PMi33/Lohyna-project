@@ -19,7 +19,12 @@ namespace Repositories.Groups
         {
             return _dbContext.Group.FirstOrDefault(p => p.Name == student.GroupID);
         }
-        
+
+        public Group LoadGroup(string groupID)
+        {
+            return _dbContext.Group.Find(groupID);
+        }
+
         public async Task<IList<Group>> LoadGroupsAsync()
         {
             return await _dbContext.Group.ToListAsync();

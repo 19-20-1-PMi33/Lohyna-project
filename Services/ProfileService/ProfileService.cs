@@ -1,15 +1,30 @@
 using System;
 using System.Collections.Generic;
+using AutoMapper;
 using System.Threading.Tasks;
-using Core.DTO;
+using Model;
+using Repositories.UnitOfWork;
 
 namespace Services.ProfileService
 {
     public class ProfileService : IProfileService
     {
-        public async Task<Person> LoadPersonAsync(string username)
+        private IUnitOfWork _unitOfWork;
+        private IMapper _mapProfile;
+
+        public ProfileService(IUnitOfWork unitOfWork,IMapper mapper)
         {
-            return new Student{Name = "Roman",Surname = "Levkovych",Username=username,Photo="profile1.jpg",Password="admin",personType = PersonType.student,Group="PMi-33",TicketNumber=1,ReportCard=1,Faculty="Applied Mathematics and Informatics"};
+            _unitOfWork = unitOfWork;
+            _mapProfile = mapper;
+        }
+
+
+        public async Task<Student> LoadStudentAsync(string username)
+        {
+            Model.Person person = _unitOfWork.Persons.LoadLogInPersonAsync(username);
+            Model.Student student = _unitOfWork.Persons.LoadStudent(person);
+            student.Group = _unitOfWork.Groups.LoadGroup(student.GroupID);
+            return student;
         }
     }
 }
