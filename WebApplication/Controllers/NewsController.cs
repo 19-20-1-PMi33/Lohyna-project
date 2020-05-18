@@ -27,15 +27,15 @@ namespace WebApplication.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            // var news = _newsFeed
-            // .LoadNewsAsync()
-            // .Result
-            // .Select(x => (x,
-            //         x.Photo is null
-            //             ? ""
-            //             : ImageHelper.EncodeImage(_host.ContentRootPath + "/" + x.Photo)
-            //     ));
-            return View(new List<(Core.DTO.News,string)>());
+            var news = _newsFeed
+            .LoadNewsAsync()
+            .Result
+            .Select(x => (x,
+                    x.Photo is null
+                        ? ""
+                        : ImageHelper.EncodeImage(_host.ContentRootPath + "/" + x.Photo)
+                ));
+            return View(news);
         }
 
 

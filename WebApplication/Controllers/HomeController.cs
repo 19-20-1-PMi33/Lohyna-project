@@ -36,14 +36,16 @@ namespace WebApplication.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var news = new List<(Core.DTO.News,string)>();/*_newsFeed
+            if(!String.IsNullOrEmpty(User.Identity.Name))
+                return RedirectToAction("Index","News");
+            var news = _newsFeed
             .LoadNewsAsync()
             .Result
             .Select(x => (x,
                     x.Photo is null
                         ? ""
                         : ImageHelper.EncodeImage(_host.ContentRootPath + "/" + x.Photo)
-                ));*/
+                ));
             return View(new LogInModel{news = news});
         }
 
@@ -72,7 +74,6 @@ namespace WebApplication.Controllers
                         ? ""
                         : ImageHelper.EncodeImage(_host.ContentRootPath + "/" + x.Photo)
                 ));
-            model.news= new List<(Core.DTO.News,string)>();
             return View("Index",model);
         }
         public async Task Authenticate(string userName)
