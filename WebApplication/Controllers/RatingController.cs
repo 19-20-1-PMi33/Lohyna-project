@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using Services.RatingService;
+using Services.ProfileService;
 using WebApplication.Models;
 using System.Linq;
 using System;
@@ -15,14 +16,17 @@ namespace WebApplication.Controllers
     public class RatingController: Controller
     {
         private readonly IRatingService _rating;
+        private readonly IProfileService _profile;
 
-        public RatingController(IRatingService rating)
+        public RatingController(IRatingService rating, IProfileService profile)
         {
             _rating = rating;
+            _profile = profile;
         }
         public IActionResult Index()
         {
-            List<Core.DTO.Rating> ratingsList = _rating.LoadRatingAsync().Result;
+            Model.Student userData = _profile.LoadStudentAsync(User.Identity.Name).Result;
+            List<Model.Rating> ratingsList = _rating.LoadRatingAsync(userData).Result;
             return View("Rating", ratingsList);
         }
 
