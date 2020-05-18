@@ -6,7 +6,6 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Core\Core.csproj" />
-      <ProjectReference Include="..\ModuleTests\ModuleTests.csproj" />
       <ProjectReference Include="..\Services\Services.csproj" />
       <ProjectReference Include="..\Model\Model.csproj" />
       <ProjectReference Include="..\Repositories\Repositories.csproj" />
