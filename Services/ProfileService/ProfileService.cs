@@ -18,6 +18,15 @@ namespace Services.ProfileService
             _mapProfile = mapper;
         }
 
+        public string GetAuditoryForStudent(Student student)
+        {
+            var timetable = _unitOfWork.TimeTables.LoadTimetableForTimeAsync(student,DateTime.Now).Result;
+            if(timetable.Id!=-1)
+            {
+                return timetable.Auditory;
+            }
+            return "";
+        }
 
         public async Task<Student> LoadStudentAsync(string username)
         {

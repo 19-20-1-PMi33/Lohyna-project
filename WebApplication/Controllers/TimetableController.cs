@@ -30,6 +30,13 @@ namespace WebApplication.Controllers
         public IActionResult Index()
         {
             var model =  _timeTable.LoadTimetableForGroupAsync(_profile.LoadStudentAsync(User.Identity.Name).Result.GroupID).Result;
+            foreach (int i in model.Keys)
+            {
+                System.Console.WriteLine(i);
+                foreach(var j in model[i]){
+                    System.Console.WriteLine($"{j.Day}:{j.SubjectID}");
+                }
+            }
             return View("Timetable",model);
         }
 

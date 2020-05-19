@@ -66,7 +66,7 @@ namespace Model.EntitiesConfiguration
 			new Timetable{Id=14,Day="Tuesday",Period="all",
 			TimeID=6,SubjectID="AI systems",GroupID="PMi-32",LecturerID=1,Auditory="111"},
 			new Timetable{Id=15,Day="Tuesday",Period="all",
-			TimeID=6,SubjectID="AI systems",GroupID="PMi-33",LecturerID=1,Auditory="111"},
+			TimeID=5,SubjectID="AI systems",GroupID="PMi-33",LecturerID=1,Auditory="111"},
 
 			new Timetable{Id=16,Day="Wednesday",Period="all",
 			TimeID=4,SubjectID="Cryptology",GroupID="PMi-31",LecturerID=1,Auditory="439"},
@@ -101,7 +101,7 @@ namespace Model.EntitiesConfiguration
 			new Timetable{Id=29,Day="Friday",Period="all",
 			TimeID=7,SubjectID="Optimization methods",GroupID="PMi-32",LecturerID=1,Auditory="119a"},
 			new Timetable{Id=30,Day="Thursday",Period="all",
-			TimeID=5,SubjectID="Computer methods",GroupID="PMi-33",LecturerID=1,Auditory="117"},
+			TimeID=6,SubjectID="Computer methods",GroupID="PMi-33",LecturerID=1,Auditory="117"},
 
 			new Timetable{Id=31,Day="Friday",Period="all",
 			TimeID=4,SubjectID="PE",GroupID="PMi-31",LecturerID=1,Auditory="439"},

@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="~/css/profile.css" />
 }
  <div class="row">
-      <div class="col-6 col-md-4 col-lg-3 px-md-3 px-sm-0 pt-3">
+      <div class="col-6 col-md-4 col-lg-2 px-md-3 px-sm-0 pt-3">
         <img alt="Profile photo" src="@Model.Person.Photo" class="img-fluid img-thumbnail rounded" />
       </div>
       <div class="col-6 col-md-8 col-lg-7 px-md-2 px-sm-0">
@@ -25,7 +25,13 @@
     <div class="row p-3">
       <h4 class="mb-n3 block-title ml-3 px-2">Probably can be found at :</h4>
       <div class="card shadow-sm col-12 border-secondary block-profile">
-        <h3 class="card-body text-right pt-4">Lecture hall 439</h3>
+        @if(String.IsNullOrEmpty(Model.FoundAt))
+          {
+          <h3 class="card-body text-right pt-4">User has no lessons at this time</h3>
+          }
+        else{
+          <h3 class="card-body text-right pt-4">Auditory @Model.FoundAt</h3>
+        }
       </div>
     </div>
     <div class="row p-3">

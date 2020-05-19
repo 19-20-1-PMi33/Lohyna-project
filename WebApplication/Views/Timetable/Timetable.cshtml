@@ -50,9 +50,11 @@
                                             <p>@time.SubjectID</p>
                                         </div>
                                         <div class="w-100 text-center">
-                                            <p>@time.LecturerName</p>
+                                            <p>@(time.LecturerName+", "+time.Auditory)</p>
                                         </div>
                                     </div>
+                                    if(cnt==Model[i].Count)
+                                        cnt=0;
                                 }
                                 else
                                 {
