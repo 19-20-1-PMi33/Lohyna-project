@@ -14,6 +14,11 @@
     border-bottom: 2px outset;
 }
 
+#timeTablePage
+{
+    margin-top: 100px;
+}
+
 .timetable-item {
     display: inline-flex;
     height: 100%;

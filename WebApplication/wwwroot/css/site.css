@@ -10,11 +10,6 @@ body{
   height: 50px;
 }
 
-html, body{
-  height: 100%;
-  width: 100%;
-}
-
 #basicExampleNav {
   min-height: 50px;
   font-size: 20px;
