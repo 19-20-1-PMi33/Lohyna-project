@@ -8,6 +8,7 @@ using Core.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
 using Services.NotesService;
+using System.Collections.Generic;
 using WebApplication.Models;
 
 namespace WebApplication.Controllers
@@ -23,7 +24,8 @@ namespace WebApplication.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View("Notes");
+            List<Model.Note> notesList = notes.LoadNotesAsync().Result; 
+            return View("Notes", notesList);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

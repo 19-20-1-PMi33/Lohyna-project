@@ -6,6 +6,6 @@ namespace Services.NotesService
 {
     public interface INotesService
     {
-        Task<List<Note>> LoadNotesAsync();
+        Task<List<Model.Note>> LoadNotesAsync();
     }
 }

@@ -1,3 +1,4 @@
+@model IEnumerable<Model.Note>
 
 @{
     ViewData["Title"] = "Notes";
@@ -48,160 +49,27 @@
         <div class="col-md-9">
           <div class="row align-items-start mb-3">
             <div class="col-md-4 justify-content-center d-flex"><a class="btn btn-secondary w-75 text-center text-uppercase" id="AddNote" type="button" data-toggle="modal" data-target="#AddNoteModal" href="#"><b>Add note</b></a></div>
-            <div class="col-md-8 d-flex align-items-end justify-content-end">
-              <form class="form-inline w-75 mt-0">
-                <div class="input-group w-100 ml-5">
-                  <input type="text" class="form-control border border-dark text-dark" id="inlineFormInputGroup" placeholder="Search">
-                  <div class="input-group-append"><button class="btn btn-primary" type="button"><i class="fa fa-search"></i></button></div>
-                </div>
-              </form>
-            </div>
           </div>
           <div class="row">
+            @foreach (var note in Model)
+            {
             <div class="col-md-4">
               <div class="card my-2">
                 <div class="card-header d-flex bg-secondary text-light justify-content-between">
-                  <a  class="text-light" type="button" data-toggle="modal" data-target="#AddNoteModal" href="#"><b>NoteName</b></a>
+                  <a  class="text-light" type="button" data-toggle="modal" data-target="#AddNoteModal" href="#"><b>@note.Name</b></a>
                   <a href="#deleteNoteModal" class="delete" data-toggle="modal"><i class="fas fa-trash mt-1 text-danger" data-toggle="tooltip" title="Delete"></i>
                   </a>
                 </div>
                 <div class="card-body">
-                  <p class="text-truncate">Some quick example text to build on the card title .</p>
+                  <p class="text-truncate">@note.Materials</p>
                 </div>
                 <div class="card-footer d-flex flex-row justify-content-around">
-                  <p><b>Numerical</b></p>
-                  <p><b>06.05.2020</b></p>
+                  <p class="text-truncate"><b>@note.SubjectID</b></p>
+                  <p class="text-truncate"><b>@note.Created</b></p>
                 </div>
               </div>
             </div>
-                        <div class="col-md-4">
-              <div class="card my-2">
-                <div class="card-header d-flex bg-secondary text-light justify-content-between">
-                  <a class="text-light" type="button" data-toggle="modal" data-target="#AddNoteModal" href="#"><b>NoteName</b></a>
-                  <a href="#deleteNoteModal" class="delete" data-toggle="modal"><i class="fas fa-trash mt-1 text-danger" data-toggle="tooltip" title="Delete"></i>
-                  </a>
-                </div>
-                <div class="card-body">
-                  <p class="text-truncate">Some quick example text to build on the card title .</p>
-                </div>
-                <div class="card-footer d-flex flex-row justify-content-around">
-                  <p><b>Numerical</b></p>
-                  <p><b>06.05.2020</b></p>
-                </div>
-              </div>
-            </div>
-                        <div class="col-md-4">
-              <div class="card my-2">
-                <div class="card-header d-flex bg-secondary text-light justify-content-between">
-                  <a class="text-light" type="button" data-toggle="modal" data-target="#AddNoteModal" href="#"><b>NoteName</b></a>
-                  <a href="#deleteNoteModal" class="delete" data-toggle="modal"><i class="fas fa-trash mt-1 text-danger" data-toggle="tooltip" title="Delete"></i>
-                  </a>
-                </div>
-                <div class="card-body">
-                  <p class="text-truncate">Some quick example text to build on the card title .</p>
-                </div>
-                <div class="card-footer d-flex flex-row justify-content-around">
-                  <p><b>Numerical</b></p>
-                  <p><b>06.05.2020</b></p>
-                </div>
-              </div>
-            </div>
-                        <div class="col-md-4">
-              <div class="card my-2">
-                <div class="card-header d-flex bg-secondary text-light justify-content-between">
-                  <a  class="text-light" type="button" data-toggle="modal" data-target="#AddNoteModal" href="#"><b>NoteName</b></a>
-                  <a href="#deleteNoteModal" class="delete" data-toggle="modal"><i class="fas fa-trash mt-1 text-danger" data-toggle="tooltip" title="Delete"></i>
-                  </a>
-                </div>
-                <div class="card-body">
-                  <p class="text-truncate">Some quick example text to build on the card title .</p>
-                </div>
-                <div class="card-footer d-flex flex-row justify-content-around">
-                  <p><b>Numerical</b></p>
-                  <p><b>06.05.2020</b></p>
-                </div>
-              </div>
-            </div>
-                        <div class="col-md-4">
-              <div class="card my-2">
-                <div class="card-header d-flex bg-secondary text-light justify-content-between">
-                  <a class="text-light" type="button" data-toggle="modal" data-target="#AddNoteModal" href="#"><b>NoteName</b></a>
-                  <a href="#deleteNoteModal" class="delete" data-toggle="modal"><i class="fas fa-trash mt-1 text-danger" data-toggle="tooltip" title="Delete"></i>
-                  </a>
-                </div>
-                <div class="card-body">
-                  <p class="text-truncate">Some quick example text to build on the card title .</p>
-                </div>
-                <div class="card-footer d-flex flex-row justify-content-around">
-                  <p><b>Numerical</b></p>
-                  <p><b>06.05.2020</b></p>
-                </div>
-              </div>
-            </div>
-                        <div class="col-md-4">
-              <div class="card my-2">
-                <div class="card-header d-flex bg-secondary text-light justify-content-between">
-                  <a  class="text-light" type="button" data-toggle="modal" data-target="#AddNoteModal" href="#"><b>NoteName</b></a>
-                  <a href="#deleteNoteModal" class="delete" data-toggle="modal"><i class="fas fa-trash mt-1 text-danger" data-toggle="tooltip" title="Delete"></i>
-                  </a>
-                </div>
-                <div class="card-body">
-                  <p class="text-truncate">Some quick example text to build on the card title .</p>
-                </div>
-                <div class="card-footer d-flex flex-row justify-content-around">
-                  <p><b>Numerical</b></p>
-                  <p><b>06.05.2020</b></p>
-                </div>
-              </div>
-            </div>
-                        <div class="col-md-4">
-              <div class="card my-2">
-                <div class="card-header d-flex bg-secondary text-light justify-content-between">
-                  <a  class="text-light" type="button" data-toggle="modal" data-target="#AddNoteModal" href="#"><b>NoteName</b></a>
-                  <a href="#deleteNoteModal" class="delete" data-toggle="modal"><i class="fas fa-trash mt-1 text-danger" data-toggle="tooltip" title="Delete"></i>
-                  </a>
-                </div>
-                <div class="card-body">
-                  <p class="text-truncate">Some quick example text to build on the card title .</p>
-                </div>
-                <div class="card-footer d-flex flex-row justify-content-around">
-                  <p><b>Numerical</b></p>
-                  <p><b>06.05.2020</b></p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card my-2">
-                <div class="card-header d-flex bg-secondary text-light justify-content-between">
-                  <a class="text-light" type="button" data-toggle="modal" data-target="#AddNoteModal" href="#"><b>NoteName</b></a>
-                  <a href="#deleteNoteModal" class="delete" data-toggle="modal"><i class="fas fa-trash mt-1 text-danger" data-toggle="tooltip" title="Delete"></i>
-                  </a>
-                </div>
-                <div class="card-body">
-                  <p class="text-truncate">Some quick example text to build on the card title .</p>
-                </div>
-                <div class="card-footer d-flex flex-row justify-content-around">
-                  <p><b>Numerical</b></p>
-                  <p><b>06.05.2020</b></p>
-                </div>
-              </div>
-            </div>            
-                         <div class="col-md-4">
-              <div class="card my-2">
-                <div class="card-header d-flex bg-secondary text-light justify-content-between">
-                  <a  class="text-light" type="button" data-toggle="modal" data-target="#AddNoteModal" href="#"><b>NoteName</b></a>
-                  <a href="#deleteNoteModal" class="delete" data-toggle="modal"><i class="fas fa-trash mt-1 text-danger" data-toggle="tooltip" title="Delete"></i>
-                  </a>
-                </div>
-                <div class="card-body">
-                  <p class="text-truncate">Some quick example text to build on the card title .</p>
-                </div>
-                <div class="card-footer d-flex flex-row justify-content-around">
-                  <p><b>Numerical</b></p>
-                  <p><b>06.05.2020</b></p>
-                </div>
-              </div>
-            </div>
+            }
           </div>
           <ul class="pagination d-flex justify-content-center align-items-center flex-grow-0 mt-2">
             <li class="page-item"> <a class="page-link" href="#">Prev</a> </li>

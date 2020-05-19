@@ -19,9 +19,12 @@ namespace Services.NotesService
             _unitOfWork = unitOfWork;
             _mapNotes = mapper;
         }
-        public async Task<List<Note>> LoadNotesAsync()
+        public async Task<List<Model.Note>> LoadNotesAsync()
         {
-            return new List<Note>();
+            return new List<Model.Note>()
+            {
+                new Model.Note{Name = "PI note",Created = DateTime.Now, Deadline = DateTime.Now, Materials = "Bla-bla-bla", Finished = true, SubjectID = "PI", PersonID = "1234"}
+            };
         }
     }
 }
