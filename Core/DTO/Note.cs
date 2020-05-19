@@ -2,6 +2,17 @@ using System;
 
 namespace Core.DTO
 {	
+
+	public enum  SortState
+	{
+		NameAsc,
+		NameDesc,
+		CreatedAsc,
+		CreatedDesc,
+		DeadlineAsc,
+		DeadlineDesc
+	}
+
 	public class Note
 	{
 		public string Name { get; set; }
