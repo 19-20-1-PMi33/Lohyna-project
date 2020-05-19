@@ -17,5 +17,6 @@
 
 		public virtual Lecturer Lecturer { get; set; }
 		public int LecturerID { get; set; }
+		public string Auditory{get;set;}
 	}
 }

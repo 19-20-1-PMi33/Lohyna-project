@@ -12,5 +12,6 @@ namespace Core.DTO
 		public string GroupID { get; set; }
         public int LecturerID {get; set;}
 		public string LecturerName { get; set; }
+        public string Auditory {get;set;}
     }
 }
