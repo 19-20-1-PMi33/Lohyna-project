@@ -22,5 +22,12 @@ namespace Repositories.TimeTables
                 .ToListAsync();
 
         }
+
+        public async Task<IList<Timetable>> LoadTimetableAsync(string groupID)
+        {
+            return await _dbContext.Timetable
+                .Where(item => item.GroupID.Equals(groupID))
+                .ToListAsync();
+        }
     }
 }

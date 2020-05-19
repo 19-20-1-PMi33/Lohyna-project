@@ -6,6 +6,6 @@ namespace Services.TimeTableService
 {
     public interface ITimeTableService
     {
-        Task<List<Core.DTO.Timetable>> LoadTimetableAsync();
+        Task<Dictionary<int, List<Core.DTO.Timetable>>> LoadTimetableForGroupAsync(string groupID);
     }
 }

@@ -10,6 +10,7 @@ namespace Core.DTO
         public int TimeID { get; set; }
 		public string SubjectID { get; set; }
 		public string GroupID { get; set; }
-		public int LecturerID { get; set; }
+        public int LecturerID {get; set;}
+		public string LecturerName { get; set; }
     }
 }

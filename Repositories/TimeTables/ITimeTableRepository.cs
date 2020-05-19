@@ -15,5 +15,6 @@ namespace Repositories.TimeTables
         /// <param name="student"></param>
         /// <returns>Timetable of person.</returns>
         Task<IList<Timetable>> LoadTimetableAsync(Student student);
+        Task<IList<Timetable>> LoadTimetableAsync(string groupID);
     }
 }

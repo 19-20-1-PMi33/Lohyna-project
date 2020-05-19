@@ -1,6 +1,7 @@
 body{
-	background-color: #f9f9f9;
-	overflow-x: hidden;
+  background-color: #f9f9f9;
+  overflow-x: auto;
+  width: auto;
 }
 .navbar-custom {
   background-color: #0078D7;
@@ -10,9 +11,8 @@ body{
   height: 50px;
 }
 
-html, body{
-  height: 100%;
-  width: 100%;
+.row{
+  margin: 0px;;
 }
 
 #basicExampleNav {
