@@ -8,6 +8,8 @@ namespace Model
 		public long Size { get; set; }
 		public long Course { get; set; }
 
+		public string Faculty{get;set;}
+
 		public ICollection<Student> Students { get; set; }
 		public ICollection<Timetable> Lessons { get; set; }
 	}

@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Model.EntitiesConfiguration;
 
+
 namespace Model
 {
     /// <summary>
@@ -8,7 +9,9 @@ namespace Model
     /// </summary>
     public class AppDbContext : DbContext
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) {}
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) {
+            Database.EnsureCreated();
+        }
 
         /// <summary>
         /// Method of DB connection lifecycle.
@@ -54,5 +57,6 @@ namespace Model
         public DbSet<Timetable> Timetable { get; set; }
 
         public DbSet<Subject> Subject { get; set; }
+
     }
 }

@@ -1,6 +1,5 @@
 @model WebApplication.Models.ProfileViewModel
 @{
-    ViewData["user"]= @Model.Username;
     ViewData["Title"]="Profile";
 }
 @section Styles
@@ -9,17 +8,17 @@
 }
  <div class="row">
       <div class="col-6 col-md-4 col-lg-3 px-md-3 px-sm-0 pt-3">
-        <img alt="Profile photo" src="/images/@Model.Photo" class="img-fluid img-thumbnail rounded" />
+        <img alt="Profile photo" src="@Model.Person.Photo" class="img-fluid img-thumbnail rounded" />
       </div>
       <div class="col-6 col-md-8 col-lg-7 px-md-2 px-sm-0">
           <div class="row">
-              <p class="info-name">@Model.Name @Model.Surname</p>
+              <p class="info-name">@Model.Person.Name @Model.Person.Surname</p>
           </div>
           <div class="row">
-              <p class="info-other">Faculty : @Model.Faculty</p>
+              <p class="info-other">Faculty : @Model.Group.Faculty</p>
           </div>
           <div class="row">
-              <p class="info-other">Group : @Model.Group</p>
+              <p class="info-other">Group : @Model.Group.Name</p>
           </div>
       </div>
     </div>
@@ -36,7 +35,7 @@
       </div>
     </div>
     <div class="row p-3">
-      <h4 class="mb-n3 block-title ml-3 px-2">Write @Model.Name a message :</h4>
+      <h4 class="mb-n3 block-title ml-3 px-2">Write @Model.Person.Name a message :</h4>
       <div class="card shadow-sm col-12 border-secondary block-profile pb-2">
         <form class="form-inline pt-4 pb-2">
           <div class="form-group col-9 col-md-10 col-lg-11 px-md-2 mb-0">

@@ -15,6 +15,7 @@ namespace Repositories.Groups
         /// <param name="student">Student, whose group is required.</param>
         /// <returns>Group where student is studying.</returns>
         Group LoadGroup(Student student);
+        Group LoadGroup(string groupID);
         Task<IList<Group>> LoadGroupsAsync();
     }
 }

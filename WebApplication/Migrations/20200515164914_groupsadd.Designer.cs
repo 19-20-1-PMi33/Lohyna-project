@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Model;
 
 namespace WebApplication.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class LohynaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200515164914_groupsadd")]
+    partial class groupsadd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -53,10 +55,6 @@ namespace WebApplication.Migrations
                     b.Property<long>("Course")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Faculty")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.Property<long>("Size")
                         .HasColumnType("INTEGER");
 
@@ -69,42 +67,36 @@ namespace WebApplication.Migrations
                         {
                             Name = "PMi-31",
                             Course = 3L,
-                            Faculty = "Applied Mathematics and Informatics",
                             Size = 20L
                         },
                         new
                         {
                             Name = "PMi-32",
                             Course = 3L,
-                            Faculty = "Applied Mathematics and Informatics",
                             Size = 20L
                         },
                         new
                         {
                             Name = "PMi-33",
                             Course = 3L,
-                            Faculty = "Applied Mathematics and Informatics",
                             Size = 20L
                         },
                         new
                         {
                             Name = "PMi-34",
                             Course = 3L,
-                            Faculty = "Applied Mathematics and Informatics",
                             Size = 20L
                         },
                         new
                         {
                             Name = "PMi-35",
                             Course = 3L,
-                            Faculty = "Applied Mathematics and Informatics",
                             Size = 20L
                         },
                         new
                         {
                             Name = "PMo-31",
                             Course = 3L,
-                            Faculty = "Applied Mathematics and Informatics",
                             Size = 20L
                         });
                 });
@@ -164,7 +156,7 @@ namespace WebApplication.Migrations
 				Тоді чого зволікати?? Швиденько заповнюйте форму(посилання внизу⬇️) та бігом на кастинг, котрий відбудеться о 16:00, 12 березня у глядацькій залі ЦКД (головний корпус, вул. Університетська, 1) 😍
 
 				Чекаємо на вас із нетерпінням, буде чарівно й по-домашньому! ✨",
-                            Time = "18.05.2020 00:00:00"
+                            Time = "05/15/2020 00:00:00"
                         },
                         new
                         {
@@ -180,7 +172,7 @@ namespace WebApplication.Migrations
 📍 ауд.270
 
 💫Реєстрація обов'язкова!👇",
-                            Time = "10.02.2020 12:23:40"
+                            Time = "02/10/2020 12:23:40"
                         },
                         new
                         {
@@ -189,7 +181,7 @@ namespace WebApplication.Migrations
                             Text = @"4 березня в ЦКД о 18:00 відбудеться акустично-літературний вечір і ми шукаємо людей, які вміють грати, співати або читати вірші🔥🚀
 
 Реєструйся і покажи всім, що ти вмієш😉👇",
-                            Time = "17.02.2020 17:23:40"
+                            Time = "02/17/2020 17:23:40"
                         },
                         new
                         {
@@ -198,7 +190,7 @@ namespace WebApplication.Migrations
 Давно чекаєш на можливість показати себе та позмагатися із собі рівними? 🏆🔥
 Тоді, дай відповідь лиш на кілька запитань і ми виконаємо твої побажання)😉
 Вибір за тобою!👇",
-                            Time = "18.05.2020 17:35:28"
+                            Time = "05/15/2020 19:49:13"
                         },
                         new
                         {
@@ -211,7 +203,7 @@ namespace WebApplication.Migrations
 Вартість 20 грн з учасника, з нас смаколики з чайком, а з тебе компанія)🙋‍♀️🙋‍♂️
 
 ❗Реєстрація обовязкова!⬇️",
-                            Time = "17.02.2020 17:23:40"
+                            Time = "02/17/2020 17:23:40"
                         });
                 });
 

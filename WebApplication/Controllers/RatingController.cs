@@ -7,9 +7,11 @@ using Services.RatingService;
 using WebApplication.Models;
 using System.Linq;
 using System;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApplication.Controllers
 {
+    [Authorize]
     public class RatingController: Controller
     {
         private readonly IRatingService _rating;

@@ -4,7 +4,7 @@ using Services.ProfileService;
 using Services.TimeTableService;
 using Services.RatingService;
 using Services.NotesService;
-
+using Services.AccountService;
 namespace Services
 {
     public class ServiceDependencyModule : Module
@@ -16,6 +16,7 @@ namespace Services
             builder.RegisterType<TimeTableService.TimeTableService>().As<ITimeTableService>();
             builder.RegisterType<RatingService.RatingService>().As<IRatingService>();
             builder.RegisterType<NotesService.NotesService>().As<INotesService>();
+            builder.RegisterType<AccountService.AccountService>().As<IAccountService>();
         }
     }
 }

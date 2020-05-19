@@ -1,12 +1,46 @@
-﻿@using Core
-@using Core.Helpers
-@model IEnumerable<(Core.DTO.News, string)>
-
+﻿@using Core.Helpers;
+@model WebApplication.Models.LogInModel;
 @{
-    ViewData["Title"] = "Home Page";
+    Layout=null;
 }
 
-@foreach (var (newsItem, imagePath) in Model)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lohyna</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body class = "container-fluid">
+    <header>
+        <nav class="navbar navbar-custom navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a asp-controller="Home" asp-action="Index" class="navbar-brand mr-0 ml-sm-4">
+                <img src="/images/Logo.png" id="logo" class="d-inline-block align-top"/>
+            </a>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                <form class="form-inline my-2 ml-auto my-lg-0 justify-content-between" method="POST" asp-controller="Home" asp-action="Login">
+                    <div class="mr-sm-2 my-sm-2 mb-2 d-flex flex-column">
+                        <input class="form-control" type="text" asp-for="Username" placeholder="Username">
+                        <span asp-validation-for="Username"></span>
+                    </div>
+                    <div class="mr-sm-2 my-sm-2 mb-2 d-flex flex-column">
+                        <input class="form-control" asp-for="Password" type="password" placeholder="Password">
+                        <span asp-validation-for="Password"></span>
+                    </div>
+                    <button class="btn btn-primary mr-sm-2" id="btn" type="submit">Log in</button>
+                    <a class="btn btn-primary" asp-controller="Register" asp-action="Index">Register</a>
+                </form>
+            </div>
+        </nav>
+    </header>
+    <div class="content">
+      <div role="main">
+    @foreach (var (newsItem, imagePath) in Model.news)
 {
     <div class="row justify-content-center my-4">
         <div class="col-sm-12 col-md-8 col-lg-6">
@@ -21,18 +55,17 @@
                 <div class="card-footer container-fluid">
                     <div class="row">
                         <div class="text-left text-muted p-3 col align-middle">Posted @TimeHelper.TimeCreated(newsItem.TimePosted) ago</div>
-                        <div class="dropdown pr-3 align-middle">
-                            <button class="btn btn-light dropdown-toggle shadow-sm mt-2" id="button-share" type="button" id="dropdownShareButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Share
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownShareButton">
-                                <a class="dropdown-item text-share" href="#">With group</a>
-                                <a class="dropdown-item text-share" href="#">With person</a>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 }
+</div>
+</div>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>

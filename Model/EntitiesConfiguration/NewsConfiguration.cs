@@ -9,7 +9,7 @@ namespace Model.EntitiesConfiguration
     {
         public void Configure(EntityTypeBuilder<News> builder)
         {
-            builder.HasKey(x => x.Name);
+            builder.HasKey(x=>x.Name);
 
             builder.Property(x => x.Text)
                 .IsRequired();
@@ -32,7 +32,7 @@ namespace Model.EntitiesConfiguration
 				Тоді чого зволікати?? Швиденько заповнюйте форму(посилання внизу⬇️) та бігом на кастинг, котрий відбудеться о 16:00, 12 березня у глядацькій залі ЦКД (головний корпус, вул. Університетська, 1) 😍
 
 				Чекаємо на вас із нетерпінням, буде чарівно й по-домашньому! ✨",
-                    Time = DateTime.Today.ToString(CultureInfo.InvariantCulture),
+                    Time = DateTime.Today.ToString(),
                     Photo = "DbResources/News/kvartyrnyk.jpeg"
                 },
                 new News
@@ -49,7 +49,7 @@ namespace Model.EntitiesConfiguration
 📍 ауд.270
 
 💫Реєстрація обов'язкова!👇",
-                    Time = new DateTime(2020, 2, 10, 12, 23, 40).ToString(CultureInfo.InvariantCulture),
+                    Time = new DateTime(2020, 2, 10, 12, 23, 40).ToString(),
                     Photo = "DbResources/News/bitok.jpeg"
                 }, new News
                 {
@@ -59,7 +59,7 @@ namespace Model.EntitiesConfiguration
 
 Реєструйся і покажи всім, що ти вмієш😉👇",
                     Photo = "DbResources/News/evening.jpeg",
-                    Time = new DateTime(2020, 2, 17, 17, 23, 40).ToString(CultureInfo.InvariantCulture)
+                    Time = new DateTime(2020, 2, 17, 17, 23, 40).ToString()
                 },
                 new News
                 {
@@ -68,7 +68,7 @@ namespace Model.EntitiesConfiguration
 Давно чекаєш на можливість показати себе та позмагатися із собі рівними? 🏆🔥
 Тоді, дай відповідь лиш на кілька запитань і ми виконаємо твої побажання)😉
 Вибір за тобою!👇",
-                    Time = DateTime.Now.ToString(CultureInfo.InvariantCulture)
+                    Time = DateTime.Now.ToString()
                 }, new News
                 {
                     Name = "​​Мафія на прикладній😈",
@@ -80,7 +80,7 @@ namespace Model.EntitiesConfiguration
 
 ❗Реєстрація обовязкова!⬇️",
                     Photo = "DbResources/News/mafia.jpeg",
-                    Time = new DateTime(2020, 2, 17, 17, 23, 40).ToString(CultureInfo.InvariantCulture)
+                    Time = new DateTime(2020, 2, 17, 17, 23, 40).ToString()
                 });
         }
     }

@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Reflection;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -40,6 +41,12 @@ namespace WebApplication
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlite($"Filename={Configuration["DbPath"]}",
                     o => o.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName)));
+                    
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            .AddCookie(options => {
+                options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/");
+            });
+            services.AddAuthorization();
             services.AddOptions();
             
             services.AddAutoMapper(
@@ -75,14 +82,13 @@ namespace WebApplication
 
             app.UseRouting();
 
-            app.UseAuthorization();
-
             app.UseCors(builder => builder
                 .AllowAnyOrigin()
                 .AllowAnyMethod()
                 .AllowAnyHeader()
             );
-
+            app.UseAuthentication();
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

@@ -9,7 +9,47 @@
     @RenderSection("Styles", required: false)
 </head>
 <body class = "container-fluid">
-    @RenderBody()
+    <header>
+        <nav class="navbar navbar-custom navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a asp-controller="News" asp-action="Index" class="navbar-brand mr-0 ml-sm-4">
+                <img src="/images/Logo.png" id="logo" class="d-inline-block align-top"/>
+            </a>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                <ul class="navbar-nav mx-auto" id="linksList">
+
+                    <li class="nav-item">
+                        <a class="nav-link" id="navLink" asp-controller="Profile" asp-action="Index">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="navLink" asp-controller="Timetable" asp-action="Index">Timetable</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="navLink" href="#">Notes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="navLink" asp-controller="Rating" asp-action="Index">Marks</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="navLink" href="#">Messages</a>
+                    </li>
+                </ul>
+                <form class="form-inline">
+                    <div class="md-form my-0 m">
+                        <input class="form-control"  type="text" placeholder="Search" aria-label="Search" style="color: black !important;">
+                        <i class="fas fa-search text-black" aria-hidden="true"></i>
+                    </div>
+                </form>
+            </div>
+        </nav>
+    </header>
+    <div class="content">
+        <div role="main">
+            @RenderBody()
+        </div>
+    </div>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
