@@ -12,9 +12,9 @@ namespace Model.EntitiesConfiguration
 			builder.Property(x => x.Department)
 				.IsRequired();
 
-			//builder.HasOne(x => x.Person)
-			//	.WithOne(y => y.Lecturer)
-			//	.HasForeignKey<Person>(y => y.Username);
+			// builder.HasOne(x => x.Person)
+			// 	.WithOne(y => y.Lecturer)
+			// 	.HasForeignKey(x => x.PersonID);
 
 			builder.HasMany(x => x.Lessons)
 				.WithOne(y => y.Lecturer)
@@ -23,6 +23,7 @@ namespace Model.EntitiesConfiguration
 			builder.HasMany(x => x.Specializations)
 				.WithOne(y => y.Lecturer)
 				.HasForeignKey(y => y.LecturerID);
+			builder.HasData(new Lecturer{ID=1,Department="Mechanical mathematics",PersonID="iryna007"});
 		}
 	}
 }
