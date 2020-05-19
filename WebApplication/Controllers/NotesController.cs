@@ -8,6 +8,7 @@ using Core.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
 using Services.NotesService;
+using Services.ProfileService;
 using System.Collections.Generic;
 using WebApplication.Models;
 
@@ -16,15 +17,17 @@ namespace WebApplication.Controllers
     public class NotesController : Controller
     {
         private readonly INotesService notes;
+        private readonly IProfileService profile;
 
-        public NotesController(INotesService _notes)
+        public NotesController(INotesService _notes, IProfileService _profile)
         {
             notes = _notes;
+            profile = _profile;
         }
 
         public async Task<IActionResult> Index()
         {
-            List<Model.Note> notesList = notes.LoadNotesAsync().Result; 
+            IList<Model.Note> notesList = notes.LoadNotesAsync(User.Identity.Name).Result;
             return View("Notes", notesList);
         }
 
