@@ -13,6 +13,7 @@ namespace Services
                 .ForMember(dest=>dest.Title,opt=>opt.MapFrom(src=>src.Name));
             CreateMap<Model.Timetable, Core.DTO.Timetable>();
             CreateMap<Model.Rating, Core.DTO.Rating>();
+            CreateMap<Model.Note, Core.DTO.Note>();
         }
     }
 }
