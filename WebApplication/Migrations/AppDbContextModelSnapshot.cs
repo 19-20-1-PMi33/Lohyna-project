@@ -2,17 +2,15 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Model;
 
 namespace WebApplication.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200520102019_usersadded")]
-    partial class usersadded
+    partial class AppDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,6 +29,7 @@ namespace WebApplication.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Text")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Time")
@@ -41,6 +40,40 @@ namespace WebApplication.Migrations
                     b.HasIndex("StudentID");
 
                     b.ToTable("Achievment");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Photo = "DbResources/Ach/ach1.png",
+                            StudentID = 11111111L,
+                            Text = "Second best starosta in group!",
+                            Time = new DateTime(2020, 5, 20, 16, 53, 37, 318, DateTimeKind.Local).AddTicks(1723)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Photo = "DbResources/Ach/ach2.png",
+                            StudentID = 33333333L,
+                            Text = "The bluest lohyna in team!",
+                            Time = new DateTime(2020, 5, 20, 16, 53, 37, 322, DateTimeKind.Local).AddTicks(4707)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Photo = "DbResources/Ach/ach3.png",
+                            StudentID = 22222222L,
+                            Text = "The man who bought the world!",
+                            Time = new DateTime(2020, 5, 20, 16, 53, 37, 322, DateTimeKind.Local).AddTicks(4844)
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Photo = "DbResources/Ach/ach4.png",
+                            StudentID = 44444444L,
+                            Text = "Passed PE exam without praying!",
+                            Time = new DateTime(2020, 5, 20, 16, 53, 37, 322, DateTimeKind.Local).AddTicks(4865)
+                        });
                 });
 
             modelBuilder.Entity("Model.Cabinet", b =>
@@ -233,7 +266,7 @@ namespace WebApplication.Migrations
 Давно чекаєш на можливість показати себе та позмагатися із собі рівними? 🏆🔥
 Тоді, дай відповідь лиш на кілька запитань і ми виконаємо твої побажання)😉
 Вибір за тобою!👇",
-                            Time = "20.05.2020 13:20:18"
+                            Time = "20.05.2020 16:53:37"
                         },
                         new
                         {
@@ -314,14 +347,14 @@ namespace WebApplication.Migrations
                         {
                             Username = "iryna007",
                             Name = "Iryna",
-                            Password = "iryna007",
+                            Password = "4912625f450b37874b2c6913b1e7da249ba2e53efc069b3429bccc929c35a1df",
                             Surname = "Pozdnyakova"
                         },
                         new
                         {
                             Username = "starosta",
                             Name = "Roman",
-                            Password = "starosta",
+                            Password = "20fceed6eb41cfcd0611749cf389c5fb58c18dded41b8352ab74e7a9ee5243bc",
                             Photo = "DbResources/Profile/profile1.png",
                             Surname = "Levkovych"
                         },
@@ -329,7 +362,7 @@ namespace WebApplication.Migrations
                         {
                             Username = "oleh",
                             Name = "Oleh",
-                            Password = "oleh",
+                            Password = "d322c3a9837fad6b52f61630ebd14ce83966c93c7d8b8248eb7b7b041c1c643f",
                             Photo = "DbResources/Profile/profile2.jfif",
                             Surname = "Andrus"
                         },
@@ -337,7 +370,7 @@ namespace WebApplication.Migrations
                         {
                             Username = "petro",
                             Name = "Petro",
-                            Password = "petro",
+                            Password = "b025ee29e0f07a36b5349a1de5718fa442ce15dc50129add5eee83411df6bb8c",
                             Photo = "DbResources/Profile/profile3.png",
                             Surname = "Tarnavsky"
                         },
@@ -345,7 +378,7 @@ namespace WebApplication.Migrations
                         {
                             Username = "zhawa",
                             Name = "Nikita",
-                            Password = "zhawa",
+                            Password = "3cd0b45440d14ca7319f678c2ace757f50921dc005ceff00df81cebaf3d16cbb",
                             Photo = "DbResources/Profile/profile4.png",
                             Surname = "Zhaworonkow"
                         });

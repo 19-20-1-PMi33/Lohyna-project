@@ -37,12 +37,14 @@
     <div class="row p-3">
       <h4 class="mb-n3 block-title ml-3 px-2">Latest achievments :</h4>
       <div class="card shadow-sm col-12 border-secondary block-profile">
-        @if(Model.Achievment!=null)
+        @if(Model.Achievment.Id!=-1)
         {
           @if(!String.IsNullOrEmpty(Model.Achievment.Photo))
           {
-            <div class="w-75"><h3 class="card-body text-right pt-4">@Model.Achievment.Text</h3></div>
-            <div class="w-25"><img class="img-fluid" src="@Model.Achievment.Photo"></div>
+            <div class="row card-body text-right pt-4">
+            <div class="col-10 col-md-11 p-0 pr-1 my-auto"><h3>@Model.Achievment.Text</h3></div>
+            <div class="col-2  col-md-1 p-0 my-auto"><img class="img-fluid" style="max-height: 50px;" src="@Model.Achievment.Photo"></div>
+            </div>
           }
           else
           {
