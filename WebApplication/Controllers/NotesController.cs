@@ -57,7 +57,41 @@ namespace WebApplication.Controllers
  
             return View("Notes", notesViewModal);
         }
+        
+        public async Task<IActionResult> Edit(string Name)
+        {
+            var res = notes.LoadNotesAsync(User.Identity.Name).Result.FirstOrDefault(n => n.Name == Name);
+            return View("Edit", res);
+        }
 
+        public async Task<IActionResult> Create() => View ("Edit", new Model.Note());
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(Model.Note note)
+        {
+            if(ModelState.IsValid)
+            {
+                Note newNote = new Note {Name = note.Name, Created = note.Created, Deadline = note.Deadline, Materials = note.Materials, Finished = note.Finished, SubjectID = note.SubjectID, PersonID = note.SubjectID};
+                await notes.CreateNoteAsync(newNote);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View("Edit", note);
+            }
+        }
+        
+        public async Task<IActionResult> Delete(string Name)
+        {
+            ViewBag.NoteToDelete = Name;
+            return View("Delete");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete()
+        {
+            return RedirectToAction("Index");
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
