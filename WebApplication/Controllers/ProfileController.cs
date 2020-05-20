@@ -28,10 +28,13 @@ namespace WebApplication.Controllers
             _profile = profile;
             _logger = logger;
         }
-        public IActionResult Index()
+        public IActionResult Index([FromQuery] string u = null)
         {
-            Model.Student userData = _profile.LoadStudentAsync(User.Identity.Name).Result;
+            if(string.IsNullOrEmpty(u))
+                u = User.Identity.Name;
+            Model.Student userData = _profile.LoadStudentAsync(u).Result;
             ProfileViewModel model = _mapper.Map<ProfileViewModel>(userData);
+            model.Achievment = _profile.LoadLastAchievmentForStudent(userData);
             model.Person.Photo=ImageHelper.EncodeImage(_host.ContentRootPath+"/"+model.Person.Photo);
             model.FoundAt=_profile.GetAuditoryForStudent(userData);
             return View("Profile", model);

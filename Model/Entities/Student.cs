@@ -14,5 +14,6 @@ namespace Model
 		public string GroupID { get; set; }
 
 		public ICollection<Rating> Marks { get; set; }
+		public ICollection<Achievment> Achievments {get;set;}
 	}
 }

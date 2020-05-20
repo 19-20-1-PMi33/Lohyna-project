@@ -19,6 +19,7 @@ namespace Model
         /// <param name="modelBuilder">DB models builder.</param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfiguration(new AchievmentConfiguration());
             modelBuilder.ApplyConfiguration(new CabinetConfiguration());
             modelBuilder.ApplyConfiguration(new FAQConfiguration());
             modelBuilder.ApplyConfiguration(new GroupConfiguration());
@@ -34,6 +35,7 @@ namespace Model
             modelBuilder.ApplyConfiguration(new TimetableConfiguration());
         }
 
+        public DbSet<Achievment> Achievment {get;set;}
         public DbSet<Cabinet> Cabinet { get; set; }
 
         public DbSet<FAQ> FAQ { get; set; }

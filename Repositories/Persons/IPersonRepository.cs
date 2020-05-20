@@ -84,5 +84,6 @@ namespace Repositories.Persons
         /// <param name="lecturer">Lecturer to save.</param>
         void CreateLecturerAsync(Lecturer lecturer);
         bool ContainsPerson(Person p);
+        Achievment LoadLastAchievmentForStudent(Student student);
     }
 }

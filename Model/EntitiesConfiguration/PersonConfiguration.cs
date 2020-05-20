@@ -32,7 +32,11 @@ namespace Model.EntitiesConfiguration
 			builder.HasOne(x => x.Student)
 				.WithOne(y => y.Person)
 				.HasForeignKey<Student>(y => y.PersonID);
-			builder.HasData(new Person{Name="Iryna",Surname="Pozdnyakova",Password="iryna007",Username="iryna007"});
+			builder.HasData(new Person{Name="Iryna",Surname="Pozdnyakova",Password="iryna007",Username="iryna007"},
+			new Person{Name="Roman",Surname="Levkovych",Password="starosta",Username="starosta",Photo="DbResources/Profile/profile1.png"},
+			new Person{Name="Oleh",Surname="Andrus",Password="oleh",Username="oleh",Photo="DbResources/Profile/profile2.jfif"},
+			new Person{Name="Petro",Surname="Tarnavsky",Password="petro",Username="petro",Photo="DbResources/Profile/profile3.png"},
+			new Person{Name="Nikita",Surname="Zhaworonkow",Password="zhawa",Username="zhawa",Photo="DbResources/Profile/profile4.png"});
 		}
 	}
 }

@@ -8,5 +8,6 @@ namespace Services.ProfileService
     {
         Task<Model.Student> LoadStudentAsync(string username);
         string GetAuditoryForStudent(Model.Student student);
+        Model.Achievment LoadLastAchievmentForStudent(Model.Student student);
     }
 }

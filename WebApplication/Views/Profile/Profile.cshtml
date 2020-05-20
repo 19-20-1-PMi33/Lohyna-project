@@ -37,7 +37,22 @@
     <div class="row p-3">
       <h4 class="mb-n3 block-title ml-3 px-2">Latest achievments :</h4>
       <div class="card shadow-sm col-12 border-secondary block-profile">
-        <h3 class="card-body text-right pt-4">There are no achievments yet :(</h3>
+        @if(Model.Achievment!=null)
+        {
+          @if(!String.IsNullOrEmpty(Model.Achievment.Photo))
+          {
+            <div class="w-75"><h3 class="card-body text-right pt-4">@Model.Achievment.Text</h3></div>
+            <div class="w-25"><img class="img-fluid" src="@Model.Achievment.Photo"></div>
+          }
+          else
+          {
+          <h3 class="card-body text-right pt-4">@Model.Achievment.Text</h3>
+          }
+        }
+        else
+        {
+          <h3 class="card-body text-right pt-4">User has no achievments yet :(</h3>
+        }
       </div>
     </div>
     <div class="row p-3">

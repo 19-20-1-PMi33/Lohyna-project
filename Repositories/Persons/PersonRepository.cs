@@ -89,5 +89,10 @@ namespace Repositories.Persons
             }
             await _dbContext.Lecturer.AddAsync(lecturer);
         }
+
+        public Achievment LoadLastAchievmentForStudent(Student student)
+        {
+            return _dbContext.Achievment.Where(x=>x.StudentID==student.TicketNumber).ToList().OrderBy(x=>x.Time).First();
+        }
     }
 }
