@@ -1,4 +1,5 @@
-@model IEnumerable<Model.Note>
+@using WebApplication.Models
+@model IndexNotesViewModal
 
 @{
     ViewData["Title"] = "Notes";
@@ -38,9 +39,12 @@
                 <button class="btn btn-link text-body w-100 d-flex btn-block ml-1" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                   <i class="fas fa-filter text-muted fa-lg"> Sort by </i></button>
                 <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
-                  <a asp-action = "Index" asp-controller="Notes" asp-route-SortOrder = "@ViewBag.NameSort"><li class="border-0 list-group-item d-flex justify-content-between align-items-center ml-3"> <i class="fab fa-autoprefixer text-muted fa-lg"><b> Name</b></i></li></a>
-                  <a asp-action = "Index" asp-controller="Notes" asp-route-SortOrder = "@ViewBag.CreatedSort"><li class="border-0 list-group-item d-flex justify-content-between align-items-center ml-3"> <i class="fas fa-calendar-day text-muted fa-lg"> Created</i></li></a>
-                  <a asp-action = "Index" asp-controller="Notes" asp-route-SortOrder = "@ViewBag.DeadlineSort"><li class="border-0 list-group-item d-flex justify-content-between align-items-center ml-3"> <i class="fas fa-stopwatch text-muted fa-lg"> Deadline</i></li></a>
+                  <a asp-action = "Index" asp-controller="Notes" 
+                  asp-route-SortOrder = "@(Model.SortNotesViewModal.NameSort)"><li class="border-0 list-group-item d-flex justify-content-between align-items-center ml-3"> <i class="fab fa-autoprefixer text-muted fa-lg"><b> Name</b></i></li></a>
+                  <a asp-action = "Index" asp-controller="Notes" 
+                  asp-route-SortOrder = "@(Model.SortNotesViewModal.CreatedSort)"><li class="border-0 list-group-item d-flex justify-content-between align-items-center ml-3"> <i class="fas fa-calendar-day text-muted fa-lg"> Created</i></li></a>
+                  <a asp-action = "Index" asp-controller="Notes" 
+                  asp-route-SortOrder = "@(Model.SortNotesViewModal.DeadlineSort)"><li class="border-0 list-group-item d-flex justify-content-between align-items-center ml-3"> <i class="fas fa-stopwatch text-muted fa-lg"> Deadline</i></li></a>
                 </div>
               </div>
             </div>
@@ -51,7 +55,7 @@
             <div class="col-md-4 justify-content-center d-flex"><a class="btn btn-secondary w-75 text-center text-uppercase" id="AddNote" type="button" data-toggle="modal" data-target="#AddNoteModal" href="#"><b>Add note</b></a></div>
           </div>
           <div class="row">
-            @foreach (var note in Model)
+            @foreach (var note in Model.Notes)
             {
             <div class="col-md-4">
               <div class="card my-2">
@@ -71,14 +75,26 @@
             </div>
             }
           </div>
-          <ul class="pagination d-flex justify-content-center align-items-center flex-grow-0 mt-2">
-            <li class="page-item"> <a class="page-link" href="#">Prev</a> </li>
-            <li class="page-item"> <a class="page-link" href="#">1</a> </li>
-            <li class="page-item"> <a class="page-link" href="#">2</a> </li>
-            <li class="page-item active"> <a class="page-link" href="#">3</a> </li>
-            <li class="page-item"> <a class="page-link" href="#">4</a> </li>
-            <li class="page-item"> <a class="page-link" href="#">Next</a> </li>
-          </ul>
+          @if (Model.NotesPaginationViewModal.HasPreviousPage)
+{
+    <a asp-action="Index"
+       asp-route-page="@(Model.NotesPaginationViewModal.PageNumber - 1)"
+       asp-route-SortOrder="@(Model.SortNotesViewModal.Current)"
+       class="btn  btn-outline-dark">
+        <i class="glyphicon glyphicon-chevron-left"></i>
+        Назад
+    </a>
+}
+@if (Model.NotesPaginationViewModal.HasNextPage)
+{
+    <a asp-action="Index"
+       asp-route-page="@(Model.NotesPaginationViewModal.PageNumber + 1)"
+       asp-route-SortOrder="@(Model.SortNotesViewModal.Current)"
+       class="btn btn-outline-dark">
+        Вперед
+        <i class="glyphicon glyphicon-chevron-right"></i>
+    </a>
+}
         </div>
       </div>
     </div>
