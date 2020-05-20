@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Model;
 
 namespace WebApplication.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class LohynaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200519074544_timetablefilled")]
+    partial class timetablefilled
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -206,7 +208,7 @@ namespace WebApplication.Migrations
 Давно чекаєш на можливість показати себе та позмагатися із собі рівними? 🏆🔥
 Тоді, дай відповідь лиш на кілька запитань і ми виконаємо твої побажання)😉
 Вибір за тобою!👇",
-                            Time = "19.05.2020 15:17:25"
+                            Time = "19.05.2020 10:45:43"
                         },
                         new
                         {
@@ -288,7 +290,7 @@ namespace WebApplication.Migrations
                             Username = "iryna007",
                             Name = "Iryna",
                             Password = "iryna007",
-                            Surname = "Pozdnyakova"
+                            Surname = "Pozdnykova"
                         });
                 });
 
@@ -488,9 +490,6 @@ namespace WebApplication.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Auditory")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("Day")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -526,7 +525,6 @@ namespace WebApplication.Migrations
                         new
                         {
                             Id = 1,
-                            Auditory = "118a",
                             Day = "Monday",
                             GroupID = "PMi-33",
                             LecturerID = 1,
@@ -537,7 +535,6 @@ namespace WebApplication.Migrations
                         new
                         {
                             Id = 2,
-                            Auditory = "116",
                             Day = "Monday",
                             GroupID = "PMi-32",
                             LecturerID = 1,
@@ -548,7 +545,6 @@ namespace WebApplication.Migrations
                         new
                         {
                             Id = 3,
-                            Auditory = "119a",
                             Day = "Monday",
                             GroupID = "PMi-31",
                             LecturerID = 1,
@@ -559,7 +555,6 @@ namespace WebApplication.Migrations
                         new
                         {
                             Id = 4,
-                            Auditory = "118a",
                             Day = "Monday",
                             GroupID = "PMi-33",
                             LecturerID = 1,
@@ -570,7 +565,6 @@ namespace WebApplication.Migrations
                         new
                         {
                             Id = 5,
-                            Auditory = "116",
                             Day = "Monday",
                             GroupID = "PMi-32",
                             LecturerID = 1,
@@ -581,7 +575,6 @@ namespace WebApplication.Migrations
                         new
                         {
                             Id = 12,
-                            Auditory = "119b",
                             Day = "Monday",
                             GroupID = "PMi-31",
                             LecturerID = 1,
@@ -592,7 +585,6 @@ namespace WebApplication.Migrations
                         new
                         {
                             Id = 6,
-                            Auditory = "439",
                             Day = "Tuesday",
                             GroupID = "PMi-31",
                             LecturerID = 1,
@@ -603,7 +595,6 @@ namespace WebApplication.Migrations
                         new
                         {
                             Id = 7,
-                            Auditory = "439",
                             Day = "Tuesday",
                             GroupID = "PMi-32",
                             LecturerID = 1,
@@ -614,7 +605,6 @@ namespace WebApplication.Migrations
                         new
                         {
                             Id = 8,
-                            Auditory = "439",
                             Day = "Tuesday",
                             GroupID = "PMi-33",
                             LecturerID = 1,
@@ -625,7 +615,6 @@ namespace WebApplication.Migrations
                         new
                         {
                             Id = 9,
-                            Auditory = "265",
                             Day = "Tuesday",
                             GroupID = "PMi-31",
                             LecturerID = 1,
@@ -636,7 +625,6 @@ namespace WebApplication.Migrations
                         new
                         {
                             Id = 10,
-                            Auditory = "265",
                             Day = "Tuesday",
                             GroupID = "PMi-32",
                             LecturerID = 1,
@@ -647,7 +635,6 @@ namespace WebApplication.Migrations
                         new
                         {
                             Id = 11,
-                            Auditory = "265",
                             Day = "Tuesday",
                             GroupID = "PMi-33",
                             LecturerID = 1,
@@ -658,7 +645,6 @@ namespace WebApplication.Migrations
                         new
                         {
                             Id = 13,
-                            Auditory = "111",
                             Day = "Tuesday",
                             GroupID = "PMi-31",
                             LecturerID = 1,
@@ -669,7 +655,6 @@ namespace WebApplication.Migrations
                         new
                         {
                             Id = 14,
-                            Auditory = "111",
                             Day = "Tuesday",
                             GroupID = "PMi-32",
                             LecturerID = 1,
@@ -680,18 +665,46 @@ namespace WebApplication.Migrations
                         new
                         {
                             Id = 15,
-                            Auditory = "111",
                             Day = "Tuesday",
                             GroupID = "PMi-33",
                             LecturerID = 1,
                             Period = "all",
                             SubjectID = "AI systems",
-                            TimeID = 5
+                            TimeID = 6
+                        },
+                        new
+                        {
+                            Id = 37,
+                            Day = "Tuesday",
+                            GroupID = "PMi-31",
+                            LecturerID = 1,
+                            Period = "all",
+                            SubjectID = "AI systems",
+                            TimeID = 6
+                        },
+                        new
+                        {
+                            Id = 38,
+                            Day = "Tuesday",
+                            GroupID = "PMi-32",
+                            LecturerID = 1,
+                            Period = "all",
+                            SubjectID = "AI systems",
+                            TimeID = 6
+                        },
+                        new
+                        {
+                            Id = 39,
+                            Day = "Tuesday",
+                            GroupID = "PMi-33",
+                            LecturerID = 1,
+                            Period = "all",
+                            SubjectID = "AI systems",
+                            TimeID = 6
                         },
                         new
                         {
                             Id = 16,
-                            Auditory = "439",
                             Day = "Wednesday",
                             GroupID = "PMi-31",
                             LecturerID = 1,
@@ -702,7 +715,6 @@ namespace WebApplication.Migrations
                         new
                         {
                             Id = 17,
-                            Auditory = "439",
                             Day = "Wednesday",
                             GroupID = "PMi-32",
                             LecturerID = 1,
@@ -713,7 +725,6 @@ namespace WebApplication.Migrations
                         new
                         {
                             Id = 18,
-                            Auditory = "439",
                             Day = "Wednesday",
                             GroupID = "PMi-33",
                             LecturerID = 1,
@@ -724,7 +735,6 @@ namespace WebApplication.Migrations
                         new
                         {
                             Id = 19,
-                            Auditory = "261",
                             Day = "Wednesday",
                             GroupID = "PMi-31",
                             LecturerID = 1,
@@ -735,7 +745,6 @@ namespace WebApplication.Migrations
                         new
                         {
                             Id = 20,
-                            Auditory = "272/3",
                             Day = "Wednesday",
                             GroupID = "PMi-32",
                             LecturerID = 1,
@@ -746,7 +755,6 @@ namespace WebApplication.Migrations
                         new
                         {
                             Id = 21,
-                            Auditory = "113",
                             Day = "Wednesday",
                             GroupID = "PMi-33",
                             LecturerID = 1,
@@ -757,7 +765,6 @@ namespace WebApplication.Migrations
                         new
                         {
                             Id = 22,
-                            Auditory = "119b",
                             Day = "Tuesday",
                             GroupID = "PMi-31",
                             LecturerID = 1,
@@ -768,7 +775,6 @@ namespace WebApplication.Migrations
                         new
                         {
                             Id = 23,
-                            Auditory = "119b",
                             Day = "Wednesday",
                             GroupID = "PMi-32",
                             LecturerID = 1,
@@ -779,7 +785,6 @@ namespace WebApplication.Migrations
                         new
                         {
                             Id = 24,
-                            Auditory = "119a",
                             Day = "Wednesday",
                             GroupID = "PMi-33",
                             LecturerID = 1,
@@ -790,7 +795,6 @@ namespace WebApplication.Migrations
                         new
                         {
                             Id = 25,
-                            Auditory = "111",
                             Day = "Thursday",
                             GroupID = "PMi-31",
                             LecturerID = 1,
@@ -801,7 +805,6 @@ namespace WebApplication.Migrations
                         new
                         {
                             Id = 26,
-                            Auditory = "111",
                             Day = "Thursday",
                             GroupID = "PMi-32",
                             LecturerID = 1,
@@ -812,7 +815,6 @@ namespace WebApplication.Migrations
                         new
                         {
                             Id = 27,
-                            Auditory = "111",
                             Day = "Thursday",
                             GroupID = "PMi-33",
                             LecturerID = 1,
@@ -823,7 +825,6 @@ namespace WebApplication.Migrations
                         new
                         {
                             Id = 28,
-                            Auditory = "118a",
                             Day = "Thursday",
                             GroupID = "PMi-31",
                             LecturerID = 1,
@@ -834,7 +835,6 @@ namespace WebApplication.Migrations
                         new
                         {
                             Id = 29,
-                            Auditory = "119a",
                             Day = "Friday",
                             GroupID = "PMi-32",
                             LecturerID = 1,
@@ -845,18 +845,16 @@ namespace WebApplication.Migrations
                         new
                         {
                             Id = 30,
-                            Auditory = "117",
                             Day = "Thursday",
                             GroupID = "PMi-33",
                             LecturerID = 1,
                             Period = "all",
                             SubjectID = "Computer methods",
-                            TimeID = 6
+                            TimeID = 5
                         },
                         new
                         {
                             Id = 31,
-                            Auditory = "439",
                             Day = "Friday",
                             GroupID = "PMi-31",
                             LecturerID = 1,
@@ -867,7 +865,6 @@ namespace WebApplication.Migrations
                         new
                         {
                             Id = 32,
-                            Auditory = "439",
                             Day = "Friday",
                             GroupID = "PMi-32",
                             LecturerID = 1,
@@ -878,7 +875,6 @@ namespace WebApplication.Migrations
                         new
                         {
                             Id = 33,
-                            Auditory = "439",
                             Day = "Friday",
                             GroupID = "PMi-33",
                             LecturerID = 1,
@@ -889,7 +885,6 @@ namespace WebApplication.Migrations
                         new
                         {
                             Id = 34,
-                            Auditory = "119a",
                             Day = "Friday",
                             GroupID = "PMi-31",
                             LecturerID = 1,
@@ -900,7 +895,6 @@ namespace WebApplication.Migrations
                         new
                         {
                             Id = 35,
-                            Auditory = "117",
                             Day = "Friday",
                             GroupID = "PMi-32",
                             LecturerID = 1,
@@ -911,7 +905,6 @@ namespace WebApplication.Migrations
                         new
                         {
                             Id = 36,
-                            Auditory = "113",
                             Day = "Friday",
                             GroupID = "PMi-33",
                             LecturerID = 1,

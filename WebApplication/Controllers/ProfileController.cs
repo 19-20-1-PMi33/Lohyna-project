@@ -33,6 +33,7 @@ namespace WebApplication.Controllers
             Model.Student userData = _profile.LoadStudentAsync(User.Identity.Name).Result;
             ProfileViewModel model = _mapper.Map<ProfileViewModel>(userData);
             model.Person.Photo=ImageHelper.EncodeImage(_host.ContentRootPath+"/"+model.Person.Photo);
+            model.FoundAt=_profile.GetAuditoryForStudent(userData);
             return View("Profile", model);
         }
 

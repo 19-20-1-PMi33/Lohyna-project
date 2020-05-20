@@ -1,22 +1,43 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using AutoMapper;
+using System.Linq;
 using Core.DTO;
+using Repositories.UnitOfWork;
 
 namespace Services.TimeTableService
 {
     public class TimeTableService: ITimeTableService
     {
-        public async Task<List<Timetable>> LoadTimetableAsync()
+        private IUnitOfWork _unitOfWork;
+        private IMapper _mapper;
+        public TimeTableService(IUnitOfWork unitOfWork,IMapper mapper)
         {
-            List<Timetable> listTimetable = new List<Timetable>()
+            _unitOfWork=unitOfWork;
+            _mapper = mapper;
+        }
+        public async Task<Dictionary<int, List<Core.DTO.Timetable>>> LoadTimetableForGroupAsync(string groupID)
+        {
+             Dictionary<string, int> daysOfWeek = new Dictionary<string, int>()
             {
-                new Timetable { Id = 1, Day = "Monday", GroupID = "PMI-33", TimeID = 1, SubjectID = "PO", LecturerID = 1, Period = " "},
-                new Timetable { Id = 2, Day = "Tuesday", GroupID = "PMI-33", TimeID = 2, SubjectID = "Numerical Methods", LecturerID = 1, Period = " "},
-                new Timetable { Id = 3, Day = "Wednesday", GroupID = "PMI-33", TimeID = 1, SubjectID = "Cryptology", LecturerID = 1, Period = " "},
-                new Timetable { Id = 4, Day = "Friday", GroupID = "PMI-33", TimeID = 4, SubjectID = "PO", LecturerID = 1, Period = " "}
-            };   
-            return listTimetable;
+                ["Monday"] = 0,
+                ["Tuesday"] = 1,
+                ["Wednesday"] = 2,
+                ["Thursday"] = 3,
+                ["Friday"] = 4
+            };
+            List<Timetable> res = new List<Timetable>(); 
+            (_unitOfWork.TimeTables.LoadTimetableAsync(groupID).Result as List<Model.Timetable>).ForEach(x=>res.Add(_mapper.Map<Core.DTO.Timetable>(x)));
+            res.ForEach(x=>{
+                var lecturer = _unitOfWork.Persons.SearchLecturerById(x.LecturerID);
+                var person = _unitOfWork.Persons.LoadLogInPersonAsync(lecturer.PersonID);
+                var lecturerName = person.Name + " "+person.Surname;
+                x.LecturerName=lecturerName;
+            });
+            var result = (res.GroupBy(x => x.TimeID).ToDictionary(x => x.Key, x => x.OrderBy(x => daysOfWeek[x.Day]).ToList()))
+            .OrderBy(k => k.Key).ToDictionary(z => z.Key, y => y.Value);
+            return result;
         }
     }
 }

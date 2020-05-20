@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="~/css/site.css" />
     @RenderSection("Styles", required: false)
 </head>
-<body class = "container-fluid">
+<body>
     <header>
         <nav class="navbar navbar-custom navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,10 +36,9 @@
                         <a class="nav-link" id="navLink" href="#">Messages</a>
                     </li>
                 </ul>
-                <form class="form-inline">
+                <form class="form-inline" asp-controller="Home" asp-action="LogOut">
                     <div class="md-form my-0 m">
-                        <input class="form-control"  type="text" placeholder="Search" aria-label="Search" style="color: black !important;">
-                        <i class="fas fa-search text-black" aria-hidden="true"></i>
+                        <button class="btn btn-light btn-sm" type="submit">Log out</button>
                     </div>
                 </form>
             </div>

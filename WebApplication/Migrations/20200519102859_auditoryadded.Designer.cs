@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Model;
 
 namespace WebApplication.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class LohynaDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200519102859_auditoryadded")]
+    partial class auditoryadded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -206,7 +208,7 @@ namespace WebApplication.Migrations
 Давно чекаєш на можливість показати себе та позмагатися із собі рівними? 🏆🔥
 Тоді, дай відповідь лиш на кілька запитань і ми виконаємо твої побажання)😉
 Вибір за тобою!👇",
-                            Time = "19.05.2020 15:17:25"
+                            Time = "19.05.2020 13:28:58"
                         },
                         new
                         {
@@ -686,7 +688,7 @@ namespace WebApplication.Migrations
                             LecturerID = 1,
                             Period = "all",
                             SubjectID = "AI systems",
-                            TimeID = 5
+                            TimeID = 6
                         },
                         new
                         {
@@ -851,7 +853,7 @@ namespace WebApplication.Migrations
                             LecturerID = 1,
                             Period = "all",
                             SubjectID = "Computer methods",
-                            TimeID = 6
+                            TimeID = 5
                         },
                         new
                         {

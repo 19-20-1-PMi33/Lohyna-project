@@ -4,5 +4,6 @@ namespace WebApplication.Models
     {
         public Model.Person Person {get;set;}
         public Model.Group Group {get;set;}
+        public string FoundAt{get;set;}
     }
 }
