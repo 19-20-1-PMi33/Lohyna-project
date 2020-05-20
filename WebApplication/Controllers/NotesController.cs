@@ -26,12 +26,10 @@ namespace WebApplication.Controllers
             profile = _profile;
         }
 
-        public async Task<IActionResult> Index(SortState sortOrder = SortState.NameAsc)
+        public async Task<IActionResult> Index(int page = 1, SortState sortOrder = SortState.NameAsc)
         {
-            ViewData["NameSort"] = sortOrder == SortState.NameAsc ? SortState.NameDesc : SortState.NameAsc;
-            ViewData["CreatedSort"] = sortOrder == SortState.CreatedAsc ? SortState.CreatedDesc : SortState.CreatedAsc;
-            ViewData["DeadlineSort"] = sortOrder == SortState.DeadlineAsc ? SortState.DeadlineDesc : SortState.DeadlineAsc;
-
+            int pageSize = 1;
+            
             IList<Model.Note> notesList = notes.LoadNotesAsync(User.Identity.Name).Result.ToList();
 
             notesList = sortOrder switch
@@ -47,7 +45,17 @@ namespace WebApplication.Controllers
                 
                 _ =>  notesList.OrderBy(x => x.Name).ToList(),
             };
-            return View("Notes", notesList);
+            var count = notesList.Count();
+            var items = notesList.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            
+            IndexNotesViewModal notesViewModal = new IndexNotesViewModal
+            {
+                NotesPaginationViewModal = new NotesPaginationViewModal(count, page, pageSize),
+                SortNotesViewModal = new SortNotesViewModal(sortOrder),
+                Notes = items
+            };
+ 
+            return View("Notes", notesViewModal);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
