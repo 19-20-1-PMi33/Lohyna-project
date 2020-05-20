@@ -1,0 +1,99 @@
+﻿body {
+	overflow-x: hidden;
+}
+
+.sidebar-heading {
+	padding: 0.875rem 1.25rem;
+	font-size: 1.2rem;
+	margin-bottom: -15px;
+}
+
+.list-group {
+	width: 17rem;
+}
+
+.list-group-item {
+	background: none;
+	border-bottom: none;
+	color: black;
+}
+
+#page-content {
+	min-width: 100vw;
+}
+
+#cardLink {
+	text-decoration: none;
+}
+
+#dashLink {
+	text-decoration: none;
+	color: black;
+}
+
+#brandIco {
+	height: 75px;
+	width: auto;
+	margin-top: -5px;
+}
+
+.nav-link {
+	color: white;
+	font-size: 20px;
+}
+
+#userIco {
+	height: 40px;
+	float: left;
+	margin-left: 62rem;
+	margin-top: -5px;
+}
+
+#navLink,
+#sideLink {
+	transition: 0.3s ease;
+	text-decoration: none;
+}
+
+#icoCard {
+	height: 110px;
+	width: 110px;
+}
+
+#icoCard2 {
+	justify-content: space-between;
+	padding-left: -20px;
+	border-radius: 20px;
+	margin-left: 40px;
+}
+
+#sideLink:hover {
+	border-bottom: 2px solid;
+	border-bottom-color: #1E9AFD;
+	border-width: 5px;
+}
+
+#navLink:hover {
+	border-bottom: 2px solid #ffffff;
+	color: white;
+}
+
+.navbar-custom {
+	justify-content: center;
+	vertical-align: middle;
+	background-color: #1E9AFD;
+}
+
+.card {
+	overflow: hidden;
+	width: 400px;
+}
+
+.row {
+	margin-right: 50px;
+	margin-top: 100px;
+}
+
+#rowCard {
+	margin-top: 50px;
+}
