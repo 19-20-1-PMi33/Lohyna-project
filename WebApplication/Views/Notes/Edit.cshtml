@@ -61,12 +61,15 @@
             <div class="row">
               <div class="form-group w-100 mx-3 d-flex flex-row justify-content-center align-items-center">
                 <h5 class="mr-4">
-                  <input type="radio" id="done" value="@(Model.Finished = false)"  name="radio-group">
-                  <label>Done</label>
-                </h5>
-                <h5>
-                  <input type="radio" id="progress" value="@(Model.Finished = true)" name="radio-group" checked>
-                  <label for="progress">In progress</label>
+                  @if(!Model.Finished)
+                  {
+                    <input type="checkbox" id="done" asp-for="Finished">
+                  }
+                  else
+                  {
+                    <input type="checkbox" id="done" asp-for="Finished" checked>
+                  }
+                  <label for="done">Mark as done</label>
                 </h5>
               </div>
             </div>
