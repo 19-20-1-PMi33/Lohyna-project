@@ -43,7 +43,7 @@
             <div class="col-md-4">
               <div class="card my-2">
                 <div class="card-header d-flex bg-secondary text-light justify-content-between">
-                  <a  class="text-light" type="button" asp-action="Edit" asp-route-Name = "@note.Name"><b>@note.Name</b></a>
+                  <a  class="text-light" type="button" asp-action="Edit" asp-route-Name = "@note.Id"><b>@note.Name</b></a>
                   <input type="hidden" name="Name" value= "@note.Name"/>
                   <a asp-action="Delete" asp-route-Name = "@note.Name" type="button"><i class="fas fa-trash mt-1 text-danger" data-toggle="tooltip" title="Delete"></i>
                   </a>
