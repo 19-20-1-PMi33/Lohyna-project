@@ -1,5 +1,6 @@
 @using WebApplication.Models
 @model IndexNotesViewModal
+@using Core.Helpers;
 
 @{
     ViewData["Title"] = "Notes";
@@ -43,17 +44,19 @@
             <div class="col-md-4">
               <div class="card my-2">
                 <div class="card-header d-flex bg-secondary text-light justify-content-between">
-                  <a  class="text-light" type="button" asp-action="Edit" asp-route-Name = "@note.Id"><b>@note.Name</b></a>
+                  <a  class="text-light" type="button" asp-action="Edit" asp-route-id = "@note.Id"><b>@note.Name</b></a>
                   <input type="hidden" name="Name" value= "@note.Name"/>
-                  <a asp-action="Delete" asp-route-Name = "@note.Name" type="button"><i class="fas fa-trash mt-1 text-danger" data-toggle="tooltip" title="Delete"></i>
-                  </a>
+                  <form asp-action="Delete" asp-route-id = "@note.Id">
+                  <button class="btn" type="submit"><i class="fas fa-trash mt-1 text-danger" data-toggle="tooltip" title="Delete"></i>
+                  </button>
+                  </form>
                 </div>
                 <div class="card-body">
                   <p class="text-truncate">@note.Materials</p>
                 </div>
-                <div class="card-footer d-flex flex-row justify-content-around">
-                  <p class="text-truncate"><b>@note.SubjectID</b></p>
-                  <p class="text-truncate"><b>@note.Created</b></p>
+                <div class="card-footer d-flex flex-column">
+                  <p class="text-truncate row"><b class="mx-auto">@note.SubjectID</b></p>
+                  <p class="text-truncate row"><b class="mx-auto">@TimeHelper.TimeCreated(note.Created) ago</b></p>
                 </div>
               </div>
             </div>

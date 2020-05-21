@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebApplication.Migrations
 {
-    public partial class init2 : Migration
+    public partial class init4 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -151,6 +151,8 @@ namespace WebApplication.Migrations
                 name: "Note",
                 columns: table => new
                 {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(nullable: false),
                     Created = table.Column<DateTime>(nullable: false),
                     Deadline = table.Column<DateTime>(nullable: false),
@@ -161,7 +163,7 @@ namespace WebApplication.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Note", x => x.Name);
+                    table.PrimaryKey("PK_Note", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Note_Person_PersonID",
                         column: x => x.PersonID,
@@ -336,7 +338,7 @@ namespace WebApplication.Migrations
 				Ваші руки вже потягнулися за інструментом, очі загорілися чи ви почали наспівувати ""I just died in your arms tonight.."", ""Show must go o-on...""?..🎶
 				Тоді чого зволікати?? Швиденько заповнюйте форму(посилання внизу⬇️) та бігом на кастинг, котрий відбудеться о 16:00, 12 березня у глядацькій залі ЦКД (головний корпус, вул. Університетська, 1) 😍
 
-				Чекаємо на вас із нетерпінням, буде чарівно й по-домашньому! ✨", "20.05.2020 00:00:00" });
+				Чекаємо на вас із нетерпінням, буде чарівно й по-домашньому! ✨", "21.05.2020 00:00:00" });
 
             migrationBuilder.InsertData(
                 table: "News",
@@ -365,7 +367,7 @@ namespace WebApplication.Migrations
                 values: new object[] { "​​Sport time🤾‍♂⛹‍", null, @"Любиш активний відпочинок? 🤔
 Давно чекаєш на можливість показати себе та позмагатися із собі рівними? 🏆🔥
 Тоді, дай відповідь лиш на кілька запитань і ми виконаємо твої побажання)😉
-Вибір за тобою!👇", "20.05.2020 14:15:17" });
+Вибір за тобою!👇", "21.05.2020 14:02:20" });
 
             migrationBuilder.InsertData(
                 table: "News",
@@ -381,27 +383,27 @@ namespace WebApplication.Migrations
             migrationBuilder.InsertData(
                 table: "Person",
                 columns: new[] { "Username", "Name", "Password", "Photo", "Surname" },
-                values: new object[] { "petro", "Petro", "petro", "DbResources/Profile/profile3.png", "Tarnavsky" });
+                values: new object[] { "petro", "Petro", "b025ee29e0f07a36b5349a1de5718fa442ce15dc50129add5eee83411df6bb8c", "DbResources/Profile/profile3.png", "Tarnavsky" });
 
             migrationBuilder.InsertData(
                 table: "Person",
                 columns: new[] { "Username", "Name", "Password", "Photo", "Surname" },
-                values: new object[] { "oleh", "Oleh", "oleh", "DbResources/Profile/profile2.jfif", "Andrus" });
+                values: new object[] { "oleh", "Oleh", "d322c3a9837fad6b52f61630ebd14ce83966c93c7d8b8248eb7b7b041c1c643f", "DbResources/Profile/profile2.jfif", "Andrus" });
 
             migrationBuilder.InsertData(
                 table: "Person",
                 columns: new[] { "Username", "Name", "Password", "Photo", "Surname" },
-                values: new object[] { "zhawa", "Nikita", "zhawa", "DbResources/Profile/profile4.png", "Zhaworonkow" });
+                values: new object[] { "zhawa", "Nikita", "3cd0b45440d14ca7319f678c2ace757f50921dc005ceff00df81cebaf3d16cbb", "DbResources/Profile/profile4.png", "Zhaworonkow" });
 
             migrationBuilder.InsertData(
                 table: "Person",
                 columns: new[] { "Username", "Name", "Password", "Photo", "Surname" },
-                values: new object[] { "iryna007", "Iryna", "iryna007", null, "Pozdnyakova" });
+                values: new object[] { "iryna007", "Iryna", "4912625f450b37874b2c6913b1e7da249ba2e53efc069b3429bccc929c35a1df", null, "Pozdnyakova" });
 
             migrationBuilder.InsertData(
                 table: "Person",
                 columns: new[] { "Username", "Name", "Password", "Photo", "Surname" },
-                values: new object[] { "starosta", "Roman", "starosta", "DbResources/Profile/profile1.png", "Levkovych" });
+                values: new object[] { "starosta", "Roman", "20fceed6eb41cfcd0611749cf389c5fb58c18dded41b8352ab74e7a9ee5243bc", "DbResources/Profile/profile1.png", "Levkovych" });
 
             migrationBuilder.InsertData(
                 table: "Subject",
@@ -506,22 +508,22 @@ namespace WebApplication.Migrations
             migrationBuilder.InsertData(
                 table: "Achievment",
                 columns: new[] { "Id", "Photo", "StudentID", "Text", "Time" },
-                values: new object[] { 4, "DbResources/Ach/ach4.png", 44444444L, "Passed PE exam without praying!", new DateTime(2020, 5, 20, 14, 15, 17, 403, DateTimeKind.Local).AddTicks(3343) });
+                values: new object[] { 4, "DbResources/Ach/ach4.png", 44444444L, "Passed PE exam without praying!", new DateTime(2020, 5, 21, 14, 2, 20, 208, DateTimeKind.Local).AddTicks(9016) });
 
             migrationBuilder.InsertData(
                 table: "Achievment",
                 columns: new[] { "Id", "Photo", "StudentID", "Text", "Time" },
-                values: new object[] { 1, "DbResources/Ach/ach1.png", 11111111L, "Second best starosta in group!", new DateTime(2020, 5, 20, 14, 15, 17, 400, DateTimeKind.Local).AddTicks(3008) });
+                values: new object[] { 1, "DbResources/Ach/ach1.png", 11111111L, "Second best starosta in group!", new DateTime(2020, 5, 21, 14, 2, 20, 206, DateTimeKind.Local).AddTicks(795) });
 
             migrationBuilder.InsertData(
                 table: "Achievment",
                 columns: new[] { "Id", "Photo", "StudentID", "Text", "Time" },
-                values: new object[] { 2, "DbResources/Ach/ach2.png", 33333333L, "The bluest lohyna in team!", new DateTime(2020, 5, 20, 14, 15, 17, 403, DateTimeKind.Local).AddTicks(3265) });
+                values: new object[] { 2, "DbResources/Ach/ach2.png", 33333333L, "The bluest lohyna in team!", new DateTime(2020, 5, 21, 14, 2, 20, 208, DateTimeKind.Local).AddTicks(8953) });
 
             migrationBuilder.InsertData(
                 table: "Achievment",
                 columns: new[] { "Id", "Photo", "StudentID", "Text", "Time" },
-                values: new object[] { 3, "DbResources/Ach/ach3.png", 22222222L, "The man who bought the world!", new DateTime(2020, 5, 20, 14, 15, 17, 403, DateTimeKind.Local).AddTicks(3335) });
+                values: new object[] { 3, "DbResources/Ach/ach3.png", 22222222L, "The man who bought the world!", new DateTime(2020, 5, 21, 14, 2, 20, 208, DateTimeKind.Local).AddTicks(9010) });
 
             migrationBuilder.InsertData(
                 table: "Timetable",

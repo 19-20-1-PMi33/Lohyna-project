@@ -9,8 +9,8 @@ using Model;
 namespace WebApplication.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200520135338_userpasswordsencrypted")]
-    partial class userpasswordsencrypted
+    [Migration("20200521110220_init4")]
+    partial class init4
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -50,7 +50,7 @@ namespace WebApplication.Migrations
                             Photo = "DbResources/Ach/ach1.png",
                             StudentID = 11111111L,
                             Text = "Second best starosta in group!",
-                            Time = new DateTime(2020, 5, 20, 16, 53, 37, 318, DateTimeKind.Local).AddTicks(1723)
+                            Time = new DateTime(2020, 5, 21, 14, 2, 20, 206, DateTimeKind.Local).AddTicks(795)
                         },
                         new
                         {
@@ -58,7 +58,7 @@ namespace WebApplication.Migrations
                             Photo = "DbResources/Ach/ach2.png",
                             StudentID = 33333333L,
                             Text = "The bluest lohyna in team!",
-                            Time = new DateTime(2020, 5, 20, 16, 53, 37, 322, DateTimeKind.Local).AddTicks(4707)
+                            Time = new DateTime(2020, 5, 21, 14, 2, 20, 208, DateTimeKind.Local).AddTicks(8953)
                         },
                         new
                         {
@@ -66,7 +66,7 @@ namespace WebApplication.Migrations
                             Photo = "DbResources/Ach/ach3.png",
                             StudentID = 22222222L,
                             Text = "The man who bought the world!",
-                            Time = new DateTime(2020, 5, 20, 16, 53, 37, 322, DateTimeKind.Local).AddTicks(4844)
+                            Time = new DateTime(2020, 5, 21, 14, 2, 20, 208, DateTimeKind.Local).AddTicks(9010)
                         },
                         new
                         {
@@ -74,7 +74,7 @@ namespace WebApplication.Migrations
                             Photo = "DbResources/Ach/ach4.png",
                             StudentID = 44444444L,
                             Text = "Passed PE exam without praying!",
-                            Time = new DateTime(2020, 5, 20, 16, 53, 37, 322, DateTimeKind.Local).AddTicks(4865)
+                            Time = new DateTime(2020, 5, 21, 14, 2, 20, 208, DateTimeKind.Local).AddTicks(9016)
                         });
                 });
 
@@ -234,7 +234,7 @@ namespace WebApplication.Migrations
 				Тоді чого зволікати?? Швиденько заповнюйте форму(посилання внизу⬇️) та бігом на кастинг, котрий відбудеться о 16:00, 12 березня у глядацькій залі ЦКД (головний корпус, вул. Університетська, 1) 😍
 
 				Чекаємо на вас із нетерпінням, буде чарівно й по-домашньому! ✨",
-                            Time = "20.05.2020 00:00:00"
+                            Time = "21.05.2020 00:00:00"
                         },
                         new
                         {
@@ -268,7 +268,7 @@ namespace WebApplication.Migrations
 Давно чекаєш на можливість показати себе та позмагатися із собі рівними? 🏆🔥
 Тоді, дай відповідь лиш на кілька запитань і ми виконаємо твої побажання)😉
 Вибір за тобою!👇",
-                            Time = "20.05.2020 16:53:37"
+                            Time = "21.05.2020 14:02:20"
                         },
                         new
                         {
@@ -287,8 +287,9 @@ namespace WebApplication.Migrations
 
             modelBuilder.Entity("Model.Note", b =>
                 {
-                    b.Property<string>("Name")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("Created")
                         .HasColumnType("TEXT");
@@ -302,13 +303,17 @@ namespace WebApplication.Migrations
                     b.Property<string>("Materials")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("PersonID")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("SubjectID")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("Name");
+                    b.HasKey("Id");
 
                     b.HasIndex("PersonID");
 

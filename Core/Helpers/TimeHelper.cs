@@ -11,25 +11,25 @@ namespace Core.Helpers
             var distance = DateTime.Now - created;
             if (distance.Days > Year)
             {
-                return $"{distance.Days / Year}" + (distance.Days / Year > 1 ? " years" : " year");
+                return $"{distance.Days / Year}" + (distance.Days / Year > 1 ? " years" : " year") + " ";
             }
             if (distance.Days > DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month))
             {
                 int monthDistance = (DateTime.Now.Year - created.Year) * 12 + DateTime.Now.Month - created.Month;
-                return $"{monthDistance}" + (monthDistance > 1 ? " months" : " month");
+                return $"{monthDistance}" + (monthDistance > 1 ? " months" : " month") + " ";
             }
             if (distance.Days > 1)
             {
-                return $"{distance.Days}" + (distance.Days > 1 ? " days" : " day");
+                return $"{distance.Days}" + (distance.Days > 1 ? " days" : " day") + " ";
             }
             if (distance.Hours != 0)
             {
-                return $"{distance.Hours}h";
+                return $"{distance.Hours}h ";
             }
             var result = new StringBuilder();
             if (distance.Minutes != 0)
             {
-                result.Append($"{distance.Minutes}min");
+                result.Append($"{distance.Minutes}min ");
             }
             result.Append($"{distance.Seconds}s");
             return result.ToString();

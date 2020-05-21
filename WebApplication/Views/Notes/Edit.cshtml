@@ -35,14 +35,16 @@
                 <div class="form-group d-inline-flex flex-row justify-content-between align-items-start flex-grow-0">
                   <h5 class="mt-1" asp-for = "Deadline">Deadline:</h5>
                   @{
-                   var day =  Model.Deadline.ToString("yyyy-mm-dd");
-                   <input class="form-control w-100 ml-3" asp-for="Deadline" value="@day" type="date" id="example-datetime-local-input"> 
+                   var day =  Model.Deadline.ToString("yyyy-MM-dd");
+                   var createdDay = Model.Created.ToString("yyyy-MM-dd");
+                   <input class="form-control w-100 ml-3" asp-for="Deadline" value="@day" min="@createdDay" type="date" id="example-datetime-local-input"> 
                   }
                   
                 </div>
               </div>
               <div class="col-md-6">
-                <select class="form-control w-100" type = "text" asp-for="SubjectID" value = "@Model.SubjectID">
+                <select class="form-control w-100" type = "text" asp-for="SubjectID">
+                  <option>@Model.SubjectID</option>
                   @foreach (var subject in ViewBag.subjectsList as IList<string>)
                   {
                     <option>@subject</option>   
@@ -59,11 +61,11 @@
             <div class="row">
               <div class="form-group w-100 mx-3 d-flex flex-row justify-content-center align-items-center">
                 <h5 class="mr-4">
-                  <input type="radio" id="done" value="@(Model.Finished = false)"  name="radio-group" checked>
+                  <input type="radio" id="done" value="@(Model.Finished = false)"  name="radio-group">
                   <label>Done</label>
                 </h5>
                 <h5>
-                  <input type="radio" id="progress" value="@(Model.Finished = true)" name="radio-group">
+                  <input type="radio" id="progress" value="@(Model.Finished = true)" name="radio-group" checked>
                   <label for="progress">In progress</label>
                 </h5>
               </div>

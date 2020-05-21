@@ -7,7 +7,7 @@
   <div id="deleteNoteModal">
     <div id="deleteDialog" class="modal-dialog modal-md">
       <div class="modal-content">
-        <form method="POST" asp-controller="Notes" asp-action="Delete">
+        <form method="POST" asp-controller="Notes"asp-route-id=@ViewBag.NoteId asp-action="Delete">
           <div class="modal-header">
             <h4 class="modal-title">Delete Note</h4>
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>

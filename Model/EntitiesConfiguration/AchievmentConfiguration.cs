@@ -7,7 +7,6 @@ namespace Model.EntitiesConfiguration
 	{
 		public void Configure(EntityTypeBuilder<Achievment> builder)
 		{
-			builder.HasKey(x => x.Id);
 
 			builder.Property(x => x.Text)
 				.IsRequired();

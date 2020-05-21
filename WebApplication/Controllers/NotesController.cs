@@ -61,11 +61,20 @@ namespace WebApplication.Controllers
             return View("Notes", notesViewModal);
         }
         
-        public async Task<IActionResult> Edit(int id)
+        public async Task<IActionResult> Edit([FromRoute] int id)
         {
-            var res = notes.LoadNotesAsync(User.Identity.Name).Result.FirstOrDefault(n => n.Id == id);
-            ViewBag.subjectsList = (notes.LoadSubjectsAsync().Result as List<Model.Subject>).Select(subject => subject.Name).ToList();        
-            return View("Edit", res);
+            var res = notes.LoadNotesAsync(User.Identity.Name).Result.Where(item=>item.Id==id).ToList();
+            if(res.Count>0)
+            {
+                var subjectsList = (notes.LoadSubjectsAsync().Result as List<Model.Subject>).Select(subject => subject.Name).ToList(); 
+                subjectsList.Remove(res.First().SubjectID);
+                ViewBag.subjectsList = subjectsList;  
+                return View("Edit", res.First()); 
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            } 
         }
 
         public async Task<IActionResult> Create()
@@ -76,7 +85,6 @@ namespace WebApplication.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Model.Note note)
         {
-            System.Console.WriteLine(note.Name);
             if(ModelState.IsValid)
             {
                 note.PersonID=User.Identity.Name;
@@ -92,29 +100,29 @@ namespace WebApplication.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(Model.Note note)
         {
-            System.Console.WriteLine(note.Name);
             if(ModelState.IsValid)
             {
                 note.PersonID=User.Identity.Name;
-                note.Created = DateTime.Now;
-                await notes.CreateNoteAsync(note);
+                note.Created=DateTime.Now;
+                notes.UpdateNoteAsync(note);
                 return RedirectToAction("Index");
             }
             else
             {
+                var subjectsList = (notes.LoadSubjectsAsync().Result as List<Model.Subject>).Select(subject => subject.Name).ToList(); 
+                subjectsList.Remove(note.SubjectID);
+                ViewBag.subjectsList = subjectsList;  
                 return View("Edit", note);
             }
         }
-        public async Task<IActionResult> Delete(string Name)
-        {
-            ViewBag.NoteToDelete = Name;
-            return View("Delete");
-        }
-
         [HttpPost]
-        public async Task<IActionResult> Delete(Note note)
+        public async Task<IActionResult> Delete(int id)
         {
-            notes.DeleteNoteAsync(_mapper.Map<Model.Note>(note));
+            var res = notes.LoadNotesAsync(User.Identity.Name).Result.Where(item=>item.Id==id).ToList();
+            if(res.Count>0)
+            {
+                notes.DeleteNoteAsync(res.First());
+            }
             return RedirectToAction("Index");
         }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
