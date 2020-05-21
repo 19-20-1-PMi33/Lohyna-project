@@ -28,6 +28,11 @@ namespace Services.ProfileService
             return "";
         }
 
+        public Achievment LoadLastAchievmentForStudent(Student student)
+        {
+            return _unitOfWork.Persons.LoadLastAchievmentForStudent(student);
+        }
+
         public async Task<Student> LoadStudentAsync(string username)
         {
             Model.Person person = _unitOfWork.Persons.LoadLogInPersonAsync(username);

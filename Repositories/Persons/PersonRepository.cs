@@ -89,5 +89,15 @@ namespace Repositories.Persons
             }
             await _dbContext.Lecturer.AddAsync(lecturer);
         }
+
+        public Achievment LoadLastAchievmentForStudent(Student student)
+        {
+            var achievments = _dbContext.Achievment.Where(x=>x.StudentID==student.TicketNumber).ToList().OrderBy(x=>x.Time);
+            if(achievments.Count()>0)
+            {
+                return achievments.Last();
+            }
+            return new Achievment{Id=-1};
+        }
     }
 }

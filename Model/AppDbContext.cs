@@ -10,7 +10,6 @@ namespace Model
     public class AppDbContext : DbContext
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) {
-            Database.EnsureCreated();
         }
 
         /// <summary>
@@ -19,8 +18,8 @@ namespace Model
         /// <param name="modelBuilder">DB models builder.</param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfiguration(new AchievmentConfiguration());
             modelBuilder.ApplyConfiguration(new CabinetConfiguration());
-            modelBuilder.ApplyConfiguration(new FAQConfiguration());
             modelBuilder.ApplyConfiguration(new GroupConfiguration());
             modelBuilder.ApplyConfiguration(new LecturerConfiguration());
             modelBuilder.ApplyConfiguration(new NewsConfiguration());
@@ -32,8 +31,10 @@ namespace Model
             modelBuilder.ApplyConfiguration(new SubjectConfiguration());
             modelBuilder.ApplyConfiguration(new TimeConfiguration());
             modelBuilder.ApplyConfiguration(new TimetableConfiguration());
+            modelBuilder.ApplyConfiguration(new FAQConfiguration());
         }
 
+        public DbSet<Achievment> Achievment {get;set;}
         public DbSet<Cabinet> Cabinet { get; set; }
 
         public DbSet<FAQ> FAQ { get; set; }

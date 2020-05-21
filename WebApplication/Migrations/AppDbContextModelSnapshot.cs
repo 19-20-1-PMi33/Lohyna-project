@@ -2,21 +2,79 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Model;
 
 namespace WebApplication.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200519121725_timetablesmallfix")]
-    partial class timetablesmallfix
+    partial class AppDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.2");
+
+            modelBuilder.Entity("Model.Achievment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Photo")
+                        .HasColumnType("TEXT");
+
+                    b.Property<long>("StudentID")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("Time")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("StudentID");
+
+                    b.ToTable("Achievment");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Photo = "DbResources/Ach/ach1.png",
+                            StudentID = 11111111L,
+                            Text = "Second best starosta in group!",
+                            Time = new DateTime(2020, 5, 20, 16, 53, 37, 318, DateTimeKind.Local).AddTicks(1723)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Photo = "DbResources/Ach/ach2.png",
+                            StudentID = 33333333L,
+                            Text = "The bluest lohyna in team!",
+                            Time = new DateTime(2020, 5, 20, 16, 53, 37, 322, DateTimeKind.Local).AddTicks(4707)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Photo = "DbResources/Ach/ach3.png",
+                            StudentID = 22222222L,
+                            Text = "The man who bought the world!",
+                            Time = new DateTime(2020, 5, 20, 16, 53, 37, 322, DateTimeKind.Local).AddTicks(4844)
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Photo = "DbResources/Ach/ach4.png",
+                            StudentID = 44444444L,
+                            Text = "Passed PE exam without praying!",
+                            Time = new DateTime(2020, 5, 20, 16, 53, 37, 322, DateTimeKind.Local).AddTicks(4865)
+                        });
+                });
 
             modelBuilder.Entity("Model.Cabinet", b =>
                 {
@@ -174,7 +232,7 @@ namespace WebApplication.Migrations
 				Тоді чого зволікати?? Швиденько заповнюйте форму(посилання внизу⬇️) та бігом на кастинг, котрий відбудеться о 16:00, 12 березня у глядацькій залі ЦКД (головний корпус, вул. Університетська, 1) 😍
 
 				Чекаємо на вас із нетерпінням, буде чарівно й по-домашньому! ✨",
-                            Time = "19.05.2020 00:00:00"
+                            Time = "20.05.2020 00:00:00"
                         },
                         new
                         {
@@ -208,7 +266,7 @@ namespace WebApplication.Migrations
 Давно чекаєш на можливість показати себе та позмагатися із собі рівними? 🏆🔥
 Тоді, дай відповідь лиш на кілька запитань і ми виконаємо твої побажання)😉
 Вибір за тобою!👇",
-                            Time = "19.05.2020 15:17:25"
+                            Time = "20.05.2020 16:53:37"
                         },
                         new
                         {
@@ -289,8 +347,40 @@ namespace WebApplication.Migrations
                         {
                             Username = "iryna007",
                             Name = "Iryna",
-                            Password = "iryna007",
+                            Password = "4912625f450b37874b2c6913b1e7da249ba2e53efc069b3429bccc929c35a1df",
                             Surname = "Pozdnyakova"
+                        },
+                        new
+                        {
+                            Username = "starosta",
+                            Name = "Roman",
+                            Password = "20fceed6eb41cfcd0611749cf389c5fb58c18dded41b8352ab74e7a9ee5243bc",
+                            Photo = "DbResources/Profile/profile1.png",
+                            Surname = "Levkovych"
+                        },
+                        new
+                        {
+                            Username = "oleh",
+                            Name = "Oleh",
+                            Password = "d322c3a9837fad6b52f61630ebd14ce83966c93c7d8b8248eb7b7b041c1c643f",
+                            Photo = "DbResources/Profile/profile2.jfif",
+                            Surname = "Andrus"
+                        },
+                        new
+                        {
+                            Username = "petro",
+                            Name = "Petro",
+                            Password = "b025ee29e0f07a36b5349a1de5718fa442ce15dc50129add5eee83411df6bb8c",
+                            Photo = "DbResources/Profile/profile3.png",
+                            Surname = "Tarnavsky"
+                        },
+                        new
+                        {
+                            Username = "zhawa",
+                            Name = "Nikita",
+                            Password = "3cd0b45440d14ca7319f678c2ace757f50921dc005ceff00df81cebaf3d16cbb",
+                            Photo = "DbResources/Profile/profile4.png",
+                            Surname = "Zhaworonkow"
                         });
                 });
 
@@ -365,6 +455,36 @@ namespace WebApplication.Migrations
                         .IsUnique();
 
                     b.ToTable("Student");
+
+                    b.HasData(
+                        new
+                        {
+                            TicketNumber = 11111111L,
+                            GroupID = "PMi-33",
+                            PersonID = "starosta",
+                            ReportCard = 1111111L
+                        },
+                        new
+                        {
+                            TicketNumber = 22222222L,
+                            GroupID = "PMi-32",
+                            PersonID = "oleh",
+                            ReportCard = 2222222L
+                        },
+                        new
+                        {
+                            TicketNumber = 33333333L,
+                            GroupID = "PMi-31",
+                            PersonID = "petro",
+                            ReportCard = 3333333L
+                        },
+                        new
+                        {
+                            TicketNumber = 44444444L,
+                            GroupID = "PMi-34",
+                            PersonID = "zhawa",
+                            ReportCard = 4444444L
+                        });
                 });
 
             modelBuilder.Entity("Model.Subject", b =>
@@ -921,6 +1041,15 @@ namespace WebApplication.Migrations
                             SubjectID = "PE",
                             TimeID = 3
                         });
+                });
+
+            modelBuilder.Entity("Model.Achievment", b =>
+                {
+                    b.HasOne("Model.Student", "Student")
+                        .WithMany("Achievments")
+                        .HasForeignKey("StudentID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Model.Lecturer", b =>

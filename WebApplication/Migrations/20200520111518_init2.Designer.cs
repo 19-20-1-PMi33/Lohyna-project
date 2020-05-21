@@ -9,14 +9,74 @@ using Model;
 namespace WebApplication.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200519102859_auditoryadded")]
-    partial class auditoryadded
+    [Migration("20200520111518_init2")]
+    partial class init2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.2");
+
+            modelBuilder.Entity("Model.Achievment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Photo")
+                        .HasColumnType("TEXT");
+
+                    b.Property<long>("StudentID")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("Time")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("StudentID");
+
+                    b.ToTable("Achievment");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Photo = "DbResources/Ach/ach1.png",
+                            StudentID = 11111111L,
+                            Text = "Second best starosta in group!",
+                            Time = new DateTime(2020, 5, 20, 14, 15, 17, 400, DateTimeKind.Local).AddTicks(3008)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Photo = "DbResources/Ach/ach2.png",
+                            StudentID = 33333333L,
+                            Text = "The bluest lohyna in team!",
+                            Time = new DateTime(2020, 5, 20, 14, 15, 17, 403, DateTimeKind.Local).AddTicks(3265)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Photo = "DbResources/Ach/ach3.png",
+                            StudentID = 22222222L,
+                            Text = "The man who bought the world!",
+                            Time = new DateTime(2020, 5, 20, 14, 15, 17, 403, DateTimeKind.Local).AddTicks(3335)
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Photo = "DbResources/Ach/ach4.png",
+                            StudentID = 44444444L,
+                            Text = "Passed PE exam without praying!",
+                            Time = new DateTime(2020, 5, 20, 14, 15, 17, 403, DateTimeKind.Local).AddTicks(3343)
+                        });
+                });
 
             modelBuilder.Entity("Model.Cabinet", b =>
                 {
@@ -174,7 +234,7 @@ namespace WebApplication.Migrations
 				Тоді чого зволікати?? Швиденько заповнюйте форму(посилання внизу⬇️) та бігом на кастинг, котрий відбудеться о 16:00, 12 березня у глядацькій залі ЦКД (головний корпус, вул. Університетська, 1) 😍
 
 				Чекаємо на вас із нетерпінням, буде чарівно й по-домашньому! ✨",
-                            Time = "19.05.2020 00:00:00"
+                            Time = "20.05.2020 00:00:00"
                         },
                         new
                         {
@@ -208,7 +268,7 @@ namespace WebApplication.Migrations
 Давно чекаєш на можливість показати себе та позмагатися із собі рівними? 🏆🔥
 Тоді, дай відповідь лиш на кілька запитань і ми виконаємо твої побажання)😉
 Вибір за тобою!👇",
-                            Time = "19.05.2020 13:28:58"
+                            Time = "20.05.2020 14:15:17"
                         },
                         new
                         {
@@ -291,6 +351,38 @@ namespace WebApplication.Migrations
                             Name = "Iryna",
                             Password = "iryna007",
                             Surname = "Pozdnyakova"
+                        },
+                        new
+                        {
+                            Username = "starosta",
+                            Name = "Roman",
+                            Password = "starosta",
+                            Photo = "DbResources/Profile/profile1.png",
+                            Surname = "Levkovych"
+                        },
+                        new
+                        {
+                            Username = "oleh",
+                            Name = "Oleh",
+                            Password = "oleh",
+                            Photo = "DbResources/Profile/profile2.jfif",
+                            Surname = "Andrus"
+                        },
+                        new
+                        {
+                            Username = "petro",
+                            Name = "Petro",
+                            Password = "petro",
+                            Photo = "DbResources/Profile/profile3.png",
+                            Surname = "Tarnavsky"
+                        },
+                        new
+                        {
+                            Username = "zhawa",
+                            Name = "Nikita",
+                            Password = "zhawa",
+                            Photo = "DbResources/Profile/profile4.png",
+                            Surname = "Zhaworonkow"
                         });
                 });
 
@@ -365,6 +457,36 @@ namespace WebApplication.Migrations
                         .IsUnique();
 
                     b.ToTable("Student");
+
+                    b.HasData(
+                        new
+                        {
+                            TicketNumber = 11111111L,
+                            GroupID = "PMi-33",
+                            PersonID = "starosta",
+                            ReportCard = 1111111L
+                        },
+                        new
+                        {
+                            TicketNumber = 22222222L,
+                            GroupID = "PMi-32",
+                            PersonID = "oleh",
+                            ReportCard = 2222222L
+                        },
+                        new
+                        {
+                            TicketNumber = 33333333L,
+                            GroupID = "PMi-31",
+                            PersonID = "petro",
+                            ReportCard = 3333333L
+                        },
+                        new
+                        {
+                            TicketNumber = 44444444L,
+                            GroupID = "PMi-34",
+                            PersonID = "zhawa",
+                            ReportCard = 4444444L
+                        });
                 });
 
             modelBuilder.Entity("Model.Subject", b =>
@@ -688,7 +810,7 @@ namespace WebApplication.Migrations
                             LecturerID = 1,
                             Period = "all",
                             SubjectID = "AI systems",
-                            TimeID = 6
+                            TimeID = 5
                         },
                         new
                         {
@@ -853,7 +975,7 @@ namespace WebApplication.Migrations
                             LecturerID = 1,
                             Period = "all",
                             SubjectID = "Computer methods",
-                            TimeID = 5
+                            TimeID = 6
                         },
                         new
                         {
@@ -921,6 +1043,15 @@ namespace WebApplication.Migrations
                             SubjectID = "PE",
                             TimeID = 3
                         });
+                });
+
+            modelBuilder.Entity("Model.Achievment", b =>
+                {
+                    b.HasOne("Model.Student", "Student")
+                        .WithMany("Achievments")
+                        .HasForeignKey("StudentID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Model.Lecturer", b =>
