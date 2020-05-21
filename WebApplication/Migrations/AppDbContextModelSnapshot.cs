@@ -16,6 +16,66 @@ namespace WebApplication.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.2");
 
+            modelBuilder.Entity("Model.Achievment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Photo")
+                        .HasColumnType("TEXT");
+
+                    b.Property<long>("StudentID")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("Time")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("StudentID");
+
+                    b.ToTable("Achievment");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Photo = "DbResources/Ach/ach1.png",
+                            StudentID = 11111111L,
+                            Text = "Second best starosta in group!",
+                            Time = new DateTime(2020, 5, 21, 16, 8, 29, 781, DateTimeKind.Local).AddTicks(3427)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Photo = "DbResources/Ach/ach2.png",
+                            StudentID = 33333333L,
+                            Text = "The bluest lohyna in team!",
+                            Time = new DateTime(2020, 5, 21, 16, 8, 29, 785, DateTimeKind.Local).AddTicks(9089)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Photo = "DbResources/Ach/ach3.png",
+                            StudentID = 22222222L,
+                            Text = "The man who bought the world!",
+                            Time = new DateTime(2020, 5, 21, 16, 8, 29, 785, DateTimeKind.Local).AddTicks(9216)
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Photo = "DbResources/Ach/ach4.png",
+                            StudentID = 44444444L,
+                            Text = "Passed PE exam without praying!",
+                            Time = new DateTime(2020, 5, 21, 16, 8, 29, 785, DateTimeKind.Local).AddTicks(9233)
+                        });
+                });
+
             modelBuilder.Entity("Model.Cabinet", b =>
                 {
                     b.Property<string>("Name")
@@ -128,6 +188,14 @@ namespace WebApplication.Migrations
                         .IsUnique();
 
                     b.ToTable("Lecturer");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Department = "Mechanical mathematics",
+                            PersonID = "iryna007"
+                        });
                 });
 
             modelBuilder.Entity("Model.News", b =>
@@ -164,7 +232,7 @@ namespace WebApplication.Migrations
 				Тоді чого зволікати?? Швиденько заповнюйте форму(посилання внизу⬇️) та бігом на кастинг, котрий відбудеться о 16:00, 12 березня у глядацькій залі ЦКД (головний корпус, вул. Університетська, 1) 😍
 
 				Чекаємо на вас із нетерпінням, буде чарівно й по-домашньому! ✨",
-                            Time = "21.05.2020 00:00:00"
+                            Time = "21.05.2020 0:00:00"
                         },
                         new
                         {
@@ -198,7 +266,7 @@ namespace WebApplication.Migrations
 Давно чекаєш на можливість показати себе та позмагатися із собі рівними? 🏆🔥
 Тоді, дай відповідь лиш на кілька запитань і ми виконаємо твої побажання)😉
 Вибір за тобою!👇",
-                            Time = "21.05.2020 12:53:51"
+                            Time = "21.05.2020 16:08:29"
                         },
                         new
                         {
@@ -278,6 +346,55 @@ namespace WebApplication.Migrations
                     b.HasKey("Username");
 
                     b.ToTable("Person");
+
+                    b.HasData(
+                        new
+                        {
+                            Username = "iryna007",
+                            Name = "Iryna",
+                            Password = "4912625f450b37874b2c6913b1e7da249ba2e53efc069b3429bccc929c35a1df",
+                            Surname = "Pozdnyakova"
+                        },
+                        new
+                        {
+                            Username = "starosta",
+                            Name = "Roman",
+                            Password = "20fceed6eb41cfcd0611749cf389c5fb58c18dded41b8352ab74e7a9ee5243bc",
+                            Photo = "DbResources/Profile/profile1.png",
+                            Surname = "Levkovych"
+                        },
+                        new
+                        {
+                            Username = "oleh",
+                            Name = "Oleh",
+                            Password = "d322c3a9837fad6b52f61630ebd14ce83966c93c7d8b8248eb7b7b041c1c643f",
+                            Photo = "DbResources/Profile/profile2.jfif",
+                            Surname = "Andrus"
+                        },
+                        new
+                        {
+                            Username = "cat",
+                            Name = "Cat",
+                            Password = "77af778b51abd4a3c51c5ddd97204a9c3ae614ebccb75a606c3b6865aed6744e",
+                            Photo = "DbResources/Profile/cat.jpg",
+                            Surname = "Cat Bond"
+                        },
+                        new
+                        {
+                            Username = "petro",
+                            Name = "Petro",
+                            Password = "b025ee29e0f07a36b5349a1de5718fa442ce15dc50129add5eee83411df6bb8c",
+                            Photo = "DbResources/Profile/profile3.png",
+                            Surname = "Tarnavsky"
+                        },
+                        new
+                        {
+                            Username = "zhawa",
+                            Name = "Nikita",
+                            Password = "3cd0b45440d14ca7319f678c2ace757f50921dc005ceff00df81cebaf3d16cbb",
+                            Photo = "DbResources/Profile/profile4.png",
+                            Surname = "Zhaworonkow"
+                        });
                 });
 
             modelBuilder.Entity("Model.Rating", b =>
@@ -305,6 +422,72 @@ namespace WebApplication.Migrations
                     b.HasIndex("SubjectID");
 
                     b.ToTable("Rating");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Mark = 4u,
+                            StudentID = 11111111L,
+                            SubjectID = "Android",
+                            Time = new DateTime(2020, 2, 10, 12, 25, 40, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Mark = 2u,
+                            StudentID = 11111111L,
+                            SubjectID = "Cryptology",
+                            Time = new DateTime(2009, 2, 10, 12, 13, 43, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Mark = 1u,
+                            StudentID = 11111111L,
+                            SubjectID = "Cryptology",
+                            Time = new DateTime(2020, 2, 10, 12, 45, 40, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Mark = 22u,
+                            StudentID = 11111111L,
+                            SubjectID = "NodeJS",
+                            Time = new DateTime(2019, 2, 10, 12, 23, 10, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Mark = 16u,
+                            StudentID = 11111111L,
+                            SubjectID = "Android",
+                            Time = new DateTime(2020, 3, 10, 12, 23, 20, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Mark = 12u,
+                            StudentID = 11111111L,
+                            SubjectID = "Computer methods",
+                            Time = new DateTime(2020, 2, 11, 12, 23, 40, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Mark = 6u,
+                            StudentID = 11111111L,
+                            SubjectID = "PE",
+                            Time = new DateTime(2020, 3, 10, 12, 23, 40, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Mark = 5u,
+                            StudentID = 11111111L,
+                            SubjectID = "PE",
+                            Time = new DateTime(2020, 1, 10, 16, 23, 40, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
             modelBuilder.Entity("Model.Specialization", b =>
@@ -351,6 +534,43 @@ namespace WebApplication.Migrations
                         .IsUnique();
 
                     b.ToTable("Student");
+
+                    b.HasData(
+                        new
+                        {
+                            TicketNumber = 55555555L,
+                            GroupID = "PMi-33",
+                            PersonID = "cat",
+                            ReportCard = 5555555L
+                        },
+                        new
+                        {
+                            TicketNumber = 11111111L,
+                            GroupID = "PMi-33",
+                            PersonID = "starosta",
+                            ReportCard = 1111111L
+                        },
+                        new
+                        {
+                            TicketNumber = 22222222L,
+                            GroupID = "PMi-32",
+                            PersonID = "oleh",
+                            ReportCard = 2222222L
+                        },
+                        new
+                        {
+                            TicketNumber = 33333333L,
+                            GroupID = "PMi-31",
+                            PersonID = "petro",
+                            ReportCard = 3333333L
+                        },
+                        new
+                        {
+                            TicketNumber = 44444444L,
+                            GroupID = "PMi-34",
+                            PersonID = "zhawa",
+                            ReportCard = 4444444L
+                        });
                 });
 
             modelBuilder.Entity("Model.Subject", b =>
@@ -365,6 +585,48 @@ namespace WebApplication.Migrations
                     b.HasKey("Name");
 
                     b.ToTable("Subject");
+
+                    b.HasData(
+                        new
+                        {
+                            Name = "Digital image",
+                            ExamType = "zalik"
+                        },
+                        new
+                        {
+                            Name = "Android",
+                            ExamType = "zalik"
+                        },
+                        new
+                        {
+                            Name = "NodeJS",
+                            ExamType = "zalik"
+                        },
+                        new
+                        {
+                            Name = "AI systems",
+                            ExamType = "exam"
+                        },
+                        new
+                        {
+                            Name = "Computer methods",
+                            ExamType = "exam"
+                        },
+                        new
+                        {
+                            Name = "Optimization methods",
+                            ExamType = "exam"
+                        },
+                        new
+                        {
+                            Name = "Cryptology",
+                            ExamType = "zalik"
+                        },
+                        new
+                        {
+                            Name = "PE",
+                            ExamType = "exam"
+                        });
                 });
 
             modelBuilder.Entity("Model.Time", b =>
@@ -382,6 +644,50 @@ namespace WebApplication.Migrations
                     b.HasKey("Number");
 
                     b.ToTable("Time");
+
+                    b.HasData(
+                        new
+                        {
+                            Number = 1,
+                            Finish = new DateTime(2020, 8, 30, 9, 50, 0, 0, DateTimeKind.Unspecified),
+                            Start = new DateTime(2020, 1, 1, 8, 30, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Number = 2,
+                            Finish = new DateTime(2020, 8, 30, 11, 30, 0, 0, DateTimeKind.Unspecified),
+                            Start = new DateTime(2020, 1, 1, 10, 10, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Number = 3,
+                            Finish = new DateTime(2020, 8, 30, 13, 10, 0, 0, DateTimeKind.Unspecified),
+                            Start = new DateTime(2020, 1, 1, 11, 50, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Number = 4,
+                            Finish = new DateTime(2020, 8, 30, 14, 50, 0, 0, DateTimeKind.Unspecified),
+                            Start = new DateTime(2020, 1, 1, 13, 30, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Number = 5,
+                            Finish = new DateTime(2020, 8, 30, 16, 25, 0, 0, DateTimeKind.Unspecified),
+                            Start = new DateTime(2020, 1, 1, 15, 5, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Number = 6,
+                            Finish = new DateTime(2020, 8, 30, 18, 0, 0, 0, DateTimeKind.Unspecified),
+                            Start = new DateTime(2020, 1, 1, 16, 40, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Number = 7,
+                            Finish = new DateTime(2020, 8, 30, 19, 30, 0, 0, DateTimeKind.Unspecified),
+                            Start = new DateTime(2020, 1, 1, 18, 10, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
             modelBuilder.Entity("Model.Timetable", b =>
@@ -389,6 +695,9 @@ namespace WebApplication.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("Auditory")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Day")
                         .IsRequired()
@@ -420,6 +729,413 @@ namespace WebApplication.Migrations
                     b.HasIndex("TimeID");
 
                     b.ToTable("Timetable");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Auditory = "118a",
+                            Day = "Monday",
+                            GroupID = "PMi-33",
+                            LecturerID = 1,
+                            Period = "all",
+                            SubjectID = "Digital image",
+                            TimeID = 5
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Auditory = "116",
+                            Day = "Monday",
+                            GroupID = "PMi-32",
+                            LecturerID = 1,
+                            Period = "all",
+                            SubjectID = "Android",
+                            TimeID = 5
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Auditory = "119a",
+                            Day = "Monday",
+                            GroupID = "PMi-31",
+                            LecturerID = 1,
+                            Period = "all",
+                            SubjectID = "NodeJS",
+                            TimeID = 5
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Auditory = "118a",
+                            Day = "Monday",
+                            GroupID = "PMi-33",
+                            LecturerID = 1,
+                            Period = "all",
+                            SubjectID = "Digital image",
+                            TimeID = 6
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Auditory = "116",
+                            Day = "Monday",
+                            GroupID = "PMi-32",
+                            LecturerID = 1,
+                            Period = "all",
+                            SubjectID = "Android",
+                            TimeID = 6
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Auditory = "119b",
+                            Day = "Monday",
+                            GroupID = "PMi-31",
+                            LecturerID = 1,
+                            Period = "all",
+                            SubjectID = "NodeJS",
+                            TimeID = 6
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Auditory = "439",
+                            Day = "Tuesday",
+                            GroupID = "PMi-31",
+                            LecturerID = 1,
+                            Period = "all",
+                            SubjectID = "AI systems",
+                            TimeID = 3
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Auditory = "439",
+                            Day = "Tuesday",
+                            GroupID = "PMi-32",
+                            LecturerID = 1,
+                            Period = "all",
+                            SubjectID = "AI systems",
+                            TimeID = 3
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Auditory = "439",
+                            Day = "Tuesday",
+                            GroupID = "PMi-33",
+                            LecturerID = 1,
+                            Period = "all",
+                            SubjectID = "AI systems",
+                            TimeID = 3
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Auditory = "265",
+                            Day = "Tuesday",
+                            GroupID = "PMi-31",
+                            LecturerID = 1,
+                            Period = "all",
+                            SubjectID = "Computer methods",
+                            TimeID = 4
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Auditory = "265",
+                            Day = "Tuesday",
+                            GroupID = "PMi-32",
+                            LecturerID = 1,
+                            Period = "all",
+                            SubjectID = "Computer methods",
+                            TimeID = 4
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Auditory = "265",
+                            Day = "Tuesday",
+                            GroupID = "PMi-33",
+                            LecturerID = 1,
+                            Period = "all",
+                            SubjectID = "Computer methods",
+                            TimeID = 4
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Auditory = "111",
+                            Day = "Tuesday",
+                            GroupID = "PMi-31",
+                            LecturerID = 1,
+                            Period = "all",
+                            SubjectID = "AI systems",
+                            TimeID = 6
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Auditory = "111",
+                            Day = "Tuesday",
+                            GroupID = "PMi-32",
+                            LecturerID = 1,
+                            Period = "all",
+                            SubjectID = "AI systems",
+                            TimeID = 6
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Auditory = "111",
+                            Day = "Tuesday",
+                            GroupID = "PMi-33",
+                            LecturerID = 1,
+                            Period = "all",
+                            SubjectID = "AI systems",
+                            TimeID = 5
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Auditory = "439",
+                            Day = "Wednesday",
+                            GroupID = "PMi-31",
+                            LecturerID = 1,
+                            Period = "all",
+                            SubjectID = "Cryptology",
+                            TimeID = 4
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Auditory = "439",
+                            Day = "Wednesday",
+                            GroupID = "PMi-32",
+                            LecturerID = 1,
+                            Period = "all",
+                            SubjectID = "Cryptology",
+                            TimeID = 4
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Auditory = "439",
+                            Day = "Wednesday",
+                            GroupID = "PMi-33",
+                            LecturerID = 1,
+                            Period = "all",
+                            SubjectID = "Cryptology",
+                            TimeID = 4
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Auditory = "261",
+                            Day = "Wednesday",
+                            GroupID = "PMi-31",
+                            LecturerID = 1,
+                            Period = "all",
+                            SubjectID = "Computer methods",
+                            TimeID = 5
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Auditory = "272/3",
+                            Day = "Wednesday",
+                            GroupID = "PMi-32",
+                            LecturerID = 1,
+                            Period = "all",
+                            SubjectID = "Cryptology",
+                            TimeID = 5
+                        },
+                        new
+                        {
+                            Id = 21,
+                            Auditory = "113",
+                            Day = "Wednesday",
+                            GroupID = "PMi-33",
+                            LecturerID = 1,
+                            Period = "all",
+                            SubjectID = "Optimization methods",
+                            TimeID = 5
+                        },
+                        new
+                        {
+                            Id = 22,
+                            Auditory = "119b",
+                            Day = "Tuesday",
+                            GroupID = "PMi-31",
+                            LecturerID = 1,
+                            Period = "all",
+                            SubjectID = "Cryptology",
+                            TimeID = 6
+                        },
+                        new
+                        {
+                            Id = 23,
+                            Auditory = "119b",
+                            Day = "Wednesday",
+                            GroupID = "PMi-32",
+                            LecturerID = 1,
+                            Period = "all",
+                            SubjectID = "AI systems",
+                            TimeID = 6
+                        },
+                        new
+                        {
+                            Id = 24,
+                            Auditory = "119a",
+                            Day = "Wednesday",
+                            GroupID = "PMi-33",
+                            LecturerID = 1,
+                            Period = "all",
+                            SubjectID = "Cryptology",
+                            TimeID = 6
+                        },
+                        new
+                        {
+                            Id = 25,
+                            Auditory = "111",
+                            Day = "Thursday",
+                            GroupID = "PMi-31",
+                            LecturerID = 1,
+                            Period = "all",
+                            SubjectID = "Optimization methods",
+                            TimeID = 5
+                        },
+                        new
+                        {
+                            Id = 26,
+                            Auditory = "111",
+                            Day = "Thursday",
+                            GroupID = "PMi-32",
+                            LecturerID = 1,
+                            Period = "all",
+                            SubjectID = "Optimization methods",
+                            TimeID = 5
+                        },
+                        new
+                        {
+                            Id = 27,
+                            Auditory = "111",
+                            Day = "Thursday",
+                            GroupID = "PMi-33",
+                            LecturerID = 1,
+                            Period = "all",
+                            SubjectID = "Optimization methods",
+                            TimeID = 5
+                        },
+                        new
+                        {
+                            Id = 28,
+                            Auditory = "118a",
+                            Day = "Thursday",
+                            GroupID = "PMi-31",
+                            LecturerID = 1,
+                            Period = "all",
+                            SubjectID = "Cryptology",
+                            TimeID = 2
+                        },
+                        new
+                        {
+                            Id = 29,
+                            Auditory = "119a",
+                            Day = "Friday",
+                            GroupID = "PMi-32",
+                            LecturerID = 1,
+                            Period = "all",
+                            SubjectID = "Optimization methods",
+                            TimeID = 7
+                        },
+                        new
+                        {
+                            Id = 30,
+                            Auditory = "117",
+                            Day = "Thursday",
+                            GroupID = "PMi-33",
+                            LecturerID = 1,
+                            Period = "all",
+                            SubjectID = "Computer methods",
+                            TimeID = 6
+                        },
+                        new
+                        {
+                            Id = 31,
+                            Auditory = "439",
+                            Day = "Friday",
+                            GroupID = "PMi-31",
+                            LecturerID = 1,
+                            Period = "all",
+                            SubjectID = "PE",
+                            TimeID = 4
+                        },
+                        new
+                        {
+                            Id = 32,
+                            Auditory = "439",
+                            Day = "Friday",
+                            GroupID = "PMi-32",
+                            LecturerID = 1,
+                            Period = "all",
+                            SubjectID = "PE",
+                            TimeID = 4
+                        },
+                        new
+                        {
+                            Id = 33,
+                            Auditory = "439",
+                            Day = "Friday",
+                            GroupID = "PMi-33",
+                            LecturerID = 1,
+                            Period = "all",
+                            SubjectID = "PE",
+                            TimeID = 4
+                        },
+                        new
+                        {
+                            Id = 34,
+                            Auditory = "119a",
+                            Day = "Friday",
+                            GroupID = "PMi-31",
+                            LecturerID = 1,
+                            Period = "all",
+                            SubjectID = "PE",
+                            TimeID = 5
+                        },
+                        new
+                        {
+                            Id = 35,
+                            Auditory = "117",
+                            Day = "Friday",
+                            GroupID = "PMi-32",
+                            LecturerID = 1,
+                            Period = "all",
+                            SubjectID = "Computer methods",
+                            TimeID = 5
+                        },
+                        new
+                        {
+                            Id = 36,
+                            Auditory = "113",
+                            Day = "Friday",
+                            GroupID = "PMi-33",
+                            LecturerID = 1,
+                            Period = "all",
+                            SubjectID = "PE",
+                            TimeID = 3
+                        });
+                });
+
+            modelBuilder.Entity("Model.Achievment", b =>
+                {
+                    b.HasOne("Model.Student", "Student")
+                        .WithMany("Achievments")
+                        .HasForeignKey("StudentID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Model.Lecturer", b =>

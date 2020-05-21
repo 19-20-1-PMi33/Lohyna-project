@@ -9,8 +9,8 @@ using Model;
 namespace WebApplication.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200520111518_init2")]
-    partial class init2
+    [Migration("20200521130831_AddRatings")]
+    partial class AddRatings
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -50,7 +50,7 @@ namespace WebApplication.Migrations
                             Photo = "DbResources/Ach/ach1.png",
                             StudentID = 11111111L,
                             Text = "Second best starosta in group!",
-                            Time = new DateTime(2020, 5, 20, 14, 15, 17, 400, DateTimeKind.Local).AddTicks(3008)
+                            Time = new DateTime(2020, 5, 21, 16, 8, 29, 781, DateTimeKind.Local).AddTicks(3427)
                         },
                         new
                         {
@@ -58,7 +58,7 @@ namespace WebApplication.Migrations
                             Photo = "DbResources/Ach/ach2.png",
                             StudentID = 33333333L,
                             Text = "The bluest lohyna in team!",
-                            Time = new DateTime(2020, 5, 20, 14, 15, 17, 403, DateTimeKind.Local).AddTicks(3265)
+                            Time = new DateTime(2020, 5, 21, 16, 8, 29, 785, DateTimeKind.Local).AddTicks(9089)
                         },
                         new
                         {
@@ -66,7 +66,7 @@ namespace WebApplication.Migrations
                             Photo = "DbResources/Ach/ach3.png",
                             StudentID = 22222222L,
                             Text = "The man who bought the world!",
-                            Time = new DateTime(2020, 5, 20, 14, 15, 17, 403, DateTimeKind.Local).AddTicks(3335)
+                            Time = new DateTime(2020, 5, 21, 16, 8, 29, 785, DateTimeKind.Local).AddTicks(9216)
                         },
                         new
                         {
@@ -74,7 +74,7 @@ namespace WebApplication.Migrations
                             Photo = "DbResources/Ach/ach4.png",
                             StudentID = 44444444L,
                             Text = "Passed PE exam without praying!",
-                            Time = new DateTime(2020, 5, 20, 14, 15, 17, 403, DateTimeKind.Local).AddTicks(3343)
+                            Time = new DateTime(2020, 5, 21, 16, 8, 29, 785, DateTimeKind.Local).AddTicks(9233)
                         });
                 });
 
@@ -234,7 +234,7 @@ namespace WebApplication.Migrations
 				Тоді чого зволікати?? Швиденько заповнюйте форму(посилання внизу⬇️) та бігом на кастинг, котрий відбудеться о 16:00, 12 березня у глядацькій залі ЦКД (головний корпус, вул. Університетська, 1) 😍
 
 				Чекаємо на вас із нетерпінням, буде чарівно й по-домашньому! ✨",
-                            Time = "20.05.2020 00:00:00"
+                            Time = "21.05.2020 0:00:00"
                         },
                         new
                         {
@@ -268,7 +268,7 @@ namespace WebApplication.Migrations
 Давно чекаєш на можливість показати себе та позмагатися із собі рівними? 🏆🔥
 Тоді, дай відповідь лиш на кілька запитань і ми виконаємо твої побажання)😉
 Вибір за тобою!👇",
-                            Time = "20.05.2020 14:15:17"
+                            Time = "21.05.2020 16:08:29"
                         },
                         new
                         {
@@ -287,8 +287,9 @@ namespace WebApplication.Migrations
 
             modelBuilder.Entity("Model.Note", b =>
                 {
-                    b.Property<string>("Name")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("Created")
                         .HasColumnType("TEXT");
@@ -302,13 +303,17 @@ namespace WebApplication.Migrations
                     b.Property<string>("Materials")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("PersonID")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("SubjectID")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("Name");
+                    b.HasKey("Id");
 
                     b.HasIndex("PersonID");
 
@@ -349,14 +354,14 @@ namespace WebApplication.Migrations
                         {
                             Username = "iryna007",
                             Name = "Iryna",
-                            Password = "iryna007",
+                            Password = "4912625f450b37874b2c6913b1e7da249ba2e53efc069b3429bccc929c35a1df",
                             Surname = "Pozdnyakova"
                         },
                         new
                         {
                             Username = "starosta",
                             Name = "Roman",
-                            Password = "starosta",
+                            Password = "20fceed6eb41cfcd0611749cf389c5fb58c18dded41b8352ab74e7a9ee5243bc",
                             Photo = "DbResources/Profile/profile1.png",
                             Surname = "Levkovych"
                         },
@@ -364,15 +369,23 @@ namespace WebApplication.Migrations
                         {
                             Username = "oleh",
                             Name = "Oleh",
-                            Password = "oleh",
+                            Password = "d322c3a9837fad6b52f61630ebd14ce83966c93c7d8b8248eb7b7b041c1c643f",
                             Photo = "DbResources/Profile/profile2.jfif",
                             Surname = "Andrus"
                         },
                         new
                         {
+                            Username = "cat",
+                            Name = "Cat",
+                            Password = "77af778b51abd4a3c51c5ddd97204a9c3ae614ebccb75a606c3b6865aed6744e",
+                            Photo = "DbResources/Profile/cat.jpg",
+                            Surname = "Cat Bond"
+                        },
+                        new
+                        {
                             Username = "petro",
                             Name = "Petro",
-                            Password = "petro",
+                            Password = "b025ee29e0f07a36b5349a1de5718fa442ce15dc50129add5eee83411df6bb8c",
                             Photo = "DbResources/Profile/profile3.png",
                             Surname = "Tarnavsky"
                         },
@@ -380,7 +393,7 @@ namespace WebApplication.Migrations
                         {
                             Username = "zhawa",
                             Name = "Nikita",
-                            Password = "zhawa",
+                            Password = "3cd0b45440d14ca7319f678c2ace757f50921dc005ceff00df81cebaf3d16cbb",
                             Photo = "DbResources/Profile/profile4.png",
                             Surname = "Zhaworonkow"
                         });
@@ -411,6 +424,72 @@ namespace WebApplication.Migrations
                     b.HasIndex("SubjectID");
 
                     b.ToTable("Rating");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Mark = 4u,
+                            StudentID = 11111111L,
+                            SubjectID = "Android",
+                            Time = new DateTime(2020, 2, 10, 12, 25, 40, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Mark = 2u,
+                            StudentID = 11111111L,
+                            SubjectID = "Cryptology",
+                            Time = new DateTime(2009, 2, 10, 12, 13, 43, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Mark = 1u,
+                            StudentID = 11111111L,
+                            SubjectID = "Cryptology",
+                            Time = new DateTime(2020, 2, 10, 12, 45, 40, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Mark = 22u,
+                            StudentID = 11111111L,
+                            SubjectID = "NodeJS",
+                            Time = new DateTime(2019, 2, 10, 12, 23, 10, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Mark = 16u,
+                            StudentID = 11111111L,
+                            SubjectID = "Android",
+                            Time = new DateTime(2020, 3, 10, 12, 23, 20, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Mark = 12u,
+                            StudentID = 11111111L,
+                            SubjectID = "Computer methods",
+                            Time = new DateTime(2020, 2, 11, 12, 23, 40, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Mark = 6u,
+                            StudentID = 11111111L,
+                            SubjectID = "PE",
+                            Time = new DateTime(2020, 3, 10, 12, 23, 40, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Mark = 5u,
+                            StudentID = 11111111L,
+                            SubjectID = "PE",
+                            Time = new DateTime(2020, 1, 10, 16, 23, 40, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
             modelBuilder.Entity("Model.Specialization", b =>
@@ -459,6 +538,13 @@ namespace WebApplication.Migrations
                     b.ToTable("Student");
 
                     b.HasData(
+                        new
+                        {
+                            TicketNumber = 55555555L,
+                            GroupID = "PMi-33",
+                            PersonID = "cat",
+                            ReportCard = 5555555L
+                        },
                         new
                         {
                             TicketNumber = 11111111L,

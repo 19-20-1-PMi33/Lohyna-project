@@ -39,9 +39,9 @@ namespace Repositories.Notes
             _dbContext.Entry(note).State = EntityState.Modified;
         }
         
-        public void DeleteNoteAsync(params Note[] note)
+        public void DeleteNoteAsync(Note note)
         {
-            _dbContext.Note.RemoveRange(note);
+            _dbContext.Note.Remove(note);
         }
     }
 }

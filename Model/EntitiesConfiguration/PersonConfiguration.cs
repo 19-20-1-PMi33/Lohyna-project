@@ -36,6 +36,7 @@ namespace Model.EntitiesConfiguration
 			builder.HasData(new Person{Name="Iryna",Surname="Pozdnyakova",Password=AccountHelper.ComputeSha256Hash("iryna007"),Username="iryna007"},
 			new Person{Name="Roman",Surname="Levkovych",Password=AccountHelper.ComputeSha256Hash("starosta"),Username="starosta",Photo="DbResources/Profile/profile1.png"},
 			new Person{Name="Oleh",Surname="Andrus",Password=AccountHelper.ComputeSha256Hash("oleh"),Username="oleh",Photo="DbResources/Profile/profile2.jfif"},
+			new Person{Name="Cat",Surname="Cat Bond",Password=AccountHelper.ComputeSha256Hash("cat"),Username="cat",Photo="DbResources/Profile/cat.jpg"},
 			new Person{Name="Petro",Surname="Tarnavsky",Password=AccountHelper.ComputeSha256Hash("petro"),Username="petro",Photo="DbResources/Profile/profile3.png"},
 			new Person{Name="Nikita",Surname="Zhaworonkow",Password=AccountHelper.ComputeSha256Hash("zhawa"),Username="zhawa",Photo="DbResources/Profile/profile4.png"});
 		}

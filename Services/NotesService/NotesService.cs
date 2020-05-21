@@ -30,7 +30,7 @@ namespace Services.NotesService
             await _unitOfWork.CommitAsync();
         }
         
-        public void DeleteNoteAsync(params Model.Note[] note)
+        public void DeleteNoteAsync(Model.Note note)
         {
             _unitOfWork.Notes.DeleteNoteAsync(note);
             _unitOfWork.CommitAsync().Wait();
@@ -39,6 +39,7 @@ namespace Services.NotesService
         public void UpdateNoteAsync(Model.Note note)
         {
             _unitOfWork.Notes.UpdateNoteAsync(note);
+            _unitOfWork.CommitAsync().Wait();
         }
         
 

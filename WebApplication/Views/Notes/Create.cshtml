@@ -35,8 +35,8 @@
                 <div class="form-group d-inline-flex flex-row justify-content-between align-items-start flex-grow-0">
                   <h5 class="mt-1" asp-for = "Deadline">Deadline:</h5>
                   @{
-                   var today =  DateTime.Now.ToString("yyyy-mm-dd");
-                   <input class="form-control w-100 ml-3" asp-for="Deadline" min="@today" value="@today" type="date" id="example-datetime-local-input"> 
+                   var today =  DateTime.Now.ToString("yyyy-MM-dd");
+                   <input class="form-control w-100 ml-3" asp-for="Deadline" value="@today" min="@today" type="date" id="example-datetime-local-input"> 
                   }
                   
                 </div>

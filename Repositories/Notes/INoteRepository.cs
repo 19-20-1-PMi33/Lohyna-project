@@ -36,7 +36,7 @@ namespace Repositories.Notes
         /// </summary>
         /// <param name="note">Notes to be deleted.</param>
         /// <returns>Status of operation.</returns>
-        void DeleteNoteAsync(params Note[] note);
+        void DeleteNoteAsync(Note note);
 
         /// <summary>
         /// Updated a note in data source.
