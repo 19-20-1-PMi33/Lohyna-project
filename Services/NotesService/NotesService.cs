@@ -33,6 +33,7 @@ namespace Services.NotesService
         public void DeleteNoteAsync(params Model.Note[] note)
         {
             _unitOfWork.Notes.DeleteNoteAsync(note);
+            _unitOfWork.CommitAsync().Wait();
         }
 
         public void UpdateNoteAsync(Model.Note note)

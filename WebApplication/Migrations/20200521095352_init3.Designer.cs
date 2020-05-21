@@ -9,8 +9,8 @@ using Model;
 namespace WebApplication.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200322154502_InitNewsData")]
-    partial class InitNewsData
+    [Migration("20200521095352_init3")]
+    partial class init3
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -55,12 +55,60 @@ namespace WebApplication.Migrations
                     b.Property<long>("Course")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Faculty")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<long>("Size")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Name");
 
                     b.ToTable("Group");
+
+                    b.HasData(
+                        new
+                        {
+                            Name = "PMi-31",
+                            Course = 3L,
+                            Faculty = "Applied Mathematics and Informatics",
+                            Size = 20L
+                        },
+                        new
+                        {
+                            Name = "PMi-32",
+                            Course = 3L,
+                            Faculty = "Applied Mathematics and Informatics",
+                            Size = 20L
+                        },
+                        new
+                        {
+                            Name = "PMi-33",
+                            Course = 3L,
+                            Faculty = "Applied Mathematics and Informatics",
+                            Size = 20L
+                        },
+                        new
+                        {
+                            Name = "PMi-34",
+                            Course = 3L,
+                            Faculty = "Applied Mathematics and Informatics",
+                            Size = 20L
+                        },
+                        new
+                        {
+                            Name = "PMi-35",
+                            Course = 3L,
+                            Faculty = "Applied Mathematics and Informatics",
+                            Size = 20L
+                        },
+                        new
+                        {
+                            Name = "PMo-31",
+                            Course = 3L,
+                            Faculty = "Applied Mathematics and Informatics",
+                            Size = 20L
+                        });
                 });
 
             modelBuilder.Entity("Model.Lecturer", b =>
@@ -96,7 +144,8 @@ namespace WebApplication.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("Time")
+                    b.Property<string>("Time")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Name");
@@ -107,7 +156,7 @@ namespace WebApplication.Migrations
                         new
                         {
                             Name = "​​~Квартирник 8020~",
-                            Photo = "DbResources/kvartyrnyk.jpeg",
+                            Photo = "DbResources/News/kvartyrnyk.jpeg",
                             Text = @"А що, звучить лампово, чи не так? 😉
 
 				Хороша музика - як хороше вино, з роками лише приємніше чути її й ностальгувати за минулим! А хороша компанія прикрасить цей затишний вечір ще більше 😌
@@ -117,12 +166,12 @@ namespace WebApplication.Migrations
 				Тоді чого зволікати?? Швиденько заповнюйте форму(посилання внизу⬇️) та бігом на кастинг, котрий відбудеться о 16:00, 12 березня у глядацькій залі ЦКД (головний корпус, вул. Університетська, 1) 😍
 
 				Чекаємо на вас із нетерпінням, буде чарівно й по-домашньому! ✨",
-                            Time = new DateTime(2020, 3, 22, 0, 0, 0, 0, DateTimeKind.Local)
+                            Time = "21.05.2020 00:00:00"
                         },
                         new
                         {
                             Name = "​​📢Лекція «Блокчейн: як працює біткоїн»",
-                            Photo = "DbResources/bitok.jpeg",
+                            Photo = "DbResources/News/bitok.jpeg",
                             Text = @"👨🏻‍🎓 Спікер заходу: Роман Левкович, студент 3 курсу факультету прикладної математики та інформатики🔝
 
 🗓Теми лекції:
@@ -133,16 +182,16 @@ namespace WebApplication.Migrations
 📍 ауд.270
 
 💫Реєстрація обов'язкова!👇",
-                            Time = new DateTime(2020, 2, 10, 12, 23, 40, 0, DateTimeKind.Unspecified)
+                            Time = "10.02.2020 12:23:40"
                         },
                         new
                         {
                             Name = "​​Акустично-літературний вечір🎶🎹",
-                            Photo = "DbResources/evening.jpeg",
+                            Photo = "DbResources/News/evening.jpeg",
                             Text = @"4 березня в ЦКД о 18:00 відбудеться акустично-літературний вечір і ми шукаємо людей, які вміють грати, співати або читати вірші🔥🚀
 
 Реєструйся і покажи всім, що ти вмієш😉👇",
-                            Time = new DateTime(2020, 2, 17, 17, 23, 40, 0, DateTimeKind.Unspecified)
+                            Time = "17.02.2020 17:23:40"
                         },
                         new
                         {
@@ -151,12 +200,12 @@ namespace WebApplication.Migrations
 Давно чекаєш на можливість показати себе та позмагатися із собі рівними? 🏆🔥
 Тоді, дай відповідь лиш на кілька запитань і ми виконаємо твої побажання)😉
 Вибір за тобою!👇",
-                            Time = new DateTime(2020, 3, 22, 17, 45, 2, 67, DateTimeKind.Local).AddTicks(9380)
+                            Time = "21.05.2020 12:53:51"
                         },
                         new
                         {
                             Name = "​​Мафія на прикладній😈",
-                            Photo = "DbResources/mafia.jpeg",
+                            Photo = "DbResources/News/mafia.jpeg",
                             Text = @"Ти маєш шанс взяти участь у легендарній грі з веселою компанією, гарячими напоями та печеньками🤗
 
 🕔19 лютого 17:00 в 216 ауд.
@@ -164,14 +213,15 @@ namespace WebApplication.Migrations
 Вартість 20 грн з учасника, з нас смаколики з чайком, а з тебе компанія)🙋‍♀️🙋‍♂️
 
 ❗Реєстрація обовязкова!⬇️",
-                            Time = new DateTime(2020, 2, 17, 17, 23, 40, 0, DateTimeKind.Unspecified)
+                            Time = "17.02.2020 17:23:40"
                         });
                 });
 
             modelBuilder.Entity("Model.Note", b =>
                 {
-                    b.Property<string>("Name")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("Created")
                         .HasColumnType("TEXT");
@@ -185,13 +235,17 @@ namespace WebApplication.Migrations
                     b.Property<string>("Materials")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("PersonID")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("SubjectID")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("Name");
+                    b.HasKey("Id");
 
                     b.HasIndex("PersonID");
 
@@ -241,6 +295,9 @@ namespace WebApplication.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("SubjectID")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("Time")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

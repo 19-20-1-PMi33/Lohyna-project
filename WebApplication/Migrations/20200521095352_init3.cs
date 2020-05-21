@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebApplication.Migrations
 {
-    public partial class Init : Migration
+    public partial class init3 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -37,7 +37,8 @@ namespace WebApplication.Migrations
                 {
                     Name = table.Column<string>(maxLength: 10, nullable: false),
                     Size = table.Column<long>(nullable: false),
-                    Course = table.Column<long>(nullable: false)
+                    Course = table.Column<long>(nullable: false),
+                    Faculty = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -51,7 +52,7 @@ namespace WebApplication.Migrations
                     Name = table.Column<string>(nullable: false),
                     Photo = table.Column<string>(nullable: true),
                     Text = table.Column<string>(nullable: false),
-                    Time = table.Column<DateTime>(nullable: false)
+                    Time = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -150,6 +151,8 @@ namespace WebApplication.Migrations
                 name: "Note",
                 columns: table => new
                 {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(nullable: false),
                     Created = table.Column<DateTime>(nullable: false),
                     Deadline = table.Column<DateTime>(nullable: false),
@@ -160,7 +163,7 @@ namespace WebApplication.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Note", x => x.Name);
+                    table.PrimaryKey("PK_Note", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Note_Person_PersonID",
                         column: x => x.PersonID,
@@ -251,7 +254,8 @@ namespace WebApplication.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Mark = table.Column<uint>(nullable: false),
                     StudentID = table.Column<long>(nullable: false),
-                    SubjectID = table.Column<string>(nullable: true)
+                    SubjectID = table.Column<string>(nullable: true),
+                    Time = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -269,6 +273,89 @@ namespace WebApplication.Migrations
                         principalColumn: "Name",
                         onDelete: ReferentialAction.Restrict);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Group",
+                columns: new[] { "Name", "Course", "Faculty", "Size" },
+                values: new object[] { "PMi-31", 3L, "Applied Mathematics and Informatics", 20L });
+
+            migrationBuilder.InsertData(
+                table: "Group",
+                columns: new[] { "Name", "Course", "Faculty", "Size" },
+                values: new object[] { "PMi-32", 3L, "Applied Mathematics and Informatics", 20L });
+
+            migrationBuilder.InsertData(
+                table: "Group",
+                columns: new[] { "Name", "Course", "Faculty", "Size" },
+                values: new object[] { "PMi-33", 3L, "Applied Mathematics and Informatics", 20L });
+
+            migrationBuilder.InsertData(
+                table: "Group",
+                columns: new[] { "Name", "Course", "Faculty", "Size" },
+                values: new object[] { "PMi-34", 3L, "Applied Mathematics and Informatics", 20L });
+
+            migrationBuilder.InsertData(
+                table: "Group",
+                columns: new[] { "Name", "Course", "Faculty", "Size" },
+                values: new object[] { "PMi-35", 3L, "Applied Mathematics and Informatics", 20L });
+
+            migrationBuilder.InsertData(
+                table: "Group",
+                columns: new[] { "Name", "Course", "Faculty", "Size" },
+                values: new object[] { "PMo-31", 3L, "Applied Mathematics and Informatics", 20L });
+
+            migrationBuilder.InsertData(
+                table: "News",
+                columns: new[] { "Name", "Photo", "Text", "Time" },
+                values: new object[] { "​​~Квартирник 8020~", "DbResources/News/kvartyrnyk.jpeg", @"А що, звучить лампово, чи не так? 😉
+
+				Хороша музика - як хороше вино, з роками лише приємніше чути її й ностальгувати за минулим! А хороша компанія прикрасить цей затишний вечір ще більше 😌
+				А якщо ви ще й умієте каверити хіти вісімдесятих-дев'яностих-двотисячних, та й не згірше від оригіналів, то у вас є всі шанси стати душею компанії принаймні на цей вечір! 🤗🔥
+
+				Ваші руки вже потягнулися за інструментом, очі загорілися чи ви почали наспівувати ""I just died in your arms tonight.."", ""Show must go o-on...""?..🎶
+				Тоді чого зволікати?? Швиденько заповнюйте форму(посилання внизу⬇️) та бігом на кастинг, котрий відбудеться о 16:00, 12 березня у глядацькій залі ЦКД (головний корпус, вул. Університетська, 1) 😍
+
+				Чекаємо на вас із нетерпінням, буде чарівно й по-домашньому! ✨", "21.05.2020 00:00:00" });
+
+            migrationBuilder.InsertData(
+                table: "News",
+                columns: new[] { "Name", "Photo", "Text", "Time" },
+                values: new object[] { "​​📢Лекція «Блокчейн: як працює біткоїн»", "DbResources/News/bitok.jpeg", @"👨🏻‍🎓 Спікер заходу: Роман Левкович, студент 3 курсу факультету прикладної математики та інформатики🔝
+
+🗓Теми лекції:
+👉 що таке блокчейн❓
+👉 як створюють біткоїн та як це працює❓
+
+⏰ 6 березня, з 16:30 – 18:00
+📍 ауд.270
+
+💫Реєстрація обов'язкова!👇", "10.02.2020 12:23:40" });
+
+            migrationBuilder.InsertData(
+                table: "News",
+                columns: new[] { "Name", "Photo", "Text", "Time" },
+                values: new object[] { "​​Акустично-літературний вечір🎶🎹", "DbResources/News/evening.jpeg", @"4 березня в ЦКД о 18:00 відбудеться акустично-літературний вечір і ми шукаємо людей, які вміють грати, співати або читати вірші🔥🚀
+
+Реєструйся і покажи всім, що ти вмієш😉👇", "17.02.2020 17:23:40" });
+
+            migrationBuilder.InsertData(
+                table: "News",
+                columns: new[] { "Name", "Photo", "Text", "Time" },
+                values: new object[] { "​​Sport time🤾‍♂⛹‍", null, @"Любиш активний відпочинок? 🤔
+Давно чекаєш на можливість показати себе та позмагатися із собі рівними? 🏆🔥
+Тоді, дай відповідь лиш на кілька запитань і ми виконаємо твої побажання)😉
+Вибір за тобою!👇", "21.05.2020 12:53:51" });
+
+            migrationBuilder.InsertData(
+                table: "News",
+                columns: new[] { "Name", "Photo", "Text", "Time" },
+                values: new object[] { "​​Мафія на прикладній😈", "DbResources/News/mafia.jpeg", @"Ти маєш шанс взяти участь у легендарній грі з веселою компанією, гарячими напоями та печеньками🤗
+
+🕔19 лютого 17:00 в 216 ауд.
+
+Вартість 20 грн з учасника, з нас смаколики з чайком, а з тебе компанія)🙋‍♀️🙋‍♂️
+
+❗Реєстрація обовязкова!⬇️", "17.02.2020 17:23:40" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Lecturer_PersonID",
