@@ -34,6 +34,7 @@ namespace Model.EntitiesConfiguration
 				.WithOne(y => y.Person)
 				.HasForeignKey<Student>(y => y.PersonID);
 			builder.HasData(new Person{Name="Iryna",Surname="Pozdnyakova",Password=AccountHelper.ComputeSha256Hash("iryna007"),Username="iryna007"},
+			new Person{Name="Liubomyr",Surname="Halamaha",Password=AccountHelper.ComputeSha256Hash("halamaha"),Username="halamaha"},
 			new Person{Name="Roman",Surname="Levkovych",Password=AccountHelper.ComputeSha256Hash("starosta"),Username="starosta",Photo="DbResources/Profile/profile1.png"},
 			new Person{Name="Oleh",Surname="Andrus",Password=AccountHelper.ComputeSha256Hash("oleh"),Username="oleh",Photo="DbResources/Profile/profile2.jfif"},
 			new Person{Name="Cat",Surname="Cat Bond",Password=AccountHelper.ComputeSha256Hash("cat"),Username="cat",Photo="DbResources/Profile/cat.jpg"},

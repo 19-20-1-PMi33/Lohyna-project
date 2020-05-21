@@ -23,7 +23,8 @@ namespace Model.EntitiesConfiguration
 			builder.HasMany(x => x.Specializations)
 				.WithOne(y => y.Lecturer)
 				.HasForeignKey(y => y.LecturerID);
-			builder.HasData(new Lecturer{ID=1,Department="Mechanical mathematics",PersonID="iryna007"});
+			builder.HasData(new Lecturer{ID=1,Department="Mechanical mathematics",PersonID="iryna007"},
+			new Lecturer{ID=2,Department="Applied Mathematics",PersonID="halamaha"});
 		}
 	}
 }

@@ -115,7 +115,10 @@ namespace Model.EntitiesConfiguration
 			new Timetable{Id=35,Day="Friday",Period="all",
 			TimeID=5,SubjectID="Computer methods",GroupID="PMi-32",LecturerID=1,Auditory="117"},
 			new Timetable{Id=36,Day="Friday",Period="all",
-			TimeID=3,SubjectID="PE",GroupID="PMi-33",LecturerID=1,Auditory="113"}
+			TimeID=3,SubjectID="PE",GroupID="PMi-33",LecturerID=1,Auditory="113"},
+
+			new Timetable{Id=37,Day="Thursday",Period="all",
+			TimeID=7,SubjectID="PE",GroupID="PMi-33",LecturerID=2,Auditory="Zoom"}
 			);
 		}
 	}
