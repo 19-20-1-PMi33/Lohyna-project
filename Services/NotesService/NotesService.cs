@@ -19,12 +19,32 @@ namespace Services.NotesService
             _unitOfWork = unitOfWork;
             _mapNotes = mapper;
         }
-        public async Task<List<Model.Note>> LoadNotesAsync()
+        public Task<IList<Model.Note>> LoadNotesAsync(string username)
         {
-            return new List<Model.Note>()
-            {
-                new Model.Note{Name = "PI note",Created = DateTime.Now, Deadline = DateTime.Now, Materials = "Bla-bla-bla", Finished = true, SubjectID = "PI", PersonID = "1234"}
-            };
+            var notesList = _unitOfWork.Notes.LoadNotesAsync(username);
+            return notesList;
+        }
+        public async Task CreateNoteAsync(Model.Note note)
+        {
+            _unitOfWork.Notes.CreateNoteAsync(note);
+            await _unitOfWork.CommitAsync();
+        }
+        
+        public void DeleteNoteAsync(params Model.Note[] note)
+        {
+            _unitOfWork.Notes.DeleteNoteAsync(note);
+            _unitOfWork.CommitAsync().Wait();
+        }
+
+        public void UpdateNoteAsync(Model.Note note)
+        {
+            _unitOfWork.Notes.UpdateNoteAsync(note);
+        }
+        
+
+        public async Task<IList<Model.Subject>> LoadSubjectsAsync()
+        {
+            return await _unitOfWork.Subjects.LoadSubjectsAsync();
         }
     }
 }

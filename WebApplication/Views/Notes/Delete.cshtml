@@ -1,0 +1,28 @@
+@{
+        ViewData["Title"] = "Delete note";
+}
+
+  <div class="py-4" id = "notesPage">
+    <div class="container">
+  <div id="deleteNoteModal">
+    <div id="deleteDialog" class="modal-dialog modal-md">
+      <div class="modal-content">
+        <form method="POST" asp-controller="Notes" asp-action="Delete">
+          <div class="modal-header">
+            <h4 class="modal-title">Delete Note</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          </div>
+          <div class="modal-body" id="deleteBody">
+            <p>Are you sure you want to delete "@ViewBag.NoteToDelete" note?</p>
+            <p class="text-danger"><small><b>This action cannot be undone.</b></small></p>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-danger">Delete</button> 
+            <a type="button" asp-action="Index" asp-controller="Notes" class="btn btn-secondary">Cancel</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+    </div>
+  </div>

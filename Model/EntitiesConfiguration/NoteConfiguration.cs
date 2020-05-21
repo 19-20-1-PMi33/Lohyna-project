@@ -7,7 +7,8 @@ namespace Model.EntitiesConfiguration
 	{
 		public void Configure(EntityTypeBuilder<Note> builder)
 		{
-			builder.HasKey(x => x.Name);
+			builder.Property(x => x.Name)
+				.IsRequired();
 
 			builder.Property(x => x.Created)
 				.IsRequired();

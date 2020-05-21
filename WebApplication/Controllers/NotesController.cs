@@ -6,28 +6,117 @@ using System.Linq;
 using System.Threading.Tasks;
 using Core.Helpers;
 using Microsoft.AspNetCore.Mvc;
+using Core.DTO;
 using Microsoft.Extensions.Hosting;
 using Services.NotesService;
+using Services.ProfileService;
 using System.Collections.Generic;
 using WebApplication.Models;
+using AutoMapper;
 
 namespace WebApplication.Controllers
 {
     public class NotesController : Controller
     {
         private readonly INotesService notes;
+        private readonly IProfileService profile;
+        private readonly IMapper _mapper;
 
-        public NotesController(INotesService _notes)
+        public NotesController(INotesService _notes, IProfileService _profile, IMapper mapper)
         {
             notes = _notes;
+            profile = _profile;
+            _mapper = mapper;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page = 1, SortState sortOrder = SortState.NameAsc)
         {
-            List<Model.Note> notesList = notes.LoadNotesAsync().Result; 
-            return View("Notes", notesList);
+            int pageSize = 2;
+            
+            IList<Model.Note> notesList = notes.LoadNotesAsync(User.Identity.Name).Result.ToList();
+
+            notesList = sortOrder switch
+            {
+                SortState.NameDesc => notesList.OrderByDescending(x => x.Name).ToList(),
+                SortState.NameAsc => notesList.OrderBy(x => x.Name).ToList(),
+                
+                SortState.CreatedDesc => notesList.OrderByDescending(x => x.Created).ToList(),
+                SortState.CreatedAsc => notesList.OrderBy(x => x.Created).ToList(),
+                
+                SortState.DeadlineDesc => notesList.OrderByDescending(x => x.Deadline).ToList(),
+                SortState.DeadlineAsc=> notesList.OrderBy(x => x.Deadline).ToList(),
+                
+                _ =>  notesList.OrderBy(x => x.Name).ToList(),
+            };
+            var count = notesList.Count();
+            var items = notesList.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            
+            IndexNotesViewModal notesViewModal = new IndexNotesViewModal
+            {
+                NotesPaginationViewModal = new NotesPaginationViewModal(count, page, pageSize),
+                SortNotesViewModal = new SortNotesViewModal(sortOrder),
+                Notes = items
+            };
+ 
+            return View("Notes", notesViewModal);
+        }
+        
+        public async Task<IActionResult> Edit(int id)
+        {
+            var res = notes.LoadNotesAsync(User.Identity.Name).Result.FirstOrDefault(n => n.Id == id);
+            ViewBag.subjectsList = (notes.LoadSubjectsAsync().Result as List<Model.Subject>).Select(subject => subject.Name).ToList();        
+            return View("Edit", res);
         }
 
+        public async Task<IActionResult> Create()
+        {
+            ViewBag.subjectsList = (notes.LoadSubjectsAsync().Result as List<Model.Subject>).Select(subject => subject.Name).ToList();            
+            return View ("Create", new Model.Note());
+        }
+        [HttpPost]
+        public async Task<IActionResult> Create(Model.Note note)
+        {
+            System.Console.WriteLine(note.Name);
+            if(ModelState.IsValid)
+            {
+                note.PersonID=User.Identity.Name;
+                note.Created = DateTime.Now;
+                await notes.CreateNoteAsync(note);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View("Edit", note);
+            }
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(Model.Note note)
+        {
+            System.Console.WriteLine(note.Name);
+            if(ModelState.IsValid)
+            {
+                note.PersonID=User.Identity.Name;
+                note.Created = DateTime.Now;
+                await notes.CreateNoteAsync(note);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View("Edit", note);
+            }
+        }
+        public async Task<IActionResult> Delete(string Name)
+        {
+            ViewBag.NoteToDelete = Name;
+            return View("Delete");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(Note note)
+        {
+            notes.DeleteNoteAsync(_mapper.Map<Model.Note>(note));
+            return RedirectToAction("Index");
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
