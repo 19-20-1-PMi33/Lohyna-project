@@ -28,7 +28,7 @@ namespace WebApplication.Controllers
 
         public async Task<IActionResult> Index(int page = 1, SortState sortOrder = SortState.NameAsc)
         {
-            int pageSize = 1;
+            int pageSize = 2;
             
             IList<Model.Note> notesList = notes.LoadNotesAsync(User.Identity.Name).Result.ToList();
 
@@ -61,18 +61,29 @@ namespace WebApplication.Controllers
         public async Task<IActionResult> Edit(string Name)
         {
             var res = notes.LoadNotesAsync(User.Identity.Name).Result.FirstOrDefault(n => n.Name == Name);
+            ViewData["subjectsList"] = (notes.LoadSubjectsAsync().Result as List<Model.Subject>).Select(subject => subject.Name).ToList();            
             return View("Edit", res);
         }
 
-        public async Task<IActionResult> Create() => View ("Edit", new Model.Note());
-
+        public async Task<IActionResult> Create()
+        {
+            ViewData["subjectsList"] = (notes.LoadSubjectsAsync().Result as List<Model.Subject>).Select(subject => subject.Name).ToList();            
+            return View ("Edit", new Model.Note());
+        }
         [HttpPost]
         public async Task<IActionResult> Edit(Model.Note note)
         {
             if(ModelState.IsValid)
             {
-                Note newNote = new Note {Name = note.Name, Created = note.Created, Deadline = note.Deadline, Materials = note.Materials, Finished = note.Finished, SubjectID = note.SubjectID, PersonID = note.SubjectID};
-                await notes.CreateNoteAsync(newNote);
+                if(notes.LoadNotesAsync(User.Identity.Name).Result.FirstOrDefault(n => n.Name == note.Name) != null)
+                {
+                    notes.DeleteNoteAsync(notes.LoadNotesAsync(User.Identity.Name).Result.FirstOrDefault(n => n.Name == note.Name));
+                    await notes.CreateNoteAsync(note);
+                }
+                else
+                {
+                    await notes.CreateNoteAsync(note);
+                }
                 return RedirectToAction("Index");
             }
             else

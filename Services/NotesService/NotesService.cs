@@ -24,5 +24,26 @@ namespace Services.NotesService
             var notesList = _unitOfWork.Notes.LoadNotesAsync(username);
             return notesList;
         }
+        public async Task CreateNoteAsync(Model.Note note)
+        {
+            _unitOfWork.Notes.CreateNoteAsync(note);
+            await _unitOfWork.CommitAsync();
+        }
+        
+        public void DeleteNoteAsync(params Model.Note[] note)
+        {
+            _unitOfWork.Notes.DeleteNoteAsync(note);
+        }
+
+        public void UpdateNoteAsync(Model.Note note)
+        {
+            _unitOfWork.Notes.UpdateNoteAsync(note);
+        }
+        
+
+        public async Task<IList<Model.Subject>> LoadSubjectsAsync()
+        {
+            return await _unitOfWork.Subjects.LoadSubjectsAsync();
+        }
     }
 }

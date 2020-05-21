@@ -1,4 +1,4 @@
-@model Tuple<Model.Note, List<Model.Group>>
+@model Model.Note
 
 @{
         ViewData["Title"] = "Note window";
@@ -39,16 +39,15 @@
                 </div>
               </div>
               <div class="col-md-6">
-                <select class="form-control w-100">
-                  <option value="" disabled="" selected="">Choose Subject</option>
-                  @foreach (var subject in @Model.Item2)
+                <select class="form-control w-100" type = "text" asp-for="SubjectID">
+                  @foreach (var subject in ViewData["subjectsList"] as IList<string>)
                   {
                     <option>@subject</option>   
                   }
                 </select>
               </div>
             </div>
-            <h5 asp-formaction = "Materials">Note text:</h5>
+            <h5 asp-for = "Materials">Note text:</h5>
             <div class="row">
               <div class="form-group w-100 mx-2">
                 <textarea class="form-control"  asp-for = "Materials" id="exampleFormControlTextarea1" rows="3"></textarea>
@@ -57,8 +56,8 @@
             <div class="row">
               <div class="form-group w-100 mx-3 d-flex flex-row justify-content-center align-items-center">
                 <h5 class="mr-4">
-                  <input type="radio" id="done" name="radio-group" checked="">
-                  <label for="done">Done</label>
+                  <input type="radio" id="done"  name="radio-group" checked="">
+                  <label>Done</label>
                 </h5>
                 <h5>
                   <input type="radio" id="progress" name="radio-group">
