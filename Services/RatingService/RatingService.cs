@@ -2,20 +2,27 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Core.DTO;
+using Model;
+using AutoMapper;
+using Repositories.UnitOfWork;
 
 namespace Services.RatingService
 {
     public class RatingService: IRatingService
     {
-        public async Task<List<Rating>> LoadRatingAsync()
+        private IUnitOfWork _unitOfWork;
+        private IMapper _mapRatings;
+
+        public RatingService(IUnitOfWork unitOfWork, IMapper mapRatings)
         {
-            return new List<Rating>{
-                new Rating{Id = 1, Mark = 2, Time = DateTime.Now, SubjectID = "PE"},
-                new Rating{Id = 2, Mark = 20, Time = new DateTime(2020,2,3), SubjectID = "Math"},
-                new Rating{Id = 3, Mark = 21, Time = new DateTime(2020, 1, 15), SubjectID = "PE"},
-                new Rating{Id = 4, Mark = 4, Time = new DateTime(2003,4,24), SubjectID = "Cryptology"},
-                new Rating{Id = 5, Mark = 5, Time = new DateTime(2004, 12, 23), SubjectID = "Numerical methods"}
-            };
+            _unitOfWork = unitOfWork;
+            _mapRatings = mapRatings;
+        }
+
+        public Task<List<Model.Rating>> LoadRatingAsync(Model.Student student)
+        {
+            var ratingsList = _unitOfWork.Marks.LoadMarksAsync(student);
+            return ratingsList;
         }
     }
 }
