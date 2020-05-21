@@ -34,10 +34,6 @@
   {
       text-decoration: none;
   }
-  li:hover
-  {
-      background-color: lightgray;
-  }
   
   .modal-body
   {
