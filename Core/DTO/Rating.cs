@@ -8,5 +8,6 @@ namespace Core.DTO
 		public uint Mark { get; set; }
 		public DateTime Time { get; set; }
 		public string SubjectID { get; set; }
+		public long StudentID { get; set; }
 	}
 }

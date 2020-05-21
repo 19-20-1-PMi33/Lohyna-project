@@ -23,7 +23,9 @@ namespace Model.EntitiesConfiguration
 			builder.HasMany(x => x.Marks)
 				.WithOne(y => y.Student)
 				.HasForeignKey(y => y.StudentID);
-			builder.HasData(new Student{TicketNumber = 11111111,ReportCard=1111111,PersonID="starosta",GroupID="PMi-33"},
+			builder.HasData(
+			new Student{TicketNumber = 55555555,ReportCard=5555555,PersonID="cat", GroupID="PMi-33"},
+			new Student{TicketNumber = 11111111,ReportCard=1111111,PersonID="starosta",GroupID="PMi-33"},
 			new Student{TicketNumber = 22222222,ReportCard=2222222,PersonID="oleh",GroupID="PMi-32"},
 			new Student{TicketNumber = 33333333,ReportCard=3333333,PersonID="petro",GroupID="PMi-31"},
 			new Student{TicketNumber = 44444444,ReportCard=4444444,PersonID="zhawa",GroupID="PMi-34"});

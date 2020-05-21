@@ -31,7 +31,7 @@ namespace WebApplication.Controllers
 
         public async Task<IActionResult> Index(int page = 1, SortState sortOrder = SortState.NameAsc)
         {
-            int pageSize = 2;
+            int pageSize = 3;
             
             IList<Model.Note> notesList = notes.LoadNotesAsync(User.Identity.Name).Result.ToList();
 
