@@ -45,12 +45,6 @@ body{
   padding-right: 10px;
 }
 
-#btn {
-  font-size: 18px;
-  padding-top: 8px;
-  height: 38px;
-}
-
 body {
   background-color: #f9f9f9;
 }
@@ -65,4 +59,10 @@ p {
 }
 .input-validation-error{
   border: 1px solid red;
+}
+#loginButton
+{
+  color: white !important;
+  padding-bottom: 2px;
+  margin-right: 2px;
 }
