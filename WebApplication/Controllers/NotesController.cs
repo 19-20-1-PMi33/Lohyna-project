@@ -29,11 +29,17 @@ namespace WebApplication.Controllers
             _mapper = mapper;
         }
 
-        public async Task<IActionResult> Index(int page = 1, SortState sortOrder = SortState.NameAsc)
+        public async Task<IActionResult> Index(int page = 1, SortState sortOrder = SortState.NameAsc, string IsFinished = "All")
         {
             int pageSize = 3;
-            
-            IList<Model.Note> notesList = notes.LoadNotesAsync(User.Identity.Name).Result.ToList();
+        
+            IList<Model.Note> notesList =  IsFinished == "All"?
+            notes.LoadNotesAsync(User.Identity.Name).Result.ToList()
+            :
+            IsFinished == "Done"? 
+            notes.LoadNotesAsync(User.Identity.Name).Result.Where(x=>x.Finished == true ).ToList()
+            :
+            notes.LoadNotesAsync(User.Identity.Name).Result.Where(x=>x.Finished == false ).ToList();
 
             notesList = sortOrder switch
             {
@@ -51,6 +57,10 @@ namespace WebApplication.Controllers
             var count = notesList.Count();
             var items = notesList.Skip((page - 1) * pageSize).Take(pageSize).ToList();
             
+            ViewBag.CountOfAllNotes = notes.LoadNotesAsync(User.Identity.Name).Result.Count();
+            ViewBag.CountOfDoneNotes = notes.LoadNotesAsync(User.Identity.Name).Result.Where(x=>x.Finished == true ).Count();
+            ViewBag.CountOfProgressNotes = ViewBag.CountOfAllNotes - ViewBag.CountOfDoneNotes;
+            
             IndexNotesViewModal notesViewModal = new IndexNotesViewModal
             {
                 NotesPaginationViewModal = new NotesPaginationViewModal(count, page, pageSize),
@@ -58,6 +68,8 @@ namespace WebApplication.Controllers
                 Notes = items
             };
  
+            ViewBag.subjectsList = (notes.LoadSubjectsAsync().Result as List<Model.Subject>).Select(subject => subject.Name).ToList();            
+
             return View("Notes", notesViewModal);
         }
         
@@ -75,6 +87,32 @@ namespace WebApplication.Controllers
             {
                 return RedirectToAction("Index");
             } 
+        }
+        [HttpPost]
+        public async Task<IActionResult> NotesForSubject(string subject = "All subjects", int page = 1,  SortState sortOrder = SortState.NameAsc)
+        {
+            int pageSize = 3;
+            IList<Model.Note> notesList = subject == "All subjects" ?
+            notes.LoadNotesAsync(User.Identity.Name).Result.ToList()
+            :
+            notes.LoadNotesAsync(User.Identity.Name).Result.Where(x=> x.SubjectID == subject).ToList();
+
+            var count = notesList.Count();
+            var items = notesList.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+            
+            IndexNotesViewModal notesViewModal = new IndexNotesViewModal
+            {
+                NotesPaginationViewModal = new NotesPaginationViewModal(count, page, pageSize),
+                SortNotesViewModal = new SortNotesViewModal(sortOrder),
+                Notes = items
+            };
+ 
+            ViewBag.subjectsList = ViewBag.subjectsList = (notes.LoadSubjectsAsync().Result as List<Model.Subject>).Select(subject => subject.Name).ToList();            
+            
+            ViewBag.CountOfAllNotes = notes.LoadNotesAsync(User.Identity.Name).Result.Count();
+            ViewBag.CountOfDoneNotes = notes.LoadNotesAsync(User.Identity.Name).Result.Where(x=>x.Finished == true ).Count();
+            ViewBag.CountOfProgressNotes = ViewBag.CountOfAllNotes - ViewBag.CountOfDoneNotes;
+            return View("Notes", notesViewModal);
         }
 
         public async Task<IActionResult> Create()

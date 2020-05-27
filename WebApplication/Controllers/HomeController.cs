@@ -50,6 +50,21 @@ namespace WebApplication.Controllers
         }
 
         [HttpPost]
+        public async Task<IActionResult> FilterNewsByDate(string startDate, string endDate)
+        {
+            var news = _newsFeed
+            .LoadNewsAsync()
+            .Result
+            .Where(n => n.TimePosted >= DateTime.Parse(startDate) && n.TimePosted<=DateTime.Parse(endDate))
+            .Select(x => (x,
+                    x.Photo is null
+                        ? ""
+                        : ImageHelper.EncodeImage(_host.ContentRootPath + "/" + x.Photo)
+                ));
+            return View("Index", new LogInModel{news = news});
+        }
+
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LogInModel model)
         {
