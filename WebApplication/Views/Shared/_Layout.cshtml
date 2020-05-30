@@ -1,55 +1,54 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>@ViewData["Title"]</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="~/css/site.css"/>
     @RenderSection("Styles", required: false)
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-custom navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <a asp-controller="News" asp-action="Index" class="navbar-brand mr-0 ml-sm-4">
-                <img src="/images/Logo.png" id="logo" class="d-inline-block align-top"/>
-            </a>
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-                <ul class="navbar-nav mx-auto" id="linksList">
+<header>
+    <nav class="navbar navbar-custom navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a asp-controller="News" asp-action="Index" class="navbar-brand mr-0 ml-sm-4">
+            <img src="/images/Logo.png" id="logo" class="d-inline-block align-top"/>
+        </a>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav mx-auto" id="linksList">
 
-                    <li class="nav-item">
-                        <a class="nav-link" id="navLink" asp-controller="Profile" asp-action="Index">Profile</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="navLink" asp-controller="Timetable" asp-action="Index">Timetable</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="navLink" asp-controller="Notes" asp-action="Index">Notes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="navLink" asp-controller="Rating" asp-action="Index">Marks</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="navLink" href="#">Messages</a>
-                    </li>
-                </ul>
-                <form class="form-inline" asp-controller="Home" asp-action="LogOut">
-                    <div class="md-form my-0 m">
-                        <button class="btn btn-light btn-sm" type="submit">Log out</button>
-                    </div>
-                </form>
-            </div>
-        </nav>
-    </header>
-            @RenderBody()
-    </div>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    @RenderSection("Scripts", required: false)
+                <li class="nav-item">
+                    <a class="nav-link" id="navLink" asp-controller="Profile" asp-action="Index">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="navLink" asp-controller="Timetable" asp-action="Index">Timetable</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="navLink" asp-controller="Notes" asp-action="Index">Notes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="navLink" asp-controller="Rating" asp-action="Index">Marks</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="navLink" href="#">Messages</a>
+                </li>
+            </ul>
+            <form class="form-inline" asp-controller="Home" asp-action="LogOut">
+                <div class="md-form my-0 m">
+                    <button class="btn btn-light btn-sm" type="submit">Log out</button>
+                </div>
+            </form>
+        </div>
+    </nav>
+</header>
+@RenderBody()
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+@RenderSection("Scripts", required: false)
 </body>
 </html>
