@@ -1,11 +1,12 @@
 ﻿using System.Threading.Tasks;
 using System.Collections.Generic;
 using Core;
+using Core.DTO;
 
 namespace Services.TimeTableService
 {
     public interface ITimeTableService
     {
-        Task<Dictionary<int, List<Core.DTO.Timetable>>> LoadTimetableForGroupAsync(string groupID);
+        Dictionary<int, List<Timetable>> LoadTimetableForGroupAsync(string groupID);
     }
 }

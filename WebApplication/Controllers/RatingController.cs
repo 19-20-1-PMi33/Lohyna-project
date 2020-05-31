@@ -25,8 +25,8 @@ namespace WebApplication.Controllers
         }
         public IActionResult Index()
         {
-            Model.Student userData = _profile.LoadStudentAsync(User.Identity.Name).Result;
-            List<Model.Rating> ratingsList = _rating.LoadRatingAsync(userData).Result;
+            var userData = _profile.LoadStudentAsync(User.Identity.Name);
+            var ratingsList = _rating.LoadRatingAsync(userData).Result;
             return View("Rating", ratingsList);
         }
 

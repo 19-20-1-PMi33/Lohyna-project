@@ -11,7 +11,7 @@ namespace Services.AccountService
 {
     public class AccountService : IAccountService
     {
-        private IUnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
         public AccountService(IUnitOfWork unitOfWork){
             _unitOfWork = unitOfWork;
         }
@@ -22,9 +22,9 @@ namespace Services.AccountService
             await _unitOfWork.CommitAsync();
         }
 
-        public async Task<Person> LoadPersonAsync(string username)
+        public Person LoadPersonAsync(string username)
         {
-            return _unitOfWork.Persons.LoadLogInPersonAsync(username);
+            return  _unitOfWork.Persons.LoadLogInPersonAsync(username);
         }
 
         public bool ContainsPerson(Person p)
@@ -32,14 +32,14 @@ namespace Services.AccountService
             return _unitOfWork.Persons.ContainsPerson(p);
         }
 
-        public async Task<IList<Group>> getGroupListAsync()
+        public async Task<IList<Group>> GetGroupListAsync()
         {
             return  await _unitOfWork.Groups.LoadGroupsAsync();
         }
 
-        public async Task<IList<string>> getFacultyListAsync()
+        public IList<string> GetFacultyListAsync()
         {
-            return (getGroupListAsync().Result as List<Group>).Select(x=>x.Faculty).Distinct().OrderBy(x=>x).ToList();
+            return (GetGroupListAsync().Result as List<Group>).Select(x=>x.Faculty).Distinct().OrderBy(x=>x).ToList();
         }
     }
 }
