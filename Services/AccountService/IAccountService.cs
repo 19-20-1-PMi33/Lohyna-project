@@ -7,10 +7,10 @@ namespace Services.AccountService
 {
     public interface IAccountService
     {
-        Task<Person> LoadPersonAsync(string username);
+        Person LoadPersonAsync(string username);
         Task CreateStudentAsync(Student s);
         bool ContainsPerson(Person p);
-        Task<IList<Group>> getGroupListAsync();
-        Task<IList<string>> getFacultyListAsync();
+        Task<IList<Group>> GetGroupListAsync();
+        IList<string> GetFacultyListAsync();
     }
 }

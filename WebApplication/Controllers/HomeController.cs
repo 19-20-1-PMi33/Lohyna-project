@@ -34,7 +34,7 @@ namespace WebApplication.Controllers
             _service = accountService;
             _newsFeed = newsService;
         }
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             if(!String.IsNullOrEmpty(User.Identity.Name))
                 return RedirectToAction("Index","News");
@@ -70,7 +70,7 @@ namespace WebApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                Person user = await _service.LoadPersonAsync(model.Username);
+                var user = _service.LoadPersonAsync(model.Username);
                 if (user == null)
                     ModelState.AddModelError("", "User not found");
                 else if (user.Password != AccountHelper.ComputeSha256Hash(model.Password))

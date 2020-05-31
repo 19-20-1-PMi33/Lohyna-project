@@ -32,8 +32,8 @@ namespace WebApplication.Controllers
         {
             if(string.IsNullOrEmpty(u))
                 u = User.Identity.Name;
-            Model.Student userData = _profile.LoadStudentAsync(u).Result;
-            ProfileViewModel model = _mapper.Map<ProfileViewModel>(userData);
+            var userData = _profile.LoadStudentAsync(u);
+            var model = _mapper.Map<ProfileViewModel>(userData);
             model.Achievment = _profile.LoadLastAchievmentForStudent(userData);
             if(model.Achievment.Id!=-1)
                 model.Achievment.Photo = ImageHelper.EncodeImage(_host.ContentRootPath+"/"+model.Achievment.Photo);

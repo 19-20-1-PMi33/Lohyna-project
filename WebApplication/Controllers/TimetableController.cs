@@ -32,7 +32,7 @@ namespace WebApplication.Controllers
         }
         public IActionResult Index()
         {
-            var model =  _timeTable.LoadTimetableForGroupAsync(_profile.LoadStudentAsync(User.Identity.Name).Result.GroupID).Result;
+            var model =  _timeTable.LoadTimetableForGroupAsync(_profile.LoadStudentAsync(User.Identity.Name).GroupID);
             ViewBag.groupsList = (_service.getGroupListAsync().Result as List<Model.Group>).Select(group=>group.Name).ToList();
             return View("Timetable",model);
         }

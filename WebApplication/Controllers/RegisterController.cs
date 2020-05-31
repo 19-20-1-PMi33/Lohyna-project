@@ -31,8 +31,8 @@ namespace WebApplication.Controllers
         public IActionResult Index()
         {
             RegisterModel model = new RegisterModel();
-            model.groupList = (_service.getGroupListAsync().Result as List<Model.Group>).Select(group=>group.Name).ToList();
-            model.facultyList = _service.getFacultyListAsync().Result as List<string>;
+            model.groupList = (_service.GetGroupListAsync().Result as List<Model.Group>).Select(group=>group.Name).ToList();
+            model.facultyList = _service.GetFacultyListAsync() as List<string>;
             return View(model);
         }
         [HttpPost]
@@ -41,7 +41,7 @@ namespace WebApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                Person user = await _service.LoadPersonAsync(model.Username);
+                var user = _service.LoadPersonAsync(model.Username);
                 if (user == null)
                 {
                     string imageSavingPath = "../UploadedFiles/";
@@ -66,8 +66,8 @@ namespace WebApplication.Controllers
                 else
                     ModelState.AddModelError("", "Incorrect data");
             }
-            model.groupList = (_service.getGroupListAsync().Result as List<Model.Group>).Select(group=>group.Name).ToList();
-            model.facultyList = _service.getFacultyListAsync().Result as List<string>;
+            model.groupList = (_service.GetGroupListAsync().Result as List<Model.Group>).Select(group=>group.Name).ToList();
+            model.facultyList = _service.GetFacultyListAsync() as List<string>;
             return View("Index",model);
         }
     }

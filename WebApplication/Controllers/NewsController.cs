@@ -25,7 +25,7 @@ namespace WebApplication.Controllers
             _host = host;
             _newsFeed = newsFeed;
         }
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             var news = _newsFeed
             .LoadNewsAsync()

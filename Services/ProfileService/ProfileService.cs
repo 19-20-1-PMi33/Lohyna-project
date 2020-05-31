@@ -33,10 +33,10 @@ namespace Services.ProfileService
             return _unitOfWork.Persons.LoadLastAchievmentForStudent(student);
         }
 
-        public async Task<Student> LoadStudentAsync(string username)
+        public Student LoadStudentAsync(string username)
         {
-            Model.Person person = _unitOfWork.Persons.LoadLogInPersonAsync(username);
-            Model.Student student = _unitOfWork.Persons.LoadStudent(person);
+            var person = _unitOfWork.Persons.LoadLogInPersonAsync(username);
+            var student = _unitOfWork.Persons.LoadStudent(person);
             student.Group = _unitOfWork.Groups.LoadGroup(student.GroupID);
             return student;
         }
