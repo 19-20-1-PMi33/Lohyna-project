@@ -9,26 +9,23 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.14.0/css/mdb.min.css" rel="stylesheet">
     <link rel="stylesheet" href="~/css/timetableStyle.css">
 }
-     <div class="content" id ="timeTablePage">
-         <div class="row  d-flex justify-content-end">
-    <div class="col-md-4">
-      <form asp-action="TimetableForGroup" method = "POST" asp-controller="Timetable" class="form-inline" >
-        <div class="form-group w-75">
-          <select class="form-control w-50" name = "groupID" type="text">
-              @foreach(var i in ViewBag.groupsList)
-              {
-                  <option value="@i">@i</option>
-              }
-          </select>
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-      </form>
-    </div>
-  </div>
-        <main role="main">
-            <div class="justify-content-center row-scroll shadow mb-1">
-                <div id="timetable-header">
+
 <div class="content" id="timeTablePage">
+    <div class="row  d-flex justify-content-end">
+            <div class="col-md-4">
+                <form asp-action="TimetableForGroup" method = "POST" asp-controller="Timetable" class="form-inline" >
+                    <div class="form-group w-75">
+                        <select class="form-control w-50" name = "groupID" type="text">
+                            @foreach(var i in ViewBag.groupsList)
+                             {
+                                <option value="@i">@i</option>
+                            }
+                        </select>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+         </div>
     <main role="main">
         <div class="justify-content-center row-scroll shadow mb-1">
             <div id="timetable-header">
@@ -77,13 +74,17 @@
                                 cnt = 0;
                             }
                         }
+                        else
+                        {
+                            <div class="border timetable-item container p-0">
+                            </div>
+                        }
                     }
-                    </div>
-                }
-            </div>
-            <div style="height:100px;"></div>
-        </main>
-    </div>
+                </div>
+            }
+        </div>
+    </main>
+</div>
 
 @section Scripts
 {

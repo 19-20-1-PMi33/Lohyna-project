@@ -25,6 +25,7 @@ namespace WebApplication.Controllers
             _host = host;
             _newsFeed = newsFeed;
         }
+        
         public IActionResult Index()
         {
             var news = _newsFeed
@@ -40,7 +41,7 @@ namespace WebApplication.Controllers
 
         
         [HttpPost]
-        public async Task<IActionResult> FilterNewsByDate(string startDate, string endDate)
+        public IActionResult FilterNewsByDate(string startDate, string endDate)
         {
             var news = _newsFeed
             .LoadNewsAsync()

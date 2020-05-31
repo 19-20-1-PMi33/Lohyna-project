@@ -30,12 +30,12 @@ namespace WebApplication.Controllers
             int pageSize = 3;
         
             IList<Model.Note> notesList =  IsFinished == "All"?
-            notes.LoadNotesAsync(User.Identity.Name).Result.ToList()
+            _notes.LoadNotesAsync(User.Identity.Name).Result.ToList()
             :
             IsFinished == "Done"? 
-            notes.LoadNotesAsync(User.Identity.Name).Result.Where(x=>x.Finished == true ).ToList()
+            _notes.LoadNotesAsync(User.Identity.Name).Result.Where(x=>x.Finished == true ).ToList()
             :
-            notes.LoadNotesAsync(User.Identity.Name).Result.Where(x=>x.Finished == false ).ToList();
+            _notes.LoadNotesAsync(User.Identity.Name).Result.Where(x=>x.Finished == false ).ToList();
 
             notesList = sortOrder switch
             {
@@ -53,8 +53,8 @@ namespace WebApplication.Controllers
             var count = notesList.Count();
             var items = notesList.Skip((page - 1) * pageSize).Take(pageSize).ToList();
             
-            ViewBag.CountOfAllNotes = notes.LoadNotesAsync(User.Identity.Name).Result.Count();
-            ViewBag.CountOfDoneNotes = notes.LoadNotesAsync(User.Identity.Name).Result.Where(x=>x.Finished == true ).Count();
+            ViewBag.CountOfAllNotes = _notes.LoadNotesAsync(User.Identity.Name).Result.Count();
+            ViewBag.CountOfDoneNotes = _notes.LoadNotesAsync(User.Identity.Name).Result.Where(x=>x.Finished == true ).Count();
             ViewBag.CountOfProgressNotes = ViewBag.CountOfAllNotes - ViewBag.CountOfDoneNotes;
             
             IndexNotesViewModal notesViewModal = new IndexNotesViewModal
@@ -65,7 +65,7 @@ namespace WebApplication.Controllers
                 Notes = items
             };
  
-            ViewBag.subjectsList = (notes.LoadSubjectsAsync().Result as List<Model.Subject>).Select(subject => subject.Name).ToList();            
+            ViewBag.subjectsList = (_notes.LoadSubjectsAsync().Result as List<Model.Subject>).Select(subject => subject.Name).ToList();            
 
             return View("Notes", notesViewModal);
         }
@@ -86,13 +86,13 @@ namespace WebApplication.Controllers
             } 
         }
         [HttpPost]
-        public async Task<IActionResult> NotesForSubject(string subject = "All subjects", int page = 1,  SortState sortOrder = SortState.NameAsc)
+        public IActionResult NotesForSubject(string subject = "All subjects", int page = 1,  SortState sortOrder = SortState.NameAsc)
         {
             int pageSize = 3;
             IList<Model.Note> notesList = subject == "All subjects" ?
-            notes.LoadNotesAsync(User.Identity.Name).Result.ToList()
+            _notes.LoadNotesAsync(User.Identity.Name).Result.ToList()
             :
-            notes.LoadNotesAsync(User.Identity.Name).Result.Where(x=> x.SubjectID == subject).ToList();
+            _notes.LoadNotesAsync(User.Identity.Name).Result.Where(x=> x.SubjectID == subject).ToList();
 
             var count = notesList.Count();
             var items = notesList.Skip((page - 1) * pageSize).Take(pageSize).ToList();
@@ -104,10 +104,10 @@ namespace WebApplication.Controllers
                 Notes = items
             };
  
-            ViewBag.subjectsList = ViewBag.subjectsList = (notes.LoadSubjectsAsync().Result as List<Model.Subject>).Select(subject => subject.Name).ToList();            
+            ViewBag.subjectsList = ViewBag.subjectsList = (_notes.LoadSubjectsAsync().Result as List<Model.Subject>).Select(subject => subject.Name).ToList();            
             
-            ViewBag.CountOfAllNotes = notes.LoadNotesAsync(User.Identity.Name).Result.Count();
-            ViewBag.CountOfDoneNotes = notes.LoadNotesAsync(User.Identity.Name).Result.Where(x=>x.Finished == true ).Count();
+            ViewBag.CountOfAllNotes = _notes.LoadNotesAsync(User.Identity.Name).Result.Count();
+            ViewBag.CountOfDoneNotes = _notes.LoadNotesAsync(User.Identity.Name).Result.Where(x=>x.Finished == true ).Count();
             ViewBag.CountOfProgressNotes = ViewBag.CountOfAllNotes - ViewBag.CountOfDoneNotes;
             return View("Notes", notesViewModal);
         }

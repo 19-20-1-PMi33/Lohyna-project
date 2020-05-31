@@ -33,14 +33,15 @@ namespace WebApplication.Controllers
         public IActionResult Index()
         {
             var model =  _timeTable.LoadTimetableForGroupAsync(_profile.LoadStudentAsync(User.Identity.Name).GroupID);
-            ViewBag.groupsList = (_service.getGroupListAsync().Result as List<Model.Group>).Select(group=>group.Name).ToList();
+            ViewBag.groupsList = (_service.GetGroupListAsync().Result as List<Model.Group>).Select(group=>group.Name).ToList();
             return View("Timetable",model);
         }
         
         [HttpPost]
         public IActionResult TimetableForGroup(string groupID)
-        {   var model =  _timeTable.LoadTimetableForGroupAsync(groupID).Result;
-            ViewBag.groupsList = (_service.getGroupListAsync().Result as List<Model.Group>).Select(group=>group.Name).ToList();
+        {
+            var model =  _timeTable.LoadTimetableForGroupAsync(groupID);
+            ViewBag.groupsList = (_service.GetGroupListAsync().Result as List<Model.Group>).Select(group=>group.Name).ToList();
             return View("Timetable",model);
         }
         
