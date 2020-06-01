@@ -44,8 +44,6 @@ namespace WebApplication.Controllers
         public IActionResult FilterNewsByDate(string startDate, string endDate)
         {
             var cultural = CultureInfo.CreateSpecificCulture("de-DE");
-            System.Console.WriteLine(DateTime.Parse(startDate, cultural));
-            System.Console.WriteLine(endDate);
             var news = _newsFeed
             .LoadNewsAsync()
             .Result
