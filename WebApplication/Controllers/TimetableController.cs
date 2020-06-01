@@ -37,7 +37,6 @@ namespace WebApplication.Controllers
             return View("Timetable",model);
         }
         
-        [HttpPost]
         public IActionResult TimetableForGroup(string groupID)
         {
             var model =  _timeTable.LoadTimetableForGroupAsync(groupID);

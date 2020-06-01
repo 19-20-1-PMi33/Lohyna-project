@@ -49,7 +49,6 @@ namespace WebApplication.Controllers
             return View(new LogInModel{news = news});
         }
 
-        [HttpPost]
         public IActionResult FilterNewsByDate(string startDate, string endDate)
         {
             var news = _newsFeed

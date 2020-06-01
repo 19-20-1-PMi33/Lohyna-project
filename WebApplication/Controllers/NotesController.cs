@@ -85,7 +85,7 @@ namespace WebApplication.Controllers
                 return RedirectToAction("Index");
             } 
         }
-        [HttpPost]
+        
         public IActionResult NotesForSubject(string subject = "All subjects", int page = 1,  SortState sortOrder = SortState.NameAsc)
         {
             int pageSize = 3;

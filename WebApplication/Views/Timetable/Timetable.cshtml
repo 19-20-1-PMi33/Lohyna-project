@@ -13,11 +13,11 @@
 <div class="content" id="timeTablePage">
     <div class="row  d-flex justify-content-end">
             <div class="col-md-4">
-                <form asp-action="TimetableForGroup" method = "POST" asp-controller="Timetable" class="form-inline" >
+                <form asp-action="TimetableForGroup" asp-controller="Timetable" class="form-inline" >
                     <div class="form-group w-75">
                         <select class="form-control w-50" name = "groupID" type="text">
                             @foreach(var i in ViewBag.groupsList)
-                             {
+                            {
                                 <option value="@i">@i</option>
                             }
                         </select>
